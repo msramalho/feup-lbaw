@@ -1,2 +1,3 @@
 # feup-lbaw
-we might change this into the correct name
+
+Project 1: Collaborative news
