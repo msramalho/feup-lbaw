@@ -8,5 +8,5 @@ Project 1: Collaborative news
    * Tasks [deadline 19/02/2018]:
      * Afonso - User Stories
      * Daniel - User Stories
-     * Miguel - Business Rules
+     * Miguel - Supplementary requirements 
      * Vitor - Actors (~UML~ + Table)
