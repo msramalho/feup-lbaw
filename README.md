@@ -1,6 +1,12 @@
-# feup-lbaw
+# Project 1: Collaborative news
+## Group 21
+## Members
+ * Afonso Ramos - up201506239@fe.up.pt
+ * Daniel Silva - up201503212@fe.up.pt
+ * Miguel Ramalho - up201403027@fe.up.pt
+ * Vítor Minhoto - up201303086@fe.up.pt
 
-Project 1: Collaborative news
+## Artefacts
 
  * [A1](https://hackmd.io/KwZmCYCNIU3BaAhuAxseAWDAOA7PATlwAZjMBGAE2xEgDNKCnIg=) Editor: **Afonso**
  * [A2](https://hackmd.io/EwZgHGBmBsCmAmBaaAGaBDRAWLrECMBjAdn0XjC2IE551hQBWQoA) Editor: **Daniel** [example](https://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/medialib/a2)
