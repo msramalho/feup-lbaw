@@ -14,7 +14,7 @@
    * Status: **[not submited]**
    * [Draw.io - UML](https://drive.google.com/file/d/1jJV-MGkb27NeJCkNnhLYBqZ4u2EGb1-L/view?usp=sharing)
    * Tasks [deadline 19/02/2018]:
-     * Afonso - User Stories
-     * Daniel - User Stories
+     * Afonso - ~User Stories~
+     * Daniel - ~User Stories~
      * Miguel - ~Supplementary requirements~
-     * Vitor - Actors (~UML~ + Table)
+     * Vitor - Actors (~UML + Table~)
