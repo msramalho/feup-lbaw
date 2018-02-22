@@ -19,6 +19,12 @@
      * Miguel - ~Supplementary requirements~
      * Vitor - Actors (~UML + Table~)
 
-  * [A3](google.com) Editor: **Miguel**
+  * [A3](https://hackmd.io/CwRgrAHAbATAZhAtAYxgEzo4yIAZF4CGAzIiAJxRyECm5ENuhaQA) Editor: **Miguel**
     * Status: **[not submited]**
     * [Dwaw.io - SiteMap](https://drive.google.com/file/d/1W-SPXbB57z5ZN7S4vmGSInLCbPAg0bjc/view?usp=sharing)
+    * Tasks [deadline 01/03/2018]
+      * Afonso - Ver a cor; Design do Logo; statistics; FAQ (bootstrap Accordion) 
+      * Daniel - Footer; feed (search, list of posts); post page
+      * Miguel - Navbars (unauthenticated, authenticated, admin); new post; contacts
+      * Vitor - ~sitemap~; User Profile (details, following, history); about
+    * Tasks [deadline 08/03/2018]
