@@ -18,3 +18,7 @@
      * Daniel - ~User Stories~
      * Miguel - ~Supplementary requirements~
      * Vitor - Actors (~UML + Table~)
+
+  * [A3](google.com) Editor: **Miguel**
+    * Status: **[not submited]**
+    * [Dwaw.io - SiteMap](https://drive.google.com/file/d/1W-SPXbB57z5ZN7S4vmGSInLCbPAg0bjc/view?usp=sharing)
