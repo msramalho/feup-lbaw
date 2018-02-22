@@ -6,6 +6,17 @@ body {
 	background-color: #343a40 !important;
 }
 
+@font-face{
+	font-family: 'aqua';
+	src: 	url('aqua.ttf') format('truetype'),
+			url('aqua.woff2') format('woff2'),
+			url('aqua.woff') format('woff');
+}
+
+.navbar-brand{
+	font-family: 'aqua', Fallback, sans-serif;
+	font-size: 1.75rem;
+}
 
 /**
  * Style for view post page
