@@ -10,6 +10,7 @@
 
 	<link rel="icon" href="public/images/favicon.ico">
 
+	<link href="public/css/fontawesome-all.min.css" rel="stylesheet">
 	<link href="public/css/bootstrap.min.css" rel="stylesheet">
 	<link href="public/css/styles.css" rel="stylesheet">
 
@@ -32,7 +33,7 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="signUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Sign-up
+								<i class="fas fa-user-plus"></i> Sign-up
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<form class="px-4 py-3" action="index.html" method="get">
@@ -62,12 +63,13 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="signInDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Sign-in
+								<i class="fas fa-sign-in-alt"></i> Sign-in
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
-								<form class="px-4 py-3" action="index-uthenticated.html" method="get">
+								<form class="px-4 py-3" action="index-authenticated.html" method="get">
 									<div class="form-group">
-										<input type="text" class="form-control" id="login_username_email" name="login_username_email" placeholder="username or email" required>
+										<input type="text" class="form-control" id="login_username_email" name="login_username_email" placeholder="username or email"
+										    required>
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control" id="signin_pass" name="signin_pass" placeholder="password" required>
