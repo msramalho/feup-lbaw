@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>VECTO : Homepage</title>
+	<title>VECTO : Authenticated</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
@@ -31,52 +31,15 @@
 				<ul class="navbar-nav">
 					<li class="nav-item">
 						<div class="dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="signUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-user-plus"></i> Sign-up
-							</a>
-							<div class="dropdown-menu dropdown-menu-right">
-								<form class="px-4 py-3" action="index-authenticated.html" method="get">
-									<div class="form-group">
-										<!-- <label for="signup_name">Name:</label> -->
-										<input type="text" class="form-control" id="signup_name" name="signup_name" placeholder="name" required>
-									</div>
-									<div class="form-group">
-										<!-- <label for="signup_email">Email: </label> -->
-										<input type="email" class="form-control" id="signup_email" name="signup_email" placeholder="email" required>
-									</div>
-									<div class="form-group">
-										<!-- <label for="signup_username">Username: </label> -->
-										<input type="text" class="form-control" id="signup_username" name="signup_username" placeholder="username" required>
-									</div>
-									<div class="form-group">
-										<!-- <label for="singup_password">Password: </label> -->
-										<input type="password" class="form-control" id="singup_password" name="singup_password" placeholder="password" required>
-									</div>
-									<button type="submit" class="btn btn-dark">Sign Up</button>
-								</form>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="faq.html">Do you have questions? See our FAQ</a>
-							</div>
-						</div>
-					</li>
-					<li class="nav-item">
-						<div class="dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="signInDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-sign-in-alt"></i> Sign-in
-							</a>
-							<div class="dropdown-menu dropdown-menu-right">
-								<form class="px-4 py-3" action="index-admin.html" method="get">
-									<div class="form-group">
-										<input type="text" class="form-control" id="login_username_email" name="login_username_email" placeholder="username or email"
-										    required>
-									</div>
-									<div class="form-group">
-										<input type="password" class="form-control" id="signin_pass" name="signin_pass" placeholder="password" required>
-									</div>
-									<button type="submit" class="btn btn-dark">Sign in</button>
-								</form>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="recover-password.html">Forgot password? No problem</a>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-user-circle"></i> JCLapis</a>
+								<div class="dropdown-menu" aria-labelledby="user_dropdown">
+									<a class="dropdown-item" href="user-profile.html">
+										<i class="fas fa-cog"></i> User Profile</a>
+									<a class="dropdown-item" href="index.html?logout=true">
+										<i class="fas fa-sign-out-alt"></i> Logout</a>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -87,7 +50,7 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Homepage of VECTO</h1>
+			<h1>Homepage of Authenticated User</h1>
 			<p class="lead">Lorem goes here</p>
 			<a class="btn btn-lg btn-primary" href="#" role="button">Got to awesomeness &raquo;</a>
 		</div>
