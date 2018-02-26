@@ -54,29 +54,47 @@
 			<article>
 				<div class="container">
 					<img src="https://i.imgur.com/KfROBYv.jpg" alt>
-					<div class="top-left"><h1>A hard-working experience in LA</h1></div>
+					<div class="top-left"><h1>Lorem ipsum nullam adipiscing at</h1></div>
 					<div class="row">
-						<div class="text-center col-sm-4">
+						<div class="text-center col-sm col-xl-2">
 							<i class="fas fa-user-circle"></i> jclima
 						</div>
-						<div class="text-center col-sm-4">
+						<div class="text-center col-sm col-xl-8">
 							<i class="fas fa-map-marker-alt"></i> FEUP, UPorto
 						</div>
-						<div class="text-center col-sm-4">
+						<div class="text-center col-sm col-xl-2">
 							<i class="fas fa-calendar-alt"></i> 17/18
 						</div>
 					</div>
-					<div class="article-text text-justify">
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultricies integer quis auctor elit sed vulputate mi sit amet. Posuere morbi leo urna molestie at elementum. A scelerisque purus semper eget duis. At augue eget arcu dictum varius. Egestas sed tempus urna et pharetra. Dolor sit amet consectetur adipiscing elit ut aliquam purus. Augue eget arcu dictum varius duis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Blandit cursus risus at ultrices mi. Felis bibendum ut tristique et egestas. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse.
-						</p>
-						<p>
-							Porttitor massa id neque aliquam vestibulum morbi blandit cursus risus. Amet risus nullam eget felis eget nunc. Diam maecenas sed enim ut sem viverra aliquet eget sit. Faucibus turpis in eu mi bibendum neque egestas congue quisque. Euismod quis viverra nibh cras pulvinar mattis. Id interdum velit laoreet id donec ultrices. Habitasse platea dictumst vestibulum rhoncus est pellentesque. Pretium lectus quam id leo in. Et tortor at risus viverra adipiscing at. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Vel eros donec ac odio tempor orci dapibus ultrices. Nisl purus in mollis nunc sed. Scelerisque in dictum non consectetur a. Non quam lacus suspendisse faucibus interdum. Enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Massa ultricies mi quis hendrerit dolor magna eget est lorem. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Vitae suscipit tellus mauris a diam maecenas.		
-						</p>
+					<div class="row">
+						<div class="article-votes text-center col-sm col-sm-2 col-xl-1">
+							58<br><i class="fas fa-arrow-up"></i>
+						</div>
+						<div class="article-text text-justify col-sm col-sm-10 col-xl-11">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultricies integer quis auctor elit sed vulputate mi sit amet. Posuere morbi leo urna molestie at elementum. A scelerisque purus semper eget duis. At augue eget arcu dictum varius. Egestas sed tempus urna et pharetra. Dolor sit amet consectetur adipiscing elit ut aliquam purus. Augue eget arcu dictum varius duis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Blandit cursus risus at ultrices mi. Felis bibendum ut tristique et egestas. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse.
+							</p>
+							<p>
+								Porttitor massa id neque aliquam vestibulum morbi blandit cursus risus. Amet risus nullam eget felis eget nunc. Diam maecenas sed enim ut sem viverra aliquet eget sit. Faucibus turpis in eu mi bibendum neque egestas congue quisque. Euismod quis viverra nibh cras pulvinar mattis. Id interdum velit laoreet id donec ultrices. Habitasse platea dictumst vestibulum rhoncus est pellentesque. Pretium lectus quam id leo in. Et tortor at risus viverra adipiscing at. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Vel eros donec ac odio tempor orci dapibus ultrices. Nisl purus in mollis nunc sed. Scelerisque in dictum non consectetur a. Non quam lacus suspendisse faucibus interdum. Enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Massa ultricies mi quis hendrerit dolor magna eget est lorem. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Vitae suscipit tellus mauris a diam maecenas.		
+							</p>
+						</div>
 					</div>
-				</div>
-				<div class="jumbotron">
-					
+					<hr>
+					<div class="article-comments">
+						<h2>
+							2 comments
+						</h2>
+						<div class="p-3 bg-light article-comment">
+							<img src="public/images/profile.png">
+							<h3>jcpontes</h3>
+							<p>Lorem ipsum dolor dolor sit amet.</p>
+						</div>
+						<div class="p-3 bg-light article-comment">
+							<img src="public/images/profile.png">
+							<h3>jclima</h3>
+							<p>Vel eros donec ac odio tempor orci dapibus ultrices.</p>
+						</div>
+					</div>
 				</div>
 			</article>
 		</div>
@@ -120,29 +138,4 @@
 <script src="public/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/js/codemirror.min.js"></script>
 <script src="public/js/froala_editor.pkgd.min.js"></script>
-
-<script>
-	"use strict";
-	$(function () {
-		//see https://www.froala.com/wysiwyg-editor/docs/options#toolbarButtons
-		let toolbarButtons = ['bold', 'italic', 'strikeThrough', 'underline', 'quote', 'fontSize', '|', 'formatOL',
-			'formatUL', 'insertHR', 'outdent', 'indent', 'insertTable', 'insertImage', 'spellChecker', 'html', 'emoticons',
-			'|', 'help', 'undo', 'redo'
-		];
-		$('#postContent').froalaEditor({
-			colorsText: "REMOVE",
-			toolbarButtons: toolbarButtons,
-			toolbarButtonsMD: toolbarButtons,
-			toolbarButtonsSM: toolbarButtons,
-			toolbarButtonsXS: toolbarButtons,
-			placeholderText: "Write your post! You can use markdown 😎"
-		});
-		/*get the raw contents
-		 $("#postContent").on('froalaEditor.blur', (e, editor) => {
-			console.log($('#postContent').froalaEditor('html.get'));
-		}); */
-	});
-</script>
-
-
 </html>
