@@ -5,3 +5,37 @@ body {
 .bg-navbar {
 	background-color: #343a40 !important;
 }
+
+
+/**
+ * Style for view post page
+ */
+
+article > div.container > div.top-left {
+    position: absolute;
+    top: 10px;
+	left: 25px;
+	max-width:90%;
+}
+
+article > div.container > div.top-left > h1{
+	font-size:2em;
+	text-shadow: black 1px 1px 5px;
+	color: white;
+}
+
+@media (max-width: 30em) {
+	article > div.container > div.top-left > h1{
+		font-size:7vw;
+	}
+}
+
+article > div.container > img {
+	width:100%;
+}
+article > div.container {
+    position: relative;
+}
+article > div.container > div.row{
+	margin: 20px 10px 10px;
+}
