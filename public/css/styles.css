@@ -8,8 +8,8 @@ body {
 
 @font-face{
 	font-family: 'aqua';
-	src: 	url('aqua.ttf') format('truetype'),
-			url('aqua.woff2') format('woff2'),
+	src: 	url('aqua.woff2') format('woff2'),
+			url('aqua.ttf') format('truetype'),
 			url('aqua.woff') format('woff');
 }
 
