@@ -52,8 +52,6 @@ article > div.container > div.row{
 	margin: 20px 10px 10px;
 }
 
-article > div.container > div.article.
-
 article > div.container > div.article-comments > h2{
 	font-size:1.75em;
 }
@@ -76,4 +74,45 @@ article > div.container > div.article-comments > div.article-comment > h3{
 article > div.container > div.article-comments > div.article-comment > p{
 	margin-top:10px;
 	margin-bottom:0px;
+	margin-bottom:5px;
+}
+
+article > div.container > div.article-comments > div.article-comment > img{
+	width:50px;
+	height:50px;
+}
+
+article > div.container > div.article-comments > div.article-comment > h3{
+	display:inline;
+	margin-left:20px;
+	vertical-align: sub;
+}
+
+article > div.container > div.article-comments > div.article-comment > p{
+	margin-top:10px;
+	margin-bottom:0px;
+}
+
+.card-block{
+	margin: 2em;
+	border: 0;
+}
+
+.faqHeader {
+	font-size: 27px;
+	margin: 20px;
+}
+
+div > .card-header{
+	padding: 1rem;
+	border: 10rem;
+}
+
+.card {
+	padding: 0rem;
+	border: 0rem;
+}
+
+.progress {
+	margin: 3em;
 }
