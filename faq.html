@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Vecto : Contacts</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link rel="icon" href="public/images/favicon.ico">
+
+	<link href="public/css/fontawesome-all.min.css" rel="stylesheet">
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/styles.css" rel="stylesheet">
+
+	<script src="public/js/jquery-3.3.1.min.js" defer></script>
+	<script src="public/js/bootstrap.min.js" defer></script>
+</head>
+
+<body class="bg-light">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navbar">
+		<div class="container ">
+			<a class="navbar-brand" href="index.html">Vecto</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+			    aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto"></ul>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<div class="dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="signUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-user-plus"></i> Sign-up
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<form class="px-4 py-3" action="index-authenticated.html" method="get">
+									<div class="form-group">
+										<!-- <label for="signup_name">Name:</label> -->
+										<input type="text" class="form-control" id="signup_name" name="signup_name" placeholder="name" required>
+									</div>
+									<div class="form-group">
+										<!-- <label for="signup_email">Email: </label> -->
+										<input type="email" class="form-control" id="signup_email" name="signup_email" placeholder="email" required>
+									</div>
+									<div class="form-group">
+										<!-- <label for="signup_username">Username: </label> -->
+										<input type="text" class="form-control" id="signup_username" name="signup_username" placeholder="username" required>
+									</div>
+									<div class="form-group">
+										<!-- <label for="singup_password">Password: </label> -->
+										<input type="password" class="form-control" id="singup_password" name="singup_password" placeholder="password" required>
+									</div>
+									<button type="submit" class="btn btn-dark">Sign Up</button>
+								</form>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="faq.html">Do you have questions? See our FAQ</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<div class="dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="signInDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-sign-in-alt"></i> Sign-in
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<form class="px-4 py-3" action="index-admin.html" method="get">
+									<div class="form-group">
+										<input type="text" class="form-control" id="login_username_email" name="login_username_email" placeholder="username or email"
+										    required>
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" id="signin_pass" name="signin_pass" placeholder="password" required>
+									</div>
+									<button type="submit" class="btn btn-dark">Sign in</button>
+								</form>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="recover-password.html">Forgot password? No problem</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">	
+		<div class="" id="accordion">
+			<div class="faqHeader">General questions</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Is account registration required?</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div class="card-block">
+						Account registration at <strong>PrepBootstrap</strong> is only required if you will be selling or buying themes. 
+						This ensures a valid communication channel for all parties involved in any transactions. 
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">Can I submit my own Bootstrap templates or themes?</a>
+					</h4>
+				</div>
+				<div id="collapseTen" class="panel-collapse collapse">
+					<div class="card-block">
+						A lot of the content of the site has been submitted by the community. Whether it is a commercial element/template/theme 
+						or a free one, you are encouraged to contribute. All credits are published along with the resources. 
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">What is the currency used for all transactions?</a>
+					</h4>
+				</div>
+				<div id="collapseEleven" class="panel-collapse collapse">
+					<div class="card-block">
+						All prices for themes, templates and other items, including each seller's or buyer's account balance are in <strong>USD</strong>
+					</div>
+				</div>
+			</div>
+	
+			<div class="faqHeader">Sellers</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Who cen sell items?</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse">
+					<div class="card-block">
+						Any registed user, who presents a work, which is genuine and appealing, can post it on <strong>PrepBootstrap</strong>.
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">I want to sell my items - what are the steps?</a>
+					</h4>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse">
+					<div class="card-block">
+						The steps involved in this process are really simple. All you need to do is:
+						<ul>
+							<li>Register an account</li>
+							<li>Activate your account</li>
+							<li>Go to the <strong>Themes</strong> section and upload your theme</li>
+							<li>The next step is the approval step, which usually takes about 72 hours.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">How much do I get from each sale?</a>
+					</h4>
+				</div>
+				<div id="collapseFive" class="panel-collapse collapse">
+					<div class="card-block">
+						Here, at <strong>PrepBootstrap</strong>, we offer a great, 70% rate for each seller, regardless of any restrictions, such as volume, date of entry, etc.
+						<br />
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Why sell my items here?</a>
+					</h4>
+				</div>
+				<div id="collapseSix" class="panel-collapse collapse">
+					<div class="card-block">
+						There are a number of reasons why you should join us:
+						<ul>
+							<li>A great 70% flat rate for your items.</li>
+							<li>Fast response/approval times. Many sites take weeks to process a theme or template. And if it gets rejected, there is another iteration. We have aliminated this, and made the process very fast. It only takes up to 72 hours for a template/theme to get reviewed.</li>
+							<li>We are not an exclusive marketplace. This means that you can sell your items on <strong>PrepBootstrap</strong>, as well as on any other marketplate, and thus increase your earning potential.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">What are the payment options?</a>
+					</h4>
+				</div>
+				<div id="collapseEight" class="panel-collapse collapse">
+					<div class="card-block">
+						The best way to transfer funds is via Paypal. This secure platform ensures timely payments and a secure environment. 
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">When do I get paid?</a>
+					</h4>
+				</div>
+				<div id="collapseNine" class="panel-collapse collapse">
+					<div class="card-block">
+						Our standard payment plan provides for monthly payments. At the end of each month, all accumulated funds are transfered to your account. 
+						The minimum amount of your balance should be at least 70 USD. 
+					</div>
+				</div>
+			</div>
+	
+			<div class="faqHeader">Buyers</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">I want to buy a theme - what are the steps?</a>
+					</h4>
+				</div>
+				<div id="collapseFour" class="panel-collapse collapse">
+					<div class="card-block">
+						Buying a theme on <strong>PrepBootstrap</strong> is really simple. Each theme has a live preview. 
+						Once you have selected a theme or template, which is to your liking, you can quickly and securely pay via Paypal.
+						<br />
+						Once the transaction is complete, you gain full access to the purchased product. 
+					</div>
+				</div>
+			</div>
+			<div class="card ">
+				<div class="card-header">
+					<h4 class="card-header">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Is this the latest version of an item</a>
+					</h4>
+				</div>
+				<div id="collapseSeven" class="panel-collapse collapse">
+					<div class="card-block">
+						Each item in <strong>PrepBootstrap</strong> is maintained to its latest version. This ensures its smooth operation.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="container py-5 p-3">
+		<div class="row">
+			<!-- <div class="col-sm-1 col-6"></div> -->
+			<div class="text-center col-sm col-md">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+				    stroke-linecap="round" stroke-linejoin="round">
+					<line x1="1" y1="1" x2="12" y2="23"></line>
+					<line x1="12" y1="23" x2="23" y2="1"></line>
+				</svg>
+				<small style="vertical-align:super;" class="mb-3 text-muted">&copy; 2018</small>
+				<small class="d-block mb-3 text-muted">Made with &#x2764; @FEUP</small>
+			</div>
+			<div class="text-center col-sm col-md">
+				<h5>Other Pages</h5>
+				<ul class="list-inline text-small">
+					<li class="list-inline-item">
+						<a class="text-muted" href="faq.html">FAQ</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="about.html">About Vecto</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="contacts.html">Contacts</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="statistics.html">Statistics</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
