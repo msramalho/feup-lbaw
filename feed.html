@@ -62,7 +62,7 @@
 			<div id="feed-content" class="">
 				<div class="animated fadeInLeft bg-light rounded-right border-primary border-left text-grey container">
 					<div class="row">
-						<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12">
+						<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12 col-md-1">
 							<p>
 								58
 							</p>
@@ -70,7 +70,7 @@
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						</div>
-						<div class="col-lg-11 col-sm-12 col-xl-11">
+						<div class="col-lg-11 col-sm-12 col-xl-11 col-md-11">
 							<a href="post-view.html">
 								<h3>Lorem ipsum nullam adipiscing at</h3>
 							</a>
@@ -91,7 +91,7 @@
 				</div>
 				<div class="bg-light rounded-right border-primary border-left text-grey container">
 					<div class="row">
-						<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12">
+						<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12 col-md-1">
 							<p>
 								24
 							</p>
@@ -99,7 +99,7 @@
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						</div>
-						<div class="col-lg-11 col-sm-12 col-xl-11">
+						<div class="col-lg-11 col-sm-12 col-xl-11 col-md-11">
 							<a href="post-view.html">
 								<h3>Ut sed mutat reprimique</h3>
 							</a>
@@ -120,7 +120,7 @@
 				</div>
 				<div class="bg-light rounded-right border-primary border-left text-grey container">
 					<div class="row">
-						<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12">
+						<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12 col-md-1">
 							<p>
 								85
 							</p>
@@ -128,7 +128,7 @@
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						</div>
-						<div class="col-lg-11 col-sm-12 col-xl-11">
+						<div class="col-lg-11 col-sm-12 col-xl-11 col-md-11">
 							<a href="post-view.html">
 								<h3>Mauris augue id erat a aliquam condimentum</h3>
 							</a>
@@ -196,8 +196,10 @@
 			let upvoted = $(this).hasClass("active");
 			if(upvoted){
 				this.parentElement.children[0].textContent= currentVotes-1;
+				$(this).removeClass("active");
 			}else{
 				this.parentElement.children[0].textContent= currentVotes+1;
+				$(this).addClass("active");
 			}
 			//TODO send ajax on upvote
 		});

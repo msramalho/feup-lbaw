@@ -151,8 +151,10 @@
 		let upvoted = $(this).hasClass("active");
 		if(upvoted){
 			this.parentElement.children[0].textContent= currentVotes-1;
+			$(this).removeClass("active");
 		}else{
 			this.parentElement.children[0].textContent= currentVotes+1;
+			$(this).setClass("active");
 		}
 		//TODO send ajax on upvote
 	});
