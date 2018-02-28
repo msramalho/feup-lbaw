@@ -57,7 +57,7 @@
 					<div class="top-left"><h1>Lorem ipsum nullam adipiscing at</h1></div>
 					<div class="row">
 						<div class="text-center col-sm col-xl-2">
-							<i class="fas fa-user-circle"></i> jclima
+							<i class="fas fa-user-circle"></i> <a href="user.html?user=jclima">jclima</a>
 						</div>
 						<div class="text-center col-sm col-xl-8">
 							<i class="fas fa-map-marker-alt"></i> FEUP, UPorto
@@ -71,7 +71,7 @@
 							<p>
 								58
 							</p>
-							<button type="button" data-toggle="button" id="upvoteBtn" class="btn btn-primary">
+							<button type="button" data-toggle="button" class="upvoteBtn btn btn-primary">
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						</div>
@@ -146,7 +146,7 @@
 <script src="public/js/froala_editor.pkgd.min.js"></script>
 
 <script>
-	$("#upvoteBtn").click(function(){
+	$(".upvoteBtn").click(function(){
 		currentVotes = parseInt(this.parentElement.textContent);
 		let upvoted = $(this).hasClass("active");
 		if(upvoted){
@@ -157,6 +157,6 @@
 		//TODO send ajax on upvote
 	});
 	
-	</script>
+</script>
 
 </html>
