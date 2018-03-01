@@ -106,6 +106,13 @@ article > div.container > div.article-comments > div > div.flag-comment{
 	float: right;
 }
 
+article > div.container > div.row i + span{
+	padding:0px 8px 0px 0px;
+}
+
+article > div.container > div.row i + span::before{
+	content: "\00a0";
+}
 
 /**
   * FAQ Page
