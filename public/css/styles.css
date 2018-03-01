@@ -134,3 +134,17 @@ div > .card-header{
 .progress {
 	margin: 3em;
 }
+
+/**
+  * Recover Password
+ */
+
+ .container.passwordForgotten {
+	width: 0 auto;
+}
+
+.panel.panel-default > .panel-body > .text-center{
+	width: 0 auto;
+	padding-left: 20rem;
+	padding-right: 20rem;
+}
