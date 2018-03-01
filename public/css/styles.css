@@ -157,9 +157,13 @@ div > .card-header{
 
 .panel.panel-default > .panel-body > .text-center{
 	width: 0 auto;
-	padding-left: 20rem;
-	padding-right: 20rem;
+	padding-left: 20%;
+	padding-right: 20%;
 }
+
+/**
+  * Post
+ */
 
 div#feed-content > div > div{
 	font-size:small;
@@ -168,5 +172,4 @@ div#feed-content > div > div{
 div#feed-content > div{
 	margin-bottom:10px;
 	padding:10px ;
-
 }
