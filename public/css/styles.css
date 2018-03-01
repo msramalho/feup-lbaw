@@ -146,3 +146,12 @@ div > .card-header{
 .progress {
 	margin: 3em;
 }
+
+div#feed-content > div > div{
+	font-size:small;
+}
+
+div#feed-content > div{
+	margin-bottom:10px;
+	padding:10px ;
+}
