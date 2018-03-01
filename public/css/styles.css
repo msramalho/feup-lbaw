@@ -58,6 +58,7 @@ article > div.container > div.article-comments > h2{
 
 article > div.container > div.article-comments > div.article-comment{
 	margin-bottom:5px;
+	padding-bottom:25px !important; /*space for flag button*/
 }
 
 article > div.container > div.article-comments > div.article-comment > img{
@@ -101,6 +102,17 @@ article > div.container > div.row:nth-child(4) > div:first-child > button{
 	box-shadow:none !important;
 }
 
+article > div.container > div.article-comments > div > div.flag-comment{
+	float: right;
+}
+
+article > div.container > div.row i + span{
+	padding:0px 8px 0px 0px;
+}
+
+article > div.container > div.row i + span::before{
+	content: "\00a0";
+}
 
 /**
   * FAQ Page
@@ -147,4 +159,14 @@ div > .card-header{
 	width: 0 auto;
 	padding-left: 20rem;
 	padding-right: 20rem;
+}
+
+div#feed-content > div > div{
+	font-size:small;
+}
+
+div#feed-content > div{
+	margin-bottom:10px;
+	padding:10px ;
+
 }
