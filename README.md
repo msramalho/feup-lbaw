@@ -24,7 +24,7 @@
     * [GHPages](https://msramalho.github.io/lbaw1721/)
     * [Dwaw.io - SiteMap](https://drive.google.com/file/d/1W-SPXbB57z5ZN7S4vmGSInLCbPAg0bjc/view?usp=sharing)
     * Tasks [deadline 01/03/2018]
-      * Afonso - ~Ver a cor~; ~Design do Logo~; ~statistics~; ~FAQ (bootstrap Accordion)~; ~about~ 
+      * Afonso - ~Ver a cor~; ~Design do Logo~; ~statistics~; ~FAQ (bootstrap Accordion)~; ~about~ ; ~recover password~
       * Daniel - ~Footer~; feed (search, ~list of posts~); ~post page~
       * Miguel - ~Navbars (unauthenticated, authenticated, admin)~; ~new post~; ~contacts~
       * Vitor - ~sitemap~; ~User Profile (details, following, history)~;
