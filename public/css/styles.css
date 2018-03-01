@@ -101,25 +101,35 @@ article > div.container > div.row:nth-child(4) > div:first-child > button{
 	box-shadow:none !important;
 }
 
+
+/**
+  * FAQ Page
+ */
+
 .card-block{
-	margin: 2em;
+	margin: 1em 2em 1em 2em;
 	border: 0;
 }
 
 .faqHeader {
 	font-size: 27px;
 	margin: 20px;
+	color: #343a40;
 }
 
 div > .card-header{
 	padding: 1rem;
-	border: 10rem;
+	border: 0rem;
 }
 
 .card {
 	padding: 0rem;
 	border: 0rem;
 }
+
+/**
+  * Statistics Page
+ */
 
 .progress {
 	margin: 3em;
