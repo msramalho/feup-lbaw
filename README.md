@@ -28,7 +28,7 @@
       * Daniel - ~Footer~; feed (search, ~list of posts~); ~post page~
       * Miguel - ~Navbars (unauthenticated, authenticated, admin)~; ~new post~; ~contacts~
       * Vitor - ~sitemap~; ~User Profile (details, following, history)~;
-    * Tasks [deadline 06/03/2018]
+    * Tasks [deadline 06/03/2018 - 19h]
       * Afonso - Statistics bonitas; Wireflows; insert photos in report; 
       * Daniel - Search; Manage Flags; Manage Users;
       * Miguel - Edit Post; Manage Universities e Faculties
