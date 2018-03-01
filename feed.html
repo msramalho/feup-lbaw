@@ -55,8 +55,8 @@
 			<h2>The latest stories for you!</h2><br>
 			<div class="d-sm-block d-none btn-group">
 				<button class="btn btn-primary active">Most recent</button>
-				<button class="btn btn-primary">People I follow</button>
-				<button class="btn btn-primary">Most Upvoted</button>
+				<button class="btn">People I follow</button>
+				<button class="btn">Most Upvoted</button>
 			</div>
 			<br><br>
 			<div id="feed-content" class="">
@@ -66,7 +66,7 @@
 							<p>
 								58
 							</p>
-							<button type="button" data-toggle="button" class="upvoteBtn btn btn-primary">
+							<button type="button" data-toggle="button" class="upvoteBtn btn">
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						</div>
@@ -83,7 +83,7 @@
 									<i class="fas fa-map-marker-alt"></i> Faculdade de Letras, Universidade do Porto
 								</div>
 								<div class="text-center col-lg-2 col-2">
-									<i class="fas fa-calendar-alt"></i> 17/18
+									<i class="fas fa-calendar-alt"></i> <a href="search.html?year=1718">17/18</a> 
 								</div>
 								<div class="text-center col-lg-2 col-2">
 									<i class="fas fa-comments"></i><a href="post-view.html"> 2 comments</a>
@@ -115,7 +115,7 @@
 									<i class="fas fa-map-marker-alt"></i> Medizinische Fakultät, Universität Bern
 								</div>
 								<div class="text-center col-lg-2 col-2">
-									<i class="fas fa-calendar-alt"></i> 15/16
+									<i class="fas fa-calendar-alt"></i> <a href="search.html?year=1516">15/16</a>
 								</div>
 								<div class="text-center col-lg-2 col-2">
 										<i class="fas fa-comments"></i><a href="post-view.html"> 24 comments</a>
@@ -147,7 +147,7 @@
 									<i class="fas fa-map-marker-alt"></i> Facultad de Matemáticas, Universidad de Sevilla
 								</div>
 								<div class="text-center col-lg-2 col-2">
-									<i class="fas fa-calendar-alt"></i> 17/18
+									<i class="fas fa-calendar-alt"></i> <a href="search.html?year=1718">17/18</a>
 								</div>
 								<div class="text-center col-lg-2 col-2">
 										<i class="fas fa-comments"></i><a href="post-view.html"> 16 comments</a>
@@ -202,13 +202,13 @@
 <script>
 		$(".upvoteBtn").click(function(){
 			currentVotes = parseInt(this.parentElement.textContent);
-			let upvoted = $(this).hasClass("active");
+			let upvoted = $(this).hasClass("btn-primary");
 			if(upvoted){
 				this.parentElement.children[0].textContent= currentVotes-1;
-				$(this).removeClass("active");
+				$(this).removeClass("btn-primary");
 			}else{
 				this.parentElement.children[0].textContent= currentVotes+1;
-				$(this).addClass("active");
+				$(this).addClass("btn-primary");
 			}
 			//TODO send ajax on upvote
 		});
