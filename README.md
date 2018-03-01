@@ -27,5 +27,5 @@
       * Afonso - Ver a cor; Design do Logo; statistics; FAQ (bootstrap Accordion) 
       * Daniel - Footer; feed (search, list of posts); post page
       * Miguel - ~Navbars (unauthenticated, authenticated, admin)~; ~new post~; ~contacts~
-      * Vitor - ~sitemap~; User Profile (details, following, history); about
+      * Vitor - ~sitemap~; User Profile (~details, following, history); about
     * Tasks [deadline 08/03/2018]
