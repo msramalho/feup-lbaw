@@ -145,6 +145,7 @@ article > div.container > div.row i + span::before{
 
 .counter-number-group.statistic {
 	margin: 1.4em 0;
+	display: grid;
 }
 
 .counter.counter-md .counter-number {
@@ -156,19 +157,24 @@ article > div.container > div.row i + span::before{
 .counter.counter-md .counter-number.text-uppercase{
 	font-size: 2em;
 	text-align: center;
-	margin-bottom: 0.4em;
+	margin-bottom: 0.5em;
+	line-height: 1em;
+	display: grid;
+	max-height: 11rem;
 }
 
 .counter.counter-md .counter-number.text-uppercase .fa.fa-user{
+	display: grid;
 	margin-top: 1rem;
 	font-size: 2em;
 }
 
 .counter-label.text-uppercase {
 	font-size: 1.25rem;
+	display: grid;
 	text-align: center;
 	font-weight: bold;
-	line-height: 0.7em;
+	line-height: 1em;
 }
 
 .row .col-md-3 .card.card-block.p-25{
