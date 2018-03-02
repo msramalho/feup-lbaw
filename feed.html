@@ -53,11 +53,22 @@
 	<div class="container">
 		<div class="jumbotron">
 			<h2>The latest stories for you!</h2><br>
-			<div class="d-sm-block d-none btn-group">
+			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				<label class="btn btn-secondary active">
+					<input type="radio" name="options" id="option1" autocomplete="off" checked> Most recent
+				</label>
+				<label class="btn btn-secondary">
+					<input type="radio" name="options" id="option2" autocomplete="off"> People I follow
+				</label>
+				<label class="btn btn-secondary">
+					<input type="radio" name="options" id="option3" autocomplete="off"> Most Upvoted
+				</label>
+			</div>
+			<!-- <div class="d-sm-block d-none btn-group">
 				<button class="btn btn-primary active">Most recent</button>
 				<button class="btn btn-primary">People I follow</button>
 				<button class="btn btn-primary">Most Upvoted</button>
-			</div>
+			</div> -->
 			<br><br>
 			<div id="feed-content" class="">
 				<div class="animated fadeInLeft bg-light rounded-right border-primary border-left text-grey container">
