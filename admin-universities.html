@@ -17,6 +17,9 @@
     <link href="public/css/froala_editor.pkgd.min.css" rel="stylesheet">
     <link href="public/css/froala_style.min.css" rel="stylesheet">
     <link href="public/css/codemirror.min.css" rel="stylesheet">
+
+    <script src="public/js/jquery-3.3.1.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
 </head>
 
 <body class="bg-light">
@@ -87,63 +90,6 @@
         </table>
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true">
-        <div class="modal-dialog-lg m-5" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uniModalLabel">New University</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="uniName">Name</label>
-                                <input type="text" class="form-control form-control-lg" id="uniName" placeholder="University official name" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="uniDescription">University public description</label>
-                            <textarea class="form-control" id="uniDescription" required></textarea>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label for="uniCountry">Country</label>
-                                <select class="custom-select" id="uniCountry" required>
-									<option selected>Country</option>
-									<option value="1">Portugal</option>
-									<option value="2">Spain</option>
-									<option value="3">France</option>
-								</select>
-                            </div>
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label for="uniCity">City</label>
-                                <select class="custom-select" id="uniCity">
-									<option selected>City</option>
-									<option value="1">Lisbon</option>
-									<option value="2">Porto</option>
-									<option value="3">Faro</option>
-									<option value="4">Guimarães</option>
-									<option value="5">Coimbra</option>
-								</select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-lg-9 col-md-8 col-sm-6"></div>
-                            <div class="form-group col-lg-3 col-md-4 col-sm-6">
-                                <input type="submit" class="btn btn-primary form-control" id="uniSubmit" value="Save" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer class="container py-5 p-3">
         <div class="row">
             <!-- <div class="col-sm-1 col-6"></div> -->
@@ -176,11 +122,64 @@
         </div>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade hide" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true">
+        <div class="modal-dialog-lg m-5" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uniModalLabel">New University</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+                </div>
+                <div class="modal-body">
+                    <form name="newUniForm">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="uniName">Name</label>
+                                <input type="text" class="form-control form-control-lg" id="uniName" placeholder="University official name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="uniDescription">University public description</label>
+                            <textarea class="form-control" id="uniDescription" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="uniCountry">Country</label>
+                                <select class="custom-select" id="uniCountry" required>
+											<option selected>Country</option>
+											<option value="1">Portugal</option>
+											<option value="2">Spain</option>
+											<option value="3">France</option>
+										</select>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="uniCity">City</label>
+                                <select class="custom-select" id="uniCity">
+											<option selected>City</option>
+											<option value="1">Lisbon</option>
+											<option value="2">Porto</option>
+											<option value="3">Faro</option>
+											<option value="4">Guimarães</option>
+											<option value="5">Coimbra</option>
+										</select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-9 col-md-8 col-sm-6"></div>
+                            <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                                <input type="submit" class="btn btn-primary form-control" id="uniSubmit" value="Save" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
 </body>
 
-
-<script src="public/js/jquery-3.3.1.min.js"></script>
-<script src="public/js/bootstrap.min.js"></script>
 <script src="public/js/codemirror.min.js"></script>
 <script src="public/js/froala_editor.pkgd.min.js"></script>
 <script>
@@ -199,7 +198,6 @@
             toolbarButtonsXS: toolbarButtons,
             placeholderText: "Provide a description for this univeristy"
         });
-
     });
 </script>
 
