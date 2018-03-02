@@ -31,5 +31,5 @@
     * Tasks [deadline 06/03/2018 - 19h]
       * Afonso - Statistics bonitas; Wireflows; insert photos in report; 
       * Daniel - Search; Manage Flags; Manage Users;
-      * Miguel - Edit Post; Manage Universities e Faculties
+      * Miguel - ~Edit Post~; ~Manage Universities~; ~Manage Faculties~
       * Vitor - Edit User; put flag in user profile; 
