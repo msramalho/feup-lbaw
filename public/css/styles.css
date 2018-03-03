@@ -139,6 +139,16 @@ article > div.container > div.row i + span::before{
 	content: "\00a0";
 }
 
+label.btn.btn-secondary {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+div.btn-group.btn-group-toggle{
+	max-width: 100%;
+}
+
 /**
   * FAQ Page
  */
