@@ -258,3 +258,186 @@ div#feed-content > div{
 	padding:10px ;
 }
 
+/**
+ * Style for User page
+ */
+ 
+/* Profile container */
+.profile {
+	margin: 20px 0;
+  }
+  
+  /* Profile sidebar */
+  .profile-sidebar {
+	margin-bottom: 32px;
+	-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;
+	border-radius: 6px !important;
+	padding: 20px 0 10px 0;
+	background: #fff;
+	
+	/*border: solid;
+	border-color: darkgrey;
+	border-width: 1px;*/
+  }
+	
+	.profile-userpic {
+		text-align: center;
+	}
+
+	
+  .profile-userpic img {
+	float: none;
+	margin: 0 auto;
+	width: 79px;
+	height: 79px;
+	-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;
+	border-radius: 6px !important;
+  }
+  
+  .profile-usertitle {
+	text-align: center;
+	margin-top: 20px;
+  }
+  
+  .profile-usertitle-name {
+	color: #5a7391;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 7px;
+  }
+  
+  .profile-usertitle-job {
+	text-transform: uppercase;
+	color: #5b9bd1;
+	font-size: 12px;
+	font-weight: 600;
+	margin-bottom: 15px;
+  }
+  
+  .profile-userbuttons {
+	text-align: center;
+	margin-top: 10px;
+  }
+  
+  .profile-userbuttons .btn {
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 600;
+	padding: 6px 15px;
+	margin-right: 5px;
+	}
+	
+	.profileSidebar_followDescription {
+	margin-top: 16px;
+	margin-bottom: 8px;
+	color: #949494;
+	text-align: left;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	}
+  
+	/*Profile Sidebar Following*/
+	
+	.following-sidebar{
+		margin-bottom: 20px;
+	}
+
+	.Sidebar_header{
+		margin-top: 0;
+		margin-left: 11px;
+		margin-bottom: 9px;
+		text-transform: uppercase;
+		font-size: 12px;
+		color: #373c3f;
+		letter-spacing: .6px;
+		font-weight: 500;
+	}
+
+	.followUL{
+		list-style: none;
+		padding: 0px;
+		margin-bottom: 0px;
+	}
+	.followingListItem{
+		overflow: hidden;
+		padding: 8px 18px 8px 20px;
+	}
+
+	.FollowingListItem {
+		margin-bottom: 0px; 
+    overflow: hidden;
+    padding: 8px 18px 0px 20px;
+	}
+
+	.FollowingListItem_image{
+	float: left;
+	overflow: hidden;
+	margin-right: 6px;
+	border-radius: 5px;
+	width: 40px;
+	height: 40px;
+	text-decoration: none;
+	}
+  /* Profile Content */
+  .profile-content {
+	padding: 20px;
+	background: #fff;
+	min-height: 460px;
+	}
+
+	.FollowingListItem_userLink{
+	display: block;
+	width: 140px;
+	margin-top: 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #373c3f;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: 500;
+	}
+
+	.FollowingListItem__nsfwFollowers{
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
+	
+	.FollowingListItem__followers{
+	font-size: 12px;
+	color: #373c3f;
+	}
+
+	.FollowingListExpander_more{
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 16px;
+	text-decoration: none;
+	font-size: 12px;
+	color: #373c3f;
+	}
+
+	.FollowingListExpander__moreIcon{
+	display: inline-block;
+	vertical-align: center;
+	margin-top: 2px;
+	margin-right: 5px;
+	font-size: 11px;
+	line-height: 1;
+	}
+
+	.AboutListItem {
+		margin-bottom: 0px; 
+    overflow: hidden;
+    padding: 0px 18px 0px 20px;
+	}
+	.AboutIcon {
+		text-align: center;
+		width: 18px;
+		height: 18px;
+	}
