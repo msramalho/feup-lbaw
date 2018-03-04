@@ -31,6 +31,20 @@ a:checked {
 	color: var(--primary-color);
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--text-primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-primary.active {
+    background-color: var(--primary-color);
+}
+
 @font-face{
 	font-family: 'aqua';
 	src: 	url('aqua.woff2') format('woff2'),
