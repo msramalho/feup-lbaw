@@ -24,7 +24,7 @@
 		<div class="container ">
 			<a class="navbar-brand" href="index.html">Vecto</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-			    aria-expanded="false" aria-label="Toggle navigation">
+				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
@@ -209,23 +209,4 @@
 		</div>
 	</footer>
 </body>
-<script src="public/js/jquery-3.3.1.min.js"></script>
-<script src="public/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="public/js/codemirror.min.js"></script>
-<script src="public/js/froala_editor.pkgd.min.js"></script>
-<script>
-		$(".upvoteBtn").click(function(){
-			currentVotes = parseInt(this.parentElement.textContent);
-			let upvoted = $(this).hasClass("btn-primary");
-			if(upvoted){
-				this.parentElement.children[0].textContent= currentVotes-1;
-				$(this).removeClass("btn-primary");
-			}else{
-				this.parentElement.children[0].textContent= currentVotes+1;
-				$(this).addClass("btn-primary");
-			}
-			//TODO send ajax on upvote
-		});
-		
-	</script>
 </html>
