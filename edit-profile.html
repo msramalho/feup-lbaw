@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Vecto : Edit Profile</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="theme-color" content="#2e3c56">
+
+	<link rel="icon" href="public/images/favicon.ico">
+
+	<link href="public/css/fontawesome-all.min.css" rel="stylesheet">
+	<link href="public/css/fontawesome4-all.min.css" rel="stylesheet">
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/styles.css" rel="stylesheet">
+	<link href="public/css/froala_editor.pkgd.min.css" rel="stylesheet">
+	<link href="public/css/froala_style.min.css" rel="stylesheet">
+	<link href="public/css/codemirror.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navbar">
+		<div class="container ">
+			<a class="navbar-brand" href="index.html">Vecto</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto"></ul>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<form class="form-inline mr-4">
+							<input class="form-control mr-sm-2" type="search" placeholder="Search">
+							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+						</form>
+					</li>
+					<li class="nav-item">
+						<div class="dropdown">
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-user-circle"></i> JCLapis</a>
+								<div class="dropdown-menu" aria-labelledby="user_dropdown">
+									<a class="dropdown-item" href="user-profile.html">
+										<i class="fas fa-cog"></i> User Profile</a>
+									<a class="dropdown-item" href="index.html?logout=true">
+										<i class="fas fa-sign-out-alt"></i> Logout</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Edit Profile</h1>
+			<form>
+				<div class="form-row">
+					<div class="form-group col-lg-4 col-md-6 col-sm-12">
+						<label for="postUniversity">University</label>
+						<select class="custom-select" id="postUniversity" required>
+							<option selected>University</option>
+							<option value="1">Universidade do Porto</option>
+							<option value="2">Universidade de Lisboa</option>
+							<option value="3">Three</option>
+						</select>
+					</div>
+					<div class="form-group col-lg-4 col-md-6 col-sm-12">
+						<label for="postFaculty">Faculty</label>
+						<select class="custom-select" id="postFaculty">
+							<option selected>Faculty</option>
+							<option value="1">FEUP</option>
+							<option value="2">FPCEUP</option>
+							<option value="3">FADEUP</option>
+							<option value="4">FLUP</option>
+							<option value="5">FCUP</option>
+						</select>
+					</div>
+					<div class="form-group col-lg-4 col-md-6 col-sm-12">
+						<label for="postSchoolYear">School Year</label>
+						<select class="custom-select" id="postSchoolYear" required>
+							<option selected>School year</option>
+							<option value="15">15/16</option>
+							<option value="16">16/17</option>
+							<option value="17">17/18</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-lg-3 col-md-6 col-sm-12">
+						<label for="postLifeCost">
+							<i class="far fa-money-bill-alt"></i> Life Cost</label>
+						<select class="custom-select" id="postLifeCost" required>
+							<option value="1">Very accessible</option>
+							<option value="2">Accessible</option>
+							<option selected value="3">Medium</option>
+							<option value="3">High</option>
+							<option value="3">Too High!</option>
+						</select>
+					</div>
+					<div class="form-group col-lg-3 col-md-6 col-sm-12">
+						<label for="postBeerCost">
+							<i class="fas fa-beer"></i> Beer Cost</label>
+						<select class="custom-select" id="postFaculty">
+							<option value="1">Free</option>
+							<option value="2">Almost Free</option>
+							<option value="3">Cheap</option>
+							<option selected value="4">Accessible</option>
+							<option value="5">High</option>
+							<option value="5">Over 9000!</option>
+						</select>
+					</div>
+					<div class="form-group col-lg-3 col-md-6 col-sm-12">
+						<label for="postSchoolYear">
+							<i class="fas fa-users"></i> Native's Friendliness</label>
+						<select class="custom-select" id="postSchoolYear" required>
+							<option value="1">Hostile</option>
+							<option value="2">Unfriendly</option>
+							<option selected value="3">Neutral</option>
+							<option value="4">Friendly</option>
+							<option value="5">Best people on earth</option>
+						</select>
+					</div>
+					<div class="form-group col-lg-3 col-md-6 col-sm-12">
+						<label for="postWorkload">
+							<i class="fas fa-briefcase"></i> Workload</label>
+						<select class="custom-select" id="postWorkload" required>
+							<option value="1">Super easy</option>
+							<option value="2">Easy</option>
+							<option selected value="3">Accessible</option>
+							<option value="4">Tough</option>
+							<option value="5">GAAAAAAH!</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h4>Write a little text about you</h4>
+					<hr>
+					<label for="postContent">Short Bias</label>
+					<textarea class="form-control" id="postContent" required></textarea>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-lg-3 col-md-4 col-sm-6">
+
+						<input type="submit" class="btn btn-primary form-control" id="saveChanges" value="Save Changes" />
+					</div>
+					<div class="form-group col-lg-3 col-md-4 col-sm-6">
+
+						<input type="submit" class="btn btn-secondary form-control" id="cancel" value="Cancel" />
+					</div>
+					<div class="form-group col-lg-9 col-md-8 col-sm-6"></div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<footer class="container py-5 p-3">
+		<div class="row">
+			<!-- <div class="col-sm-1 col-6"></div> -->
+			<div class="text-center col-sm col-md">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round">
+					<line x1="1" y1="1" x2="12" y2="23"></line>
+					<line x1="12" y1="23" x2="23" y2="1"></line>
+				</svg>
+				<small class="d-block mb-3 text-muted">&copy; 2018</small>
+				<small style="vertical-align:super;" class="mb-3 text-muted">&copy; 2018 Made with &#x2764; @FEUP</small>
+			</div>
+			<div class="text-center col-sm col-md">
+
+				<ul class="list-inline text-small">
+					<li class="list-inline-item">
+						<a class="text-muted" href="faq.html">FAQ</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="about.html">About Vecto</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="contacts.html">Contacts</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="statistics.html">Statistics</a>
+					</li>
+				</ul>
+			</div>
+			<div class="text-center col-sm col-md"></div>
+		</div>
+	</footer>
+</body>
+
+<script src="public/js/jquery-3.3.1.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/codemirror.min.js"></script>
+<script src="public/js/froala_editor.pkgd.min.js"></script>
+
+<script>
+	"use strict";
+	$(function () {
+		//see https://www.froala.com/wysiwyg-editor/docs/options#toolbarButtons
+		let toolbarButtons = ['bold', 'italic', 'strikeThrough', 'underline', 'quote', 'fontSize', '|', 'formatOL',
+			'formatUL', 'insertHR', 'outdent', 'indent', 'insertTable', 'insertImage', 'spellChecker', 'html', 'emoticons',
+			'|', 'help', 'undo', 'redo'
+		];
+		$('#postContent').froalaEditor({
+			colorsText: "REMOVE",
+			toolbarButtons: toolbarButtons,
+			toolbarButtonsMD: toolbarButtons,
+			toolbarButtonsSM: toolbarButtons,
+			toolbarButtonsXS: toolbarButtons,
+			placeholderText: "Write a short text about you! You can use markdown or edit as html!"
+		});
+		/*get the raw contents
+		 $("#postContent").on('froalaEditor.blur', (e, editor) => {
+			console.log($('#postContent').froalaEditor('html.get'));
+		}); */
+
+	});
+</script>
+
+
+</html>
