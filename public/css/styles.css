@@ -163,6 +163,13 @@ div.btn-group.btn-group-toggle{
 	max-width: 100%;
 }
 
+@media (min-width: 768px){
+	.col-md-1 > p{
+		margin-right: -17px;
+	}
+
+}
+
 /**
   * FAQ Page
  */
