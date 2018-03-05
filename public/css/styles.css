@@ -22,17 +22,17 @@ body {
 	background-color: var(--primary-color) !important;
 }
 
-a {
+a, h5 {
 	color: var(--secondary-color);
 }
 
-a:hover, 
-a:checked {
+a:hover, a:checked, 
+h5:hover, h5:visited, h5:active , h5:link{
 	color: var(--primary-color);
 }
 
 .btn-primary {
-    color: #fff;
+    color: white;
     background-color: var(--primary-color);
     border-color: var(--text-primary-color);
 }
@@ -167,20 +167,10 @@ div.btn-group.btn-group-toggle{
   * FAQ Page
  */
 
-.container.faq #accordion .card-block{
-	margin: 1em 2em 1em 2em;
-	border: 0;
-}
-
-.container.faq #accordion .faqHeader {
+div.container.faq div#accordion div.faqHeader {
 	font-size: 27px;
 	margin: 20px;
 	color: #343a40;
-}
-
-.container.faq #accordion div .card-header{
-	padding: 1rem;
-	border: 0rem;
 }
 
 .container.faq #accordion .card {
