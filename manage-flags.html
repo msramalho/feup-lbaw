@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Vecto : Flags Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="theme-color" content="#2e3c56">
+
+    <link rel="icon" href="public/images/favicon.ico">
+
+    <link href="public/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="public/css/fontawesome4-all.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/styles.css" rel="stylesheet">
+    <link href="public/css/froala_editor.pkgd.min.css" rel="stylesheet">
+    <link href="public/css/froala_style.min.css" rel="stylesheet">
+    <link href="public/css/codemirror.min.css" rel="stylesheet">
+
+    <script src="public/js/jquery-3.3.1.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navbar">
+        <div class="container ">
+            <a class="navbar-brand" href="index.html">Vecto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="manage-flags.html">Flags</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="manage-users.html">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="manage-universities.html">Universities</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html?logout=true">
+							<i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="m-5">
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <h1>Flag Management page</h1>
+            </div>
+            <!--<div class="col-md-4 col-sm-12">
+                <button type="button" class="btn btn-primary btn-lg">Delete all Flags</button>
+            </div>-->
+        </div>
+		<br>
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#flaggedUsers" role="tab">Flagged Users</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#flaggedComments" role="tab">Flagged Comments</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#flaggedPosts" role="tab">Flagged Posts</a>
+			</li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div class="tab-pane active" id="flaggedUsers" role="tabpanel">
+				<table class="table table-sm table-striped table-bordered text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col"></th>
+							<th class="d-none d-md-table-cell">Date</th>
+							<th scope="col">Flagged User</th>
+							<th scope="col">Flagged by</th>
+							<!--<th scope="col">Reason</th>-->
+							<th scope="col">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">14</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:30 31/03/2019
+							</td>
+							<td>
+								<a href="manage-user.html?user=5">jclapis</a>
+							</td>
+							<td>
+								<a href="manage-user.html?user=6">jcpontes</a>
+							</td>
+							<!--<td>
+								He stole my doll.
+							</td>-->
+							<td>
+								<a class="m-2" href="#" title="Archive flag"><i class="fas fa-archive"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">25</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:31 31/03/2019
+							</td>
+							<td>
+								<a href="manage-user.html?user=6">jcpontes</a>
+							</td>
+							<td>
+								<a href="manage-user.html?user=5">jclapis</a>
+							</td>
+							<!--<td>
+								He flagged me.
+							</td>-->
+							<td>
+								<a class="m-2" href="#" title="Archive flag"><i class="fas fa-archive"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<th colspan=7 scope="row">Archived flags</th>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:31 31/03/2009
+							</td>
+							<td>
+								<a href="manage-user.html?user=2">jclima</a>
+							</td>
+							<td>
+								<a href="manage-user.html?user=5">jclapis</a>
+							</td>
+							<!--<td>
+								He flagged me.
+							</td>-->
+							<td>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane" id="flaggedComments" role="tabpanel">
+				<table class="table table-sm table-striped table-bordered text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col"></th>
+							<th class="d-none d-md-table-cell" scope="col">Date</th>
+							<th scope="col">Flagged by</th>
+							<th scope="col">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:30 31/03/2019
+							</td>
+							<td>
+								<a href="manage-user.html?user=6">jcpontes</a>
+							</td>
+							<td>
+								<a class="m-2" href="post-view.html?commentFocus=45" title="View Comment"><i class="fas fa-eye"></i></a>
+								<a class="m-2" href="#" title="Archive flag"><i class="fas fa-archive"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">25</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:31 31/03/2019
+							</td>
+							<td>
+								<a href="manage-user.html?user=5">jclapis</a>
+							</td>
+							<td>
+								<a class="m-2" href="post-view.html?commentFocus=45" title="View Comment"><i class="fas fa-eye"></i></a>
+								<a class="m-2" href="#" title="Archive flag"><i class="fas fa-archive"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<th colspan=7 scope="row">Archived flags</th>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:31 31/03/2009
+							</td>
+							<td>
+								<a href="manage-user.html?user=2">jclima</a>
+							</td>
+							<td>
+								<a class="m-2" href="post-view.html?commentFocus=45" title="View Comment"><i class="fas fa-eye"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane" id="flaggedPosts" role="tabpanel">
+				<table class="table  table-sm table-striped table-bordered text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col"></th>
+							<th class="d-none d-md-table-cell">Date</th>
+							<th scope="col">Flagged by</th>
+							<!--<th scope="col">Reason</th>-->
+							<th scope="col">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">14</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:30 31/03/2019
+							</td>
+							<td>
+								<a href="manage-user.html?user=6">jcpontes</a>
+							</td>
+							<!--<td>
+								He stole my doll.
+							</td>-->
+							<td>
+								<a class="m-2" href="post-view.html?id=5" title="View Post"><i class="fas fa-eye"></i></a>
+								<a class="m-2" href="#" title="Archive flag"><i class="fas fa-archive"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">25</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:31 31/03/2019
+							</td>
+							<td>
+								<a href="manage-user.html?user=7">jclápis</a>
+							</td>
+							<!--<td>
+								He flagged me.
+							</td>-->
+							<td>
+								<a class="m-2" href="post-view.html?id=5" title="View Post"><i class="fas fa-eye"></i></a>
+								<a class="m-2" href="#" title="Archive flag"><i class="fas fa-archive"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<th colspan=7 scope="row">Archived flags</th>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<th scope="row">
+									<input id="checkBox" type="checkbox">
+							</th>
+							<td class="d-none d-md-table-cell">
+								05:31 31/03/2009
+							</td>
+							<td>
+								<a href="manage-user.html?user=5">jclapis</a>
+							</td>
+							<!--<td>
+								He flagged me.
+							</td>-->
+							<td>
+								<a class="m-2" href="post-view.html?id=5" title="View Post"><i class="fas fa-eye"></i></a>
+								<a class="m-2" href="#" title="Delete flag"><i class="far fa-trash-alt"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+    </div>
+
+    <footer class="container py-5 p-3">
+        <div class="row">
+            <!-- <div class="col-sm-1 col-6"></div> -->
+            <div class="text-center col-sm col-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="1" y1="1" x2="12" y2="23"></line>
+					<line x1="12" y1="23" x2="23" y2="1"></line>
+				</svg>
+                
+                <small style="vertical-align:super;" class="mb-3 text-muted">&copy; 2018 Made with &#x2764; @FEUP</small>
+            </div>
+            <div class="text-center col-sm col-md">
+
+                <ul class="list-inline text-small">
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="about.html">About Vecto</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="contacts.html">Contacts</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="statistics.html">Statistics</a>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="text-center col-sm col-md"></div>-->
+        </div>
+    </footer>
+</body>
+
+<script src="public/js/codemirror.min.js"></script>
+<script src="public/js/froala_editor.pkgd.min.js"></script>
+</html>
