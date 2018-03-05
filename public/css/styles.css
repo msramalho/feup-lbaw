@@ -163,6 +163,13 @@ div.btn-group.btn-group-toggle{
 	max-width: 100%;
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+	.col-md-1 > p{
+		margin-right: -17px;
+	}
+}
+
+
 /**
   * FAQ Page
  */
@@ -337,4 +344,8 @@ div#feed-content > div{
 .AboutIcon {
 		width: 18px;
 		height: 18px;
+}
+
+#my-awesome-dropzone{
+	height: 200px;
 }
