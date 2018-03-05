@@ -209,4 +209,21 @@
 		</div>
 	</footer>
 </body>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/jquery-3.3.1.min.js"></script>
+<script>
+	$(".upvoteBtn").click(function(){
+		currentVotes = parseInt(this.parentElement.textContent);
+		let upvoted = $(this).hasClass("btn-primary");
+		if(upvoted){
+			this.parentElement.children[0].textContent= currentVotes-1;
+			$(this).removeClass("btn-primary");
+		}else{
+			this.parentElement.children[0].textContent= currentVotes+1;
+			$(this).addClass("btn-primary");
+		}
+		//TODO send ajax on upvote
+	});
+	
+</script>
 </html>
