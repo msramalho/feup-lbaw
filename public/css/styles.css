@@ -258,3 +258,16 @@ div#feed-content > div{
 	padding:10px ;
 }
 
+/**
+ * Style for User page
+ */
+ 
+/* Profile container */
+  
+/* Profile sidebar */
+	
+.imgProfile.rounded {
+	width: 79px;
+	height: 79px;
+}
+
