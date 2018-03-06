@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Vecto : User Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="theme-color" content="#2e3c56">
+
+    <link rel="icon" href="public/images/favicon.ico">
+
+    <link href="public/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="public/css/fontawesome4-all.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/styles.css" rel="stylesheet">
+    <link href="public/css/froala_editor.pkgd.min.css" rel="stylesheet">
+    <link href="public/css/froala_style.min.css" rel="stylesheet">
+    <link href="public/css/codemirror.min.css" rel="stylesheet">
+
+    <script src="public/js/jquery-3.3.1.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navbar">
+        <div class="container ">
+            <a class="navbar-brand" href="index.html">Vecto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="manage-flags.html">Flags</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="manage-users.html">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="manage-universities.html">Universities</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html?logout=true">
+							<i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="m-2 m-sm-5">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h1>User Management</h1>
+			</div>
+            <div class="col-md-6 col-sm-12">
+                <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#showAllUsersModal">Show all users</button>
+			</div>
+			<div class="mt-3 container">
+				<label for="user">Search User:</label>
+				<input type="text" id="user" class="form-group form-control" placeholder="Username">
+			</div>
+        </div>
+        <br>
+        
+	</div>
+	
+	<div class="jumbotron">
+			<div class="row m-3">
+				<div class="col-12 col-lg-9">
+					<div class="row">
+						<div class="col-12 col-sm-4">
+							<label class="d-block">Username <input type="text" id="username" class="form-group form-control" disabled value="jclápis"></label>
+						</div>
+						<div class="col-12 col-sm-4">
+							<label class="d-block">Real Name <input type="text" id="realName" class="form-group form-control" disabled value="João Cabral Lápis"></label>
+						</div>
+						<div class="col-12 col-sm-4">
+							<label class="d-block">Birthdate <input type="date" id="birthdate" class="form-group form-control" disabled value="1994-12-10"></label>
+						</div>
+						<div class="col-12 col-sm-4">
+							<label class="d-block">Email <input type="text" id="email" class="form-group form-control" disabled value="jclapis56@gmail.com"></label>
+						</div>
+						<div class="col-12 col-sm-4">
+							<label class="d-block">Country <input type="text" id="country" class="form-group form-control" disabled value="Portugal"></label>
+						</div>
+						<div class="col-12 col-sm-4">
+							<label class="d-block">Country <input type="text" id="country" class="form-group form-control" disabled value="Portugal"></label>
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<p class="col-12 col-sm-4">
+							Last known IP: 192.268.3.67
+						</p>
+						<p class="col-12 col-sm-4">
+							Register IP: 192.268.3.27
+						</p>
+					</div>
+				</div>
+				<div class="text-center col-12 col-lg-3">
+						<button type="button" class="mt-2 btn btn-danger">Block User</button><br>
+						<button type="button" class="mt-2 btn btn-warning">Delete Posts</button><br>
+						<button type="button" class="mt-2 btn btn-warning">Delete Comments</button><br>
+						<button type="button" class="mt-2 btn btn-warning">Delete Avatar</button><br>
+						<button type="button" class="mt-2 btn btn-success">Enable Editing</button><br>
+				</div>
+			</div>
+		</h3>
+	</div>
+
+    <footer class="container py-5 p-3">
+        <div class="row">
+            <!-- <div class="col-sm-1 col-6"></div> -->
+            <div class="text-center col-sm col-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="1" y1="1" x2="12" y2="23"></line>
+					<line x1="12" y1="23" x2="23" y2="1"></line>
+				</svg>
+                
+                <small style="vertical-align:super;" class="mb-3 text-muted">&copy; 2018 Made with &#x2764; @FEUP</small>
+            </div>
+            <div class="text-center col-sm col-md">
+
+                <ul class="list-inline text-small">
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="about.html">About Vecto</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="contacts.html">Contacts</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="statistics.html">Statistics</a>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="text-center col-sm col-md"></div>-->
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade hide" id="showAllUsersModal" tabindex="-1" role="dialog" aria-labelledby="sauModalLabel" aria-hidden="true">
+        <div class="modal-dialog-lg m-5" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sauModalLabel">User List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+                </div>
+                <div class="modal-body">
+                    <ul style="cursor: pointer;" class="list-group">
+						<li class="list-group-item">jclima</li>
+						<li class="list-group-item">jclápis</li>
+						<li class="list-group-item">jcpontes</li>
+						<!-- TODO autopopulate list -->
+					</ul>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="public/js/codemirror.min.js"></script>
+<script src="public/js/froala_editor.pkgd.min.js"></script>
+</html>
