@@ -32,4 +32,4 @@
       * Afonso - ~Statistics bonitas~; Wireflows; insert photos in report; 
       * Daniel - ~Search~; ~Manage Flags~; Manage Users;
       * Miguel - ~Edit Post~; ~Manage Universities~; ~Manage Faculties~
-      * Vitor - Edit User; put flag in user profile; 
+      * Vitor - Edit User; ~put flag in user profile~; 
