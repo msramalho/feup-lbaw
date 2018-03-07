@@ -169,6 +169,33 @@ div.btn-group.btn-group-toggle{
 	}
 }
 
+@media (max-width: 768px){
+	div.jumbotron div.container{
+		margin-bottom: 1.5rem;
+	}
+
+	button.upvoteBtn {
+		margin-bottom: 1rem;
+	}
+
+	h5.card-title {
+		white-space: normal;
+		text-align: left;
+	}
+
+	label.btn.btn-secondary {
+		white-space: normal;
+		text-align: left;
+		text-overflow: ellipsis;
+		overflow: visible;
+	}
+}
+
+@media (max-width: 405px){
+	label.btn.btn-secondary {
+		overflow: hidden;
+	}
+}
 
 /**
   * FAQ Page
