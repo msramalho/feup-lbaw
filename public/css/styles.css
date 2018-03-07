@@ -189,6 +189,10 @@ div.btn-group.btn-group-toggle{
 		text-overflow: ellipsis;
 		overflow: visible;
 	}
+
+	button#post-create{
+		margin-bottom: 1rem;
+	}
 }
 
 @media (max-width: 405px){
