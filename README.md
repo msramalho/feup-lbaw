@@ -33,6 +33,11 @@
       * Daniel - ~Search~; ~Manage Flags~; ~Manage Users~;
       * Miguel - ~Edit Post~; ~Manage Universities~; ~Manage Faculties~
       * Vitor - ~Edit User~; ~put flag in user profile~; 
+    * Tasks [deadline 13/03/2018]
+      * Afonso - mais destaque user profile navegação (cor mais forte); Dar destaque ao sign-in, mudar nome e ou cor; 
+      * Daniel - View post, meter os 3 labels para cima da imagem; 10-12 palavras para o texto (diminuir largura); aumentar tamanho de letra dos post previews nos feeds.
+      * Miguel - Frola editor, meter maior altura
+      * Vitor - caixa da foto mais pequena; meter 1 form element por linha; aumentar tamanho de texto dos following;
   * [A4](https://hackmd.io/DnNwGsCNQtK48EZJJBi1Pw) Editor: **Vitor**
     * Status: **[not submited]**
     * [Database table with countries](https://github.com/raramuridesign/mysql-country-list/blob/master/mysql-country-list.sql)
