@@ -42,7 +42,7 @@ h5:hover, h5:visited, h5:active , h5:link{
 }
 
 .btn-primary.active {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
 }
 
 @font-face{
