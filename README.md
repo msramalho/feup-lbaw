@@ -35,6 +35,7 @@
       * Vitor - ~Edit User~; ~put flag in user profile~; 
   * [A4](https://hackmd.io/DnNwGsCNQtK48EZJJBi1Pw) Editor: **Vitor**
     * Status: **[not submited]**
+    * [Database table with countries](https://github.com/raramuridesign/mysql-country-list/blob/master/mysql-country-list.sql)
     * Tasks [deadline 13/03/2018]
       * Afonso -
       * Daniel - 
