@@ -20,7 +20,7 @@
      * Vitor - ~Actors (UML + Table)~
 
   * [A3](https://hackmd.io/CwRgrAHAbATAZhAtAYxgEzo4yIAZF4CGAzIiAJxRyECm5ENuhaQA) Editor: **Miguel**
-    * Status: **[not submited]**
+    * Status: **[submited]**
     * [GHPages](https://msramalho.github.io/lbaw1721/)
     * [Dwaw.io - SiteMap](https://drive.google.com/file/d/1W-SPXbB57z5ZN7S4vmGSInLCbPAg0bjc/view?usp=sharing)
     * Tasks [deadline 01/03/2018]
@@ -33,3 +33,10 @@
       * Daniel - ~Search~; ~Manage Flags~; ~Manage Users~;
       * Miguel - ~Edit Post~; ~Manage Universities~; ~Manage Faculties~
       * Vitor - ~Edit User~; ~put flag in user profile~; 
+  * [A4](https://hackmd.io/DnNwGsCNQtK48EZJJBi1Pw) Editor: **Vitor**
+    * Status: **[not submited]**
+    * Tasks [deadline 13/03/2018]
+      * Afonso -
+      * Daniel - 
+      * Miguel - 
+      * Vitor - 
