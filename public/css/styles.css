@@ -72,6 +72,10 @@ div.dropdown a#logInDropdown {
     color: white !important;
 }
 
+div.dropdown a#logInDropdown:hover {
+    color: #949494 !important;
+}
+
 /**
  * Style for view post page
  */
