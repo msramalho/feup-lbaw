@@ -369,8 +369,8 @@ div#feed-content>div {
 .FollowingListItem_image {
     float: left;
     overflow: hidden;
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     margin-right: 3px;
 }
 
@@ -378,12 +378,12 @@ div#feed-content>div {
 
 .FollowingListItem_userLink {
     color: #373c3f;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
 }
 
 .FollowingListItem__followers {
-    font-size: 12px;
+    font-size: 14px;
     color: #373c3f;
 }
 
