@@ -402,7 +402,8 @@ div#feed-content>div {
     height: 200px;
 }
 
-a[href="http://editor.froala.com"] {
+a[href="http://editor.froala.com"],
+a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
     display: none !important;
     position: absolute;
     top: -99999999px;
