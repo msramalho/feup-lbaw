@@ -51,24 +51,26 @@
 	</nav>
 
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron pt-3">
 			<article>
 				<div class="container">
-					<img src="https://i.imgur.com/KfROBYv.jpg" alt>
-					<div class="top-left"><h1>Lorem ipsum nullam adipiscing at</h1></div>
-					<div class="row">
-						<div class="text-center col-sm col-xl-2">
+					<div class="row pb-3 bg-faded">
+						<div class="text-center col-sm col-lg-2">
 							<i class="fas fa-user-circle"></i> <a href="user-profile.html?user=lorenu">lorenu</a>
 						</div>
-						<div class="text-center col-sm col-xl-8">
+						<div class="text-center col-sm col-lg-8">
 							<i class="fas fa-map-marker-alt"></i>  <a href="search.html?faculty=FLUP">Faculdade de Letras, Universidade do Porto</a>
 						</div>
-						<div class="text-center col-sm col-xl-2">
+						<div class="text-center col-sm col-lg-2">
 							<i class="fas fa-calendar-alt"></i> <a href="search.html?year=1718">17/18</a>
 						</div>
 					</div>
+					<div>
+						<img src="https://i.imgur.com/KfROBYv.jpg" alt>
+						<div class="top-left"><h1>Lorem ipsum nullam adipiscing at</h1></div>
+					</div>
 					<div class="row">
-						<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12">
+						<div class="mt-lg-5 pl-lg-0 mb-4 mb-lg-0 text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12">
 							<p>
 								58
 							</p>
@@ -76,7 +78,7 @@
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						</div>
-						<div class="article-text text-justify col-lg-11 col-sm-12 col-xl-11">
+						<div class="article-text text-justify col-lg-10 col-sm-12 col-xl-10">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultricies integer quis auctor elit sed vulputate mi sit amet. Posuere morbi leo urna molestie at elementum. A scelerisque purus semper eget duis. At augue eget arcu dictum varius. Egestas sed tempus urna et pharetra. Dolor sit amet consectetur adipiscing elit ut aliquam purus. Augue eget arcu dictum varius duis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Blandit cursus risus at ultrices mi. Felis bibendum ut tristique et egestas. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse.
 							</p>
@@ -185,13 +187,13 @@
 <script>
 	$(".upvoteBtn").click(function(){
 		currentVotes = parseInt(this.parentElement.textContent);
-		let upvoted = $(this).hasClass("active");
+		let upvoted = $(this).hasClass("btn-primary");
 		if(upvoted){
 			this.parentElement.children[0].textContent= currentVotes-1;
-			$(this).removeClass("active");
+			$(this).removeClass("btn-primary");
 		}else{
 			this.parentElement.children[0].textContent= currentVotes+1;
-			$(this).setClass("active");
+			$(this).addClass("btn-primary");
 		}
 		//TODO send ajax on upvote
 	});

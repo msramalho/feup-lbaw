@@ -80,27 +80,32 @@ div.dropdown a#logInDropdown:hover {
  * Style for view post page
  */
 
-article>div.container>div.top-left {
+ article>div.container>div{
+	 position:relative;
+ }
+ 
+ 
+ article>div.container>div>div.top-left {
     position: absolute;
     top: 10px;
-    left: 25px;
+    left: 10px;
     max-width: 90%;
 }
 
-article>div.container>div.top-left>h1 {
+article>div.container>div>div.top-left>h1 {
     font-size: 2em;
     text-shadow: black 1px 1px 5px;
     color: white;
 }
 
 @media (max-width: 30em) {
-    article>div.container>div.top-left>h1 {
+    article>div.container>div>div.top-left>h1 {
         font-size: 5vw;
         max-width: 80%;
     }
 }
 
-article>div.container>img {
+article>div.container>div>img {
     width: 100%;
 }
 
@@ -110,6 +115,16 @@ article>div.container {
 
 article>div.container>div.row {
     margin: 20px 10px 10px;
+}
+
+article>div.container>div.row:first-child{
+	margin:0;
+	padding: 20px 10px 10px;
+}
+
+article>div.container>div.row:first-child *{
+	margin:0;
+	padding: 0;
 }
 
 article>div.container>div.article-comments>h2 {
@@ -295,10 +310,6 @@ div.container.faq div#accordion div.faqHeader {
 /**
   * Post
  */
-
-div#feed-content>div>div {
-    font-size: small;
-}
 
 div#feed-content>div {
     margin-bottom: 10px;
