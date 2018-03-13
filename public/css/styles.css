@@ -411,6 +411,7 @@ div#feed-content>div {
 
 #my-awesome-dropzone {
     height: 200px;
+    width: 200px;
 }
 
 a[href="http://editor.froala.com"],
