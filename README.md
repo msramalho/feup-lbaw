@@ -37,7 +37,7 @@
       * Afonso - ~mais destaque user profile navegação (cor mais forte)~; ~Dar destaque ao sign-in, mudar nome e ou cor~; ~Fix Buttons Colours~;
       * Daniel - ~View post, meter os 3 labels para cima da imagem~; ~10-12 palavras para o texto (diminuir largura)~; ~aumentar tamanho de letra dos post previews nos feeds~. ~tirar classes não usadas do user.management~
       * Miguel - ~Frola editor, meter maior altura;~ converter markdown em pdf com links (tentar `[link](url)`)
-      * Vitor - caixa da foto mais pequena; meter 1 form element por linha; aumentar tamanho de texto dos following; date->birthdate; tirar gender;
+      * Vitor - caixa da foto mais pequena; meter 1 form element por linha; ~aumentar tamanho de texto dos following~; ~date->birthdate~; ~tirar gender~;
   * [A4](https://hackmd.io/DnNwGsCNQtK48EZJJBi1Pw) Editor: **Vitor**
     * Status: **[not submited]**
     * [Database table with countries](https://github.com/raramuridesign/mysql-country-list/blob/master/mysql-country-list.sql)
