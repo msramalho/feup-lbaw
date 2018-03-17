@@ -23,16 +23,16 @@ body {
 }
 
 a,
-h5 {
+h4 {
     color: var(--secondary-color);
 }
 
 a:hover,
 a:checked,
-h5:hover,
-h5:visited,
-h5:active,
-h5:link {
+h4:hover,
+h4:visited,
+h4:active,
+h4:link {
     color: var(--primary-color);
 }
 
