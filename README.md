@@ -8,17 +8,18 @@
 
 ## Artefacts
 
- * [A1](https://hackmd.io/KwZmCYCNIU3BaAhuAxseAWDAOA7PATlwAZjMBGAE2xEgDNKCnIg=) Editor: **Afonso**
-   * Status: **[submited]**
- * [A2](https://hackmd.io/EwZgHGBmBsCmAmBaaAGaBDRAWLrECMBjAdn0XjC2IE551hQBWQoA) Editor: **Daniel** [example](https://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/medialib/a2)
-   * Status: **[submited]**
-   * [Draw.io - UML](https://drive.google.com/file/d/1jJV-MGkb27NeJCkNnhLYBqZ4u2EGb1-L/view?usp=sharing)
-   * Tasks [deadline 19/02/2018]:
-     * Afonso - ~User Stories~
-     * Daniel - ~User Stories~
-     * Miguel - ~Supplementary requirements~
-     * Vitor - ~Actors (UML + Table)~
-
+ * [A5](https://hackmd.io/uB1_EPPXQlGHMfLwJFJYMw) Editor: **Afonso**
+    * Status: **[submited]**
+      
+  * [A4](https://hackmd.io/DnNwGsCNQtK48EZJJBi1Pw) Editor: **Vitor**
+    * Status: **[submited]**
+    * [Database table with countries](https://github.com/raramuridesign/mysql-country-list/blob/master/mysql-country-list.sql)
+    * Tasks [deadline 13/03/2018]
+      * Afonso -
+      * Daniel - ~converter para enterprise architect~
+      * Miguel -  
+      * Vitor - ~escrever texto e colocar imagem do daniel~
+      
   * [A3](https://hackmd.io/CwRgrAHAbATAZhAtAYxgEzo4yIAZF4CGAzIiAJxRyECm5ENuhaQA) Editor: **Miguel**
     * Status: **[submited]**
     * [GHPages](https://msramalho.github.io/lbaw1721/)
@@ -38,11 +39,15 @@
       * Daniel - ~View post, meter os 3 labels para cima da imagem~; ~10-12 palavras para o texto (diminuir largura)~; ~aumentar tamanho de letra dos post previews nos feeds~. ~tirar classes não usadas do user.management~
       * Miguel - ~Frola editor, meter maior altura;~ converter markdown em pdf com links (tentar `[link](url)`)
       * Vitor - ~caixa da foto mais pequena~; ~meter 1 form element por linha~; ~aumentar tamanho de texto dos following~; ~date->birthdate~; ~tirar gender~;
-  * [A4](https://hackmd.io/DnNwGsCNQtK48EZJJBi1Pw) Editor: **Vitor**
-    * Status: **[not submited]**
-    * [Database table with countries](https://github.com/raramuridesign/mysql-country-list/blob/master/mysql-country-list.sql)
-    * Tasks [deadline 13/03/2018]
-      * Afonso -
-      * Daniel - converter para enterprise architect
-      * Miguel -  
-      * Vitor - escrever texto e colocar imagem do daniel
+      
+ * [A2](https://hackmd.io/EwZgHGBmBsCmAmBaaAGaBDRAWLrECMBjAdn0XjC2IE551hQBWQoA) Editor: **Daniel** [example](https://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/medialib/a2)
+   * Status: **[submited]**
+   * [Draw.io - UML](https://drive.google.com/file/d/1jJV-MGkb27NeJCkNnhLYBqZ4u2EGb1-L/view?usp=sharing)
+   * Tasks [deadline 19/02/2018]:
+     * Afonso - ~User Stories~
+     * Daniel - ~User Stories~
+     * Miguel - ~Supplementary requirements~
+     * Vitor - ~Actors (UML + Table)~
+
+ * [A1](https://hackmd.io/KwZmCYCNIU3BaAhuAxseAWDAOA7PATlwAZjMBGAE2xEgDNKCnIg=) Editor: **Afonso**
+   * Status: **[submited]**
