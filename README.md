@@ -8,7 +8,7 @@
 
 ## Artefacts
 
- * [A6](https://hackmd.io/q92oMeVASiSI5hrKm6mgWA) Editor: **Daniel**
+ * [A6](https://hackmd.io/JMpTEtGyTYGeBeBYbTGIZA) Editor: **Daniel**
     * Status: **[not submited]**
     * Tasks [deadline 30/03/2018]
       * Afonso -
