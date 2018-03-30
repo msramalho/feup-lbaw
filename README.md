@@ -9,6 +9,8 @@
 ## Artefacts
 
  * [A6](https://hackmd.io/JMpTEtGyTYGeBeBYbTGIZA) Editor: **Daniel**
+    * [trigger slides](https://web.fe.up.pt/~arestivo/presentation/triggers/)
+    * [indexes slides](https://web.fe.up.pt/~arestivo/presentation/indexes/)
     * Status: **[not submited]**
     * Tasks [deadline 30/03/2018]
       * Afonso - [fake-data] use [mockaroo](https://www.mockaroo.com/) to generate some more fake data (not too much) for the tables (see the lines that already exist); [frequent-updates] insert query for flag_comment, flag_post, flag_user; [frequent-updates] to insert a new post; 
