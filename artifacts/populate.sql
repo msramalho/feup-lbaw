@@ -106,7 +106,67 @@ insert into following (follower_id, followed_id, date) values (23, 14, '21/7/201
 insert into following (follower_id, followed_id, date) values (1, 6, '5/9/2017');
 insert into following (follower_id, followed_id, date) values (14, 14, '1/4/2018');
 
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (1, 'libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis', 21, 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.
 
+Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 2012, '8/9/2017', null, null, 19, 17, 7, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (2, 'erat fermentum justo nec condimentum neque sapien', 30, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.
+
+Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 1995, '13/4/2017', null, null, 4, 16, 12, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (3, 'vestibulum ante ipsum primis in faucibus', 9, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
+
+Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
+
+Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', 2006, '8/7/2017', null, null, 21, 13, 5, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (4, 'est donec odio justo sollicitudin ut suscipit a', 26, 'Sed ante. Vivamus tortor. Duis mattis egestas metus.
+
+Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 2001, '1/9/2017', null, null, 12, 5, 11, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (5, 'pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu', 22, 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
+
+Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.
+
+Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 1999, '15/8/2017', null, null, 9, 18, 8, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (6, 'lacus at turpis donec posuere metus', 18, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
+
+Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', 2003, '27/2/2018', null, null, 25, 8, 20, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (7, 'ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla', 16, 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 1998, '22/2/2018', '17/2/2018', 'error: Field ''CHECK'' not found', 22, 5, 10, 19, 13, 8, 9);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (8, 'parturient montes nascetur ridiculus mus etiam', 13, 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
+
+Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 2006, '14/3/2018', null, null, 30, 14, 13, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (9, 'non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim', 27, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
+
+Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', 2004, '5/1/2018', null, null, 24, 20, 11, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (10, 'sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget', 17, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.', 2009, '25/11/2017', null, null, 10, 18, 8, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (11, 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer', 13, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.
+
+Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.
+
+Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 2006, '12/10/2017', null, null, 3, 3, 8, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (12, 'elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus', 10, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 2008, '24/5/2017', null, null, 25, 14, 9, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (13, 'sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis', 14, 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 2012, '21/3/2018', null, null, 1, 12, 1, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (14, 'nec euismod scelerisque quam turpis adipiscing lorem', 2, 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.
+
+Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
+
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 2006, '12/11/2017', null, null, 22, 11, 20, null, null, null, null);
+insert into post (id, title, votes, content, school_year, date, removed_reason, removed_date, author_id, from_faculty_id, to_faculty_id, beer_cost, life_cost, native_friendliness, work_load) values (15, 'et commodo vulputate justo in blandit ultrices', 9, 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.
+
+Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 2006, '5/5/2017', null, null, 24, 5, 9, null, null, null, null);
+
+insert into university (id, name, description, country_id) values (1, 'Madelena', 'mandresser0@hostgator.com', 8);
+insert into university (id, name, description, country_id) values (2, 'Baxie', 'birlam1@upenn.edu', 10);
+insert into university (id, name, description, country_id) values (3, 'Modestia', 'mroglieri2@newsvine.com', 9);
+insert into university (id, name, description, country_id) values (4, 'Lucille', 'lclink3@linkedin.com', 2);
+insert into university (id, name, description, country_id) values (5, 'Lindsey', 'lstaneland4@apple.com', 1);
+insert into university (id, name, description, country_id) values (6, 'Ahmad', 'acoate5@upenn.edu', 1);
+insert into university (id, name, description, country_id) values (7, 'Emery', 'eharsnep6@cargocollective.com', 5);
+insert into university (id, name, description, country_id) values (8, 'Bastian', 'bcleevely7@theguardian.com', 6);
+insert into university (id, name, description, country_id) values (9, 'Pepe', 'pedmeades8@auda.org.au', 5);
+insert into university (id, name, description, country_id) values (10, 'Chico', 'crickett9@bbb.org', 2);
+insert into university (id, name, description, country_id) values (11, 'Dorothy', 'dkocha@uiuc.edu', 10);
+insert into university (id, name, description, country_id) values (12, 'Steffane', 'smenaulb@domainmarket.com', 8);
+insert into university (id, name, description, country_id) values (13, 'Magdalene', 'mmurriganc@edublogs.org', 8);
+insert into university (id, name, description, country_id) values (14, 'Leila', 'lmottersheadd@timesonline.co.uk', 2);
+insert into university (id, name, description, country_id) values (15, 'Dollie', 'dbindone@answers.com', 5);
 
 insert into user (id, email, username, birthdate, password, name, register_date, description, type) values (1, 'aavrahm0@vistaprint.com', 'aavrahm0', '12/4/2001', '1KWYxNbXoZ4wxeKTVviejTyoyYZSPEYVjh', 'Annabella Avrahm', '22/6/2017', 'Decreased fetal movements, unspecified trimester, fetus 3', 'active');
 insert into user (id, email, username, birthdate, password, name, register_date, description, type) values (2, 'bgiorgioni1@about.me', 'bgiorgioni1', '1/3/2002', '1FhDGAyHvEyoEDD8DvXSArpV4Doud3J5Qj', 'Broddie Giorgioni', '1/1/2018', 'Motorcycle passenger injured in collision with pedestrian or animal in nontraffic accident', 'active');
@@ -139,3 +199,18 @@ insert into user (id, email, username, birthdate, password, name, register_date,
 insert into user (id, email, username, birthdate, password, name, register_date, description, type) values (29, 'hmansers@cpanel.net', 'hmansers', '26/2/1999', '1MJt5cbRegPeZ8LFPVvraaZ39VxstmbRRN', 'Hedi Manser', '5/2/2017', 'Pneumonia due to staphylococcus, unspecified', 'banned');
 insert into user (id, email, username, birthdate, password, name, register_date, description, type) values (30, 'mcominottit@example.com', 'mcominottit', '11/29/1991', '1wibWX46UH7AFxSPDuBUXmr83bdiJFv85', 'Marmaduke Cominotti', '4/6/2017', 'Minor laceration of vertebral artery', 'active');
 
+insert into vote (user_id, post_id) values (29, 2);
+insert into vote (user_id, post_id) values (6, 6);
+insert into vote (user_id, post_id) values (9, 3);
+insert into vote (user_id, post_id) values (24, 8);
+insert into vote (user_id, post_id) values (29, 11);
+insert into vote (user_id, post_id) values (21, 13);
+insert into vote (user_id, post_id) values (8, 13);
+insert into vote (user_id, post_id) values (16, 12);
+insert into vote (user_id, post_id) values (6, 7);
+insert into vote (user_id, post_id) values (25, 12);
+insert into vote (user_id, post_id) values (3, 13);
+insert into vote (user_id, post_id) values (18, 14);
+insert into vote (user_id, post_id) values (9, 10);
+insert into vote (user_id, post_id) values (7, 11);
+insert into vote (user_id, post_id) values (16, 6);
