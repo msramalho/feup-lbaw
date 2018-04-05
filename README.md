@@ -8,10 +8,18 @@
 
 ## Artefacts
 
+ * [A7](https://hackmd.io/Hk36u2otREmVxBWReAERnA) Editor: **Miguel**
+    * Status: **[not submited]**
+    * Tasks [deadline 09/04/2018]
+      * Afonso -
+      * Daniel - 
+      * Miguel -  
+      * Vitor - 
+      
  * [A6](https://hackmd.io/JMpTEtGyTYGeBeBYbTGIZA) Editor: **Daniel**
     * [trigger slides](https://web.fe.up.pt/~arestivo/presentation/triggers/)
     * [indexes slides](https://web.fe.up.pt/~arestivo/presentation/indexes/)
-    * Status: **[not submited]**
+    * Status: **[submited]**
     * Tasks [deadline 30/03/2018]
       * Afonso - [fake-data] use [mockaroo](https://www.mockaroo.com/) to generate some more fake data (not too much) for the tables (see the lines that already exist); ~[frequent-updates] insert query for flag_comment, flag_post, flag_user~; ~[frequent-updates] to insert a new post~; ~[trigger] to calculate the number of votes in a post, whenever a vote is cast or deleted~;
       * Daniel - ~[performance-index] for user attributes using hash (high cardinality); [performance-index] for post faculties and similar (if found) using btree (medium cardinality);~ [editor] put all the SQL (from the A5) together (see example); [editor] fix numeration in the A6 query names; [editor] remove comments and brush up A6 and deliver; (note from M: verificar se as colunas search_title e search_content aparecem no SQL da criação das tabelas).    
