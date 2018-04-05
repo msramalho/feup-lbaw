@@ -1,7 +1,4 @@
-
---
--- Name: max_two_mobilities_per_year(); Type: FUNCTION; Schema: public; Owner: lbaw1721
---
+-- Triggers
 
 CREATE FUNCTION max_two_mobilities_per_year() RETURNS trigger
     LANGUAGE plpgsql
@@ -18,10 +15,9 @@ BEGIN
 END
 $$;
 
+CREATE TRIGGER max_two_mobilities_per_year BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE max_two_mobilities_per_year();
 
---
--- Name: post_search_update(); Type: FUNCTION; Schema: public; Owner: lbaw1721
---
+
 
 CREATE FUNCTION post_search_update() RETURNS trigger
     LANGUAGE plpgsql
@@ -44,9 +40,8 @@ END
 $$;
 
 
---
--- Name: update_vote(); Type: FUNCTION; Schema: public; Owner: lbaw1721
---
+CREATE TRIGGER post_search_update BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE post_search_update();
+
 
 CREATE FUNCTION update_vote() RETURNS trigger
     LANGUAGE plpgsql
@@ -60,9 +55,8 @@ END
 $$;
 
 
---
--- Name: user_prevent_self_flag_comment(); Type: FUNCTION; Schema: public; Owner: lbaw1721
---
+CREATE TRIGGER update_vote AFTER INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE update_vote();
+
 
 CREATE FUNCTION user_prevent_self_flag_comment() RETURNS trigger
     LANGUAGE plpgsql
@@ -77,10 +71,8 @@ END
 $$;
 
 
+CREATE TRIGGER user_prevent_self_flag_comment BEFORE INSERT OR UPDATE ON flag_comment FOR EACH ROW EXECUTE PROCEDURE ser_prevent_self_flag_comment();
 
---
--- Name: vote_prevent_own_user(); Type: FUNCTION; Schema: public; Owner: lbaw1721
---
 
 CREATE FUNCTION vote_prevent_own_user() RETURNS trigger
     LANGUAGE plpgsql
@@ -94,47 +86,20 @@ BEGIN
 END
 $$;
 
+CREATE TRIGGER vote_prevent_own_user BEFORE INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE vote_prevent_own_user();
 
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- Name: city; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+-- Tables creation
 
 CREATE TABLE city (
-    id integer NOT NULL,
+    id serial NOT NULL,
     name character varying(60) NOT NULL,
     country_id integer NOT NULL
 );
 
-
---
--- Name: city_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE city_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: city_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE city_id_seq OWNED BY city.id;
-
-
---
--- Name: comment; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY city ADD CONSTRAINT city_pkey PRIMARY KEY (id);
 
 CREATE TABLE comment (
-    id integer NOT NULL,
+    id serial NOT NULL,
     content text NOT NULL,
     date timestamp with time zone DEFAULT now() NOT NULL,
     removed_reason text,
@@ -145,113 +110,27 @@ CREATE TABLE comment (
 );
 
 
-
-
---
--- Name: comment_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE comment_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
---
--- Name: comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE comment_id_seq OWNED BY comment.id;
-
-
---
--- Name: count_votes; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
-
-CREATE TABLE count_votes (
-    count bigint
-);
-
-
-
-
---
--- Name: country; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY comment ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
+CREATE INDEX comment_post_id ON comment USING btree (post_id);
 
 CREATE TABLE country (
-    id integer NOT NULL,
+    id serial NOT NULL,
     name character varying(50) NOT NULL,
     code character(2) NOT NULL
 );
 
-
-
-
---
--- Name: country_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE country_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
---
--- Name: country_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE country_id_seq OWNED BY country.id;
-
-
---
--- Name: faculty; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY country ADD CONSTRAINT country_pkey PRIMARY KEY (id);
 
 CREATE TABLE faculty (
-    id integer NOT NULL,
+    id serial NOT NULL,
     name character varying(150) NOT NULL,
     description text NOT NULL,
     city_id integer NOT NULL,
     university_id integer
 );
 
+ALTER TABLE ONLY faculty ADD CONSTRAINT faculty_pkey PRIMARY KEY (id);
 
-
-
---
--- Name: faculty_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE faculty_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
---
--- Name: faculty_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE faculty_id_seq OWNED BY faculty.id;
-
-
---
--- Name: flag_comment; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
 CREATE TABLE flag_comment (
     flagger_id integer NOT NULL,
@@ -261,12 +140,7 @@ CREATE TABLE flag_comment (
     archived boolean DEFAULT false NOT NULL
 );
 
-
-
-
---
--- Name: flag_post; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY flag_comment ADD CONSTRAINT flag_comment_pkey PRIMARY KEY (flagger_id, comment_id);
 
 CREATE TABLE flag_post (
     flagger_id integer NOT NULL,
@@ -276,12 +150,7 @@ CREATE TABLE flag_post (
     archived boolean DEFAULT false NOT NULL
 );
 
-
-
-
---
--- Name: flag_user; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY flag_post ADD CONSTRAINT flag_post_pkey PRIMARY KEY (flagger_id, post_id);
 
 CREATE TABLE flag_user (
     flagger_id integer NOT NULL,
@@ -291,12 +160,7 @@ CREATE TABLE flag_user (
     archived boolean DEFAULT false NOT NULL
 );
 
-
-
-
---
--- Name: following; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY flag_user ADD CONSTRAINT flag_user_pkey PRIMARY KEY (flagger_id, flagged_id);
 
 CREATE TABLE following (
     follower_id integer NOT NULL,
@@ -305,15 +169,10 @@ CREATE TABLE following (
     CONSTRAINT cannot_follow_oneself CHECK ((follower_id <> followed_id))
 );
 
-
-
-
---
--- Name: post; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY following ADD CONSTRAINT following_pkey PRIMARY KEY (follower_id, followed_id);
 
 CREATE TABLE post (
-    id integer NOT NULL,
+    id serial NOT NULL,
     title character varying(200) NOT NULL,
     votes integer DEFAULT 0 NOT NULL,
     content text NOT NULL,
@@ -333,101 +192,20 @@ CREATE TABLE post (
     CONSTRAINT valid_removed_date CHECK ((date < removed_date))
 );
 
-
-
-
---
--- Name: COLUMN post.votes; Type: COMMENT; Schema: public; Owner: lbaw1721
---
-
-COMMENT ON COLUMN post.votes IS 'Calculated Field';
-
-
---
--- Name: post_from_faculty_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE post_from_faculty_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
---
--- Name: post_from_faculty_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE post_from_faculty_id_seq OWNED BY post.from_faculty_id;
-
-
---
--- Name: post_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE post_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
---
--- Name: post_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE post_id_seq OWNED BY post.id;
-
-
---
--- Name: university; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY post ADD CONSTRAINT post_pkey PRIMARY KEY (id);
+CREATE INDEX post_author ON post USING btree (author_id);
 
 CREATE TABLE university (
-    id integer NOT NULL,
+    id serial NOT NULL,
     name character varying(150) NOT NULL,
     description text NOT NULL,
     country_id integer NOT NULL
 );
 
-
-
-
---
--- Name: university_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE university_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
---
--- Name: university_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE university_id_seq OWNED BY university.id;
-
-
-SET default_with_oids = true;
-
---
--- Name: user; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY university ADD CONSTRAINT university_pkey PRIMARY KEY (id);
 
 CREATE TABLE "user" (
-    id integer NOT NULL,
+    id serial NOT NULL,
     email character varying(100) NOT NULL,
     username character varying(100) NOT NULL,
     birthdate date,
@@ -442,103 +220,22 @@ CREATE TABLE "user" (
     CONSTRAINT valid_last_login CHECK ((last_login > register_date))
 );
 
+ALTER TABLE ONLY "user" ADD CONSTRAINT user_email_key UNIQUE (email);
+ALTER TABLE ONLY "user" ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY "user" ADD CONSTRAINT user_username_key UNIQUE (username);
+CREATE INDEX user_id ON "user" USING hash (id);
 
-
-
---
--- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
---
-
-CREATE SEQUENCE user_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
---
--- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
---
-
-ALTER SEQUENCE user_id_seq OWNED BY "user".id;
-
-
-SET default_with_oids = false;
-
---
--- Name: vote; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
 CREATE TABLE vote (
     user_id integer NOT NULL,
     post_id integer NOT NULL
 );
 
+ALTER TABLE ONLY vote ADD CONSTRAINT vote_pkey PRIMARY KEY (user_id, post_id);
 
 
+-- MOCKUP DATA
 
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY city ALTER COLUMN id SET DEFAULT nextval('city_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY comment ALTER COLUMN id SET DEFAULT nextval('comment_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY country ALTER COLUMN id SET DEFAULT nextval('country_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY faculty ALTER COLUMN id SET DEFAULT nextval('faculty_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY post ALTER COLUMN id SET DEFAULT nextval('post_id_seq'::regclass);
-
-
---
--- Name: from_faculty_id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY post ALTER COLUMN from_faculty_id SET DEFAULT nextval('post_from_faculty_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY university ALTER COLUMN id SET DEFAULT nextval('university_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regclass);
-
-
---
--- Data for Name: city; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
 
 INSERT INTO city VALUES (1, 'Porto', 1);
 INSERT INTO city VALUES (2, 'Sheffield', 2);
@@ -559,16 +256,6 @@ INSERT INTO city VALUES (7, 'Maria', 9);
 INSERT INTO city VALUES (8, 'Aroa', 9);
 
 
---
--- Name: city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('city_id_seq', 62, true);
-
-
---
--- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
 
 INSERT INTO comment VALUES (16, 'Supplement Right 3rd Toe with Autol Sub, Perc Endo Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 10, 29);
 INSERT INTO comment VALUES (18, 'Removal of Infusion Dev from L Carpal Jt, Perc Endo Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 13, 12);
@@ -591,24 +278,6 @@ INSERT INTO comment VALUES (7, 'Beam Radiation of Right Breast using Electrons, 
 INSERT INTO comment VALUES (12, 'Reattachment of Right Upper Leg Muscle, Perc Endo Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 5, 8);
 INSERT INTO comment VALUES (11, 'Supplement Inf Mesent Vein with Nonaut Sub, Perc Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 6, 4);
 
-
---
--- Name: comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('comment_id_seq', 34, true);
-
-
---
--- Data for Name: count_votes; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
-
-INSERT INTO count_votes VALUES (15);
-
-
---
--- Data for Name: country; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
 
 INSERT INTO country VALUES (1, 'Portugal', 'pt');
 INSERT INTO country VALUES (2, 'United Kingdom', 'gb');
@@ -859,17 +528,6 @@ INSERT INTO country VALUES (248, 'Zambia', 'zm');
 INSERT INTO country VALUES (249, 'Zimbabwe', 'zw');
 
 
---
--- Name: country_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('country_id_seq', 2, true);
-
-
---
--- Data for Name: faculty; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
-
 INSERT INTO faculty VALUES (1, 'Faculdade de Engenharia', '', 1, 1);
 INSERT INTO faculty VALUES (2, 'Faculty of Engineering', '', 2, 2);
 INSERT INTO faculty VALUES (5, 'University of Nicosia', 'Rosemary - Primerba, Paste', 9, 7);
@@ -894,27 +552,12 @@ INSERT INTO faculty VALUES (23, 'Carthage College', 'Beef - Tenderloin Tails', 6
 INSERT INTO faculty VALUES (3, 'Centre Universitaire de Technologie', 'Dried Peach', 9, 1);
 
 
---
--- Name: faculty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('faculty_id_seq', 24, true);
-
-
---
--- Data for Name: flag_comment; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
-
 INSERT INTO flag_comment VALUES (5, 12, 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_comment VALUES (9, 3, 'Vestibulum justo.', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_comment VALUES (2, 11, 'Lorem rhoncus.', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_comment VALUES (8, 6, 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_comment VALUES (9, 7, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', '2018-03-22 11:16:36.111183+00', false);
 
-
---
--- Data for Name: flag_post; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
 
 INSERT INTO flag_post VALUES (11, 4, 'Universal clear-thinking process improvement', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_post VALUES (6, 11, 'Optional bandwidth-monitored flexibility', '2018-03-22 11:16:36.111183+00', true);
@@ -923,20 +566,12 @@ INSERT INTO flag_post VALUES (27, 4, 'Triple-buffered clear-thinking hub', '2018
 INSERT INTO flag_post VALUES (17, 7, 'Fundamental full-range superstructure', '2018-03-22 11:16:36.111183+00', true);
 
 
---
--- Data for Name: flag_user; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
-
 INSERT INTO flag_user VALUES (6, 12, 'Exclusive reciprocal emulation', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_user VALUES (25, 8, 'De-engineered grid-enabled data-warehouse', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_user VALUES (16, 7, 'Quality-focused impactful support', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_user VALUES (9, 14, 'Up-sized analyzing function', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_user VALUES (1, 14, 'User-centric foreground forecast', '2018-03-22 11:16:36.111183+00', false);
 
-
---
--- Data for Name: following; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
 
 INSERT INTO following VALUES (4, 7, '2018-03-22');
 INSERT INTO following VALUES (3, 14, '2018-03-22');
@@ -968,10 +603,6 @@ INSERT INTO following VALUES (29, 5, '2018-03-22');
 INSERT INTO following VALUES (23, 14, '2018-03-22');
 
 
---
--- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
-
 INSERT INTO post VALUES (4, 'est donec odio justo sollicitudin ut suscipit a', 26, 'Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 2001, '2018-03-22 11:16:36.111183+00', NULL, NULL, 12, 5, 11, 'High', 'Cheap', 'Neutral', 'Accessible', '''donec'':2 ''est'':1 ''justo'':4 ''odio'':3 ''sollicitudin'':5 ''suscipit'':7 ''ut'':6', '''aenean'':9 ''ant'':2 ''conval'':17,21 ''donec'':11 ''dui'':5 ''egesta'':7 ''eget'':14,22 ''eleifend'':23 ''eu'':26 ''fermentum'':10 ''libero'':20 ''luctus'':24 ''massa'':15 ''matti'':6 ''mauri'':13 ''metus'':8 ''nequ'':19 ''nibh'':27 ''nulla'':18 ''sed'':1 ''tempor'':16 ''tortor'':4 ''ultrici'':25 ''ut'':12 ''vivamus'':3');
 INSERT INTO post VALUES (1, 'libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis', 21, 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 2012, '2018-03-22 11:16:36.111183+00', NULL, NULL, 19, 17, 7, 'High', 'Cheap', 'Friendly', 'Easy', '''amet'':13 ''ant'':18 ''conval'':2 ''dignissim'':15 ''eget'':3 ''eleifend'':4 ''eu'':7 ''id'':10 ''ipsum'':19 ''justo'':11 ''libero'':1 ''luctus'':5 ''nibh'':8 ''primi'':20 ''quisqu'':9 ''sapien'':14 ''sit'':12 ''ultrici'':6 ''vestibulum'':16,17', '''aenean'':1 ''amet'':24 ''ant'':29 ''conval'':9,13 ''cubilia'':39 ''cura'':40 ''dapibus'':42 ''dignissim'':26 ''dolor'':43 ''donec'':3,46 ''eget'':6,14 ''eleifend'':15 ''ero'':55 ''est'':45 ''et'':36,54 ''eu'':18 ''faucibus'':33 ''fermentum'':2 ''feugiat'':53 ''id'':21 ''ipsum'':30 ''justo'':22,48 ''libero'':12 ''luctus'':16,35 ''massa'':7 ''mauri'':5 ''nequ'':11 ''nibh'':19 ''nulla'':10,41 ''odio'':47 ''orci'':34 ''posuer'':38 ''primi'':31 ''quisqu'':20 ''sapien'':25 ''sit'':23 ''sollicitudin'':49 ''suscipit'':51 ''tempor'':8 ''ultric'':37 ''ultrici'':17 ''ut'':4,50 ''vel'':44 ''vestibulum'':27,28');
 INSERT INTO post VALUES (3, 'vestibulum ante ipsum primis in faucibus', 9, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 21, 13, 5, 'High', 'Cheap', 'Neutral', 'Accessible', '''ant'':2 ''faucibus'':6 ''ipsum'':3 ''primi'':4 ''vestibulum'':1', '''congu'':40 ''cras'':12 ''eget'':27,39,41 ''elementum'':7,29 ''erat'':3,34,36 ''ero'':28,37 ''facilisi'':11 ''id'':4 ''lacus'':21 ''maecena'':19 ''mauri'':5 ''nec'':15 ''nisi'':16 ''non'':13 ''nonummi'':18 ''nulla'':1,10,26,44 ''nullam'':8 ''nunc'':45 ''pellentesqu'':30 ''porta'':32 ''purus'':46 ''quisqu'':31,35 ''rutrum'':43 ''semper'':42 ''tincidunt'':20 ''ut'':2 ''varius'':9 ''vel'':25 ''velit'':14,23 ''vivamus'':24 ''viverra'':38 ''volutpat'':33 ''vulput'':6,17');
@@ -988,24 +619,6 @@ INSERT INTO post VALUES (14, 'nec euismod scelerisque quam turpis adipiscing lor
 INSERT INTO post VALUES (15, 'et commodo vulputate justo in blandit ultrices', 9, 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 24, 5, 9, 'Too High', 'Almost Free', 'Best People On Earth', 'Tough', '''blandit'':6 ''commodo'':2 ''et'':1 ''justo'':4 ''ultric'':7 ''vulput'':3', '''aliquet'':12 ''amet'':34 ''congu'':24 ''dui'':18 ''eleifend'':35 ''feli'':3 ''fusc'':1 ''lacus'':5 ''laoreet'':9 ''lectus'':44 ''libero'':37 ''ligula'':32 ''loborti'':31 ''mauri'':8 ''molesti'':41 ''morbi'':6 ''nam'':23 ''nibh'':42 ''nisl'':15 ''nullam'':40 ''nunc'':16 ''orci'':39 ''pede'':30,36 ''porta'':27 ''posuer'':2 ''pulvinar'':13 ''quam'':29 ''qui'':38 ''rhoncus'':11,17 ''risus'':25 ''sagitti'':22 ''sed'':4,14,21 ''sem'':7,20 ''semper'':26 ''sit'':33 ''ut'':10 ''vel'':19 ''volutpat'':28');
 INSERT INTO post VALUES (2, 'erat fermentum justo nec condimentum neque sapien', 2, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 1995, '2018-03-22 11:16:36.111183+00', NULL, NULL, 4, 16, 12, 'Too High', 'Cheap', 'Friendly', 'Tough', '''condimentum'':5 ''erat'':1 ''fermentum'':2 ''justo'':3 ''nec'':4 ''nequ'':6 ''sapien'':7', '''accumsan'':26 ''ant'':10,12 ''blandit'':6 ''consequat'':31 ''conval'':29 ''cubilia'':22 ''cura'':23 ''curabitur'':28 ''dolor'':39 ''donec'':37 ''dui'':24,30,32 ''eleifend'':36 ''et'':19 ''faucibus'':16,25 ''fringilla'':45 ''interdum'':8 ''ipsum'':13 ''lectus'':42 ''luctus'':18 ''morbi'':40 ''nec'':33 ''nisi'':34 ''non'':7 ''odio'':27 ''orci'':17 ''posuer'':21 ''primi'':14 ''quam'':2,44 ''rhoncus'':46 ''sapien'':3 ''ultric'':20 ''ut'':5,38 ''varius'':4 ''vel'':41 ''vestibulum'':1,11 ''volutpat'':35');
 
-
---
--- Name: post_from_faculty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('post_from_faculty_id_seq', 1, false);
-
-
---
--- Name: post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('post_id_seq', 1, true);
-
-
---
--- Data for Name: university; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
 
 INSERT INTO university VALUES (1, 'Universidade do Porto', '', 1);
 INSERT INTO university VALUES (2, 'University of Sheffield', '', 2);
@@ -1025,17 +638,6 @@ INSERT INTO university VALUES (15, 'Magdalene', 'mmurriganc@edublogs.org', 8);
 INSERT INTO university VALUES (16, 'Leila', 'lmottersheadd@timesonline.co.uk', 2);
 INSERT INTO university VALUES (17, 'Dollie', 'dbindone@answers.com', 5);
 
-
---
--- Name: university_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('university_id_seq', 17, true);
-
-
---
--- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
 
 INSERT INTO "user" VALUES (2, 'vecto@dannyps.net', 'Dannyps', '2018-03-22', 'mypassword', 'Daniel Silva', '2018-03-22 11:16:07.159934+00', '', NULL, 'active');
 INSERT INTO "user" VALUES (4, 'jlopes@fe.up.pt', 'jcl', '2018-03-22', '$2y$10$e.cV4dOdlHNKfCzs68m0B.XULEeUk5yuR8CCdzL2ZqAAuz1cY0hpq', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
@@ -1079,17 +681,6 @@ INSERT INTO "user" VALUES (14, 'afindenk@phoca.cz', 'afindenk', '2018-03-22', '1
 INSERT INTO "user" VALUES (1, 'pbirkl@disqus.com', 'pbirkl', '2018-03-22', '1G3TZheGQZx2hRv42jC4VSpC6uNGBWzem5', 'Penelope Birk', '2018-03-22 11:16:36.111183+00', 'Postprocedural subglottic stenosis', NULL, 'active');
 
 
---
--- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
---
-
-SELECT pg_catalog.setval('user_id_seq', 43, true);
-
-
---
--- Data for Name: vote; Type: TABLE DATA; Schema: public; Owner: lbaw1721
---
-
 INSERT INTO vote VALUES (29, 2);
 INSERT INTO vote VALUES (6, 6);
 INSERT INTO vote VALUES (9, 3);
@@ -1108,336 +699,82 @@ INSERT INTO vote VALUES (5, 5);
 INSERT INTO vote VALUES (6, 2);
 
 
---
--- Name: city_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY city
-    ADD CONSTRAINT city_pkey PRIMARY KEY (id);
 
 
---
--- Name: comment_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY comment
-    ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
 
 
---
--- Name: country_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY country
-    ADD CONSTRAINT country_pkey PRIMARY KEY (id);
 
 
---
--- Name: faculty_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY faculty
-    ADD CONSTRAINT faculty_pkey PRIMARY KEY (id);
 
 
---
--- Name: flag_comment_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY flag_comment
-    ADD CONSTRAINT flag_comment_pkey PRIMARY KEY (flagger_id, comment_id);
 
 
---
--- Name: flag_post_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY flag_post
-    ADD CONSTRAINT flag_post_pkey PRIMARY KEY (flagger_id, post_id);
 
 
---
--- Name: flag_user_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY flag_user
-    ADD CONSTRAINT flag_user_pkey PRIMARY KEY (flagger_id, flagged_id);
 
 
---
--- Name: following_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY following
-    ADD CONSTRAINT following_pkey PRIMARY KEY (follower_id, followed_id);
 
+ALTER TABLE ONLY city ADD CONSTRAINT city_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
---
--- Name: post_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY post
-    ADD CONSTRAINT post_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY comment ADD CONSTRAINT comment_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
---
--- Name: university_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY comment ADD CONSTRAINT comment_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE ONLY university
-    ADD CONSTRAINT university_pkey PRIMARY KEY (id);
 
+ALTER TABLE ONLY faculty ADD CONSTRAINT faculty_city_id_fkey FOREIGN KEY (city_id) REFERENCES city(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
---
--- Name: user_email_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY "user"
-    ADD CONSTRAINT user_email_key UNIQUE (email);
+ALTER TABLE ONLY faculty ADD CONSTRAINT faculty_university_id_key FOREIGN KEY (university_id) REFERENCES university(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
---
--- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY flag_comment ADD CONSTRAINT flag_comment_comment_id_fkey FOREIGN KEY (comment_id) REFERENCES comment(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE ONLY "user"
-    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
 
+ALTER TABLE ONLY flag_comment ADD CONSTRAINT flag_comment_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
---
--- Name: user_username_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-ALTER TABLE ONLY "user"
-    ADD CONSTRAINT user_username_key UNIQUE (username);
+ALTER TABLE ONLY flag_post ADD CONSTRAINT flag_post_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
---
--- Name: vote_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY flag_post ADD CONSTRAINT flag_post_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE ONLY vote
-    ADD CONSTRAINT vote_pkey PRIMARY KEY (user_id, post_id);
 
+ALTER TABLE ONLY flag_user ADD CONSTRAINT flag_user_flagged_id_fkey FOREIGN KEY (flagged_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
---
--- Name: comment_post_id; Type: INDEX; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-CREATE INDEX comment_post_id ON comment USING btree (post_id);
+ALTER TABLE ONLY flag_user ADD CONSTRAINT flag_user_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
---
--- Name: post_author; Type: INDEX; Schema: public; Owner: lbaw1721; Tablespace: 
---
+ALTER TABLE ONLY following ADD CONSTRAINT following_followed_id_fkey FOREIGN KEY (followed_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-CREATE INDEX post_author ON post USING btree (author_id);
 
+ALTER TABLE ONLY following ADD CONSTRAINT following_follower_id_fkey FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
---
--- Name: user_id; Type: INDEX; Schema: public; Owner: lbaw1721; Tablespace: 
---
 
-CREATE INDEX user_id ON "user" USING hash (id);
+ALTER TABLE ONLY post ADD CONSTRAINT post_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
---
--- Name: max_two_mobilities_per_year; Type: TRIGGER; Schema: public; Owner: lbaw1721
---
+ALTER TABLE ONLY post ADD CONSTRAINT post_from_faculty_id_fkey FOREIGN KEY (from_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-CREATE TRIGGER max_two_mobilities_per_year BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE max_two_mobilities_per_year();
 
+ALTER TABLE ONLY post ADD CONSTRAINT post_to_faculty_id_fkey FOREIGN KEY (to_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
---
--- Name: post_search_update; Type: TRIGGER; Schema: public; Owner: lbaw1721
---
 
-CREATE TRIGGER post_search_update BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE post_search_update();
+ALTER TABLE ONLY university ADD CONSTRAINT university_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
---
--- Name: update_vote; Type: TRIGGER; Schema: public; Owner: lbaw1721
---
+ALTER TABLE ONLY vote ADD CONSTRAINT vote_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-CREATE TRIGGER update_vote AFTER INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE update_vote();
 
-
---
--- Name: user_prevent_self_flag_comment; Type: TRIGGER; Schema: public; Owner: lbaw1721
---
-
-CREATE TRIGGER user_prevent_self_flag_comment BEFORE INSERT OR UPDATE ON flag_comment FOR EACH ROW EXECUTE PROCEDURE user_prevent_self_flag_comment();
-
-
---
--- Name: vote_prevent_own_user; Type: TRIGGER; Schema: public; Owner: lbaw1721
---
-
-CREATE TRIGGER vote_prevent_own_user BEFORE INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE vote_prevent_own_user();
-
-
---
--- Name: city_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY city
-    ADD CONSTRAINT city_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: comment_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY comment
-    ADD CONSTRAINT comment_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: comment_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY comment
-    ADD CONSTRAINT comment_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: faculty_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY faculty
-    ADD CONSTRAINT faculty_city_id_fkey FOREIGN KEY (city_id) REFERENCES city(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: faculty_university_id_key; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY faculty
-    ADD CONSTRAINT faculty_university_id_key FOREIGN KEY (university_id) REFERENCES university(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: flag_comment_comment_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY flag_comment
-    ADD CONSTRAINT flag_comment_comment_id_fkey FOREIGN KEY (comment_id) REFERENCES comment(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: flag_comment_flagger_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY flag_comment
-    ADD CONSTRAINT flag_comment_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: flag_post_flagger_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY flag_post
-    ADD CONSTRAINT flag_post_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: flag_post_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY flag_post
-    ADD CONSTRAINT flag_post_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: flag_user_flagged_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY flag_user
-    ADD CONSTRAINT flag_user_flagged_id_fkey FOREIGN KEY (flagged_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: flag_user_flagger_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY flag_user
-    ADD CONSTRAINT flag_user_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: following_followed_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY following
-    ADD CONSTRAINT following_followed_id_fkey FOREIGN KEY (followed_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: following_follower_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY following
-    ADD CONSTRAINT following_follower_id_fkey FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: post_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY post
-    ADD CONSTRAINT post_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: post_from_faculty_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY post
-    ADD CONSTRAINT post_from_faculty_id_fkey FOREIGN KEY (from_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: post_to_faculty_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY post
-    ADD CONSTRAINT post_to_faculty_id_fkey FOREIGN KEY (to_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: university_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY university
-    ADD CONSTRAINT university_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: vote_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY vote
-    ADD CONSTRAINT vote_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: vote_user_id_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
---
-
-ALTER TABLE ONLY vote
-    ADD CONSTRAINT vote_user_id_fkey1 FOREIGN KEY (user_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: public; Type: ACL; Schema: -; Owner: lbaw1721
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM lbaw1721;
-GRANT ALL ON SCHEMA public TO lbaw1721;
-
-
---
--- PostgreSQL database dump complete
---
+ALTER TABLE ONLY vote ADD CONSTRAINT vote_user_id_fkey1 FOREIGN KEY (user_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
