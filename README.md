@@ -12,7 +12,7 @@
     * Status: **[not submited]**
     * Tasks [deadline 09/04/2018]
       * Afonso - Module Post (with module description); Module Flag (with module description); Module User Admin (write routes and include module description)
-      * Daniel - [A6_2] change post frequency to hundreds per year and similar stuff; find copy past of `SELECT01`; in `SELECT02` say why no clustering (impact on updates); `SELECT 04` decide between btree (btree does need range) and hash (for high cardinality); submeter A6_2[A7] Module Authentication (with module description)
+      * Daniel - [A6_2] ~change post frequency to hundreds per year and similar stuff; find copy past of `SELECT01`; in `SELECT02` say why no clustering (impact on updates); `SELECT 04` decide between btree (btree does need range) and hash (for high cardinality)~; submeter A6_2[A7] Module Authentication (with module description)
       * Miguel - ~[A6_2] clear SQL (remove comments, remove useless, join stuff for the same table);~ [A7] Module Users (with module description); Module Static Pages (with module description); 
       * Vitor - create table stub; Module Comments (with module description); Module User Administration (with module description);
       
@@ -21,7 +21,7 @@
     * [indexes slides](https://web.fe.up.pt/~arestivo/presentation/indexes/)
     * Status: **[submited]**
     * Tasks [deadline 30/03/2018]
-      * Afonso - [fake-data] use [mockaroo](https://www.mockaroo.com/) to generate some more fake data (not too much) for the tables (see the lines that already exist); ~[frequent-updates] insert query for flag_comment, flag_post, flag_user~; ~[frequent-updates] to insert a new post~; ~[trigger] to calculate the number of votes in a post, whenever a vote is cast or deleted~;
+      * Afonso - ~[fake-data] use [mockaroo](https://www.mockaroo.com/) to generate some more fake data (not too much) for the tables (see the lines that already exist)~; ~[frequent-updates] insert query for flag_comment, flag_post, flag_user~; ~[frequent-updates] to insert a new post~; ~[trigger] to calculate the number of votes in a post, whenever a vote is cast or deleted~;
       * Daniel - ~[performance-index] for user attributes using hash (high cardinality); [performance-index] for post faculties and similar (if found) using btree (medium cardinality);~ [editor] put all the SQL (from the A5) together (see example); [editor] fix numeration in the A6 query names; [editor] remove comments and brush up A6 and deliver; (note from M: verificar se as colunas search_title e search_content aparecem no SQL da criação das tabelas).    
       * Miguel - ~[full-text-search-index] for search_title and search_content (explain why GIN over GIST)~; ~[trigger] for the full text search ts_vector update~; ~[trigger] to prevent users from voting on own post~; ~[trigger] to prevent users from flagging own posts~; ~[trigger] similar for comments~; ~[trigger] to ensure that a user cannot have more than two mobilities in the same year~. 
       * Vitor - ~[frequent-updates] for flagging something: flag_comment, flag_post, flag_user~; ~[frequent-updates] to create a post (see the ones already done)~; ~[frequent-updates] to update post (easy after insert)~; ~[frequent-updates] for archiving flags (flag_comment, flag_post, flag_user)~; ~[frequent-updates] to delete a comment~; 
