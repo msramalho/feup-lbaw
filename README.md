@@ -14,8 +14,17 @@
       * Afonso - Module Post (with module description); Module Flag (with module description); Module User Admin (write routes and include module description)
       * Daniel - [A6_2] ~change post frequency to hundreds per year and similar stuff; find copy past of `SELECT01`; in `SELECT02` say why no clustering (impact on updates); `SELECT 04` decide between btree (btree does need range) and hash (for high cardinality)~; submeter A6_2[A7] Module Authentication (with module description)
       * Miguel - ~[A6_2] clear SQL (remove comments, remove useless, join stuff for the same table);~ [A7] Module Users (with module description); Module Static Pages (with module description); 
-      * Vitor - ~create table stub~; ~Module Comments (with module description)~; Module User Administration (with module description);
-      
+      * Vitor - ~create table stub~; ~Module Comments (with module description)~; Module University Faculty Administration(UFA) (with module description);
+   * Modules:
+      * [D] M01:Authentication
+      * [M] M02:User Profile
+      * [A] M03:Posts
+      * [V] M04:University Faculty Administration
+      * [A] M05:User Administration
+      * ~M06:Votes~
+      * [M] M06:Static Pages
+      * [V] M07:Comments
+      * [A] M08:Flags
  * [A6](https://hackmd.io/JMpTEtGyTYGeBeBYbTGIZA) Editor: **Daniel**
     * [trigger slides](https://web.fe.up.pt/~arestivo/presentation/triggers/)
     * [indexes slides](https://web.fe.up.pt/~arestivo/presentation/indexes/)
