@@ -6,6 +6,13 @@
  * Miguel Ramalho - up201403027@fe.up.pt
  * Vítor Minhoto - up201303086@fe.up.pt
 
+## Editor Notes
+ * Check that all numeration is in ascending order
+ * check that no quoted instrcutions is left on the artefact
+ * check that all the urls are working
+ * check the submission date
+ * check the revision information
+
 ## Artefacts
 
  * [A7](https://hackmd.io/Hk36u2otREmVxBWReAERnA) Editor: **Miguel**
