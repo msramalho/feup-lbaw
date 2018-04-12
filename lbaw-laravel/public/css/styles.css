@@ -1,0 +1,422 @@
+/**
+  * Colors
+ */
+
+:root {
+    --primary-color: rgb(46, 60, 86);
+    --secondary-color: rgb(59, 88, 143);
+    --text-primary-color: rgb(52, 58, 64);
+}
+
+/**
+ * Main
+ */
+
+body {
+    margin-top: 90px;
+}
+
+.bg-navbar {
+    /* background-color: #343a40 !important; */
+    /* background-color: rgb(20, 41, 84) !important; */
+    background-color: var(--primary-color) !important;
+}
+
+a,
+h4 {
+    color: var(--secondary-color);
+}
+
+a:hover,
+a:checked,
+h4:hover,
+h4:visited,
+h4:active,
+h4:link {
+    color: var(--primary-color);
+}
+
+.btn-primary {
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--text-primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color) !important;
+}
+
+.btn-primary.active:hover {
+    background-color: var(--secondary-color) !important;
+}
+
+.btn-primary.active {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-secondary.active {
+    background-color: var(--primary-color) !important;
+}
+
+@font-face {
+    font-family: 'aqua';
+    src: url('aqua.woff2') format('woff2'), url('aqua.ttf') format('truetype'), url('aqua.woff') format('woff');
+}
+
+.navbar-brand {
+    font-family: 'aqua', Fallback, sans-serif;
+    font-size: 1.75rem;
+}
+
+div.dropdown a#logInDropdown {
+    color: white !important;
+}
+
+div.dropdown a#logInDropdown:hover {
+    color: #949494 !important;
+}
+
+/**
+ * Style for view post page
+ */
+
+ article>div.container>div{
+	 position:relative;
+ }
+ 
+ 
+ article>div.container>div>div.top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    max-width: 90%;
+}
+
+article>div.container>div>div.top-left>h1 {
+    font-size: 2em;
+    text-shadow: black 1px 1px 5px;
+    color: white;
+}
+
+@media (max-width: 30em) {
+    article>div.container>div>div.top-left>h1 {
+        font-size: 5vw;
+        max-width: 80%;
+    }
+}
+
+article>div.container>div>img {
+    width: 100%;
+}
+
+article>div.container {
+    position: relative;
+}
+
+article>div.container>div.row {
+    margin: 20px 10px 10px;
+}
+
+article>div.container>div.row:first-child{
+	margin:0;
+	padding: 20px 10px 10px;
+}
+
+article>div.container>div.row:first-child *{
+	margin:0;
+	padding: 0;
+}
+
+article>div.container>div.article-comments>h2 {
+    font-size: 1.75em;
+}
+
+article>div.container>div.article-comments>div.article-comment {
+    margin-bottom: 5px;
+    padding-bottom: 25px !important;
+    /*space for flag button*/
+}
+
+article>div.container>div.article-comments>div.article-comment>img {
+    width: 50px;
+    height: 50px;
+}
+
+article>div.container>div.article-comments>div.article-comment>h3 {
+    display: inline;
+    margin-left: 20px;
+    vertical-align: sub;
+}
+
+article>div.container>div.article-comments>div.article-comment>p {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-bottom: 5px;
+}
+
+article>div.container>div.article-comments>div.article-comment>img {
+    width: 50px;
+    height: 50px;
+}
+
+article>div.container>div.article-comments>div.article-comment>h3 {
+    display: inline;
+    margin-left: 20px;
+    vertical-align: sub;
+}
+
+article>div.container>div.article-comments>div.article-comment>p {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+article>div.container>div.row:nth-child(4)>div:first-child {
+    font-size: x-large;
+}
+
+article>div.container>div.row:nth-child(4)>div:first-child>button {
+    outline: none;
+    box-shadow: none !important;
+}
+
+article>div.container>div.article-comments>div>div.flag-comment {
+    float: right;
+}
+
+article>div.container>div.row i+span {
+    padding: 0px 8px 0px 0px;
+}
+
+article>div.container>div.row i+span::before {
+    content: "\00a0";
+}
+
+label.btn.btn-secondary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.btn-group.btn-group-toggle {
+    max-width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .col-md-1>p {
+        margin-right: -17px;
+    }
+}
+
+@media (max-width: 768px) {
+    div.jumbotron div.container {
+        margin-bottom: 1.5rem;
+    }
+    button.upvoteBtn {
+        margin-bottom: 1rem;
+    }
+    h4.card-title {
+        white-space: normal;
+        text-align: left;
+    }
+    label.btn.btn-secondary {
+        white-space: normal;
+        text-align: left;
+        text-overflow: ellipsis;
+        overflow: visible;
+    }
+    button#post-create {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 405px) {
+    label.btn.btn-secondary {
+        overflow: hidden;
+    }
+}
+
+/**
+  * FAQ Page
+ */
+
+div.container.faq div#accordion div.faqHeader {
+    font-size: 27px;
+    margin: 20px;
+    color: #343a40;
+}
+
+.container.faq #accordion .card {
+    padding: 0rem;
+    border: 0rem;
+}
+
+/**
+  * Statistics Page
+ */
+
+.counter-number-group.statistic {
+    margin: 1.4em 0;
+    display: grid;
+}
+
+.counter.counter-md .counter-number {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.counter.counter-md .counter-number.text-uppercase {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 0.5em;
+    line-height: 1em;
+    display: grid;
+    max-height: 11rem;
+}
+
+.counter.counter-md .counter-number.text-uppercase .fa.fa-user {
+    display: grid;
+    margin-top: 1rem;
+    font-size: 2em;
+}
+
+.counter-label.text-uppercase {
+    font-size: 1.25rem;
+    display: grid;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1em;
+}
+
+.row .col-md-3 .card.card-block.p-25 {
+    background-color: inherit;
+    border: 0;
+}
+
+/**
+  * Recover Password
+ */
+
+.container.passwordForgotten {
+    width: 0 auto;
+}
+
+.panel.panel-default>.panel-body>.text-center {
+    width: 0 auto;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+/**
+  * Post
+ */
+
+div#feed-content>div {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/**
+ * Style for User page
+ */
+
+/* Profile container */
+
+/* Profile sidebar */
+
+.imgProfile.rounded {
+    width: 79px;
+    height: 79px;
+}
+
+/*PROBABLY MAKE CHANGES HERE*/
+
+.profile-usertitle .profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle .profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+}
+
+.profileSidebar_followDescription {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    color: #949494;
+    text-align: left;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+}
+
+/*Profile Sidebar Following*/
+
+.Sidebar_header {
+    margin-top: 0;
+    margin-left: 11px;
+    margin-bottom: 9px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #373c3f;
+    letter-spacing: .6px;
+    font-weight: 500;
+}
+
+.FollowingListItem_image {
+    float: left;
+    overflow: hidden;
+    width: 42px;
+    height: 42px;
+    margin-right: 3px;
+}
+
+/* Profile Content */
+
+.FollowingListItem_userLink {
+    color: #373c3f;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.FollowingListItem__followers {
+    font-size: 14px;
+    color: #373c3f;
+}
+
+.AboutListItem {
+    margin-bottom: 0px;
+    overflow: hidden;
+    padding: 0px 18px 0px 20px;
+}
+
+.AboutIcon {
+    width: 18px;
+    height: 18px;
+}
+
+#my-awesome-dropzone {
+    height: 200px;
+    width: 200px;
+}
+
+a[href="http://editor.froala.com"],
+a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
+    display: none !important;
+    position: absolute;
+    top: -99999999px;
+}
