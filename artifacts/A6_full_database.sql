@@ -71,7 +71,7 @@ END
 $$;
 
 
-CREATE TRIGGER user_prevent_self_flag_comment BEFORE INSERT OR UPDATE ON flag_comment FOR EACH ROW EXECUTE PROCEDURE ser_prevent_self_flag_comment();
+CREATE TRIGGER user_prevent_self_flag_comment BEFORE INSERT OR UPDATE ON flag_comment FOR EACH ROW EXECUTE PROCEDURE user_prevent_self_flag_comment();
 
 
 CREATE FUNCTION vote_prevent_own_user() RETURNS trigger
