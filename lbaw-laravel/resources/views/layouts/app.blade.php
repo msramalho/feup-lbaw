@@ -15,10 +15,7 @@
     <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-
-    <!-- JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    @yield('styles')
 </head>
 
 <body class="bg-light">
@@ -27,4 +24,11 @@
     @include('partials.footer')
 </body>
 
+<!-- JavaScript -->
+<script type="text/javascript" src="{{ asset('js/external/jquery-3.3.1.min.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('js/external/bootstrap.min.js') }}" ></script>
+<script type="text/javascript" defer>
+    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+</script>
+@yield('scripts')
 </html>

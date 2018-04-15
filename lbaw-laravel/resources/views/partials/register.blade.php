@@ -28,3 +28,7 @@
 		</div>
 	</div>
 </li>
+@section("scripts")
+@parent {{-- add to the end multiple times --}}
+<script type="text/javascript" src="{{ asset('js/pages/partials/register.js') }}" ></script>
+@endsection
