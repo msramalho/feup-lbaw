@@ -15,8 +15,17 @@
 
 ## Artefacts
 
+ * [A8](https://hackmd.io/Vvtgjz2uTt-vuHSH216TtA) Editor: **Vitor**
+   * Status: **[not submited]**
+   * Tasks [deadline 16/04/2018]:
+     * Afonso - 
+     * Daniel - 
+     * Miguel - 
+     * Vitor  - 
+   * [Teachers instructions](https://github.com/lbaw-admin/lbaw-laravel)
  * [A7](https://hackmd.io/Hk36u2otREmVxBWReAERnA) Editor: **Miguel**
     * Status: **[submited]**
+    * Status revision: **[not submited]**
     * Tasks [deadline 09/04/2018]
       * Afonso - ~Module Post (with module description)~; ~Module Flag (with module description)~; ~Module User Admin (write routes and include module description)~
       * Daniel - [A6_2] ~change post frequency to hundreds per year and similar stuff; find copy past of `SELECT01`; in `SELECT02` say why no clustering (impact on updates); `SELECT 04` decide between btree (btree does need range) and hash (for high cardinality)~; submeter A6_2[A7] Module Authentication (with module description)
