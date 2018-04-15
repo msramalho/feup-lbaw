@@ -21,8 +21,8 @@
    * Tasks [deadline 16/04/2018]:
      * Afonso - 
      * Daniel - 
-     * Miguel - 
-     * Vitor  - 
+     * Miguel - ~M06:Static Pages~
+     * Vitor  - 
      * Unassigned:
         * [ ] bla bla
    * [Teachers instructions](https://github.com/lbaw-admin/lbaw-laravel)
