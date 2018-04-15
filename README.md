@@ -22,6 +22,8 @@
      * Daniel - 
      * Miguel - 
      * Vitor  - 
+     * Unassigned:
+        * [ ] bla bla
    * [Teachers instructions](https://github.com/lbaw-admin/lbaw-laravel)
  * [A7](https://hackmd.io/Hk36u2otREmVxBWReAERnA) Editor: **Miguel**
     * Status: **[submited]**
