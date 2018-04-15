@@ -42,7 +42,7 @@
       * ~[V] M07:Comments~
       * ~[A] M08:Flags~
     * Fixes:
-      - logout: falta redirect
+      - ~logout: falta redirect~
       - editar foto: corrigir rota
       - edit password action: remove pwd check
       - edit password form: sai submit, entra AJAX.
