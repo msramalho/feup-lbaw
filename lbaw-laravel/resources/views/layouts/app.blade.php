@@ -12,8 +12,6 @@
     <title>{{ config('app.name', 'Vecto') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/milligram.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -21,13 +19,12 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script type="text/javascript" src={{ asset( 'js/app.js') }} defer></script>
 </head>
 
 <body class="bg-light">
     @include('partials.navbar')
-    <h1><a href="{{ url('/cards') }}">Vecto</a></h1>
     @yield('content')
+    @include('partials.footer')
 </body>
 
 </html>
