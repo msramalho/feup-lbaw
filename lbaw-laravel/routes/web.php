@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', 'IndexController@show');
+Route::view('/', 'pages.index');
+
+// Static Pages
+Route::view('/about', 'pages.static.about');
+Route::view('/contacts', 'pages.static.contacts');
+Route::view('/faq', 'pages.static.faq');
+Route::view('/statistics', 'pages.static.statistics');
+
 
 // Cards
 Route::get('cards', 'CardController@list');
