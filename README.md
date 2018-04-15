@@ -1,5 +1,6 @@
 # Project 1: Collaborative news
 ## Group 21
+[JCL LBAW doku](https://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/index)
 ## Members
  * Afonso Ramos - up201506239@fe.up.pt
  * Daniel Silva - up201503212@fe.up.pt
