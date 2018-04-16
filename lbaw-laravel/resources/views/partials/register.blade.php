@@ -4,7 +4,7 @@
 			Sign Up
 		</a>
 		@php $is_register = Request::get("action")=="register" @endphp
-		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ Request::get("action")=="register"?"open":""}}" >
+		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ Request::get("action")=="register"?"show":""}}" >
 			<form class="px-4 py-3" action="{{ url('register') }}" method="POST">
 				<div class="form-group">
 					<input type="text" class="form-control" id="name" name="name" placeholder="name" required>
