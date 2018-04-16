@@ -18,6 +18,7 @@
 				<div class="form-group">
 					<input type="password" class="form-control" id="register_password" name="password" placeholder="password" required>
 				</div>
+				<input type="hidden" name='_token' id='csrfToken_reg' value="{{csrf_token()}}">
 				<input type="submit" class="btn btn-dark" value="Sign Up">
 			</form>
 			<div class="dropdown-divider"></div>

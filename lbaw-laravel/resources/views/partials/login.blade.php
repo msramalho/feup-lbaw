@@ -13,6 +13,7 @@
 				<div class="form-group">
 					<input type="password" class="form-control" id="login_password" name="password" placeholder="password" required>
 				</div>
+				<input type="hidden" name='_token' id='csrfToken_login' value="{{csrf_token()}}">
 				<button type="submit" class="btn btn-dark">Log In</button>
 			</form>
 			<div class="dropdown-divider"></div>
