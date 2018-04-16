@@ -46,7 +46,7 @@
       * ~[A] M08:Flags~
     * Fixes:
       - ~logout: falta redirect~
-      - ~editar foto: corrigir rota
+      - ~editar foto: corrigir rota~
       - edit password action: remove pwd check
       - edit password form: sai submit, entra AJAX.
       - title 304: tirar action
