@@ -10,7 +10,38 @@ DROP TABLE IF EXISTS post CASCADE;
 DROP TABLE IF EXISTS university CASCADE;
 DROP TABLE IF EXISTS "user" CASCADE;
 DROP TABLE IF EXISTS vote CASCADE;
+DROP TABLE IF EXISTS cities CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS countries CASCADE;
+DROP TABLE IF EXISTS faculties CASCADE;
+DROP TABLE IF EXISTS flag_comments CASCADE;
+DROP TABLE IF EXISTS flag_posts CASCADE;
+DROP TABLE IF EXISTS flag_users CASCADE;
+DROP TABLE IF EXISTS "followings" CASCADE;
+DROP TABLE IF EXISTS posts CASCADE;
+DROP TABLE IF EXISTS universities CASCADE;
+DROP TABLE IF EXISTS "users" CASCADE;
+DROP TABLE IF EXISTS votes CASCADE;
+DROP TRIGGER IF EXISTS max_two_mobilities_per_year ON post;
+DROP TRIGGER IF EXISTS post_search_update ON post;
+DROP TRIGGER IF EXISTS update_vote ON vote;
+DROP TRIGGER IF EXISTS user_prevent_self_flag_comment ON flag_comment;
+DROP TRIGGER IF EXISTS vote_prevent_own_user ON vote;
+DROP FUNCTION IF EXISTS max_two_mobilities_per_year() CASCADE;
+DROP FUNCTION IF EXISTS post_search_update() CASCADE;
+DROP FUNCTION IF EXISTS update_vote() CASCADE;
+DROP FUNCTION IF EXISTS user_prevent_self_flag_comment() CASCADE;
+DROP FUNCTION IF EXISTS vote_prevent_own_user() CASCADE;
+DROP SEQUENCE IF EXISTS city_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS comment_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS country_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS faculty_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS post_from_faculty_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS post_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS university_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS user_id_seq CASCADE;
 
+/*-.*\n-.*\n-.*\n\nalter table only (.*)\n    add*/
 --
 -- PostgreSQL database dump
 --
