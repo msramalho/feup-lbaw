@@ -6,9 +6,11 @@
 		@php $is_login = Request::get("action")=="login" @endphp
 		<div id="dropdown_login" class="dropdown-menu dropdown-menu-right {{ $is_login ? "show" : ""}}">
 			<form class="px-4 py-3" action="{{ url('login') }}" method="POST">
+				@foreach ($errors->all() as $error)
+					@include("partials.error", ["message"=>$error])
+				@endforeach
 				<div class="form-group">
 					<input type="text" class="form-control" id="login_username" name="username" placeholder="username or email" required >
-					@includeWhen($errors->has('username'), "partials.error", ["message"=>$errors->username])
 				</div>
 				<div class="form-group">
 					<input type="password" class="form-control" id="login_password" name="password" placeholder="password" required>
