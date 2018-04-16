@@ -18,6 +18,7 @@ Route::view('about', 'pages.static.about');
 Route::view('contacts', 'pages.static.contacts');
 Route::view('faq', 'pages.static.faq');
 Route::view('statistics', 'pages.static.statistics');
+Route::view('recover-password', 'pages.static.recover-password');
 
 // Cards
 Route::get('cards', 'CardController@list');
