@@ -1,2 +1,1 @@
-$("#dropdown_login.open").dropdown('toggle');
-$("#dropdown_login.open #login_username").focus();
+$("#dropdown_login.show #login_username").focus();

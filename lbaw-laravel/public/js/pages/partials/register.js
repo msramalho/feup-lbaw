@@ -1,2 +1,1 @@
-$("#dropdown_register.open").dropdown('toggle');
-$("#dropdown_register.open #name").focus();
+$("#dropdown_register.show #name").focus();

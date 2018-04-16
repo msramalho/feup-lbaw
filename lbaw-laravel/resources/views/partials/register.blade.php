@@ -3,7 +3,7 @@
 		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="signUpBtn">
 			Sign Up
 		</a>
-		{{ $is_register = Request::get("action")=="register"}}
+		@php $is_register = Request::get("action")=="register" @endphp
 		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ Request::get("action")=="register"?"open":""}}" >
 			<form class="px-4 py-3" action="{{ url('register') }}" method="POST">
 				<div class="form-group">

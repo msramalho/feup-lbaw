@@ -3,8 +3,8 @@
 		<a class="nav-link dropdown-toggle" href="#" id="logInDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Log In
 		</a>
-		{{ $is_login = Request::get("action")=="login"}}
-		<div id="dropdown_login" class="dropdown-menu dropdown-menu-right {{ $is_login ? "open" : ""}}">
+		@php $is_login = Request::get("action")=="login" @endphp
+		<div id="dropdown_login" class="dropdown-menu dropdown-menu-right {{ $is_login ? "show" : ""}}">
 			<form class="px-4 py-3" action="{{ url('login') }}" method="POST">
 				<div class="form-group">
 					<input type="text" class="form-control" id="login_username" name="username" placeholder="username or email" required >
