@@ -3,11 +3,12 @@
 		<a class="nav-link dropdown-toggle" href="#" id="logInDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Log In
 		</a>
-		<div class="dropdown-menu dropdown-menu-right">
-			<form class="px-4 py-3" action="index-admin.html" method="get">
+		{{ $is_login = Request::get("action")=="login"}}
+		<div id="dropdown_login" class="dropdown-menu dropdown-menu-right {{ $is_login ? "open" : ""}}">
+			<form class="px-4 py-3" action="{{ url('/login') }}" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" id="login_username_email" name="login_username_email" placeholder="username or email"
-					required>
+					<input type="text" class="form-control" id="username" name="username" placeholder="username or email" required >
+					@includeWhen($errors->has('username'), "partials.error", ["message"=>"ups"])
 				</div>
 				<div class="form-group">
 					<input type="password" class="form-control" id="login_pass" name="login_pass" placeholder="password" required>
