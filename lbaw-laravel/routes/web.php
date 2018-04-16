@@ -9,16 +9,15 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::view('/', 'pages.index');
 
 // Static Pages
-Route::view('/about', 'pages.static.about');
-Route::view('/contacts', 'pages.static.contacts');
-Route::view('/faq', 'pages.static.faq');
-Route::view('/statistics', 'pages.static.statistics');
-
+Route::view('about', 'pages.static.about');
+Route::view('contacts', 'pages.static.contacts');
+Route::view('faq', 'pages.static.faq');
+Route::view('statistics', 'pages.static.statistics');
 
 // Cards
 Route::get('cards', 'CardController@list');
@@ -33,8 +32,10 @@ Route::delete('api/item/{id}', 'ItemController@delete');
 
 // Authentication
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('login', function () {return redirect('/?action=login');});
 Route::post('login', 'Auth\LoginController@login');
+Route::get('register', function () {return redirect('/?action=register');});
+// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
