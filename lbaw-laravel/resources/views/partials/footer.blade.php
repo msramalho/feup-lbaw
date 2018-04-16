@@ -11,16 +11,16 @@
 		<div class="text-center col-sm col-md">
 			<ul class="list-inline text-small">
 				<li class="list-inline-item">
-					<a class="text-muted" href="{{ url('/faq') }}">FAQ</a>
+					<a class="text-muted" href="{{ url('faq') }}">FAQ</a>
 				</li>
 				<li class="list-inline-item">
-					<a class="text-muted" href="{{ url('/about') }}">About Vecto</a>
+					<a class="text-muted" href="{{ url('about') }}">About Vecto</a>
 				</li>
 				<li class="list-inline-item">
-					<a class="text-muted" href="{{ url('/contacts') }}">Contacts</a>
+					<a class="text-muted" href="{{ url('contacts') }}">Contacts</a>
 				</li>
 				<li class="list-inline-item">
-					<a class="text-muted" href="{{ url('/statistics') }}">Statistics</a>
+					<a class="text-muted" href="{{ url('statistics') }}">Statistics</a>
 				</li>
 			</ul>
 		</div>
