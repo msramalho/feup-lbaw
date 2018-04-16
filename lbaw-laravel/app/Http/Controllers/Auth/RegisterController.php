@@ -66,7 +66,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $this->redirectTo = '/login';
         $data["password"] = bcrypt($data['password']);
         $data["type"] = "active";
         return User::create($data);
