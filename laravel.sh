@@ -9,6 +9,7 @@ if [ $1 = "up" ]; then
 	php artisan serve &
 	php artisan up
 	xdg-open "http://127.0.0.1:8000/"
+	xdg-open "http://127.0.0.1:5050/"
 elif [ $1 = "down" ]; then
 	docker-compose down
 	php artisan down
