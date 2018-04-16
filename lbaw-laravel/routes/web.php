@@ -36,7 +36,5 @@ Route::delete('api/item/{id}', 'ItemController@delete');
 Route::get('login', function () {return redirect('/?action=login');});
 Route::post('login', 'Auth\LoginController@login');
 Route::get('register', function () {return redirect('/?action=register');});
-// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');

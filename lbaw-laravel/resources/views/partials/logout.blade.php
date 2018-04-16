@@ -1,1 +1,1 @@
-logout
+<a href="{{ url("logout") }}" type="submit" class="btn">Logout</a>
