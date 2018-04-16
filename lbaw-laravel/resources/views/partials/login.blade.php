@@ -5,18 +5,18 @@
 		</a>
 		{{ $is_login = Request::get("action")=="login"}}
 		<div id="dropdown_login" class="dropdown-menu dropdown-menu-right {{ $is_login ? "open" : ""}}">
-			<form class="px-4 py-3" action="{{ url('/login') }}" method="POST">
+			<form class="px-4 py-3" action="{{ url('login') }}" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" id="username" name="username" placeholder="username or email" required >
-					@includeWhen($errors->has('username'), "partials.error", ["message"=>"ups"])
+					<input type="text" class="form-control" id="login_username" name="username" placeholder="username or email" required >
+					@includeWhen($errors->has('username'), "partials.error", ["message"=>$errors->username])
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" id="login_pass" name="login_pass" placeholder="password" required>
+					<input type="password" class="form-control" id="login_password" name="password" placeholder="password" required>
 				</div>
 				<button type="submit" class="btn btn-dark">Log In</button>
 			</form>
 			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="{{ url('/recover-password') }}">Forgot password? No problem</a>
+			<a class="dropdown-item" href="{{ url('recover-password') }}">Forgot password? No problem</a>
 		</div>
 	</div>
 </li>
