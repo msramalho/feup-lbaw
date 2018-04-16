@@ -11,153 +11,19 @@ DROP TABLE IF EXISTS university CASCADE;
 DROP TABLE IF EXISTS "user" CASCADE;
 DROP TABLE IF EXISTS vote CASCADE;
 
--- Tables creation
+--
+-- PostgreSQL database dump
+--
 
-CREATE TABLE city (
-    id serial NOT NULL,
-    name character varying(60) NOT NULL,
-    country_id integer NOT NULL
-);
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
 
-ALTER TABLE ONLY city ADD CONSTRAINT city_pkey PRIMARY KEY (id);
+SET search_path = public, pg_catalog;
 
-CREATE TABLE comment (
-    id serial NOT NULL,
-    content text NOT NULL,
-    date timestamp with time zone DEFAULT now() NOT NULL,
-    removed_reason text,
-    removed_date date,
-    post_id integer NOT NULL,
-    author_id integer NOT NULL,
-    CONSTRAINT valid_removed_date CHECK ((date < removed_date))
-);
-
-
-ALTER TABLE ONLY comment ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
-CREATE INDEX comment_post_id ON comment USING btree (post_id);
-
-CREATE TABLE country (
-    id serial NOT NULL,
-    name character varying(50) NOT NULL,
-    code character(2) NOT NULL
-);
-
-ALTER TABLE ONLY country ADD CONSTRAINT country_pkey PRIMARY KEY (id);
-
-CREATE TABLE faculty (
-    id serial NOT NULL,
-    name character varying(150) NOT NULL,
-    description text NOT NULL,
-    city_id integer NOT NULL,
-    university_id integer
-);
-
-ALTER TABLE ONLY faculty ADD CONSTRAINT faculty_pkey PRIMARY KEY (id);
-
-
-CREATE TABLE flag_comment (
-    flagger_id integer NOT NULL,
-    comment_id integer NOT NULL,
-    reason text NOT NULL,
-    date timestamp with time zone DEFAULT now() NOT NULL,
-    archived boolean DEFAULT false NOT NULL
-);
-
-ALTER TABLE ONLY flag_comment ADD CONSTRAINT flag_comment_pkey PRIMARY KEY (flagger_id, comment_id);
-
-CREATE TABLE flag_post (
-    flagger_id integer NOT NULL,
-    post_id integer NOT NULL,
-    reason text NOT NULL,
-    date timestamp with time zone NOT NULL,
-    archived boolean DEFAULT false NOT NULL
-);
-
-ALTER TABLE ONLY flag_post ADD CONSTRAINT flag_post_pkey PRIMARY KEY (flagger_id, post_id);
-
-CREATE TABLE flag_user (
-    flagger_id integer NOT NULL,
-    flagged_id integer NOT NULL,
-    reason text NOT NULL,
-    date timestamp with time zone DEFAULT now() NOT NULL,
-    archived boolean DEFAULT false NOT NULL
-);
-
-ALTER TABLE ONLY flag_user ADD CONSTRAINT flag_user_pkey PRIMARY KEY (flagger_id, flagged_id);
-
-CREATE TABLE following (
-    follower_id integer NOT NULL,
-    followed_id integer NOT NULL,
-    date date DEFAULT now() NOT NULL,
-    CONSTRAINT cannot_follow_oneself CHECK ((follower_id <> followed_id))
-);
-
-ALTER TABLE ONLY following ADD CONSTRAINT following_pkey PRIMARY KEY (follower_id, followed_id);
-
-CREATE TABLE post (
-    id serial NOT NULL,
-    title character varying(200) NOT NULL,
-    votes integer DEFAULT 0 NOT NULL,
-    content text NOT NULL,
-    school_year integer NOT NULL,
-    date timestamp with time zone DEFAULT now() NOT NULL,
-    removed_reason text,
-    removed_date date,
-    author_id integer NOT NULL,
-    from_faculty_id integer NOT NULL,
-    to_faculty_id integer NOT NULL,
-    beer_cost character varying(25),
-    life_cost character varying(25),
-    native_friendliness character varying(25),
-    work_load character varying(15),
-    search_title tsvector,
-    search_content tsvector,
-    CONSTRAINT valid_removed_date CHECK ((date < removed_date))
-);
-
-ALTER TABLE ONLY post ADD CONSTRAINT post_pkey PRIMARY KEY (id);
-CREATE INDEX post_author ON post USING btree (author_id);
-
-CREATE TABLE university (
-    id serial NOT NULL,
-    name character varying(150) NOT NULL,
-    description text NOT NULL,
-    country_id integer NOT NULL
-);
-
-ALTER TABLE ONLY university ADD CONSTRAINT university_pkey PRIMARY KEY (id);
-
-CREATE TABLE "user" (
-    id serial NOT NULL,
-    email character varying(100) NOT NULL,
-    username character varying(100) NOT NULL,
-    birthdate date,
-    password character varying(60) NOT NULL,
-    name character varying(150),
-    register_date timestamp with time zone DEFAULT now() NOT NULL,
-    description text,
-    last_login timestamp with time zone,
-    type character varying(50) NOT NULL,
-    CONSTRAINT user_type CHECK (((type)::text = ANY (ARRAY['active'::text, 'banned'::text, 'admin'::text]))),
-    CONSTRAINT valid_birthdate CHECK ((birthdate < register_date)),
-    CONSTRAINT valid_last_login CHECK ((last_login > register_date))
-);
-
-ALTER TABLE ONLY "user" ADD CONSTRAINT user_email_key UNIQUE (email);
-ALTER TABLE ONLY "user" ADD CONSTRAINT user_pkey PRIMARY KEY (id);
-ALTER TABLE ONLY "user" ADD CONSTRAINT user_username_key UNIQUE (username);
-CREATE INDEX user_id ON "user" USING hash (id);
-
-
-CREATE TABLE vote (
-    user_id integer NOT NULL,
-    post_id integer NOT NULL
-);
-
-ALTER TABLE ONLY vote ADD CONSTRAINT vote_pkey PRIMARY KEY (user_id, post_id);
-
-
--- Triggers
 
 CREATE FUNCTION max_two_mobilities_per_year() RETURNS trigger
     LANGUAGE plpgsql
@@ -174,9 +40,11 @@ BEGIN
 END
 $$;
 
-CREATE TRIGGER max_two_mobilities_per_year BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE max_two_mobilities_per_year();
 
 
+--
+-- Name: post_search_update(); Type: FUNCTION; Schema: public; Owner: lbaw1721
+--
 
 CREATE FUNCTION post_search_update() RETURNS trigger
     LANGUAGE plpgsql
@@ -199,8 +67,10 @@ END
 $$;
 
 
-CREATE TRIGGER post_search_update BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE post_search_update();
 
+--
+-- Name: update_vote(); Type: FUNCTION; Schema: public; Owner: lbaw1721
+--
 
 CREATE FUNCTION update_vote() RETURNS trigger
     LANGUAGE plpgsql
@@ -214,8 +84,10 @@ END
 $$;
 
 
-CREATE TRIGGER update_vote AFTER INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE update_vote();
 
+--
+-- Name: user_prevent_self_flag_comment(); Type: FUNCTION; Schema: public; Owner: lbaw1721
+--
 
 CREATE FUNCTION user_prevent_self_flag_comment() RETURNS trigger
     LANGUAGE plpgsql
@@ -230,8 +102,10 @@ END
 $$;
 
 
-CREATE TRIGGER user_prevent_self_flag_comment BEFORE INSERT OR UPDATE ON flag_comment FOR EACH ROW EXECUTE PROCEDURE user_prevent_self_flag_comment();
 
+--
+-- Name: vote_prevent_own_user(); Type: FUNCTION; Schema: public; Owner: lbaw1721
+--
 
 CREATE FUNCTION vote_prevent_own_user() RETURNS trigger
     LANGUAGE plpgsql
@@ -245,11 +119,423 @@ BEGIN
 END
 $$;
 
-CREATE TRIGGER vote_prevent_own_user BEFORE INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE vote_prevent_own_user();
 
 
--- MOCKUP DATA
+SET default_tablespace = '';
 
+SET default_with_oids = false;
+
+--
+-- Name: city; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE city (
+    id integer NOT NULL,
+    name character varying(60) NOT NULL,
+    country_id integer NOT NULL
+);
+
+
+--
+-- Name: city_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE city_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: city_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE city_id_seq OWNED BY city.id;
+
+
+--
+-- Name: comment; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE comment (
+    id integer NOT NULL,
+    content text NOT NULL,
+    date timestamp with time zone DEFAULT now() NOT NULL,
+    removed_reason text,
+    removed_date date,
+    post_id integer NOT NULL,
+    author_id integer NOT NULL,
+    CONSTRAINT valid_removed_date CHECK ((date < removed_date))
+);
+
+
+
+--
+-- Name: comment_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE comment_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE comment_id_seq OWNED BY comment.id;
+
+
+--
+-- Name: country; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE country (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    code character(2) NOT NULL
+);
+
+
+
+--
+-- Name: country_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE country_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: country_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE country_id_seq OWNED BY country.id;
+
+
+--
+-- Name: faculty; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE faculty (
+    id integer NOT NULL,
+    name character varying(150) NOT NULL,
+    description text NOT NULL,
+    city_id integer NOT NULL,
+    university_id integer
+);
+
+
+
+--
+-- Name: faculty_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE faculty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: faculty_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE faculty_id_seq OWNED BY faculty.id;
+
+
+--
+-- Name: flag_comment; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE flag_comment (
+    flagger_id integer NOT NULL,
+    comment_id integer NOT NULL,
+    reason text NOT NULL,
+    date timestamp with time zone DEFAULT now() NOT NULL,
+    archived boolean DEFAULT false NOT NULL
+);
+
+
+
+--
+-- Name: flag_post; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE flag_post (
+    flagger_id integer NOT NULL,
+    post_id integer NOT NULL,
+    reason text NOT NULL,
+    date timestamp with time zone NOT NULL,
+    archived boolean DEFAULT false NOT NULL
+);
+
+
+
+--
+-- Name: flag_user; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE flag_user (
+    flagger_id integer NOT NULL,
+    flagged_id integer NOT NULL,
+    reason text NOT NULL,
+    date timestamp with time zone DEFAULT now() NOT NULL,
+    archived boolean DEFAULT false NOT NULL
+);
+
+
+
+--
+-- Name: following; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE following (
+    follower_id integer NOT NULL,
+    followed_id integer NOT NULL,
+    date date DEFAULT now() NOT NULL,
+    CONSTRAINT cannot_follow_oneself CHECK ((follower_id <> followed_id))
+);
+
+
+
+--
+-- Name: post; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE post (
+    id integer NOT NULL,
+    title character varying(200) NOT NULL,
+    votes integer DEFAULT 0 NOT NULL,
+    content text NOT NULL,
+    school_year integer NOT NULL,
+    date timestamp with time zone DEFAULT now() NOT NULL,
+    removed_reason text,
+    removed_date date,
+    author_id integer NOT NULL,
+    from_faculty_id integer NOT NULL,
+    to_faculty_id integer NOT NULL,
+    beer_cost character varying(25),
+    life_cost character varying(25),
+    native_friendliness character varying(25),
+    work_load character varying(15),
+    search_title tsvector,
+    search_content tsvector,
+    CONSTRAINT valid_removed_date CHECK ((date < removed_date))
+);
+
+
+
+--
+-- Name: COLUMN post.votes; Type: COMMENT; Schema: public; Owner: lbaw1721
+--
+
+COMMENT ON COLUMN post.votes IS 'Calculated Field';
+
+
+--
+-- Name: post_from_faculty_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE post_from_faculty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: post_from_faculty_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE post_from_faculty_id_seq OWNED BY post.from_faculty_id;
+
+
+--
+-- Name: post_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE post_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: post_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE post_id_seq OWNED BY post.id;
+
+
+--
+-- Name: university; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE university (
+    id integer NOT NULL,
+    name character varying(150) NOT NULL,
+    description text NOT NULL,
+    country_id integer NOT NULL
+);
+
+
+
+--
+-- Name: university_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE university_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: university_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE university_id_seq OWNED BY university.id;
+
+
+SET default_with_oids = true;
+
+--
+-- Name: user; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE "user" (
+    id integer NOT NULL,
+    email character varying(100) NOT NULL,
+    username character varying(100) NOT NULL,
+    birthdate date,
+    password character varying(60) NOT NULL,
+    name character varying(150),
+    register_date timestamp with time zone DEFAULT now() NOT NULL,
+    description text,
+    last_login timestamp with time zone,
+    type character varying(50) DEFAULT 'active' NOT NULL,
+    CONSTRAINT user_type CHECK (((type)::text = ANY (ARRAY['active'::text, 'banned'::text, 'admin'::text]))),
+    CONSTRAINT valid_birthdate CHECK ((birthdate < register_date)),
+    CONSTRAINT valid_last_login CHECK ((last_login > register_date))
+);
+
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: lbaw1721
+--
+
+CREATE SEQUENCE user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lbaw1721
+--
+
+ALTER SEQUENCE user_id_seq OWNED BY "user".id;
+
+
+SET default_with_oids = false;
+
+--
+-- Name: vote; Type: TABLE; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE TABLE vote (
+    user_id integer NOT NULL,
+    post_id integer NOT NULL
+);
+
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY city ALTER COLUMN id SET DEFAULT nextval('city_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY comment ALTER COLUMN id SET DEFAULT nextval('comment_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY country ALTER COLUMN id SET DEFAULT nextval('country_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY faculty ALTER COLUMN id SET DEFAULT nextval('faculty_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY post ALTER COLUMN id SET DEFAULT nextval('post_id_seq'::regclass);
+
+
+--
+-- Name: from_faculty_id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY post ALTER COLUMN from_faculty_id SET DEFAULT nextval('post_from_faculty_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY university ALTER COLUMN id SET DEFAULT nextval('university_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regclass);
+
+
+--
+-- Data for Name: city; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO city VALUES (1, 'Porto', 1);
 INSERT INTO city VALUES (2, 'Sheffield', 2);
@@ -270,6 +556,16 @@ INSERT INTO city VALUES (7, 'Maria', 9);
 INSERT INTO city VALUES (8, 'Aroa', 9);
 
 
+--
+-- Name: city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('city_id_seq', 62, true);
+
+
+--
+-- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO comment VALUES (16, 'Supplement Right 3rd Toe with Autol Sub, Perc Endo Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 10, 29);
 INSERT INTO comment VALUES (18, 'Removal of Infusion Dev from L Carpal Jt, Perc Endo Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 13, 12);
@@ -292,6 +588,17 @@ INSERT INTO comment VALUES (7, 'Beam Radiation of Right Breast using Electrons, 
 INSERT INTO comment VALUES (12, 'Reattachment of Right Upper Leg Muscle, Perc Endo Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 5, 8);
 INSERT INTO comment VALUES (11, 'Supplement Inf Mesent Vein with Nonaut Sub, Perc Approach', '2018-03-22 11:16:36.111183+00', NULL, NULL, 6, 4);
 
+
+--
+-- Name: comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('comment_id_seq', 34, true);
+
+
+--
+-- Data for Name: country; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO country VALUES (1, 'Portugal', 'pt');
 INSERT INTO country VALUES (2, 'United Kingdom', 'gb');
@@ -347,7 +654,7 @@ INSERT INTO country VALUES (51, 'Christmas Island', 'cx');
 INSERT INTO country VALUES (52, 'Cocos (Keeling) Islands', 'cc');
 INSERT INTO country VALUES (53, 'Colombia', 'co');
 INSERT INTO country VALUES (54, 'Comoros', 'km');
-INSERT INTO country VALUES (55, 'Congo (Brazzaville)', 'cg');
+INSERT INTO country VALUES (55, 'Congo (Brazzaville)', 'cg');
 INSERT INTO country VALUES (56, 'Congo, (Kinshasa)', 'cd');
 INSERT INTO country VALUES (57, 'Cook Islands', 'ck');
 INSERT INTO country VALUES (58, 'Costa Rica', 'cr');
@@ -393,7 +700,7 @@ INSERT INTO country VALUES (97, 'Guinea-Bissau', 'gw');
 INSERT INTO country VALUES (98, 'Guyana', 'gy');
 INSERT INTO country VALUES (99, 'Haiti', 'ht');
 INSERT INTO country VALUES (100, 'Heard and Mcdonald Islands', 'hm');
-INSERT INTO country VALUES (101, 'Holy See (Vatican City State)', 'va');
+INSERT INTO country VALUES (101, 'Holy See (Vatican City State)', 'va');
 INSERT INTO country VALUES (102, 'Honduras', 'hn');
 INSERT INTO country VALUES (103, 'Hungary', 'hu');
 INSERT INTO country VALUES (104, 'Iceland', 'is');
@@ -412,8 +719,8 @@ INSERT INTO country VALUES (116, 'Jordan', 'jo');
 INSERT INTO country VALUES (117, 'Kazakhstan', 'kz');
 INSERT INTO country VALUES (118, 'Kenya', 'ke');
 INSERT INTO country VALUES (119, 'Kiribati', 'ki');
-INSERT INTO country VALUES (120, 'Korea (North)', 'kp');
-INSERT INTO country VALUES (121, 'Korea (South)', 'kr');
+INSERT INTO country VALUES (120, 'Korea (North)', 'kp');
+INSERT INTO country VALUES (121, 'Korea (South)', 'kr');
 INSERT INTO country VALUES (122, 'Kuwait', 'kw');
 INSERT INTO country VALUES (123, 'Kyrgyzstan', 'kg');
 INSERT INTO country VALUES (124, 'Lao PDR', 'la');
@@ -509,7 +816,7 @@ INSERT INTO country VALUES (214, 'Svalbard and Jan Mayen Islands', 'sj');
 INSERT INTO country VALUES (215, 'Swaziland', 'sz');
 INSERT INTO country VALUES (216, 'Sweden', 'se');
 INSERT INTO country VALUES (217, 'Switzerland', 'ch');
-INSERT INTO country VALUES (218, 'Syrian Arab Republic (Syria)', 'sy');
+INSERT INTO country VALUES (218, 'Syrian Arab Republic (Syria)', 'sy');
 INSERT INTO country VALUES (219, 'Taiwan, Republic of China', 'tw');
 INSERT INTO country VALUES (220, 'Tajikistan', 'tj');
 INSERT INTO country VALUES (221, 'Tanzania, United Republic of', 'tz');
@@ -532,7 +839,7 @@ INSERT INTO country VALUES (238, 'US Minor Outlying Islands', 'um');
 INSERT INTO country VALUES (239, 'Uruguay', 'uy');
 INSERT INTO country VALUES (240, 'Uzbekistan', 'uz');
 INSERT INTO country VALUES (241, 'Vanuatu', 'vu');
-INSERT INTO country VALUES (242, 'Venezuela (Bolivarian Republic)', 've');
+INSERT INTO country VALUES (242, 'Venezuela (Bolivarian Republic)', 've');
 INSERT INTO country VALUES (243, 'Viet Nam', 'vn');
 INSERT INTO country VALUES (244, 'Virgin Islands, US', 'vi');
 INSERT INTO country VALUES (245, 'Wallis and Futuna Islands', 'wf');
@@ -541,6 +848,17 @@ INSERT INTO country VALUES (247, 'Yemen', 'ye');
 INSERT INTO country VALUES (248, 'Zambia', 'zm');
 INSERT INTO country VALUES (249, 'Zimbabwe', 'zw');
 
+
+--
+-- Name: country_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('country_id_seq', 2, true);
+
+
+--
+-- Data for Name: faculty; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO faculty VALUES (1, 'Faculdade de Engenharia', '', 1, 1);
 INSERT INTO faculty VALUES (2, 'Faculty of Engineering', '', 2, 2);
@@ -566,12 +884,27 @@ INSERT INTO faculty VALUES (23, 'Carthage College', 'Beef - Tenderloin Tails', 6
 INSERT INTO faculty VALUES (3, 'Centre Universitaire de Technologie', 'Dried Peach', 9, 1);
 
 
+--
+-- Name: faculty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('faculty_id_seq', 24, true);
+
+
+--
+-- Data for Name: flag_comment; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
+
 INSERT INTO flag_comment VALUES (5, 12, 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_comment VALUES (9, 3, 'Vestibulum justo.', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_comment VALUES (2, 11, 'Lorem rhoncus.', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_comment VALUES (8, 6, 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_comment VALUES (9, 7, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', '2018-03-22 11:16:36.111183+00', false);
 
+
+--
+-- Data for Name: flag_post; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO flag_post VALUES (11, 4, 'Universal clear-thinking process improvement', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_post VALUES (6, 11, 'Optional bandwidth-monitored flexibility', '2018-03-22 11:16:36.111183+00', true);
@@ -580,12 +913,20 @@ INSERT INTO flag_post VALUES (27, 4, 'Triple-buffered clear-thinking hub', '2018
 INSERT INTO flag_post VALUES (17, 7, 'Fundamental full-range superstructure', '2018-03-22 11:16:36.111183+00', true);
 
 
+--
+-- Data for Name: flag_user; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
+
 INSERT INTO flag_user VALUES (6, 12, 'Exclusive reciprocal emulation', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_user VALUES (25, 8, 'De-engineered grid-enabled data-warehouse', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_user VALUES (16, 7, 'Quality-focused impactful support', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_user VALUES (9, 14, 'Up-sized analyzing function', '2018-03-22 11:16:36.111183+00', true);
 INSERT INTO flag_user VALUES (1, 14, 'User-centric foreground forecast', '2018-03-22 11:16:36.111183+00', false);
 
+
+--
+-- Data for Name: following; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO following VALUES (4, 7, '2018-03-22');
 INSERT INTO following VALUES (3, 14, '2018-03-22');
@@ -617,22 +958,74 @@ INSERT INTO following VALUES (29, 5, '2018-03-22');
 INSERT INTO following VALUES (23, 14, '2018-03-22');
 
 
-INSERT INTO post VALUES (4, 'est donec odio justo sollicitudin ut suscipit a', 26, 'Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 2001, '2018-03-22 11:16:36.111183+00', NULL, NULL, 12, 5, 11, 'High', 'Cheap', 'Neutral', 'Accessible', '''donec'':2 ''est'':1 ''justo'':4 ''odio'':3 ''sollicitudin'':5 ''suscipit'':7 ''ut'':6', '''aenean'':9 ''ant'':2 ''conval'':17,21 ''donec'':11 ''dui'':5 ''egesta'':7 ''eget'':14,22 ''eleifend'':23 ''eu'':26 ''fermentum'':10 ''libero'':20 ''luctus'':24 ''massa'':15 ''matti'':6 ''mauri'':13 ''metus'':8 ''nequ'':19 ''nibh'':27 ''nulla'':18 ''sed'':1 ''tempor'':16 ''tortor'':4 ''ultrici'':25 ''ut'':12 ''vivamus'':3');
-INSERT INTO post VALUES (1, 'libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis', 21, 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 2012, '2018-03-22 11:16:36.111183+00', NULL, NULL, 19, 17, 7, 'High', 'Cheap', 'Friendly', 'Easy', '''amet'':13 ''ant'':18 ''conval'':2 ''dignissim'':15 ''eget'':3 ''eleifend'':4 ''eu'':7 ''id'':10 ''ipsum'':19 ''justo'':11 ''libero'':1 ''luctus'':5 ''nibh'':8 ''primi'':20 ''quisqu'':9 ''sapien'':14 ''sit'':12 ''ultrici'':6 ''vestibulum'':16,17', '''aenean'':1 ''amet'':24 ''ant'':29 ''conval'':9,13 ''cubilia'':39 ''cura'':40 ''dapibus'':42 ''dignissim'':26 ''dolor'':43 ''donec'':3,46 ''eget'':6,14 ''eleifend'':15 ''ero'':55 ''est'':45 ''et'':36,54 ''eu'':18 ''faucibus'':33 ''fermentum'':2 ''feugiat'':53 ''id'':21 ''ipsum'':30 ''justo'':22,48 ''libero'':12 ''luctus'':16,35 ''massa'':7 ''mauri'':5 ''nequ'':11 ''nibh'':19 ''nulla'':10,41 ''odio'':47 ''orci'':34 ''posuer'':38 ''primi'':31 ''quisqu'':20 ''sapien'':25 ''sit'':23 ''sollicitudin'':49 ''suscipit'':51 ''tempor'':8 ''ultric'':37 ''ultrici'':17 ''ut'':4,50 ''vel'':44 ''vestibulum'':27,28');
-INSERT INTO post VALUES (3, 'vestibulum ante ipsum primis in faucibus', 9, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 21, 13, 5, 'High', 'Cheap', 'Neutral', 'Accessible', '''ant'':2 ''faucibus'':6 ''ipsum'':3 ''primi'':4 ''vestibulum'':1', '''congu'':40 ''cras'':12 ''eget'':27,39,41 ''elementum'':7,29 ''erat'':3,34,36 ''ero'':28,37 ''facilisi'':11 ''id'':4 ''lacus'':21 ''maecena'':19 ''mauri'':5 ''nec'':15 ''nisi'':16 ''non'':13 ''nonummi'':18 ''nulla'':1,10,26,44 ''nullam'':8 ''nunc'':45 ''pellentesqu'':30 ''porta'':32 ''purus'':46 ''quisqu'':31,35 ''rutrum'':43 ''semper'':42 ''tincidunt'':20 ''ut'':2 ''varius'':9 ''vel'':25 ''velit'':14,23 ''vivamus'':24 ''viverra'':38 ''volutpat'':33 ''vulput'':6,17');
-INSERT INTO post VALUES (6, 'lacus at turpis donec posuere metus', 2, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', 2003, '2018-03-22 11:16:36.111183+00', NULL, NULL, 25, 8, 20, 'Very Accessible', 'Accessible', 'Hostile', 'Medium', '''donec'':4 ''lacus'':1 ''metus'':6 ''posuer'':5 ''turpi'':3', '''cras'':12 ''eget'':27 ''elementum'':7,29 ''erat'':3 ''ero'':28 ''facilisi'':11 ''id'':4 ''lacus'':21 ''maecena'':19 ''mauri'':5 ''nec'':15 ''nisi'':16 ''non'':13 ''nonummi'':18 ''nulla'':1,10,26 ''nullam'':8 ''pellentesqu'':30 ''tincidunt'':20 ''ut'':2 ''varius'':9 ''vel'':25 ''velit'':14,23 ''vivamus'':24 ''vulput'':6,17');
-INSERT INTO post VALUES (5, 'pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu', 1, 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 1999, '2018-03-22 11:16:36.111183+00', NULL, NULL, 9, 18, 8, 'Very Accessible', 'Cheap', 'Friendly', 'GAAAAAAH!', '''arcu'':12 ''congu'':9 ''iaculi'':8 ''id'':4 ''metus'':11 ''pellentesqu'':1 ''phasellus'':3 ''sapien'':5,7 ''ultric'':2 ''vivamus'':10', '''aliquam'':11 ''ant'':23 ''augu'':12 ''blandit'':27,38 ''commodo'':35 ''consectetu'':16 ''curabitur'':1 ''dictumst'':10 ''eget'':17,45,47 ''erat'':29 ''gravida'':2 ''habitass'':8 ''hac'':7 ''integ'':21,41 ''ipsum'':25 ''justo'':43 ''lacinia'':28,44 ''lorem'':20 ''magna'':32 ''nam'':39 ''nibh'':5 ''nisi'':3 ''nulla'':40 ''nunc'':34 ''pede'':42,50 ''placerat'':36 ''platea'':9 ''praesent'':26,37 ''quam'':13 ''rutrum'':18 ''sed'':31 ''sollicitudin'':14 ''tempus'':48 ''tincidunt'':22,46 ''vel'':24,49 ''vestibulum'':30 ''vita'':15');
+--
+-- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
+
+INSERT INTO post VALUES (4, 'est donec odio justo sollicitudin ut suscipit a', 26, 'Sed ante. Vivamus tortor. Duis mattis egestas metus.
+
+Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 2001, '2018-03-22 11:16:36.111183+00', NULL, NULL, 12, 5, 11, 'High', 'Cheap', 'Neutral', 'Accessible', '''donec'':2 ''est'':1 ''justo'':4 ''odio'':3 ''sollicitudin'':5 ''suscipit'':7 ''ut'':6', '''aenean'':9 ''ant'':2 ''conval'':17,21 ''donec'':11 ''dui'':5 ''egesta'':7 ''eget'':14,22 ''eleifend'':23 ''eu'':26 ''fermentum'':10 ''libero'':20 ''luctus'':24 ''massa'':15 ''matti'':6 ''mauri'':13 ''metus'':8 ''nequ'':19 ''nibh'':27 ''nulla'':18 ''sed'':1 ''tempor'':16 ''tortor'':4 ''ultrici'':25 ''ut'':12 ''vivamus'':3');
+INSERT INTO post VALUES (1, 'libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis', 21, 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.
+
+Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 2012, '2018-03-22 11:16:36.111183+00', NULL, NULL, 19, 17, 7, 'High', 'Cheap', 'Friendly', 'Easy', '''amet'':13 ''ant'':18 ''conval'':2 ''dignissim'':15 ''eget'':3 ''eleifend'':4 ''eu'':7 ''id'':10 ''ipsum'':19 ''justo'':11 ''libero'':1 ''luctus'':5 ''nibh'':8 ''primi'':20 ''quisqu'':9 ''sapien'':14 ''sit'':12 ''ultrici'':6 ''vestibulum'':16,17', '''aenean'':1 ''amet'':24 ''ant'':29 ''conval'':9,13 ''cubilia'':39 ''cura'':40 ''dapibus'':42 ''dignissim'':26 ''dolor'':43 ''donec'':3,46 ''eget'':6,14 ''eleifend'':15 ''ero'':55 ''est'':45 ''et'':36,54 ''eu'':18 ''faucibus'':33 ''fermentum'':2 ''feugiat'':53 ''id'':21 ''ipsum'':30 ''justo'':22,48 ''libero'':12 ''luctus'':16,35 ''massa'':7 ''mauri'':5 ''nequ'':11 ''nibh'':19 ''nulla'':10,41 ''odio'':47 ''orci'':34 ''posuer'':38 ''primi'':31 ''quisqu'':20 ''sapien'':25 ''sit'':23 ''sollicitudin'':49 ''suscipit'':51 ''tempor'':8 ''ultric'':37 ''ultrici'':17 ''ut'':4,50 ''vel'':44 ''vestibulum'':27,28');
+INSERT INTO post VALUES (3, 'vestibulum ante ipsum primis in faucibus', 9, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
+
+Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
+
+Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 21, 13, 5, 'High', 'Cheap', 'Neutral', 'Accessible', '''ant'':2 ''faucibus'':6 ''ipsum'':3 ''primi'':4 ''vestibulum'':1', '''congu'':40 ''cras'':12 ''eget'':27,39,41 ''elementum'':7,29 ''erat'':3,34,36 ''ero'':28,37 ''facilisi'':11 ''id'':4 ''lacus'':21 ''maecena'':19 ''mauri'':5 ''nec'':15 ''nisi'':16 ''non'':13 ''nonummi'':18 ''nulla'':1,10,26,44 ''nullam'':8 ''nunc'':45 ''pellentesqu'':30 ''porta'':32 ''purus'':46 ''quisqu'':31,35 ''rutrum'':43 ''semper'':42 ''tincidunt'':20 ''ut'':2 ''varius'':9 ''vel'':25 ''velit'':14,23 ''vivamus'':24 ''viverra'':38 ''volutpat'':33 ''vulput'':6,17');
+INSERT INTO post VALUES (6, 'lacus at turpis donec posuere metus', 2, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
+
+Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', 2003, '2018-03-22 11:16:36.111183+00', NULL, NULL, 25, 8, 20, 'Very Accessible', 'Accessible', 'Hostile', 'Medium', '''donec'':4 ''lacus'':1 ''metus'':6 ''posuer'':5 ''turpi'':3', '''cras'':12 ''eget'':27 ''elementum'':7,29 ''erat'':3 ''ero'':28 ''facilisi'':11 ''id'':4 ''lacus'':21 ''maecena'':19 ''mauri'':5 ''nec'':15 ''nisi'':16 ''non'':13 ''nonummi'':18 ''nulla'':1,10,26 ''nullam'':8 ''pellentesqu'':30 ''tincidunt'':20 ''ut'':2 ''varius'':9 ''vel'':25 ''velit'':14,23 ''vivamus'':24 ''vulput'':6,17');
+INSERT INTO post VALUES (5, 'pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu', 1, 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
+
+Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.
+
+Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 1999, '2018-03-22 11:16:36.111183+00', NULL, NULL, 9, 18, 8, 'Very Accessible', 'Cheap', 'Friendly', 'GAAAAAAH!', '''arcu'':12 ''congu'':9 ''iaculi'':8 ''id'':4 ''metus'':11 ''pellentesqu'':1 ''phasellus'':3 ''sapien'':5,7 ''ultric'':2 ''vivamus'':10', '''aliquam'':11 ''ant'':23 ''augu'':12 ''blandit'':27,38 ''commodo'':35 ''consectetu'':16 ''curabitur'':1 ''dictumst'':10 ''eget'':17,45,47 ''erat'':29 ''gravida'':2 ''habitass'':8 ''hac'':7 ''integ'':21,41 ''ipsum'':25 ''justo'':43 ''lacinia'':28,44 ''lorem'':20 ''magna'':32 ''nam'':39 ''nibh'':5 ''nisi'':3 ''nulla'':40 ''nunc'':34 ''pede'':42,50 ''placerat'':36 ''platea'':9 ''praesent'':26,37 ''quam'':13 ''rutrum'':18 ''sed'':31 ''sollicitudin'':14 ''tempus'':48 ''tincidunt'':22,46 ''vel'':24,49 ''vestibulum'':30 ''vita'':15');
 INSERT INTO post VALUES (7, 'ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla', 16, 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 1998, '2018-03-22 11:16:36.111183+00', '2018-03-22 11:16:36.111183+00', NULL, 22, 5, 10, 'Too High', 'Accessible', 'Best People On Earth', 'Super Easy', '''amet'':3 ''eleifend'':4 ''lectus'':13 ''libero'':6 ''ligula'':1 ''molesti'':10 ''nibh'':11 ''nulla'':16 ''nullam'':9 ''orci'':8 ''pede'':5 ''pellentesqu'':14 ''qui'':7 ''sit'':2', '''ant'':21 ''condimentum'':17 ''diam'':12 ''dictumst'':5 ''erat'':13 ''fermentum'':14 ''habitass'':3 ''hac'':2 ''iaculi'':11 ''id'':9 ''justo'':15,23 ''morbi'':6 ''nec'':16 ''nequ'':18 ''nulla'':22 ''placerat'':20 ''platea'':4 ''pretium'':10 ''sapien'':19 ''velit'':8 ''vestibulum'':7');
-INSERT INTO post VALUES (8, 'parturient montes nascetur ridiculus mus etiam', 13, 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 30, 14, 13, 'Too High', 'Free', 'Hostile', 'Tough', '''etiam'':6 ''mont'':2 ''mus'':5 ''nascetur'':3 ''parturi'':1 ''ridiculus'':4', '''aliquam'':11 ''ant'':23 ''augu'':12 ''blandit'':27 ''commodo'':35 ''consectetu'':16 ''curabitur'':1 ''dictumst'':10 ''eget'':17 ''erat'':29 ''gravida'':2 ''habitass'':8 ''hac'':7 ''integ'':21 ''ipsum'':25 ''lacinia'':28 ''lorem'':20 ''magna'':32 ''nibh'':5 ''nisi'':3 ''nunc'':34 ''placerat'':36 ''platea'':9 ''praesent'':26 ''quam'':13 ''rutrum'':18 ''sed'':31 ''sollicitudin'':14 ''tincidunt'':22 ''vel'':24 ''vestibulum'':30 ''vita'':15');
-INSERT INTO post VALUES (9, 'non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim', 27, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', 2004, '2018-03-22 11:16:36.111183+00', NULL, NULL, 24, 20, 11, 'Very Accessible', 'Accessible', 'Friendly', 'Medium', '''ac'':12 ''augu'':7 ''elit'':11 ''enim'':16 ''matti'':2 ''non'':1 ''nulla'':4,10,13 ''pede'':5 ''pulvinar'':3 ''sed'':14 ''suscipit'':9 ''ullamcorp'':6 ''vel'':15', '''cras'':12 ''eget'':27 ''elementum'':7,29 ''erat'':3 ''ero'':28 ''facilisi'':11 ''id'':4 ''lacus'':21 ''maecena'':19 ''mauri'':5 ''nec'':15 ''nisi'':16 ''non'':13 ''nonummi'':18 ''nulla'':1,10,26 ''nullam'':8 ''pellentesqu'':30 ''tincidunt'':20 ''ut'':2 ''varius'':9 ''vel'':25 ''velit'':14,23 ''vivamus'':24 ''vulput'':6,17');
+INSERT INTO post VALUES (8, 'parturient montes nascetur ridiculus mus etiam', 13, 'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
+
+Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 30, 14, 13, 'Too High', 'Free', 'Hostile', 'Tough', '''etiam'':6 ''mont'':2 ''mus'':5 ''nascetur'':3 ''parturi'':1 ''ridiculus'':4', '''aliquam'':11 ''ant'':23 ''augu'':12 ''blandit'':27 ''commodo'':35 ''consectetu'':16 ''curabitur'':1 ''dictumst'':10 ''eget'':17 ''erat'':29 ''gravida'':2 ''habitass'':8 ''hac'':7 ''integ'':21 ''ipsum'':25 ''lacinia'':28 ''lorem'':20 ''magna'':32 ''nibh'':5 ''nisi'':3 ''nunc'':34 ''placerat'':36 ''platea'':9 ''praesent'':26 ''quam'':13 ''rutrum'':18 ''sed'':31 ''sollicitudin'':14 ''tincidunt'':22 ''vel'':24 ''vestibulum'':30 ''vita'':15');
+INSERT INTO post VALUES (9, 'non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim', 27, 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
+
+Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', 2004, '2018-03-22 11:16:36.111183+00', NULL, NULL, 24, 20, 11, 'Very Accessible', 'Accessible', 'Friendly', 'Medium', '''ac'':12 ''augu'':7 ''elit'':11 ''enim'':16 ''matti'':2 ''non'':1 ''nulla'':4,10,13 ''pede'':5 ''pulvinar'':3 ''sed'':14 ''suscipit'':9 ''ullamcorp'':6 ''vel'':15', '''cras'':12 ''eget'':27 ''elementum'':7,29 ''erat'':3 ''ero'':28 ''facilisi'':11 ''id'':4 ''lacus'':21 ''maecena'':19 ''mauri'':5 ''nec'':15 ''nisi'':16 ''non'':13 ''nonummi'':18 ''nulla'':1,10,26 ''nullam'':8 ''pellentesqu'':30 ''tincidunt'':20 ''ut'':2 ''varius'':9 ''vel'':25 ''velit'':14,23 ''vivamus'':24 ''vulput'':6,17');
 INSERT INTO post VALUES (10, 'sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget', 17, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.', 2009, '2018-03-22 11:16:36.111183+00', NULL, NULL, 10, 18, 8, 'High', 'Accessible', 'Unfriendly', 'Medium', '''adipisc'':7 ''aenean'':14 ''arcu'':6 ''congu'':3 ''eget'':17 ''hendrerit'':9 ''iaculi'':2 ''lectus'':15 ''metus'':5 ''molesti'':8 ''nisl'':13 ''pellentesqu'':16 ''sapien'':1 ''vita'':12 ''vivamus'':4 ''vulput'':11', '''ac'':7 ''aliquet'':12 ''dui'':3,6 ''feugiat'':14 ''fusc'':9 ''lacus'':10 ''lectus'':18 ''nibh'':8 ''nisl'':5 ''non'':15 ''pretium'':16 ''purus'':11 ''qui'':17 ''sagitti'':2 ''vel'':4');
-INSERT INTO post VALUES (11, 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer', 13, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 3, 3, 8, 'Too High', 'Cheap', 'Neutral', 'Medium', '''aliquam'':7 ''augu'':8 ''consectetu'':12 ''dictumst'':6 ''eget'':13 ''habitass'':4 ''hac'':3 ''integ'':17 ''lorem'':16 ''nibh'':1 ''platea'':5 ''quam'':9 ''rutrum'':14 ''sollicitudin'':10 ''vita'':11', '''ac'':28,44 ''aliquam'':6 ''aliquet'':14 ''ant'':51 ''condimentum'':18 ''consequat'':45 ''cras'':30 ''cubilia'':61 ''cura'':62 ''diam'':29,65 ''dui'':33 ''est'':36,40 ''et'':37,58 ''faucibus'':55 ''id'':11,19 ''ipsum'':52 ''justo'':3,24 ''lacus'':7 ''leo'':16 ''luctus'':20,57 ''maecena'':4,15,34 ''magna'':43 ''mauri'':63 ''metus'':46 ''molesti'':22 ''morbi'':8 ''nec'':21 ''nulla'':12 ''nunc'':49 ''odio'':17 ''orci'':56 ''pede'':27 ''pellentesqu'':25,31 ''pharetra'':42 ''posuer'':60 ''potenti'':69 ''primi'':53 ''quam'':41,67 ''qui'':2,9 ''rhoncus'':5 ''sapien'':47 ''sed'':23 ''semper'':39 ''suspendiss'':68 ''tempus'':38 ''tortor'':10 ''tristiqu'':35 ''ultric'':13,59 ''ut'':48 ''vestibulum'':50 ''vita'':66 ''viverra'':26,64 ''volutpat'':32');
+INSERT INTO post VALUES (11, 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer', 13, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.
+
+Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.
+
+Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 3, 3, 8, 'Too High', 'Cheap', 'Neutral', 'Medium', '''aliquam'':7 ''augu'':8 ''consectetu'':12 ''dictumst'':6 ''eget'':13 ''habitass'':4 ''hac'':3 ''integ'':17 ''lorem'':16 ''nibh'':1 ''platea'':5 ''quam'':9 ''rutrum'':14 ''sollicitudin'':10 ''vita'':11', '''ac'':28,44 ''aliquam'':6 ''aliquet'':14 ''ant'':51 ''condimentum'':18 ''consequat'':45 ''cras'':30 ''cubilia'':61 ''cura'':62 ''diam'':29,65 ''dui'':33 ''est'':36,40 ''et'':37,58 ''faucibus'':55 ''id'':11,19 ''ipsum'':52 ''justo'':3,24 ''lacus'':7 ''leo'':16 ''luctus'':20,57 ''maecena'':4,15,34 ''magna'':43 ''mauri'':63 ''metus'':46 ''molesti'':22 ''morbi'':8 ''nec'':21 ''nulla'':12 ''nunc'':49 ''odio'':17 ''orci'':56 ''pede'':27 ''pellentesqu'':25,31 ''pharetra'':42 ''posuer'':60 ''potenti'':69 ''primi'':53 ''quam'':41,67 ''qui'':2,9 ''rhoncus'':5 ''sapien'':47 ''sed'':23 ''semper'':39 ''suspendiss'':68 ''tempus'':38 ''tortor'':10 ''tristiqu'':35 ''ultric'':13,59 ''ut'':48 ''vestibulum'':50 ''vita'':66 ''viverra'':26,64 ''volutpat'':32');
 INSERT INTO post VALUES (12, 'elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus', 10, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 2008, '2018-03-22 11:16:36.111183+00', NULL, NULL, 25, 14, 9, 'Medium', 'Almost Free', 'Unfriendly', 'Super Easy', '''cras'':6 ''elementum'':1 ''facilisi'':5 ''lacus'':15 ''maecena'':13 ''nec'':9 ''nisi'':10 ''non'':7 ''nonummi'':12 ''nulla'':4 ''nullam'':2 ''tincidunt'':14 ''varius'':3 ''velit'':8 ''vulput'':11', '''ac'':15 ''amet'':21 ''augu'':10 ''dapibus'':24 ''elit'':14 ''enim'':19 ''lacus'':29 ''libero'':3 ''ligula'':27 ''matti'':5 ''nam'':1 ''non'':4 ''nulla'':7,13,16,25 ''nunc'':22 ''pede'':8 ''pulvinar'':6 ''sed'':17 ''sit'':20 ''suscipit'':12,26 ''ullamcorp'':9 ''ultric'':2 ''vel'':18 ''viverra'':23');
 INSERT INTO post VALUES (13, 'sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis', 14, 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 2012, '2018-03-22 11:16:36.111183+00', NULL, NULL, 1, 12, 1, 'High', 'High', 'Best People On Earth', 'Accessible', '''dis'':6 ''et'':4 ''magni'':5 ''mont'':8 ''mus'':11 ''nascetur'':9 ''natoqu'':2 ''parturi'':7 ''penatibus'':3 ''ridiculus'':10 ''sagitti'':14 ''socii'':1 ''vestibulum'':13 ''vivamus'':12', '''aenean'':1 ''conval'':9,13 ''donec'':3 ''eget'':6,14 ''eleifend'':15 ''eu'':18 ''fermentum'':2 ''libero'':12 ''luctus'':16 ''massa'':7 ''mauri'':5 ''nequ'':11 ''nibh'':19 ''nulla'':10 ''tempor'':8 ''ultrici'':17 ''ut'':4');
-INSERT INTO post VALUES (14, 'nec euismod scelerisque quam turpis adipiscing lorem', 2, 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 22, 11, 20, 'Too High', 'Free', 'Friendly', 'Super Easy', '''adipisc'':6 ''euismod'':2 ''lorem'':7 ''nec'':1 ''quam'':4 ''scelerisqu'':3 ''turpi'':5', '''amet'':14 ''congu'':4 ''cras'':30 ''cum'':37,53 ''dis'':43,59 ''eleifend'':15 ''et'':41,57 ''eu'':33 ''lectus'':24 ''libero'':17 ''ligula'':12 ''loborti'':11 ''luctus'':36 ''magna'':34 ''magni'':42,58 ''molesti'':21 ''mont'':45,61 ''mus'':48,64 ''nam'':3 ''nascetur'':46,62 ''natoqu'':39,55 ''nibh'':22 ''nulla'':27 ''nullam'':20 ''orci'':19 ''parturi'':44,60 ''pede'':10,16 ''pellentesqu'':25 ''penatibus'':40,56 ''porta'':7 ''potenti'':29 ''purus'':32 ''quam'':9 ''qui'':18 ''ridiculus'':47,63 ''risus'':5 ''sagitti'':2,51 ''sapien'':52 ''sed'':1 ''semper'':6 ''sit'':13 ''socii'':38,54 ''suspendiss'':28 ''vestibulum'':50 ''vivamus'':49 ''volutpat'':8 ''vulput'':35');
-INSERT INTO post VALUES (15, 'et commodo vulputate justo in blandit ultrices', 9, 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 24, 5, 9, 'Too High', 'Almost Free', 'Best People On Earth', 'Tough', '''blandit'':6 ''commodo'':2 ''et'':1 ''justo'':4 ''ultric'':7 ''vulput'':3', '''aliquet'':12 ''amet'':34 ''congu'':24 ''dui'':18 ''eleifend'':35 ''feli'':3 ''fusc'':1 ''lacus'':5 ''laoreet'':9 ''lectus'':44 ''libero'':37 ''ligula'':32 ''loborti'':31 ''mauri'':8 ''molesti'':41 ''morbi'':6 ''nam'':23 ''nibh'':42 ''nisl'':15 ''nullam'':40 ''nunc'':16 ''orci'':39 ''pede'':30,36 ''porta'':27 ''posuer'':2 ''pulvinar'':13 ''quam'':29 ''qui'':38 ''rhoncus'':11,17 ''risus'':25 ''sagitti'':22 ''sed'':4,14,21 ''sem'':7,20 ''semper'':26 ''sit'':33 ''ut'':10 ''vel'':19 ''volutpat'':28');
-INSERT INTO post VALUES (2, 'erat fermentum justo nec condimentum neque sapien', 2, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 1995, '2018-03-22 11:16:36.111183+00', NULL, NULL, 4, 16, 12, 'Too High', 'Cheap', 'Friendly', 'Tough', '''condimentum'':5 ''erat'':1 ''fermentum'':2 ''justo'':3 ''nec'':4 ''nequ'':6 ''sapien'':7', '''accumsan'':26 ''ant'':10,12 ''blandit'':6 ''consequat'':31 ''conval'':29 ''cubilia'':22 ''cura'':23 ''curabitur'':28 ''dolor'':39 ''donec'':37 ''dui'':24,30,32 ''eleifend'':36 ''et'':19 ''faucibus'':16,25 ''fringilla'':45 ''interdum'':8 ''ipsum'':13 ''lectus'':42 ''luctus'':18 ''morbi'':40 ''nec'':33 ''nisi'':34 ''non'':7 ''odio'':27 ''orci'':17 ''posuer'':21 ''primi'':14 ''quam'':2,44 ''rhoncus'':46 ''sapien'':3 ''ultric'':20 ''ut'':5,38 ''varius'':4 ''vel'':41 ''vestibulum'':1,11 ''volutpat'':35');
+INSERT INTO post VALUES (14, 'nec euismod scelerisque quam turpis adipiscing lorem', 2, 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.
 
+Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
+
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 22, 11, 20, 'Too High', 'Free', 'Friendly', 'Super Easy', '''adipisc'':6 ''euismod'':2 ''lorem'':7 ''nec'':1 ''quam'':4 ''scelerisqu'':3 ''turpi'':5', '''amet'':14 ''congu'':4 ''cras'':30 ''cum'':37,53 ''dis'':43,59 ''eleifend'':15 ''et'':41,57 ''eu'':33 ''lectus'':24 ''libero'':17 ''ligula'':12 ''loborti'':11 ''luctus'':36 ''magna'':34 ''magni'':42,58 ''molesti'':21 ''mont'':45,61 ''mus'':48,64 ''nam'':3 ''nascetur'':46,62 ''natoqu'':39,55 ''nibh'':22 ''nulla'':27 ''nullam'':20 ''orci'':19 ''parturi'':44,60 ''pede'':10,16 ''pellentesqu'':25 ''penatibus'':40,56 ''porta'':7 ''potenti'':29 ''purus'':32 ''quam'':9 ''qui'':18 ''ridiculus'':47,63 ''risus'':5 ''sagitti'':2,51 ''sapien'':52 ''sed'':1 ''semper'':6 ''sit'':13 ''socii'':38,54 ''suspendiss'':28 ''vestibulum'':50 ''vivamus'':49 ''volutpat'':8 ''vulput'':35');
+INSERT INTO post VALUES (15, 'et commodo vulputate justo in blandit ultrices', 9, 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.
+
+Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 2006, '2018-03-22 11:16:36.111183+00', NULL, NULL, 24, 5, 9, 'Too High', 'Almost Free', 'Best People On Earth', 'Tough', '''blandit'':6 ''commodo'':2 ''et'':1 ''justo'':4 ''ultric'':7 ''vulput'':3', '''aliquet'':12 ''amet'':34 ''congu'':24 ''dui'':18 ''eleifend'':35 ''feli'':3 ''fusc'':1 ''lacus'':5 ''laoreet'':9 ''lectus'':44 ''libero'':37 ''ligula'':32 ''loborti'':31 ''mauri'':8 ''molesti'':41 ''morbi'':6 ''nam'':23 ''nibh'':42 ''nisl'':15 ''nullam'':40 ''nunc'':16 ''orci'':39 ''pede'':30,36 ''porta'':27 ''posuer'':2 ''pulvinar'':13 ''quam'':29 ''qui'':38 ''rhoncus'':11,17 ''risus'':25 ''sagitti'':22 ''sed'':4,14,21 ''sem'':7,20 ''semper'':26 ''sit'':33 ''ut'':10 ''vel'':19 ''volutpat'':28');
+INSERT INTO post VALUES (2, 'erat fermentum justo nec condimentum neque sapien', 2, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.
+
+Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 1995, '2018-03-22 11:16:36.111183+00', NULL, NULL, 4, 16, 12, 'Too High', 'Cheap', 'Friendly', 'Tough', '''condimentum'':5 ''erat'':1 ''fermentum'':2 ''justo'':3 ''nec'':4 ''nequ'':6 ''sapien'':7', '''accumsan'':26 ''ant'':10,12 ''blandit'':6 ''consequat'':31 ''conval'':29 ''cubilia'':22 ''cura'':23 ''curabitur'':28 ''dolor'':39 ''donec'':37 ''dui'':24,30,32 ''eleifend'':36 ''et'':19 ''faucibus'':16,25 ''fringilla'':45 ''interdum'':8 ''ipsum'':13 ''lectus'':42 ''luctus'':18 ''morbi'':40 ''nec'':33 ''nisi'':34 ''non'':7 ''odio'':27 ''orci'':17 ''posuer'':21 ''primi'':14 ''quam'':2,44 ''rhoncus'':46 ''sapien'':3 ''ultric'':20 ''ut'':5,38 ''varius'':4 ''vel'':41 ''vestibulum'':1,11 ''volutpat'':35');
+
+
+--
+-- Name: post_from_faculty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('post_from_faculty_id_seq', 1, false);
+
+
+--
+-- Name: post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('post_id_seq', 1, true);
+
+
+--
+-- Data for Name: university; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO university VALUES (1, 'Universidade do Porto', '', 1);
 INSERT INTO university VALUES (2, 'University of Sheffield', '', 2);
@@ -652,6 +1045,17 @@ INSERT INTO university VALUES (15, 'Magdalene', 'mmurriganc@edublogs.org', 8);
 INSERT INTO university VALUES (16, 'Leila', 'lmottersheadd@timesonline.co.uk', 2);
 INSERT INTO university VALUES (17, 'Dollie', 'dbindone@answers.com', 5);
 
+
+--
+-- Name: university_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('university_id_seq', 17, true);
+
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
 
 INSERT INTO "user" VALUES (2, 'vecto@dannyps.net', 'Dannyps', '2018-03-22', 'mypassword', 'Daniel Silva', '2018-03-22 11:16:07.159934+00', '', NULL, 'active');
 INSERT INTO "user" VALUES (4, 'jlopes@fe.up.pt', 'jcl', '2018-03-22', '$2y$10$e.cV4dOdlHNKfCzs68m0B.XULEeUk5yuR8CCdzL2ZqAAuz1cY0hpq', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
@@ -695,6 +1099,17 @@ INSERT INTO "user" VALUES (14, 'afindenk@phoca.cz', 'afindenk', '2018-03-22', '1
 INSERT INTO "user" VALUES (1, 'pbirkl@disqus.com', 'pbirkl', '2018-03-22', '1G3TZheGQZx2hRv42jC4VSpC6uNGBWzem5', 'Penelope Birk', '2018-03-22 11:16:36.111183+00', 'Postprocedural subglottic stenosis', NULL, 'active');
 
 
+--
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
+--
+
+SELECT pg_catalog.setval('user_id_seq', 43, true);
+
+
+--
+-- Data for Name: vote; Type: TABLE DATA; Schema: public; Owner: lbaw1721
+--
+
 INSERT INTO vote VALUES (29, 2);
 INSERT INTO vote VALUES (6, 6);
 INSERT INTO vote VALUES (9, 3);
@@ -713,81 +1128,326 @@ INSERT INTO vote VALUES (5, 5);
 INSERT INTO vote VALUES (6, 2);
 
 
+--
+-- Name: city_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY city
+    ADD CONSTRAINT city_pkey PRIMARY KEY (id);
 
 
+--
+-- Name: comment_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY comment
+    ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
 
 
+--
+-- Name: country_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY country
+    ADD CONSTRAINT country_pkey PRIMARY KEY (id);
 
 
+--
+-- Name: faculty_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY faculty
+    ADD CONSTRAINT faculty_pkey PRIMARY KEY (id);
 
 
+--
+-- Name: flag_comment_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY flag_comment
+    ADD CONSTRAINT flag_comment_pkey PRIMARY KEY (flagger_id, comment_id);
 
 
+--
+-- Name: flag_post_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY flag_post
+    ADD CONSTRAINT flag_post_pkey PRIMARY KEY (flagger_id, post_id);
 
 
+--
+-- Name: flag_user_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY flag_user
+    ADD CONSTRAINT flag_user_pkey PRIMARY KEY (flagger_id, flagged_id);
 
 
+--
+-- Name: following_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY following
+    ADD CONSTRAINT following_pkey PRIMARY KEY (follower_id, followed_id);
 
 
+--
+-- Name: post_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY post
+    ADD CONSTRAINT post_pkey PRIMARY KEY (id);
 
 
+--
+-- Name: university_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY university
+    ADD CONSTRAINT university_pkey PRIMARY KEY (id);
 
 
+--
+-- Name: user_email_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY "user"
+    ADD CONSTRAINT user_email_key UNIQUE (email);
 
 
+--
+-- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
 
-ALTER TABLE ONLY city ADD CONSTRAINT city_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
-ALTER TABLE ONLY comment ADD CONSTRAINT comment_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
-ALTER TABLE ONLY comment ADD CONSTRAINT comment_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ONLY "user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
 
 
-ALTER TABLE ONLY faculty ADD CONSTRAINT faculty_city_id_fkey FOREIGN KEY (city_id) REFERENCES city(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: user_username_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY "user"
+    ADD CONSTRAINT user_username_key UNIQUE (username);
 
 
-ALTER TABLE ONLY faculty ADD CONSTRAINT faculty_university_id_key FOREIGN KEY (university_id) REFERENCES university(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: vote_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+ALTER TABLE ONLY vote
+    ADD CONSTRAINT vote_pkey PRIMARY KEY (user_id, post_id);
 
 
-ALTER TABLE ONLY flag_comment ADD CONSTRAINT flag_comment_comment_id_fkey FOREIGN KEY (comment_id) REFERENCES comment(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: comment_post_id; Type: INDEX; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE INDEX comment_post_id ON comment USING btree (post_id);
 
 
-ALTER TABLE ONLY flag_comment ADD CONSTRAINT flag_comment_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: post_author; Type: INDEX; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE INDEX post_author ON post USING btree (author_id);
 
 
-ALTER TABLE ONLY flag_post ADD CONSTRAINT flag_post_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: user_id; Type: INDEX; Schema: public; Owner: lbaw1721; Tablespace: 
+--
+
+CREATE INDEX user_id ON "user" USING hash (id);
 
 
-ALTER TABLE ONLY flag_post ADD CONSTRAINT flag_post_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: max_two_mobilities_per_year; Type: TRIGGER; Schema: public; Owner: lbaw1721
+--
+
+CREATE TRIGGER max_two_mobilities_per_year BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE max_two_mobilities_per_year();
 
 
-ALTER TABLE ONLY flag_user ADD CONSTRAINT flag_user_flagged_id_fkey FOREIGN KEY (flagged_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: post_search_update; Type: TRIGGER; Schema: public; Owner: lbaw1721
+--
+
+CREATE TRIGGER post_search_update BEFORE INSERT OR UPDATE ON post FOR EACH ROW EXECUTE PROCEDURE post_search_update();
 
 
-ALTER TABLE ONLY flag_user ADD CONSTRAINT flag_user_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: update_vote; Type: TRIGGER; Schema: public; Owner: lbaw1721
+--
+
+CREATE TRIGGER update_vote AFTER INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE update_vote();
 
 
-ALTER TABLE ONLY following ADD CONSTRAINT following_followed_id_fkey FOREIGN KEY (followed_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: user_prevent_self_flag_comment; Type: TRIGGER; Schema: public; Owner: lbaw1721
+--
+
+CREATE TRIGGER user_prevent_self_flag_comment BEFORE INSERT OR UPDATE ON flag_comment FOR EACH ROW EXECUTE PROCEDURE user_prevent_self_flag_comment();
 
 
-ALTER TABLE ONLY following ADD CONSTRAINT following_follower_id_fkey FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: vote_prevent_own_user; Type: TRIGGER; Schema: public; Owner: lbaw1721
+--
+
+CREATE TRIGGER vote_prevent_own_user BEFORE INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE vote_prevent_own_user();
 
 
-ALTER TABLE ONLY post ADD CONSTRAINT post_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: city_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY city
+    ADD CONSTRAINT city_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
-ALTER TABLE ONLY post ADD CONSTRAINT post_from_faculty_id_fkey FOREIGN KEY (from_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: comment_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY comment
+    ADD CONSTRAINT comment_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
-ALTER TABLE ONLY post ADD CONSTRAINT post_to_faculty_id_fkey FOREIGN KEY (to_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: comment_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY comment
+    ADD CONSTRAINT comment_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
-ALTER TABLE ONLY university ADD CONSTRAINT university_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: faculty_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY faculty
+    ADD CONSTRAINT faculty_city_id_fkey FOREIGN KEY (city_id) REFERENCES city(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
-ALTER TABLE ONLY vote ADD CONSTRAINT vote_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: faculty_university_id_key; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY faculty
+    ADD CONSTRAINT faculty_university_id_key FOREIGN KEY (university_id) REFERENCES university(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
-ALTER TABLE ONLY vote ADD CONSTRAINT vote_user_id_fkey1 FOREIGN KEY (user_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Name: flag_comment_comment_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY flag_comment
+    ADD CONSTRAINT flag_comment_comment_id_fkey FOREIGN KEY (comment_id) REFERENCES comment(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: flag_comment_flagger_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY flag_comment
+    ADD CONSTRAINT flag_comment_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: flag_post_flagger_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY flag_post
+    ADD CONSTRAINT flag_post_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: flag_post_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY flag_post
+    ADD CONSTRAINT flag_post_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: flag_user_flagged_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY flag_user
+    ADD CONSTRAINT flag_user_flagged_id_fkey FOREIGN KEY (flagged_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: flag_user_flagger_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY flag_user
+    ADD CONSTRAINT flag_user_flagger_id_fkey FOREIGN KEY (flagger_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: following_followed_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY following
+    ADD CONSTRAINT following_followed_id_fkey FOREIGN KEY (followed_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: following_follower_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY following
+    ADD CONSTRAINT following_follower_id_fkey FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: post_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY post
+    ADD CONSTRAINT post_author_id_fkey FOREIGN KEY (author_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: post_from_faculty_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY post
+    ADD CONSTRAINT post_from_faculty_id_fkey FOREIGN KEY (from_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: post_to_faculty_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY post
+    ADD CONSTRAINT post_to_faculty_id_fkey FOREIGN KEY (to_faculty_id) REFERENCES faculty(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: university_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY university
+    ADD CONSTRAINT university_country_id_fkey FOREIGN KEY (country_id) REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: vote_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY vote
+    ADD CONSTRAINT vote_post_id_fkey FOREIGN KEY (post_id) REFERENCES post(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: vote_user_id_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1721
+--
+
+ALTER TABLE ONLY vote
+    ADD CONSTRAINT vote_user_id_fkey1 FOREIGN KEY (user_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--

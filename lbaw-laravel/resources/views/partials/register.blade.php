@@ -6,6 +6,9 @@
 		@php $is_register = Request::get("action")=="register" @endphp
 		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ Request::get("action")=="register"?"show":""}}" >
 			<form class="px-4 py-3" action="{{ url('register') }}" method="POST">
+				@foreach ($errors->all() as $error)
+					@include("partials.error", ["message"=>$error])
+				@endforeach
 				<div class="form-group">
 					<input type="text" class="form-control" id="name" name="name" placeholder="name" required>
 				</div>
