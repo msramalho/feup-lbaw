@@ -1,25 +1,21 @@
 <li class="nav-item">
 	<div class="dropdown">
-		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="signUpBtn">
+		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdown_register_btn">
 			Sign Up
 		</a>
-		@php $is_register = Request::get("action")=="register" @endphp
-		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ Request::get("action")=="register"?"show":""}}" >
+		@php $is_register = old('is_register') == 1 || Request::get("action")=="register"@endphp
+		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ $is_register?"show":""}}" >
 			<form class="px-4 py-3" action="{{ url('register') }}" method="POST">
-				<input type="hidden" name="accountform" value="0">
-				@if (old('accountform') == 0)
-					@foreach ($errors->all() as $error)
-						@include("partials.error", ["message"=>$error])
-					@endforeach
-				@endif
+				<input type="hidden" name="is_register" value="1">
+				@includeWhen($is_register, "partials.errors")
 				<div class="form-group">
-					<input type="text" class="form-control" id="name" name="name" placeholder="name" required>
+					<input type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ old('name') }}" required>
 				</div>
 				<div class="form-group">
-					<input type="email" class="form-control" id="email" name="email" placeholder="email" required>
+					<input type="email" class="form-control" id="email" name="email" placeholder="email" value="{{ old('email') }}" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="register_username" name="username" placeholder="username" required>
+					<input type="text" class="form-control" id="register_username" name="username" placeholder="username" value="{{ old('username') }}" required>
 				</div>
 				<div class="form-group">
 					<input type="password" class="form-control" id="register_password" name="password" placeholder="password" required>
