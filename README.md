@@ -45,17 +45,17 @@
       * ~[V] M07:Comments~
       * ~[A] M08:Flags~
     * Fixes:
-      - ~logout: falta redirect~
-      - ~editar foto: corrigir rota~
-      - edit password action: remove pwd check
-      - edit password form: sai submit, entra AJAX.
-      - ~title 304: tirar action~
-      - ~edit-post 306:~
-      - ~307: remove redirect from ajax call~
-      - ~^ same for vote post.~
-      - 403 ver se é ajax e comparar submit do 404. return vs redirect.
-      - ~404: tirar _?_ e pôr _+_.~
-      - 503: onde é chamado? (corrigir métodos da página de administração)
+        * ~logout: falta redirect~
+        * ~editar foto: corrigir rota~
+        * edit password action: remove pwd check
+        * edit password form: sai submit, entra AJAX
+        * ~title 304: tirar action~
+        * ~edit-post 306:~
+        * ~307: remove redirect from ajax call~
+        * ~^ same for vote post.~
+        * 403 ver se é ajax e comparar submit do 404. return vs redirect.
+        * ~404: tirar _?_ e pôr _+_.~
+        * 503: onde é chamado? (corrigir métodos da página de administração)
  * [A6](https://hackmd.io/JMpTEtGyTYGeBeBYbTGIZA) Editor: **Daniel**
     * [trigger slides](https://web.fe.up.pt/~arestivo/presentation/triggers/)
     * [indexes slides](https://web.fe.up.pt/~arestivo/presentation/indexes/)
