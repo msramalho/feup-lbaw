@@ -1,0 +1,96 @@
+@extends('layouts.app')
+
+@section('title', 'Vecto: Edit profile')
+
+@section('content')
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Edit Profile</h1>
+
+        
+        <div class="form-row mt-5">
+            <div class="form-group col-md-12">
+                <div class "form-row">
+                    <h4>Change Profile Picture</h4>
+                </div>
+                <hr>
+                <!-- Drop Zone -->
+
+                <div class "form-row text-center">
+                    <div class="containerA">
+                        <form action="/file-upload" class="dropzone noresize" id="my-awesome-dropzone"></form>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <h4 class="mt-3">Personal Information</h4>
+        <hr>
+
+        <div class="form-group col-md-12">
+            <div class="form-row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                    <label for="inputFirstName">Name</label>
+                    <input type="name" class="form-control" id="inputName" aria-describedby="NameHelp" value="{{Auth::user()->name}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                    <label for="inputLastName">Username</label>
+                <input type="name" class="form-control" id="inputUserName" aria-describedby="userNameHelp" value="{{Auth::user()->username}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                    <form method="post">
+                        <!-- Date input -->
+                        <label class="control-label" for="date">Birthdate</label>
+                        <input class="form-control" id="date" name="date" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
+                    </form>
+
+
+                    <!-- Submit button -->
+
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class=" form-group col-lg-6 col-md-6 col-sm-122">
+
+                    <label for="inputFirstName">E-mail</label>
+                    <input type="email" class="form-control" id="inputEmail" aria-describedby="EmailHelp" value="{{Auth::user()->email}}">
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <h4>Write a little text about you</h4>
+            <hr>
+            <label for="postContent">Short Bias</label>
+            <textarea class="form-control" id="postContent" value="{{Auth::user()->email}}" required></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-lg-3 col-md-4 col-sm-6">
+
+                <input type="submit" class="btn btn-primary form-control" id="saveChanges" value="Save Changes" />
+            </div>
+            <div class="form-group col-lg-3 col-md-4 col-sm-6">
+
+                <input type="submit" class="btn btn-secondary form-control" id="cancel" value="Cancel" />
+            </div>
+            <div class="form-group col-lg-9 col-md-8 col-sm-6"></div>
+        </div>
+
+    </div>
+
+</div>
+
+@endsection
