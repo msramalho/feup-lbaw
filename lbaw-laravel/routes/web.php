@@ -38,3 +38,5 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('register', function () {return redirect('/?action=register');});
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('register', 'Auth\RegisterController@register');
+
+Auth::routes();
