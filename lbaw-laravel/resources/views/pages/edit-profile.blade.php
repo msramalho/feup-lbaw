@@ -72,7 +72,6 @@
         <div class="form-group">
             <h4>Write a little text about you</h4>
             <hr>
-            <label for="postContent">Short Bio</label>
             <textarea class="form-control" id="postContent" value="{{Auth::user()->email}}" required></textarea>
         </div>
 
