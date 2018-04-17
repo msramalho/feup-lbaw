@@ -47,8 +47,8 @@
     * Fixes:
         * ~logout: falta redirect~
         * ~editar foto: corrigir rota~
-        * edit password action: remove pwd check
-        * edit password form: sai submit, entra AJAX
+        * ~edit password action: remove pwd check~
+        * ~edit password form: sai submit, entra AJAX~
         * ~title 304: tirar action~
         * ~edit-post 306:~
         * ~307: remove redirect from ajax call~
