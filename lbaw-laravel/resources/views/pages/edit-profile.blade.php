@@ -34,14 +34,14 @@
         <div class="form-group col-md-12">
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                    <label for="inputFirstName">Name</label>
-                    <input type="name" class="form-control" id="inputName" aria-describedby="NameHelp" value="{{Auth::user()->name}}">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" aria-describedby="NameHelp" value="{{Auth::user()->name}}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                    <label for="inputLastName">Username</label>
-                <input type="name" class="form-control" id="inputUserName" aria-describedby="userNameHelp" value="{{Auth::user()->username}}">
+                    <label>Username</label>
+                <input type="text" class="form-control" name="username" aria-describedby="userNameHelp" value="{{Auth::user()->username}}">
                 </div>
             </div>
             <div class="form-row">
@@ -49,7 +49,7 @@
                     <form method="post">
                         <!-- Date input -->
                         <label class="control-label" for="date">Birthdate</label>
-                        <input class="form-control" id="date" name="date" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
+                        <input class="form-control" type="date" name="birthdate" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
                     </form>
 
 
@@ -60,9 +60,8 @@
             </div>
             <div class="form-row">
                 <div class=" form-group col-lg-6 col-md-6 col-sm-122">
-
-                    <label for="inputFirstName">E-mail</label>
-                    <input type="email" class="form-control" id="inputEmail" aria-describedby="EmailHelp" value="{{Auth::user()->email}}">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" name="email" aria-describedby="EmailHelp" value="{{Auth::user()->email}}">
 
                 </div>
 
@@ -73,7 +72,7 @@
         <div class="form-group">
             <h4>Write a little text about you</h4>
             <hr>
-            <label for="postContent">Short Bias</label>
+            <label for="postContent">Short Bio</label>
             <textarea class="form-control" id="postContent" value="{{Auth::user()->email}}" required></textarea>
         </div>
 
