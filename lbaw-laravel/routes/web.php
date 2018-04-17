@@ -22,8 +22,8 @@ Route::view('statistics', 'pages.static.statistics');
 // Route::view('recover-password', 'pages.static.recover-password');
 
 // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+// Route::get('cards', 'CardController@list');
+// Route::get('cards/{id}', 'CardController@show');
 
 // API
 // Route::put('api/cards', 'CardController@create');
@@ -42,3 +42,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('user/edit', 'UserController@edit');
 Route::get('user/{id}', 'UserController@show');
+
+// Custom error pages
+Route::view('404', 'errors.404');
+Route::view('403', 'errors.403');
