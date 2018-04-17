@@ -22,8 +22,8 @@ Route::view('statistics', 'pages.static.statistics');
 // Route::view('recover-password', 'pages.static.recover-password');
 
 // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+// Route::get('cards', 'CardController@list');
+// Route::get('cards/{id}', 'CardController@show');
 
 // API
 // Route::put('api/cards', 'CardController@create');
@@ -40,3 +40,7 @@ Route::get('register', function () {return redirect('/?action=register');});
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('register', 'Auth\RegisterController@register');
 
+
+// Custom error pages
+Route::view('404', 'errors.404');
+Route::view('403', 'errors.403');
