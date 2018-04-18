@@ -28,7 +28,7 @@
    * [Teachers instructions](https://github.com/lbaw-admin/lbaw-laravel)
  * [A7](https://hackmd.io/Hk36u2otREmVxBWReAERnA) Editor: **Miguel**
     * Status: **[submited]**
-    * Status revision: **[not submited]**
+    * Status revision: **[submited]**
     * Tasks [deadline 09/04/2018]
       * Afonso - ~Module Post (with module description)~; ~Module Flag (with module description)~; ~Module User Admin (write routes and include module description)~
       * Daniel - [A6_2] ~change post frequency to hundreds per year and similar stuff; find copy past of `SELECT01`; in `SELECT02` say why no clustering (impact on updates); `SELECT 04` decide between btree (btree does need range) and hash (for high cardinality)~; submeter A6_2[A7] Module Authentication (with module description)
@@ -53,8 +53,8 @@
         * ~edit-post 306:~
         * ~307: remove redirect from ajax call~
         * ~^ same for vote post.~
-        * 403 ver se é ajax e comparar submit do 404. return vs redirect.
-        * ~404: tirar _?_ e pôr _+_.~
+        * ~403 ver se é ajax e comparar submit do 404. return vs redirect.~
+        * ~404: tirar _?_ e pôr _+_.~
         * 503: onde é chamado? (corrigir métodos da página de administração)
  * [A6](https://hackmd.io/JMpTEtGyTYGeBeBYbTGIZA) Editor: **Daniel**
     * [trigger slides](https://web.fe.up.pt/~arestivo/presentation/triggers/)
