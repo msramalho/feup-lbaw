@@ -11,7 +11,7 @@
             <div class="bg-light rounded mb-3 tp-2 bp-2 profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
                 <div class="text-center">
-                    <img src="public/images/profile.png" class="imgProfile rounded" alt="Profile Pic">
+                    <img src="{{URL::asset('images/profile.png')}}" class="imgProfile rounded" alt="Profile Pic">
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
@@ -47,7 +47,7 @@
                     <ul class="AboutListItem list-unstyled">
                         <li class="FollowingListItem pl-10 mb-3">
                             <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="public/images/profile.png" alt="UserName">
+                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
                             </a>
                             <a class="FollowingListItem_userLink d-block" href=#>Eric Widget</a>
                             <span class="FollowingListItem__nsfwFollowers d-block">
@@ -56,7 +56,7 @@
                         </li>
                         <li class="FollowingListItem pl-10 mb-3">
                             <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="public/images/profile.png" alt="UserName">
+                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
                             </a>
                             <a class="FollowingListItem_userLink d-block" href=#>Eleanor Fant</a>
                             <span class="FollowingListItem__nsfwFollowers d-block">
@@ -65,7 +65,7 @@
                         </li>
                         <li class="FollowingListItem pl-10 mb-3">
                             <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="public/images/profile.png" alt="UserName">
+                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
                             </a>
                             <a class="FollowingListItem_userLink d-block" href=#>Jarvis Pepperspray</a>
                             <span class="FollowingListItem__nsfwFollowers d-block">
@@ -74,7 +74,7 @@
                         </li>
                         <li class="FollowingListItem pl-10 mb-3">
                             <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="public/images/profile.png" alt="UserName">
+                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
                             </a>
                             <a class="FollowingListItem_userLink d-block" href=#>Jackson Pot</a>
                             <span class="FollowingListItem__nsfwFollowers d-block">
@@ -83,7 +83,7 @@
                         </li>
                         <li class="FollowingListItem pl-10 mb-3">
                             <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="public/images/profile.png" alt="UserName">
+                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
                             </a>
                             <a class="FollowingListItem_userLink d-block" href=#>Gibson Montgomery</a>
                             <span class="FollowingListItem__nsfwFollowers d-block">
@@ -123,7 +123,7 @@
                         <p class="short">Cupcake ipsum dolor sit amet macaroon biscuit. Tiramisu lollipop biscuit I love gingerbread jelly beans lemon drops.
                             Tart fruitcake jelly. Sweet roll halvah I love fruitcake. Gummies jelly-o icing donut. Bear claw tart jelly muffin.
                             Marshmallow pudding jelly I love jelly gummi bears jelly-o I love. Sesame snaps chocolate bar donut chocolate cake.</p>
-                        <img src="public/images/cupcake.jpg" class="img-fluid" alt="Cupcake">
+                        <img src="{{URL::asset('images/cupcake.jpg')}}" class="img-fluid" alt="Cupcake">
 
                         <p class="short">Pastry donut I love. Chocolate cake macaroon. Pie tiramisu candy canes candy tiramisu lemon drops. Topping danish
                             tiramisu. Danish lollipop jelly beans fruitcake pie toffee. Toffee halvah cake lemon drops I love toffee croissant
