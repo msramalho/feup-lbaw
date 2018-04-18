@@ -17,9 +17,9 @@ class UserController extends Controller
      * 
     **/
 
-    public function show($id) {
+    public function show($username) {
 
-        $user = User::find($id);
+        $user = User::where('username',$username) -> first();
 
         //$this->authorize('show', $user);
 
@@ -37,9 +37,25 @@ class UserController extends Controller
  
     public function edit() {
 
-        /**
-         * after everything is done return them pack to /profile/ uri
-         **/
         return view('pages.edit-profile');
+    }
+
+    /**
+     * Effectively Edit User Profile
+     * 
+    **/
+
+    public function editProfile()
+    {
+        $data = Input::all();
+        if(Request::ajax())
+        {
+            $id = Input::get('id');
+            $option = Options::where('id', $id)->first();
+            $option->size = $data['size'];
+            $option->colour = $data['colour'];
+            $option->stock = $data['stock'];
+            $option->update();
+        }
     }
 }
