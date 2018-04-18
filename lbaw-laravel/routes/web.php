@@ -41,7 +41,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('user/edit', 'UserController@edit');
-Route::get('user/{id}', 'UserController@show');
+Route::get('user/{username}', 'UserController@show');
 
 // Custom error pages
 Route::view('404', 'errors.404');
