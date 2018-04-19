@@ -16,7 +16,7 @@
 				</li>
 
 				@if (Auth::check())
-					@include('partials.logout')
+					@include('partials.account')
 				@else
 					@include('partials.register')
 					@include('partials.login')
