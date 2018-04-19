@@ -7,9 +7,10 @@
 		<div class="jumbotron">
 			<h1>Welcome to Vecto</h1>
 			<p class="lead">Share and learn about ERASMUS destinations, your future awaits!!</p>
+			<a href="{{ url('post') }}" class="btn btn-lg btn-primary">New Post</a>
 		</div>
 		<h3>Recent News:</h3>
-		<div id="feed-content" class="">
+		<div id="feed-content">
 			<div class="animated fadeInLeft bg-light rounded-right border-primary border-left text-grey container">
 				<div class="row">
 					<div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12 col-md-1">
