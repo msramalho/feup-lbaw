@@ -22,8 +22,10 @@ Route::view('statistics', 'pages.static.statistics');
 // Route::view('recover-password', 'pages.static.recover-password');
 
 // News Posts
-Route::view('post', 'pages.post')->middleware('auth');
-Route::post('post', 'PostController@create')->middleware('auth');
+Route::view('post', 'pages.post.create')->middleware('auth');
+Route::post('post', 'PostController@create');
+Route::get('post/{id}', 'PostController@show');
+Route::get('post/{id}/delete', 'PostController@delete');
 
 
 // Cards
