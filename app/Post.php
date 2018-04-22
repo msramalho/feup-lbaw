@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['author_id', 'from_faculty_id', 'to_faculty_id', 'title', 'votes', 'content', 'school_year', 'date', 'removed_reason', 'removed_date', 'beer_cost', 'life_cost', 'native_friendliness', 'work_load', 'search_title', 'search_content'];
+    protected $fillable = ['from_faculty_id', 'to_faculty_id', 'title', 'content', 'school_year','beer_cost', 'life_cost', 'native_friendliness', 'work_load'];
+
+    protected $hidden = [
+        'author_id', 'votes', 'removed_reason', 'removed_date', 'search_title', 'search_content'
+    ];
+
+    //default attributes
+    protected $attributes = [
+        'votes' => 0
+    ];
 
     public $timestamps = false;
 
