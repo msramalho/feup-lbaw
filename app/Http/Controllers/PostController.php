@@ -49,12 +49,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($post_id)
     {
-        //
+        $post = Post::where('id',$post_id)->first();
+        return view('pages.post.show', ['post' => $post]);
     }
 
     /**
@@ -86,30 +86,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function delete($post_id)
     {
-        //
-    }
-
-
-
-
-    /**
-     * Get a validator for an incoming post creation request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        //'name', 'email', 'password', 'birthdate', 'name', 'register_date', 'description', 'last_login', 'type',
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'username' => ['required','string','regex:/^[^@]*$/', 'unique:users'],
-            'password' => 'required|string|min:6', 
-            'birthdate' => 'date|before:today',
-            'description' => 'string|max:5000',
-        ], ["username.regex" => "username cannot have a @ char"]);
+        $post = Post::where('id',$post_id)->first();
+        $post->delete();
+        return Redirect::to("post");
     }
 }

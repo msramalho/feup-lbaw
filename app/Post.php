@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -25,6 +26,13 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'author_id');
+    }
+    /**
+     * the current user is the author of this post
+     */
+    public function isOwner()
+    {
+        return Auth::check() && $this->user->id == Auth::user()->id;
     }
 
     /**
