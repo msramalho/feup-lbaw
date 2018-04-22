@@ -21,6 +21,9 @@ Route::view('faq', 'pages.static.faq');
 Route::view('statistics', 'pages.static.statistics');
 // Route::view('recover-password', 'pages.static.recover-password');
 
+// News Posts
+Route::view('post', 'pages.post');
+
 // Cards
 // Route::get('cards', 'CardController@list');
 // Route::get('cards/{id}', 'CardController@show');
