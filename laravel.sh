@@ -2,9 +2,11 @@
 # Do `sh laravel.sh down` to stop  app
 
 if [ $1 = "up" ]; then
+	composer install
 	docker-compose up -d
 	php artisan serve &
 	php artisan up
+	php artisan migrate
 	xdg-open "http://127.0.0.1:8000/"
 	xdg-open "http://127.0.0.1:5050/"
 elif [ $1 = "down" ]; then
