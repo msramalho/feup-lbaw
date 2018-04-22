@@ -17,31 +17,33 @@
 		<h1>New post</h1>
 		<h4>Tell others about your ERASMUS experience</h4>
 
-		<form>
+		<form action="{{ url('post') }}" method="POST">
+		 	{{ csrf_field() }}
+			@include("partials.errors")
 			<div class="form-row">
 				<div class="form-group col-md-12">
-					<label for="postTitle">Title</label>
-					<input type="text" class="form-control form-control-lg" id="postTitle" placeholder="Title of your post" required autofocus>
+					<label>Title</label>
+					<input type="text" class="form-control form-control-lg" name="title" placeholder="Title of your post" value="{{ old("title") }}" required autofocus>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="postContent">Your post</label>
-				<textarea class="form-control" id="postContent" required></textarea>
+				<textarea class="form-control" id="postContent" name="content" required>{{ old("content") }}</textarea>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="postUniversity">University</label>
-					<select class="custom-select" id="postUniversity" required>
-						<option selected>Origin University</option>
+					<label>Origin University</label>
+					<select class="custom-select" id="university_from" required>
+						<option selected>From University</option>
 						<option value="1">Universidade do Porto</option>
 						<option value="2">Universidade de Lisboa</option>
 						<option value="3">Three</option>
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="postFaculty">Origin Faculty</label>
-					<select class="custom-select" id="postFaculty">
-						<option selected>Faculty</option>
+					<label>Origin Faculty</label>
+					<select class="custom-select" id="faculty_from" name="from_faculty_id">
+						<option selected>From Faculty</option>
 						<option value="1">FEUP</option>
 						<option value="2">FPCEUP</option>
 						<option value="3">FADEUP</option>
@@ -52,18 +54,18 @@
 			</div>
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="postUniversity">Origin University</label>
-					<select class="custom-select" id="postUniversity" required>
-						<option selected>University</option>
+					<label>Origin University</label>
+					<select class="custom-select" id="university_to" required>
+						<option selected>To University</option>
 						<option value="1">Universidade do Porto</option>
 						<option value="2">Universidade de Lisboa</option>
 						<option value="3">Three</option>
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="postFaculty">Origin Faculty</label>
-					<select class="custom-select" id="postFaculty">
-						<option selected>Faculty</option>
+					<label>Origin Faculty</label>
+					<select class="custom-select" id="faculty_to" name="to_faculty_id">
+						<option selected>To Faculty</option>
 						<option value="1">FEUP</option>
 						<option value="2">FPCEUP</option>
 						<option value="3">FADEUP</option>
@@ -72,66 +74,57 @@
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="postSchoolYear">School Year</label>
-					<select class="custom-select" id="postSchoolYear" required>
-						<option selected>School year</option>
-						<option value="15">15/16</option>
-						<option value="16">16/17</option>
-						<option value="17">17/18</option>
+					<label>School Year</label>
+					<select class="custom-select" name="school_year" required>
+						<option selected>During</option>
+						@for ($i = 15; $i < substr(date("Y"), 2); $i++)
+							<option value="{{$i}}" {{ $i == old("school_year")?"selected":""}}>{{$i}}/{{$i+1}}</option>
+						@endfor
 					</select>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label for="postLifeCost">
-						<i class="far fa-money-bill-alt"></i> Life Cost</label>
-					<select class="custom-select" id="postLifeCost" required>
-						<option value="1">Very accessible</option>
-						<option value="2">Accessible</option>
-						<option selected value="3">Medium</option>
-						<option value="3">High</option>
-						<option value="3">Too High!</option>
+					<label><i class="far fa-money-bill-alt"></i> Life Cost</label>
+					<select class="custom-select" name="life_cost" required>
+						<?php $life_costs = array("1"=>"Very accessible","2"=>"Accessible","3"=>"Medium","4"=>"High","5"=>"Too High!"); ?>
+						@foreach ($life_costs as $k=>$v)
+							<option value="{{$k}}" {{ $k == old("life_cost")?"selected":""}}>{{$v}}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label for="postBeerCost">
-						<i class="fas fa-beer"></i> Beer Cost</label>
-					<select class="custom-select" id="postFaculty">
-						<option value="1">Free</option>
-						<option value="2">Almost Free</option>
-						<option value="3">Cheap</option>
-						<option selected value="4">Accessible</option>
-						<option value="5">High</option>
-						<option value="5">Over 9000!</option>
+					<label><i class="fas fa-beer"></i> Beer Cost</label>
+					<select class="custom-select" name="beer_cost">
+						<?php $beer_costs = array("1"=>"Free","2"=>"Almost Free","3"=>"Cheap","4"=>"Accessible","5"=>"High", "6"=>"Over 9000!"); ?>
+						@foreach ($beer_costs as $k=>$v)
+							<option value="{{$k}}" {{ $k == old("beer_cost")?"selected":""}}>{{$v}}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label for="postSchoolYear">
-						<i class="fas fa-users"></i> Native's Friendliness</label>
-					<select class="custom-select" id="postSchoolYear" required>
-						<option value="1">Hostile</option>
-						<option value="2">Unfriendly</option>
-						<option selected value="3">Neutral</option>
-						<option value="4">Friendly</option>
-						<option value="5">Best people on earth</option>
+					<label><i class="fas fa-users"></i> Native's Friendliness</label>
+					<select class="custom-select" name="native_friendliness" required>
+						<?php $native_friendlinesses = array("1"=>"Hostile","2"=>"Unfriendly","3"=>"Neutral","4"=>"Friendly","5"=>"Best people on earth"); ?>
+						@foreach ($native_friendlinesses as $k=>$v)
+							<option value="{{$k}}" {{ $k == old("native_friendliness")?"selected":""}}>{{$v}}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label for="postWorkload">
-						<i class="fas fa-briefcase"></i> Workload</label>
-					<select class="custom-select" id="postWorkload" required>
-						<option value="1">Super easy</option>
-						<option value="2">Easy</option>
-						<option selected value="3">Accessible</option>
-						<option value="4">Tough</option>
-						<option value="5">GAAAAAAH!</option>
+					<label><i class="fas fa-briefcase"></i> Workload</label>
+					<select class="custom-select" name="work_load" required>
+						<?php $work_loads = array("1"=>"Super easy","2"=>"Easy","3"=>"Accessible","4"=>"Tough","5"=>"GAAAAAAH!"); ?>
+						@foreach ($work_loads as $k=>$v)
+							<option value="{{$k}}" {{ $k == old("work_load")?"selected":""}}>{{$v}}</option>
+						@endforeach
 					</select>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-lg-9 col-md-8 col-sm-6"></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-6">
-					<label for="inputZip">Submit your post!</label>
+					<label for="postSubmit">Submit your post!</label>
 					<input type="submit" class="btn btn-primary form-control" id="postSubmit" value="Submit" />
 				</div>
 			</div>
