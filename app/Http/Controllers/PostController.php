@@ -90,6 +90,6 @@ class PostController extends Controller
     {
         $post = Post::where('id',$post_id)->first();
         $post->delete();
-        return Redirect::to("post");
+        return Redirect::to("post")->with("info", "POST $post->title successfully deleted");
     }
 }
