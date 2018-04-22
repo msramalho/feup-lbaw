@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Vecto: Index')
+@section('title', 'Vecto: New Post')
 
 
 @section("styles")
