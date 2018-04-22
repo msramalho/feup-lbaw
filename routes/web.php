@@ -22,7 +22,9 @@ Route::view('statistics', 'pages.static.statistics');
 // Route::view('recover-password', 'pages.static.recover-password');
 
 // News Posts
-Route::view('post', 'pages.post');
+Route::view('post', 'pages.post')->middleware('auth');
+Route::post('post', 'PostController@create')->middleware('auth');
+
 
 // Cards
 // Route::get('cards', 'CardController@list');
@@ -37,13 +39,13 @@ Route::view('post', 'pages.post');
 
 // Authentication
 
-Route::get('login', function () {return redirect('/?action=login');});
+Route::get('login', function () {return redirect('/?action=login');})->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('register', function () {return redirect('/?action=register');});
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::get('user/edit', 'UserController@edit');
+Route::get('user/edit', 'UserController@edit')->middleware('auth');
 Route::get('user/{username}', 'UserController@show');
 
 // Custom error pages
