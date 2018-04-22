@@ -22,14 +22,12 @@ body {
     background-color: var(--primary-color) !important;
 }
 
-a,
-h4 {
+a{
     color: var(--secondary-color);
 }
 
 a:hover,
 a:checked,
-h4:hover,
 h4:visited,
 h4:active,
 h4:link {
