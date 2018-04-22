@@ -62,7 +62,7 @@ CREATE FUNCTION max_two_mobilities_per_year() RETURNS trigger
 DECLARE
     count_mobilities numeric;
 BEGIN
-    SELECT COUNT(id) INTO count_mobilities FROM post WHERE 
+    SELECT COUNT(id) INTO count_mobilities FROM posts WHERE 
         NEW.author_id = author_id AND NEW.school_year = school_year;
     IF count_mobilities = 2 THEN
       RAISE EXCEPTION 'A user cannot participate in more than two mobilities per year, one per semester.';
@@ -108,7 +108,7 @@ CREATE FUNCTION update_vote() RETURNS trigger
     AS $$DECLARE
     count_votes numeric;
 BEGIN
-    UPDATE post SET votes = (SELECT COUNT(CASE WHEN post_id=NEW.post_id THEN 1 END) AS c FROM vote)
+    UPDATE post SET votes = (SELECT COUNT(CASE WHEN post_id=NEW.post_id THEN 1 END) AS c FROM votes)
     WHERE id=NEW.post_id;
     RETURN NEW;
 END
@@ -124,7 +124,7 @@ CREATE FUNCTION user_prevent_self_flag_comment() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
-    IF EXISTS (SELECT id FROM comment WHERE NEW.comment_id = id 
+    IF EXISTS (SELECT id FROM comments WHERE NEW.comment_id = id 
                AND NEW.flagger_id = author_id) THEN
       RAISE EXCEPTION 'A user cannot flag own post.';
     END IF;
@@ -142,7 +142,7 @@ CREATE FUNCTION vote_prevent_own_user() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
-    IF EXISTS (SELECT id FROM post WHERE NEW.post_id = id 
+    IF EXISTS (SELECT id FROM posts WHERE NEW.post_id = id 
                AND NEW.user_id = author_id) THEN
       RAISE EXCEPTION 'A user cannot vote on own post.';
     END IF;
