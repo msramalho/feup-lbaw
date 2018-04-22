@@ -7,6 +7,7 @@
 		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ $is_register?"show":""}}" >
 			<form class="px-4 py-3" action="{{ url('register') }}" method="POST">
 				<input type="hidden" name="is_register" value="1">
+				{{ csrf_field() }}
 				@includeWhen($is_register, "partials.errors")
 				<div class="form-group">
 					<input type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ old('name') }}" required>
@@ -20,7 +21,6 @@
 				<div class="form-group">
 					<input type="password" class="form-control" id="register_password" name="password" placeholder="password" required>
 				</div>
-				<input type="hidden" name='_token' id='csrfToken_reg' value="{{csrf_token()}}">
 				<input type="submit" class="btn btn-dark" value="Sign Up">
 			</form>
 			<div class="dropdown-divider"></div>

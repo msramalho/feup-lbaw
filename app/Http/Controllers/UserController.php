@@ -21,8 +21,6 @@ class UserController extends Controller
 
         $user = User::where('username',$username) -> first();
 
-        //$this->authorize('show', $user);
-
         /**
          * Passing the user data to profile view
         **/
@@ -34,9 +32,7 @@ class UserController extends Controller
      * Edit User Profile
      * 
     **/
- 
     public function edit() {
-
         return view('pages.edit-profile');
     }
 
