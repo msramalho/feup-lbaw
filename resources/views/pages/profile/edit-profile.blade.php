@@ -2,6 +2,14 @@
 
 @section('title', 'Vecto: Edit profile')
 
+@section("styles")
+@parent {{-- append to the end multiple times in case of multiple styles --}}
+<link href="{{ asset('css/froala_editor.pkgd.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/froala_style.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/codemirror.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -72,7 +80,7 @@
         <div class="form-group">
             <h4>Write a little text about you</h4>
             <hr>
-            <textarea class="form-control" id="postContent" value="{{Auth::user()->email}}" required></textarea>
+            <textarea class="form-control" id="postContent" value="{{Auth::user()->content}}" required></textarea>
         </div>
 
         <div class="form-row">
@@ -91,4 +99,12 @@
 
 </div>
 
+@endsection
+
+@section("scripts")
+@parent {{-- append to the end multiple times in case of multiple scripts --}}
+<script type="text/javascript" src="{{ asset('js/external/codemirror.min.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('js/external/froala_editor.pkgd.min.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('js/external/dropzone.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('js/pages/edit-profile.js') }}" ></script>
 @endsection

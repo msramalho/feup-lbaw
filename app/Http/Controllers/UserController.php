@@ -24,7 +24,7 @@ class UserController extends Controller
         /**
          * Passing the user data to profile view
         **/
-        return view('pages.user-profile', ['user' => $user]);
+        return view('pages.profile.user-profile', ['user' => $user]);
 
     }
 
@@ -33,7 +33,7 @@ class UserController extends Controller
      * 
     **/
     public function edit() {
-        return view('pages.edit-profile');
+        return view('pages.profile.edit-profile');
     }
 
     /**
