@@ -93,8 +93,8 @@
 					<div class="container add-comment">
 						<h3>Add a comment!</h3>
 						<p class="text-info">Please, remember our posting rules: be civilized and respect others!</p>
-						<form>
-							<textarea class="form-control" id="postContent" required></textarea>
+						<form method="POST" action="/api/post/{{ $post->id }}/comment">
+							<textarea name="content" class="form-control" id="postContent" required></textarea>
 							<input type="submit" class="btn btn-primary float-right mt-2" id="postSubmit" value="Submit"/>
 						</form>
 					</div>

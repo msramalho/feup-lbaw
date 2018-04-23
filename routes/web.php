@@ -53,3 +53,6 @@ Route::get('user/{username}', 'UserController@show');
 // Custom error pages
 Route::view('404', 'errors.404');
 Route::view('403', 'errors.403');
+
+Route::post('api/post/{id}/comment', 'CommentController@create');
+
