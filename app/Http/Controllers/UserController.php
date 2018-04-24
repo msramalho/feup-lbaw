@@ -44,20 +44,19 @@ class UserController extends Controller
 
     public function editProfile(Request $request)
     {        
-        //$this->authorize('edit', User::class);
-
-        //$this->validate($request, ['description' => 'required|string|max:5000']);
+        $this->validate($request, ['description' => 'required|string|max:5000']);
 
         Auth::check();
 
         $user = Auth::user();
 
         $user -> name = $request->name;
+        $user -> username = $request->username;
         $user -> email = $request->email;
         $user -> birthdate = $request->birthdate;
         $user -> description = $request->description;
         $user -> save();
     
-        return response("Updated!",200);
+        return response(json_encode("Success!"), 200);
     }
 }

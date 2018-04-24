@@ -28,7 +28,6 @@ $("#saveChanges").click(function(e){
     e.preventDefault();
     var form_info = $("#form-info input");
     var description = $(".form-group textarea#postContent");
-    console.log(form_info);
 
     var my_data = {
         'name' : form_info.get(0).value,
@@ -45,13 +44,12 @@ $("#saveChanges").click(function(e){
         url: myurl,
         data: my_data,
         dataType : 'json',
+
         success: function (data) {
-            alert("Success");
             console.log(data);
         },
 
         error: function (data) {
-            alert("Error");
             console.log('Error: ', data);
         }
     });
