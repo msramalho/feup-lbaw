@@ -54,5 +54,9 @@ Route::get('user/{username}', 'UserController@show');
 Route::view('404', 'errors.404');
 Route::view('403', 'errors.403');
 
+
+// comments
+
 Route::post('api/post/{id}/comment', 'CommentController@create');
+Route::delete('api/comment/{cid}', 'CommentController@delete');
 
