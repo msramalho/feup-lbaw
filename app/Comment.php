@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Comment extends Model
 {
@@ -32,5 +33,13 @@ class Comment extends Model
     public function flagComments()
     {
         return $this->hasMany('App\FlagComment');
+    }
+
+    /**
+     * the current user is the author of this comment
+     */
+    public function isOwner()
+    {
+        return Auth::check() && $this->user->id == Auth::user()->id;
     }
 }
