@@ -28,7 +28,7 @@
 						<p class="short">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
 						<div class="row">
 							<div class="text-center col-lg-2 col-3">
-								<i class="fas fa-user-circle"></i> <a href="user-profile.html?user=nagel">nagel</a>
+								<i class="fas fa-user-circle"></i> <a href="{{ url('/user/jcl') }}">nagel</a>
 							</div>
 							<div class="text-center col-lg-6 col-4">
 								<i class="fas fa-map-marker-alt"></i> <a href="search.html?faculty=FLUP">Faculdade de Letras, Universidade do Porto</a>

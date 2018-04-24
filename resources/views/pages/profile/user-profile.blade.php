@@ -115,31 +115,7 @@
                     </div>
                     <br>
                     <br>
-                    <div id="feed-content" class="">
-
-                        <!-- start slipsum code -->
-
-                        <h3>Uuummmm, I am a tasty Cupcake!</h3>
-                        <p class="short">Cupcake ipsum dolor sit amet macaroon biscuit. Tiramisu lollipop biscuit I love gingerbread jelly beans lemon drops.
-                            Tart fruitcake jelly. Sweet roll halvah I love fruitcake. Gummies jelly-o icing donut. Bear claw tart jelly muffin.
-                            Marshmallow pudding jelly I love jelly gummi bears jelly-o I love. Sesame snaps chocolate bar donut chocolate cake.</p>
-                        <img src="{{URL::asset('images/cupcake.jpg')}}" class="img-fluid" alt="Cupcake">
-
-                        <p class="short">Pastry donut I love. Chocolate cake macaroon. Pie tiramisu candy canes candy tiramisu lemon drops. Topping danish
-                            tiramisu. Danish lollipop jelly beans fruitcake pie toffee. Toffee halvah cake lemon drops I love toffee croissant
-                            apple pie. Lollipop wafer oat cake I love pudding. Muffin danish wafer cookie sugar plum tart. I love muffin sesame
-                            snaps powder toffee pie.</p>
-
-                        <p class="short">Jelly-o tart gummies cotton candy I love. Gingerbread I love halvah I love chocolate bar. Cheesecake sugar plum jujubes.
-                            Marshmallow cheesecake gingerbread powder sugar plum soufflé tart sweet cake. Dessert I love wafer liquorice bonbon.
-                            Donut pastry carrot cake. Dragée biscuit chupa chups. Candy canes halvah gummies candy gummi bears sesame snaps I
-                            love. Jelly-o tiramisu carrot cake.</p>
-
-                        <!-- end slipsum code -->
-
-                    </div>
-
-
+                    <div id="feed-content" class="">{{$user->description}}</div>
                 </div>
             </div>
         </div>
