@@ -64,30 +64,28 @@
 				<hr>
 				<div class="article-comments">
 					<h2>
-						2 comments
+						{{ count($post->comments()->get()) }} comments
 					</h2>
-					<div class="p-3 bg-light article-comment">
-						<img src="public/images/profile.png" alt="Profile Picture">
-						<h3>kuinn</h3>
-						<p>Lorem ipsum dolor dolor sit amet.</p>
-						<div class="flag-comment small text-secondary">
-							<a class="text-secondary" href="#">
-								<i class="fas fa-flag"></i>
-								<span>&nbsp; Flag this comment</span>
-							</a>
+					@foreach ($post->comments()->get() as $cm)
+						<div id="c{{ $cm->id }}" class="p-3 bg-light article-comment">
+							<img src="{{ asset('/images/profile.png') }}" alt="Profile Picture">
+							<h3>{{ $cm->user()->get()[0]->username }}</h3>
+							<p>{{ $cm->content }}</p>
+							<div class="flag-comment small text-secondary">
+								<a class="text-secondary" href="#">
+									<i class="fas fa-flag"></i>
+									<span>&nbsp; Flag this comment</span>
+								</a>
+								@if($cm->isOwner())
+									<a class="text-secondary" href="#">
+										<i class="fas fa-trash"></i>
+										<span>Delete this comment</span>
+									</a>
+								@endif
+							</div>
 						</div>
-					</div>
-					<div class="p-3 bg-light article-comment">
-						<img src="public/images/profile.png" alt="Profile Picture">
-						<h3>nagel</h3>
-						<p>Vel eros donec ac odio tempor orci dapibus ultrices.</p>
-						<div class="flag-comment small text-secondary">
-							<a class="text-secondary" href="#">
-								<i class="fas fa-flag"></i>
-								<span>&nbsp; Flag this comment</span>
-							</a>
-						</div>
-					</div>
+					@endforeach
+					
 					@if(Auth::check())
 					<br>
 					<div class="container add-comment">
@@ -95,6 +93,7 @@
 						<p class="text-info">Please, remember our posting rules: be civilized and respect others!</p>
 						<form method="POST" action="/api/post/{{ $post->id }}/comment">
 							<textarea name="content" class="form-control" id="postContent" required></textarea>
+							{{ csrf_field() }}
 							<input type="submit" class="btn btn-primary float-right mt-2" id="postSubmit" value="Submit"/>
 						</form>
 					</div>
