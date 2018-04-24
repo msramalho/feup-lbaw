@@ -45,7 +45,7 @@ class CommentController extends Controller
         //$cm -> 
         $cm -> save();
         //dd($cm);
-        /*return Redirect::to("post/$post->id");*/
+        return json_encode("success");
     }
 
 }
