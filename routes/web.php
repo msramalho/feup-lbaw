@@ -47,16 +47,16 @@ Route::get('register', function () {return redirect('/?action=register');});
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::get('user/edit', 'UserController@edit')->middleware('auth');
-Route::get('user/{username}', 'UserController@show');
-
 // Custom error pages
 Route::view('404', 'errors.404');
 Route::view('403', 'errors.403');
 
 
-// comments
-
+// Comments
 Route::post('api/post/{id}/comment', 'CommentController@create');
 Route::delete('api/comment/{cid}', 'CommentController@delete');
 
+// User
+Route::get('user/edit', 'UserController@edit')->middleware('auth');
+Route::get('user/{username}', 'UserController@show');
+Route::post('user/edit', 'UserController@editProfile');

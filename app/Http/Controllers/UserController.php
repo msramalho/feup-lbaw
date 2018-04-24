@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Middleware\Authenticate;
 
 use App\Http\Controllers\Controller;
 
@@ -41,17 +42,22 @@ class UserController extends Controller
      * 
     **/
 
-    public function editProfile()
-    {
-        $data = Input::all();
-        if(Request::ajax())
-        {
-            $id = Input::get('id');
-            $option = Options::where('id', $id)->first();
-            $option->size = $data['size'];
-            $option->colour = $data['colour'];
-            $option->stock = $data['stock'];
-            $option->update();
-        }
+    public function editProfile(Request $request)
+    {        
+        //$this->authorize('edit', User::class);
+
+        //$this->validate($request, ['description' => 'required|string|max:5000']);
+
+        Auth::check();
+
+        $user = Auth::user();
+
+        $user -> name = $request->name;
+        $user -> email = $request->email;
+        $user -> birthdate = $request->birthdate;
+        $user -> description = $request->description;
+        $user -> save();
+    
+        return response("Updated!",200);
     }
 }

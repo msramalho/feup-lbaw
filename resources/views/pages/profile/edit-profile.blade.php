@@ -39,17 +39,17 @@
         <h4 class="mt-3">Personal Information</h4>
         <hr>
 
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12" id="form-info">
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                     <label>Name</label>
-                    <input type="text" class="form-control" name="name" aria-describedby="NameHelp" value="{{Auth::user()->name}}">
+                    <input type="text" class="form-control" name="name" aria-describedby="NameHelp" placeholder="Enter name" value="{{Auth::user()->name}}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                     <label>Username</label>
-                <input type="text" class="form-control" name="username" aria-describedby="userNameHelp" value="{{Auth::user()->username}}">
+                <input type="text" class="form-control" name="username" aria-describedby="userNameHelp" placeholder="Enter username" value="{{Auth::user()->username}}">
                 </div>
             </div>
             <div class="form-row">
@@ -57,7 +57,7 @@
                     <form method="post">
                         <!-- Date input -->
                         <label class="control-label" for="date">Birthdate</label>
-                        <input class="form-control" type="date" name="birthdate" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
+                        <input class="form-control" type="date" name="birthdate" placeholder="DD/MM/YYYY" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
                     </form>
 
 
@@ -80,7 +80,7 @@
         <div class="form-group">
             <h4>Write a little text about you</h4>
             <hr>
-            <textarea class="form-control" id="postContent" value="{{Auth::user()->content}}" required></textarea>
+            <textarea class="form-control" id="postContent">{{Auth::user()->description}}</textarea>
         </div>
 
         <div class="form-row">
