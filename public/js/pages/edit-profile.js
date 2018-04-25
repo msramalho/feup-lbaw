@@ -46,6 +46,7 @@ $("#saveChanges").click(function(e){
         dataType : 'json',
 
         success: function (data) {
+            alert("Successfully saved!")
             console.log(data);
         },
 
