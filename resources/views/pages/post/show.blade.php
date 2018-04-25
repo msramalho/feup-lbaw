@@ -63,46 +63,30 @@
 				</div>
 				<hr>
 				<div class="article-comments">
-					@php ($cmCount = count($post->comments()->get()))
+				@php ($cmCount = count($post->comments()->get()))
+				<h2 id="commentCount" cc="{{ $cmCount }}">
 					@if($cmCount>1)
-					<h2>
 						{{ $cmCount }} comments:
-					</h2>
 					@elseif($cmCount==1)
-					<h2>
 						1 comment:
-					</h2>
 					@else
-					<h2>
 						No comments yet.
-					</h2>
 					@endif
-					@foreach ($post->comments()->get() as $cm)
-						<div id="c{{ $cm->id }}" class="p-3 bg-light article-comment">
-							<img src="{{ asset('/images/profile.png') }}" alt="Profile Picture">
-							<h3>{{ $cm->user->username }}</h3>
-							<p>{{ $cm->content }}</p>
-							<div class="flag-comment small text-secondary">
-								<a class="text-secondary" href="#">
-									<i class="fas fa-flag"></i>
-									<span>Flag</span>
-								</a>
-								@if($cm->isOwner())
-									<a class="text-secondary" href="#">
-										<i class="fas fa-trash"></i>
-										<span>Delete</span>
-									</a>
-								@endif
-							</div>
-						</div>
-					@endforeach
+					</h2>
+					@each('partials.comment', $post->comments()->get(), 'cm')
 					
 					@if(Auth::check())
 					<br>
+					<hr>
 					<div class="container add-comment">
 						<h3>Add a comment!</h3>
-						<p class="text-info">Please, remember our posting rules: be civilized and respect others!</p>
-						<form method="POST" action="/api/post/{{ $post->id }}/comment">
+						<div id="addCmError" class="alert alert-danger">
+							An error occurred!
+						</div>
+						<div class="alert alert-info">
+							Please, remember our posting rules: be civilized and respect others!
+						</div>
+						<form id="newComment" method="POST" action="/api/post/{{ $post->id }}/comment">
 							<textarea name="content" class="form-control" id="postContent" required></textarea>
 							{{ csrf_field() }}
 							<input type="submit" class="btn btn-primary float-right mt-2" id="postSubmit" value="Submit"/>
@@ -114,4 +98,10 @@
 		</article>
 	</div>
 </div>
+@endsection
+
+
+@section("scripts")
+@parent {{-- append to the end multiple times in case of multiple scripts --}}
+<script type="text/javascript" src="{{ asset('js/pages/view-post.js') }}" ></script>
 @endsection

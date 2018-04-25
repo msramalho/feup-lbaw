@@ -92,4 +92,10 @@ class PostController extends Controller
         $post->delete();
         return Redirect::to("post")->with("info", "POST $post->title successfully deleted");
     }
+
+    public static function getIndexList($page = 0){
+        // TODO: imeplement paging
+        $post = Post::all();
+        return $post;
+    }
 }

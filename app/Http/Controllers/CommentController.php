@@ -41,7 +41,12 @@ class CommentController extends Controller
         $cm -> post_id = (int) $post_id;
         $cm -> author_id = Auth::user()->id;
         $cm -> save();
-        return json_encode("success");
+        return json_encode(array("success", self::show($cm->id)));
+    }
+
+    public static function show($comment_id){
+        $comment = Comment::where('id',$comment_id)->first();
+        return view('partials.comment', ['cm' => $comment])->render();
     }
 
 }
