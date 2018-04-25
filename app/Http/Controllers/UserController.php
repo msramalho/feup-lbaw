@@ -44,7 +44,12 @@ class UserController extends Controller
 
     public function editProfile(Request $request)
     {        
-        $this->validate($request, ['description' => 'required|string|max:5000']);
+        $this->validate($request, [
+            'name' => 'required|string|max:64',
+            'username' => 'required|string|max:64',
+            'email' => 'required|email',
+            'birthdate' => 'required|date',
+            'description' => 'required|string|max:5000',]);
 
         Auth::check();
 
