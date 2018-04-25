@@ -26,7 +26,6 @@ class CommentController extends Controller
         //TODO: needs to be tested
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +33,6 @@ class CommentController extends Controller
      */
     public function create(Request $request, $post_id)
     {
-        //  dd($post_id);
         $this->authorize('create', Comment::class);
         
         $this->validate($request, [
@@ -42,9 +40,7 @@ class CommentController extends Controller
         $cm = new Comment($request->all());
         $cm -> post_id = (int) $post_id;
         $cm -> author_id = Auth::user()->id;
-        //$cm -> 
         $cm -> save();
-        //dd($cm);
         return json_encode("success");
     }
 
