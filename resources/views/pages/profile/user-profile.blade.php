@@ -115,7 +115,7 @@
                     </div>
                     <br>
                     <br>
-                    <div id="feed-content" class="">{{$user->description}}</div>
+                    <div id="feed-content" class="">{!! $user->description !!}</div>
                 </div>
             </div>
         </div>
