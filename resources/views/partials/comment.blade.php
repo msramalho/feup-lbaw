@@ -4,14 +4,15 @@
     <h3>{{ $cm->user->username }}</h3>
     <p>{{ $cm->content }}</p>
     <div class="flag-comment small text-secondary">
-        <a class="text-secondary" href="#">
-            <i class="fas fa-flag"></i>
-            <span>Flag</span>
-        </a>
         @if($cm->isOwner())
-            <a class="text-secondary" href="#">
+            <a class="text-secondary delete-comment ajax-link">
                 <i class="fas fa-trash"></i>
                 <span>Delete</span>
+            </a>
+        @else
+            <a class="text-secondary flag-comment ajax-link">
+                <i class="fas fa-flag"></i>
+                <span>Flag</span>
             </a>
         @endif
     </div>
