@@ -122,7 +122,7 @@ class UserController extends Controller
         //$manager = new ImageManager();
         $image = Image::make( $photo )->resize(200, null, function ($constraint) {
             $constraint->aspectRatio();
-            })
+            })->crop(100,100)
             ->save( public_path().'/images/users/icons/' . $filename );
 
         return $image;
