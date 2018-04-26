@@ -17,10 +17,10 @@
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle text-center mt-2">
                     <div class="profile-usertitle-name">
-                        {{$user->username}}
+                        {{$user->name}}
                     </div>
-                    <div class="profile-usertitle-job">
-                        Developer
+                    <div class="profile-usertitle-username">
+                        {{$user->username}}
                     </div>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
