@@ -418,3 +418,7 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
     position: absolute;
     top: -99999999px;
 }
+
+.ajax-link{
+    cursor:pointer;
+}

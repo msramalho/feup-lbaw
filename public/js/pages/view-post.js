@@ -26,7 +26,6 @@ function updateCommentCount(cc) {
 
 function insertComment(html) {
     let c = $('div.article-comments').children();
-
     $(c[c.length - 4]).after(html);
 }
 
@@ -54,4 +53,24 @@ $('form#newComment').submit(function() {
     });
 
     return false; // prevent form submission
+});
+
+
+$('.delete-comment').click(function() {
+    let cID = parseInt($(this).parent().parent().attr('id').substr(1));
+
+    $.ajax({
+        type: "DELETE",
+        url: '/api/post/comment/'+cID,
+    }).done(function(data) {
+        let rep = JSON.parse(data);
+        if (rep[0] == "success") {
+
+        } else {
+            
+        }
+    }).fail(function(){
+        
+    }).always(function(data){console.log(data)});
+
 });
