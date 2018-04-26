@@ -105,7 +105,7 @@ class UserController extends Controller
         }
     }
 
-     /**
+    /**
      * Optimize Original Image
      */
     public function original( $photo, $filename )
@@ -128,33 +128,5 @@ class UserController extends Controller
             ->save( public_path().'/images/users/icons/' . $filename );
 
         return $image;
-    }
-
-    public function getImage() {
-        $user = User::where('username',$username) -> first();
-
-        return view('pages.profile.');
-    }
-
-    public function postUpload() {
-        $photo = Input::all();
-        $response = $this->image->upload($photo);
-        return $response;
-    }
-
-    public function deleteImage() {
-
-        Auth::check();
-
-        $filename = Input::get('id');
-
-        if(!$filename)
-        {
-            return 0;
-        }
-
-        $response = $this->image->delete( $filename );
-
-        return $response;
     }
 }
