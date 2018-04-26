@@ -81,7 +81,7 @@
 					<div class="container add-comment">
 						<h3>Add a comment!</h3>
 						<div id="addCmError" class="alert alert-danger">
-							An error occurred!
+							An error occurred! Please reload the page and try again.
 						</div>
 						<div class="alert alert-info">
 							Please, remember our posting rules: be civilized and respect others!

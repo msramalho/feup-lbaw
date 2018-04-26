@@ -15,16 +15,10 @@
  * check the revision information
 
 ## Artefacts
-
+* [A9](https://hackmd.io/NLt_aHH-Q8ygHS2j-zjpWg) Editor: **Afonso**
+   * Status: **[submited]**
  * [A8](https://hackmd.io/Vvtgjz2uTt-vuHSH216TtA) Editor: **Vitor**
-   * Status: **[not submited]**
-   * Tasks [deadline 16/04/2018]:
-     * Afonso - 
-     * Daniel - 
-     * Miguel - ~M06:Static Pages~
-     * Vitor  - 
-     * Unassigned:
-        * [ ] bla bla
+   * Status: **[submited]**
    * [Teachers instructions](https://github.com/lbaw-admin/lbaw-laravel)
  * [A7](https://hackmd.io/Hk36u2otREmVxBWReAERnA) Editor: **Miguel**
     * Status: **[submited]**
