@@ -3,7 +3,7 @@ function hideErrorDiv() {
 }
 
 function showErrorDiv() {
-    $('div#addCmError').css('display', 'default');
+    $('div#addCmError').css('display', 'inherit');
 }
 
 function getCommentCount() {
@@ -45,11 +45,13 @@ $('form#newComment').submit(function() {
             updateCommentCount(getCommentCount() + 1);
             insertComment(rep[1]);
             $('form#newComment textarea').val('');
+
         } else {
             showErrorDiv();
         }
+    }).fail(function(){
+        showErrorDiv();
     });
 
-    return false;
-    // prevent form submission
+    return false; // prevent form submission
 });
