@@ -53,7 +53,7 @@ class UserController extends Controller
             'username' => 'required|string|max:64',
             'email' => 'required|email',
             'birthdate' => 'required|date',
-            'description' => 'required|string|max:5000'
+            'description' => 'max:5000'
         ]);
 
         Auth::check();
@@ -122,7 +122,7 @@ class UserController extends Controller
         //$manager = new ImageManager();
         $image = Image::make( $photo )->resize(200, null, function ($constraint) {
             $constraint->aspectRatio();
-            })->crop(100,100)
+            })->crop(200,200)
             ->save( public_path().'/images/users/icons/' . $filename );
 
         return $image;
