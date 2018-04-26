@@ -323,23 +323,22 @@ div#feed-content>div {
 /* Profile sidebar */
 
 .imgProfile.rounded {
-    width: 79px;
-    height: 79px;
+    width: 100px;
+    height: 100px;
 }
 
 /*PROBABLY MAKE CHANGES HERE*/
 
 .profile-usertitle .profile-usertitle-name {
     color: #5a7391;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 7px;
 }
 
-.profile-usertitle .profile-usertitle-job {
-    text-transform: uppercase;
+.profile-usertitle .profile-usertitle-username {
     color: #5b9bd1;
-    font-size: 12px;
+    font-size: 17px;
     font-weight: 600;
     margin-bottom: 15px;
 }
