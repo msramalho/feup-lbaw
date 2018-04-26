@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Auth\Middleware\Authenticate;
-use Intervention\Image\ImageManager;
+use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Http\Controllers\Controller;
 
@@ -85,10 +85,8 @@ class UserController extends Controller
 
         $image = $request->file('file');
 
-        $extension = $image->getClientOriginalExtension();
-
         $directory = public_path().'images/users';
-        $filename = Auth::user()->id.".{$extension}";
+        $filename = Auth::user()->id.".png";
 
         $uploadSuccess1 = $this->original( $image, $filename );
 
@@ -110,8 +108,8 @@ class UserController extends Controller
      */
     public function original( $photo, $filename )
     {
-        $manager = new ImageManager();
-        $image = $manager->make( $photo )->save( public_path().'/images/users/' . $filename );
+        //$manager = new ImageManager();
+        $image = Image::make( $photo )->save( public_path().'/images/users/' . $filename );
 
         return $image;
     }
@@ -121,8 +119,8 @@ class UserController extends Controller
      */
     public function icon( $photo, $filename )
     {
-        $manager = new ImageManager();
-        $image = $manager->make( $photo )->resize(200, null, function ($constraint) {
+        //$manager = new ImageManager();
+        $image = Image::make( $photo )->resize(200, null, function ($constraint) {
             $constraint->aspectRatio();
             })
             ->save( public_path().'/images/users/icons/' . $filename );
