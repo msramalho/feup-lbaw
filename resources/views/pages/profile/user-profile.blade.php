@@ -11,7 +11,7 @@
             <div class="bg-light rounded mb-3 tp-2 bp-2 profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
                 <div class="text-center">
-                    <img src="{{URL::asset('images/profile.png')}}" class="imgProfile rounded" alt="Profile Pic">
+                    <img src="{{URL::asset("images/users/icons/$user->id.png")}}" class="imgProfile rounded" alt="Profile Pic">
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
