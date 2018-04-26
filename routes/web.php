@@ -60,3 +60,5 @@ Route::delete('api/comment/{cid}', 'CommentController@delete');
 Route::get('user/edit', 'UserController@edit')->middleware('auth');
 Route::get('user/{username}', 'UserController@show');
 Route::post('user/edit', 'UserController@editProfile');
+Route::get('user/{username}/photo', 'UserController@getImage');
+Route::post('user/photo', 'UserController@uploadImage');
