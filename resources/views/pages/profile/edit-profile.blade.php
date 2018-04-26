@@ -28,7 +28,7 @@
 
                 <div class "form-row text-center">
                     <div class="containerA">
-                        <form action="/file-upload" class="dropzone noresize" id="my-awesome-dropzone"></form>
+                        <form action="{{ url('user/photo') }}" enctype="multipart/form-data" class="dropzone noresize" id="my-awesome-dropzone">{{ csrf_field() }}</form>
                     </div>
                 </div>
 
@@ -107,4 +107,56 @@
 <script type="text/javascript" src="{{ asset('js/external/froala_editor.pkgd.min.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('js/external/dropzone.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('js/pages/edit-profile.js') }}" ></script>
+<script>
+    Dropzone.options.myAwesomeDropzone = {
+        uploadMultiple: false,
+        addRemoveLinks: true,
+        dictRemoveFile: 'Remove file',
+        dictFileTooBig: 'Image is larger than 5MB',
+        timeout: 10000,
+        paramName: 'file',
+        maxFilesize: 5, // MB
+        maxFiles: 1,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
+
+        init:function() {
+            var div_id = $(this.element).attr("id");
+
+            this.on("addedfile", function(file) { 
+                alert("Added file."); 
+            });
+
+            this.on('maxfilesreached',function(file){
+                $('#' + div_id).removeClass('dz-clickable');
+                this.removeEventListeners();
+            });
+            this.on('removedfile',function(file){
+                if (this.files.length == this.options.maxFiles - 1){
+                    $('#' + div_id).addClass('dz-clickable');
+                    this.setupEventListeners();
+                }
+            });
+
+        },
+
+        error: function(file, response) {
+            if($.type(response) === "string")
+                var message = response; //dropzone sends it's own error messages in string
+            else
+                var message = response.message;
+            file.previewElement.classList.add("dz-error");
+            _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                node = _ref[_i];
+                _results.push(node.textContent = message);
+            }
+            return _results;
+        },
+
+        success: function(file, done) {
+            
+        }
+    };
+</script>
 @endsection
