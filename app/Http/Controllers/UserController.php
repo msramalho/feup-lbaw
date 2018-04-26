@@ -111,7 +111,7 @@ class UserController extends Controller
     public function original( $photo, $filename )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->save(Config::get('images.users') . $filename );
+        $image = $manager->make( $photo )->save( public_path().'/images/users/' . $filename );
 
         return $image;
     }
@@ -125,7 +125,7 @@ class UserController extends Controller
         $image = $manager->make( $photo )->resize(200, null, function ($constraint) {
             $constraint->aspectRatio();
             })
-            ->save( Config::get('images.users.icons')  . $filename );
+            ->save( public_path().'/images/users/icons/' . $filename );
 
         return $image;
     }
