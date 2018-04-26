@@ -18,11 +18,10 @@ class CommentController extends Controller
      */
     public function delete($comment_id)
     {
-        $this->authorize('delete', Comment::class, $comment_id);
         $comment = Comment::where('id',$comment_id)->first();
-        $post = $comment->post();
+        $this->authorize('delete', $comment);
         $comment->delete();
-        return Redirect::route("post.show")->with(['id' => $post], "info", "Comment successfully deleted");
+        return json_encode("success");
         //TODO: needs to be tested
     }
 
