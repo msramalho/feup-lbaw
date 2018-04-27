@@ -4,9 +4,6 @@
             <p>
                 {{$post->votes}}
             </p>
-            <button t<ype="button" data-toggle="button" class="upvoteBtn btn">
-                <i class="fas fa-arrow-up"></i>
-            </button>
         </div>
         <div class="col-lg-11 col-sm-12 col-xl-11 col-md-11">
             <a href="{{ url('/post/'.$post->id) }}">
