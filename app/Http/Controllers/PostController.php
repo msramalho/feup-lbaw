@@ -11,24 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-        $this->authorize('create', Post::class);
+    public function validatation(Request $request){
         $this->validate($request, [
             'from_faculty_id' => 'required|numeric',
             'to_faculty_id' => 'required|numeric',
@@ -40,6 +23,17 @@ class PostController extends Controller
             'native_friendliness' => 'required|string',
             'work_load' => 'required|string',
         ], ["from_faculty_id.*"=>"The origin faculty must be set", "to_faculty_id.*" => "the destination faculty must be set"]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $this->authorize('create', Post::class);
+        $this->validatation($request);
         $post = new Post($request->all());
         $post->author_id = Auth::user()->id;
         $post->save();
@@ -60,24 +54,39 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($post_id)
     {
-        //
+        $post = Post::where('id',$post_id)->first();
+        return view('pages.post.edit', ['post' => $post]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $post_id)
     {
-        //
+        Auth::check();
+        $this->validatation($request);
+
+        $post = Post::where('id',$post_id)->first();
+
+        $post->from_faculty_id = $request->from_faculty_id;
+        $post->to_faculty_id = $request->to_faculty_id;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->school_year = $request->school_year;
+        $post->beer_cost = $request->beer_cost;
+        $post->life_cost = $request->life_cost;
+        $post->native_friendliness = $request->native_friendliness;
+        $post->work_load = $request->work_load;
+        $post->save();
+    
+        return Redirect::to("post/$post->id");
     }
 
     /**
