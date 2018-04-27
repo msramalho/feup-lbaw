@@ -108,7 +108,7 @@ CREATE FUNCTION update_vote() RETURNS trigger
     AS $$DECLARE
     count_votes numeric;
 BEGIN
-    UPDATE post SET votes = (SELECT COUNT(CASE WHEN post_id=NEW.post_id THEN 1 END) AS c FROM votes)
+    UPDATE posts SET votes = (SELECT COUNT(CASE WHEN post_id=NEW.post_id THEN 1 END) AS c FROM votes)
     WHERE id=NEW.post_id;
     RETURN NEW;
 END
