@@ -418,6 +418,10 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
     top: -99999999px;
 }
 
+.btn-primary.disabled:hover, .btn-primary.disabled {
+    background-color: grey !important;
+}
+
 .ajax-link{
     cursor:pointer;
 }
