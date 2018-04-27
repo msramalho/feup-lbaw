@@ -24,11 +24,12 @@
 				</div>
 				<div class="row">
 					<div class="mt-lg-5 pl-lg-0 mb-4 mb-lg-0 text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12">
-						<p>
+						<p id="post-votes">
 							{{ $post->votes }}
 						</p>
 						@if(Auth::check())
-							<button type="button" data-toggle="button" class="upvoteBtn btn btn-primary">
+							<?php $voted = App\Vote::user_voted(Auth::user()->id, $post->id) ?>
+							<button type="button" data-toggle="button" class="btn btn-primary {{$voted?"voted":""}}" id = "btn_upvote" post_id="{{$post->id}}" title-0="vote for this post" title-1="remove vote">
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						@endif
