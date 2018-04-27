@@ -30,7 +30,9 @@
 						</p>
 						@if(Auth::check())
 							<?php $voted = App\Vote::user_voted(Auth::user()->id, $post->id) ?>
-							<button type="button" data-toggle="button" class="btn btn-primary {{$voted?"voted":""}}" id = "btn_upvote" post_id="{{$post->id}}" title-0="vote for this post" title-1="remove vote">
+							{{$voted->get()}}
+							{{count($voted->get())}}
+							<button type="button" data-toggle="button" class="btn btn-primary {{count($voted->get())>0?"voted":""}}" id = "btn_upvote" post_id="{{$post->id}}" title-0="vote for this post" title-1="remove vote">
 								<i class="fas fa-arrow-up"></i>
 							</button>
 						@endif
