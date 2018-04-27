@@ -21,7 +21,11 @@ class VoteController extends Controller
     {
         $vote = Vote::user_voted(Auth::user()->id, $post_id);
         if(count($vote->get())){
-            $vote->delete();
+            try {
+                $vote->delete();
+            } catch(QueryException $qe){
+                return json_encode(array("error"=> QueryExceptionUtil::getErrorFromException($qe)));
+            }
             $voted = 0;
         } else {
             $vote = new Vote();
