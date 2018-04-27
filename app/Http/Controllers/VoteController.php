@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Vote;
+use App\QueryExceptionUtil;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Database\QueryException;
 
 class VoteController extends Controller
 {
@@ -24,10 +27,14 @@ class VoteController extends Controller
             $vote = new Vote();
             $vote->user_id = Auth::user()->id;
             $vote->post_id = $post_id;
-            $vote->save();
+            try {
+                $vote->save();
+            } catch(QueryException $qe){
+                return json_encode(array("error"=> QueryExceptionUtil::getErrorFromException($qe)));
+            }
             $voted = 1;
         }
-        return json_encode(array("voted", $voted));
+        return json_encode(array("voted"=> $voted));
     }
 
     /**
