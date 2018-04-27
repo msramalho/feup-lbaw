@@ -30,8 +30,6 @@
 						</p>
 						@if(Auth::check())
 							<?php $voted = App\Vote::user_voted(Auth::user()->id, $post->id) ?>
-							{{$voted->get()}}
-							{{count($voted->get())}}
 							<button type="button" data-toggle="button" class="btn btn-primary {{count($voted->get())>0?"voted":""}}" id = "btn_upvote" post_id="{{$post->id}}" title-0="vote for this post" title-1="remove vote">
 								<i class="fas fa-arrow-up"></i>
 							</button>
@@ -47,7 +45,7 @@
 								<span>Flag</span>
 							</a>
 							@endif
-							<a class="text-secondary" href="#">
+							<a class="text-secondary" onclick="copyToClipboard('{{ url("post/$post->id") }}')" href="#">
 								<i class="fas fa-share-alt"></i>
 								<span>Share</span>
 							</a>
