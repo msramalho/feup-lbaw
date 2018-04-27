@@ -6,6 +6,8 @@ if [ $1 = "up" ]; then
 	docker-compose up -d
 	php artisan serve &
 	php artisan up
+	echo sleeping for 10s
+	sleep 10s
 	php artisan migrate
 	php artisan migrate:status
 	xdg-open "http://127.0.0.1:8000/"
