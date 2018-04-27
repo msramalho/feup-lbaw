@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\MessageBag;
+use App\QueryExceptionUtil;
 
 class Handler extends ExceptionHandler
 {
@@ -51,7 +52,7 @@ class Handler extends ExceptionHandler
     {
         if(is_a($exception, "Illuminate\Database\QueryException")){
             $errors = new MessageBag();
-            $errors->add('database_error', 'The supplied data is in violation of our rules: ' . explode("\n", $exception->errorInfo[2])[0]);
+            $errors->add('database_error', QueryExceptionUtil::getErrorFromException($exception));
             return back()->withInput($request->all())->withErrors($errors); 
         }
         return parent::render($request, $exception);
