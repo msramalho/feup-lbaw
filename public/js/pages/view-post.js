@@ -74,3 +74,22 @@ $('.delete-comment').click(function() {
     }).always(function(data){console.log(data)});
 
 });
+
+$("#btn_upvote").click(function(e) {
+    let btn = $(this);
+    $.ajax({
+        type: "POST",
+        url: "/post/"+btn.attr("post_id")+"/vote",
+    }).done(function(data) {
+        data = JSON.parse(data);
+        if(data.voted !== undefined){
+            btn.toggleClass("voted");
+            btn.attr("title", btn.attr("title-"+data["voted"]));
+            let current_votes = parseInt($("#post-votes").html());
+            current_votes += data.voted?1:-1;
+            $("#post-votes").html(current_votes);
+        } else {
+            alert(data.error);
+        }
+    });
+});

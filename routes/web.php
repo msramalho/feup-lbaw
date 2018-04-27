@@ -27,10 +27,8 @@ Route::post('post', 'PostController@create');
 Route::get('post/{id}', 'PostController@show');
 Route::get('post/{id}/delete', 'PostController@delete');
 
-
-// Cards
-// Route::get('cards', 'CardController@list');
-// Route::get('cards/{id}', 'CardController@show');
+// Votes
+Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');
 
 // API
 // Route::put('api/cards', 'CardController@create');
