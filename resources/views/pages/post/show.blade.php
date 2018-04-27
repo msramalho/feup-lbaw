@@ -22,6 +22,7 @@
 					<img src="https://i.imgur.com/KfROBYv.jpg" alt>
 					<div class="top-left"><h1>{{ $post->title }}</h1></div>
 				</div>
+				@include("partials.errors")
 				<div class="row">
 					<div class="mt-lg-5 pl-lg-0 mb-4 mb-lg-0 text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12">
 						<p id="post-votes">
