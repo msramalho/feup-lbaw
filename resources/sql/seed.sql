@@ -30,6 +30,7 @@ DROP TRIGGER IF EXISTS vote_prevent_own_user ON vote;
 DROP FUNCTION IF EXISTS max_two_mobilities_per_year() CASCADE;
 DROP FUNCTION IF EXISTS post_search_update() CASCADE;
 DROP FUNCTION IF EXISTS update_vote() CASCADE;
+DROP FUNCTION IF EXISTS update_vote_delete() CASCADE;
 DROP FUNCTION IF EXISTS user_prevent_self_flag_comment() CASCADE;
 DROP FUNCTION IF EXISTS vote_prevent_own_user() CASCADE;
 DROP SEQUENCE IF EXISTS city_id_seq CASCADE;
@@ -111,6 +112,21 @@ BEGIN
     UPDATE posts SET votes = (SELECT COUNT(CASE WHEN post_id=NEW.post_id THEN 1 END) AS c FROM votes)
     WHERE id=NEW.post_id;
     RETURN NEW;
+END
+$$;
+
+--
+-- Name: update_vote_delete(); Type: FUNCTION; Schema: public; Owner: lbaw1721
+--
+
+CREATE FUNCTION update_vote_delete() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$DECLARE
+    count_votes numeric;
+BEGIN
+    UPDATE posts SET votes = (SELECT COUNT(CASE WHEN post_id=OLD.post_id THEN 1 END) AS c FROM votes)
+    WHERE id=OLD.post_id;
+    RETURN OLD;
 END
 $$;
 
@@ -1051,7 +1067,7 @@ SELECT pg_catalog.setval('post_from_faculty_id_seq', 1, false);
 -- Name: post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
 --
 
-SELECT pg_catalog.setval('post_id_seq', 1, true);
+SELECT pg_catalog.setval('post_id_seq', 16, true);
 
 
 --
@@ -1311,6 +1327,7 @@ CREATE TRIGGER post_search_update BEFORE INSERT OR UPDATE ON post FOR EACH ROW E
 --
 
 CREATE TRIGGER update_vote AFTER INSERT OR UPDATE ON vote FOR EACH ROW EXECUTE PROCEDURE update_vote();
+CREATE TRIGGER update_vote_delete AFTER DELETE ON vote FOR EACH ROW EXECUTE PROCEDURE update_vote_delete();
 
 
 --
