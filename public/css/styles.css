@@ -422,6 +422,10 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
     background-color: grey !important;
 }
 
+.btn.voted{
+    background-color: green !important;
+}
+
 .ajax-link{
     cursor:pointer;
 }
