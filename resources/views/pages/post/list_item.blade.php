@@ -19,7 +19,7 @@
                     <i class="fas fa-map-marker-alt"></i> <a href="{{ url('/search/faculty/'.$post->faculty_to->id.'') }}">{{$post->faculty_to->name}}</a>
                 </div>
                 <div class="text-center col-lg-2 col-2">
-                    <i class="fas fa-calendar-alt"></i> <a href="search.html?year=1718">{{$post->school_year}}/{{$post->school_year+1}}</a> 
+                    <i class="fas fa-calendar-alt"></i> <a href="search.html?year={{$post->school_year}}">{{$post->school_year}}/{{$post->school_year+1}}</a> 
                 </div>
                 <div class="text-center col-lg-2 col-2">
                     <i class="fas fa-comments"></i><a href="{{ url('/post/'.$post->id) }}"> {{count($post->comments)}} comment(s)</a>
