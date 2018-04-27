@@ -25,6 +25,8 @@ Route::view('statistics', 'pages.static.statistics');
 Route::view('post', 'pages.post.create')->middleware('auth');
 Route::post('post', 'PostController@create');
 Route::get('post/{id}', 'PostController@show');
+Route::get('post/{id}/edit', 'PostController@edit');
+Route::post('post/{id}/edit', 'PostController@update');
 Route::get('post/{id}/delete', 'PostController@delete');
 
 // Votes
@@ -38,7 +40,6 @@ Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');
 // Route::delete('api/item/{id}', 'ItemController@delete');
 
 // Authentication
-
 Route::get('login', function () {return redirect('/?action=login');})->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('register', function () {return redirect('/?action=register');});
