@@ -16,7 +16,6 @@
 	<div class="jumbotron">
 		<h1>New post</h1>
 		<h4>Tell others about your ERASMUS experience</h4>
-
 		<form action="{{ url('post') }}" method="POST">
 		 	{{ csrf_field() }}
 			@include("partials.errors")
@@ -33,44 +32,40 @@
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>Origin University</label>
-					<select class="custom-select" id="university_from" required>
+					<select class="custom-select" id="university_from" name="university_from" targets="faculty_from" required>
 						<option selected>From University</option>
-						<option value="1">Universidade do Porto</option>
-						<option value="2">Universidade de Lisboa</option>
-						<option value="3">Three</option>
+						@foreach ($universities as $university)
+							<option value="{{$university->id}}" {{ $university->id == old("university_from")?"selected":""}}>{{$university->name}}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>Origin Faculty</label>
 					<select class="custom-select" id="faculty_from" name="from_faculty_id">
 						<option selected>From Faculty</option>
-						<option value="1">FEUP</option>
-						<option value="2">FPCEUP</option>
-						<option value="3">FADEUP</option>
-						<option value="4">FLUP</option>
-						<option value="5">FCUP</option>
+						@foreach ($faculties_from as $fac)
+							<option value="{{$fac->id}}" {{ $fac->id == old("from_faculty_id")?"selected":""}}>{{$fac->name}}</option>
+						@endforeach
 					</select>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>Origin University</label>
-					<select class="custom-select" id="university_to" required>
+					<select class="custom-select" id="university_to" name="university_to" targets="faculty_to" required>
 						<option selected>To University</option>
-						<option value="1">Universidade do Porto</option>
-						<option value="2">Universidade de Lisboa</option>
-						<option value="3">Three</option>
+						@foreach ($universities as $university)
+							<option value="{{$university->id}}" {{ $university->id == old("university_to")?"selected":""}}>{{$university->name}}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>Origin Faculty</label>
 					<select class="custom-select" id="faculty_to" name="to_faculty_id">
-						<option selected>To Faculty</option>
-						<option value="1">FEUP</option>
-						<option value="2">FPCEUP</option>
-						<option value="3">FADEUP</option>
-						<option value="4">FLUP</option>
-						<option value="5">FCUP</option>
+						<option>To Faculty</option>
+						@foreach ($faculties_to as $fac)
+							<option value="{{$fac->id}}" {{ $fac->id == old("to_faculty_id")?"selected":""}}>{{$fac->name}}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
