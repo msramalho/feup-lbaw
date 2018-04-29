@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\University;
+use App\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\MessageBag;
@@ -24,6 +26,22 @@ class PostController extends Controller
             'work_load' => 'required|string',
         ], ["from_faculty_id.*"=>"The origin faculty must be set", "to_faculty_id.*" => "the destination faculty must be set"]);
     }
+
+    public function new(){
+        Auth::check();
+
+        $faculties_from = array();
+        if (old("university_from")!==null) {
+            $faculties_from = Faculty::get_by_university(old("university_from"));
+        }
+
+        $faculties_to = array();
+        if (old("university_to")!==null) {
+            $faculties_to = Faculty::get_by_university(old("university_to"));
+        }
+        return view('pages.post.create')->with("universities", University::get_all()->get())->with("faculties_from", $faculties_from)->with("faculties_to", $faculties_to);
+    }
+
 
     /**
      * Store a newly created resource in storage.
