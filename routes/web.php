@@ -22,12 +22,15 @@ Route::view('statistics', 'pages.static.statistics');
 // Route::view('recover-password', 'pages.static.recover-password');
 
 // News Posts
-Route::view('post', 'pages.post.create')->middleware('auth');
+Route::get('post', 'PostController@new')->middleware('auth');
 Route::post('post', 'PostController@create');
 Route::get('post/{id}', 'PostController@show');
 Route::get('post/{id}/edit', 'PostController@edit');
 Route::post('post/{id}/edit', 'PostController@update');
 Route::get('post/{id}/delete', 'PostController@delete');
+
+// Faculties api
+Route::get('api/university/{id}/faculties', 'FacultyController@list')->middleware('auth');
 
 // Votes
 Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');

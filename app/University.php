@@ -25,4 +25,8 @@ class University extends Model
     {
         return $this->hasMany('App\Faculty');
     }
+
+    public static function get_all(){
+        return University::orderBy("name");
+    }
 }

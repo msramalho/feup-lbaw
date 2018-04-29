@@ -40,4 +40,8 @@ class Faculty extends Model
     {
         return $this->hasMany('App\Post', 'to_faculty_id');
     }
+
+    public static function get_by_university($university_id){
+        return Faculty::where("university_id", (int)$university_id)->orderBy("name")->get();
+    }
 }
