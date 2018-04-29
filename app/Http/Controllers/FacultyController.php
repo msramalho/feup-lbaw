@@ -15,6 +15,6 @@ class FacultyController extends Controller
      */
     public function list($university_id)
     {
-        return json_encode(Faculty::where("university_id", $university_id)->orderBy("name")->get());
+        return json_encode(Faculty::get_by_university($university_id));
     }
 }
