@@ -28,8 +28,6 @@ class PostController extends Controller
     }
 
     public function new(){
-        Auth::check();
-
         $faculties_from = array();
         if (old("university_from")!==null) {
             $faculties_from = Faculty::get_by_university(old("university_from"));
