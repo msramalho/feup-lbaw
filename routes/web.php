@@ -29,6 +29,10 @@ Route::get('post/{id}/edit', 'PostController@edit');
 Route::post('post/{id}/edit', 'PostController@update');
 Route::get('post/{id}/delete', 'PostController@delete');
 
+// Universities api
+Route::get('universities', 'UniversityController@list')->middleware('auth');
+Route::get('university/{id}/faculties', 'FacultyController@list')->middleware('auth');
+
 // Votes
 Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');
 
