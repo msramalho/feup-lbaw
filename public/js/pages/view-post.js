@@ -43,6 +43,7 @@ $('form#newComment').submit(function() {
             hideErrorDiv();
             updateCommentCount(getCommentCount() + 1);
             insertComment(rep[1]);
+            bindDeleteBtns();
             $('form#newComment textarea').val('');
 
         } else {
@@ -55,25 +56,34 @@ $('form#newComment').submit(function() {
     return false; // prevent form submission
 });
 
+function removeCommentDiv(cID){
+    $("div#c"+cID).remove();
+}
 
-$('.delete-comment').click(function() {
-    let cID = parseInt($(this).parent().parent().attr('id').substr(1));
+function bindDeleteBtns(){
+    $('.delete-comment').unbind();
+    $('.delete-comment').click(function() {
+        let cID = parseInt($(this).parent().parent().attr('id').substr(1));
+    
+        $.ajax({
+            type: "DELETE",
+            url: '/api/post/comment/'+cID,
+        }).done(function(data) {
+            let rep = JSON.parse(data);
+            if (rep == "success") {
+                removeCommentDiv(cID);
+                updateCommentCount(getCommentCount() - 1);
+            } else {
+                
+            }
+        }).fail(function(){
+            showDeleteErrorDiv(); // TODO
+        });
+    });
+}
 
-    $.ajax({
-        type: "DELETE",
-        url: '/api/post/comment/'+cID,
-    }).done(function(data) {
-        let rep = JSON.parse(data);
-        if (rep[0] == "success") {
+bindDeleteBtns();
 
-        } else {
-            
-        }
-    }).fail(function(){
-        
-    }).always(function(data){console.log(data)});
-
-});
 
 $("#btn_upvote").click(function(e) {
     let btn = $(this);
