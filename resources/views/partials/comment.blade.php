@@ -9,6 +9,10 @@
                 <i class="fas fa-trash"></i>
                 <span>Delete</span>
             </a>
+            <a class="text-secondary edit-comment ajax-link">
+                <i class="fas fa-pencil-alt"></i>
+                <span>Edit</span>
+            </a>            
         @else
             <a class="text-secondary flag-comment ajax-link">
                 <i class="fas fa-flag"></i>
