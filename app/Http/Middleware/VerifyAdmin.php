@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\User;
+use App\Facades\CustomAuth;
 use Closure;
 
 class VerifyAdmin
@@ -16,7 +17,7 @@ class VerifyAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->isAdmin()) {
+        if (CustomAuth::checkAdmin()) {
             return $next($request);
         }
 
