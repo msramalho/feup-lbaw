@@ -27,6 +27,6 @@
 @if (! Auth::check())
 	@section("scripts")
 	@parent {{-- append to the end multiple times in case of multiple scripts --}}
-	<script type="text/javascript" src="{{ asset('js/pages/partials/login.js') }}" ></script>
+	<script src="{{ asset('js/pages/partials/login.js') }}" ></script>
 	@endsection
 @endif

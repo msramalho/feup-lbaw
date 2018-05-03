@@ -105,5 +105,5 @@
 
 @section("scripts")
 @parent {{-- append to the end multiple times in case of multiple scripts --}}
-<script type="text/javascript" src="{{ asset('js/pages/view-post.js') }}" ></script>
+<script src="{{ asset('js/pages/view-post.js') }}" ></script>
 @endsection
