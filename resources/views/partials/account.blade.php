@@ -5,7 +5,7 @@
                 <i class="fas fa-user-circle"></i> {{$username = Auth::user()->username}}</a>
             <div class="dropdown-menu" aria-labelledby="user_dropdown">
                 <a class="dropdown-item" href="{{ url('user/' . Auth::user()->username) }}">
-                    <i class="fas fa-user"></i> {{Auth::user()->username}}</a>
+                    <i class="fas fa-user"></i> My Profile</a>
                 <a class="dropdown-item" href="{{ url("user/edit") }}">
                     <i class="fas fa-cog"></i> Edit Profile</a>
                 <a class="dropdown-item" href="{{ url("logout") }}">
