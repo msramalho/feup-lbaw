@@ -35,7 +35,7 @@ let tr_template = `
 	<td>
 		<a class="m-2" href="university/{{id}}" title="View university's pulic page"><i class="fas fa-eye"></i></a>
 		<a class="m-2 ajax-link" onclick="editUni({{id}})" title="Edit university details"><i class="far fa-edit"></i></a>
-		<a class="m-2 ajax-link" onclick="if(confirm('delete?')){ deleteUni('{{$university->id}}'); }" title="Delete university registry"><i class="far fa-trash-alt"></i></a>
+		<a class="m-2 ajax-link" onclick="if(confirm('delete?')){ deleteUni('{{id}}'); }" title="Delete university registry"><i class="far fa-trash-alt"></i></a>
 	</td>
 </tr>`;
 
