@@ -4,20 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use App\University;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Exception;
 
 class UniversityController extends Controller
 {
 
-    public function validatator(Request $request)
+    public function validatate(Request $request)
     {
-        return Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:5000',
             'country_id' => 'required|numeric',
         ]);
+        if ($validator->fails()) {
+            throw new Exception(implode("\n", $validator->messages()->all()));
+        }
     }
 
     /**
@@ -37,14 +40,11 @@ class UniversityController extends Controller
      */
     public function create(Request $request)
     {
-        $validator = $this->validatator($request);
-        if ($validator->fails()) {
-            // throw $validator->errors();
-            throw new Exception(implode("\n", $validator->messages()->all()));
-        }
+        $this->validatate($request);
         $university = new University($request->all());
         $university->save();
-        return json_encode(array("success"));
+        $data = ["id" => $university->id, "name" => $university->name, "country" => $university->country->name, "faculties" => 0];
+        return response()->json(["success" => true, "university" => $data]);
     }
 
     /**
@@ -77,7 +77,8 @@ class UniversityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $university = University::where('id', $id)->first();
+        return view('modals.admin-university-edit', ['university' => $university, "countries" => Country::all()->sortBy("name", SORT_NATURAL)]);
     }
 
     /**
@@ -89,7 +90,13 @@ class UniversityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validatate($request);
+        // $university = University::where("id", $id);
+        $university = University::find($id);
+        $university->update($request->all());
+        // $university->save();
+        $data = ["id" => $university->id, "name" => $university->name, "country" => $university->country->name, "faculties" => 0];
+        return response()->json(["success" => true, "university" => $data]);
     }
 
     /**

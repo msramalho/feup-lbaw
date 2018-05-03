@@ -30,16 +30,16 @@
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody_universities">
 				@foreach ($universities as $university)
-					<tr>
+					<tr data-id="{{$university->id}}">
 						<th scope="row">{{$university->id}}</th>
 						<td>{{$university->name}}</td>
 						<td>{{$university->country->name}}</td>
 						<td><a title="Manage this university's faculties" href="{{url("admin/faculties/$university->id")}}">{{$university->faculties->count()}}</a></td>
 						<td>
 							<a class="m-2" href="{{url("university/$university->id")}}" title="View university's pulic page"><i class="fas fa-eye"></i></a>
-							<a class="m-2" href="{{url("university/$university->id/edit")}}" title="Edit university details"><i class="far fa-edit"></i></a>
+							<a class="m-2" href="#" onclick="editUni({{$university->id}})" title="Edit university details"><i class="far fa-edit"></i></a>
 							<a class="m-2" href="#" onclick="if(confirm('delete?')){ window.location.replace('{{url("university/$university->id/delete")}}') }" title="Delete university registry"><i class="far fa-trash-alt"></i></a>
 						</td>
 					</tr>
@@ -49,6 +49,7 @@
     </div>
 
 @include("modals.admin-university-add")
+<div id="edit_modal_container"></div>
 
 @endsection
 @section("scripts")

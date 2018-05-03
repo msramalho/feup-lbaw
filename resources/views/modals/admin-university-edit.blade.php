@@ -1,24 +1,24 @@
-    <div class="modal fade hide" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true">
+    <div class="modal fade hide" id="uniModalEdit" tabindex="-1" role="dialog" aria-labelledby="uniModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="uniModalLabel">New University</h5>
+                <h5 class="modal-title">Edit University</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
             </div>
             <div class="modal-body">
-                <form id="newUniForm">
+                <form id="editUniForm">
                     {{csrf_field()}}
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Name</label>
-                            <input type="text" class="form-control form-control-lg" name="name" placeholder="University official name" required>
+                            <input type="text" class="form-control form-control-lg" name="name" placeholder="University official name" value="{{$university->name}}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>University public description</label>
-                        <textarea class="form-control" name="description" id="uniDescription" required></textarea>
+                        <textarea class="form-control" name="description" id="editUniiDescription" required>{!! $university->description !!}</textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
@@ -26,7 +26,7 @@
                             <select class="custom-select" name="country_id" required>
                                 <option selected>Select a country</option>
                                 @foreach ($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                    <option value="{{$country->id}}" {{$university->country_id == $country->id?"selected":""}}>{{$country->name}}</option>
                                 @endforeach
                             </select>
                         </div>
