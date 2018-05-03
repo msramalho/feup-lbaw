@@ -90,18 +90,18 @@ function bindCommentButtons(){
         let text = root.children('p').text();
 
         root.children('p').hide();
-        root.append('<textarea style="margin-top:20px;" name="content" class="form-control" id="postContent" required>'+text+'</textarea><input type="submit" class="btn btn-primary float-right mt-2 submit-edited-comment" value="Submit"/>');
+        root.append('<textarea style="margin-top:20px;" name="content" class="form-control" required>'+text+'</textarea><input type="submit" class="btn btn-primary float-right mt-2 submit-edited-comment" value="Submit"/>');
         root.append('<input type="submit" class="btn btn-secundary mr-2 float-right mt-2 cancel" value="Cancel"/>');
         root.addClass("edit");
         editButton.hide();
 
         root.find("input.cancel").click(function(){
-            root.children('p').show();
-            root.find('textarea').hide();
-            root.find('input').hide();
-            root.children('p').show();
-            root.removeClass("edit");
-            editButton.show();
+            closeEditPane(root);
+        });
+
+        root.find("input.submit-edited-comment").click(function(){
+            let nText = root.find('textarea').val();
+            submitCommentEdit(root, cID, nText);
         });
         
     });
@@ -109,6 +109,15 @@ function bindCommentButtons(){
 
 bindCommentButtons();
 
+
+function closeEditPane(root){
+    root.children('p').show();
+    root.find('textarea').hide();
+    root.find('input').hide();
+    root.children('p').show();
+    root.removeClass("edit");
+    root.find('a.edit-comment').show();
+}
 
 $("#btn_upvote").click(function(e) {
     let btn = $(this);
@@ -129,3 +138,31 @@ $("#btn_upvote").click(function(e) {
     });
 });
 
+function updateComment(root, nText){
+    root.children('p').text(nText);
+}
+
+function submitCommentEdit(root, cID, nText){
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: "PUT",
+        url: '../api/post/comment/'+cID,
+         data: {content: nText}
+    }).done(function(data) {
+        let rep = JSON.parse(data);
+        if (rep == "success") {
+            closeEditPane(root);
+            updateComment(root, nText);
+        } else {
+            alert("Update failed. Try again later!");
+        }
+    }).fail(function(){
+        alert("Update failed. Try again later!");
+    });
+}

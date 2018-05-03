@@ -57,6 +57,7 @@ Route::view('403', 'errors.403');
 // Comments
 Route::post('api/post/{id}/comment', 'CommentController@create');
 Route::delete('api/post/comment/{cid}', 'CommentController@delete');
+Route::put('api/post/comment/{cid}', 'CommentController@edit');
 
 // User
 Route::get('user/edit', 'UserController@edit')->middleware('auth');
