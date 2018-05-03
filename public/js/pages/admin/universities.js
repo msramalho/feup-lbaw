@@ -16,6 +16,19 @@ $(function() {
 	});
 	$("#newUniForm").submit(function(e){
 		e.preventDefault();
-		console.log(e);
+		let form = $(this);
+		$.ajax({
+			type: "POST",
+			url: "/university",
+			data: form.serializeArray(),
+			success: function (data) {
+				console.log(data);
+				return;
+				location.reload();
+			},
+			error: function (data) {
+				alert('Error: ', data);
+			}
+		});
 	});
 });

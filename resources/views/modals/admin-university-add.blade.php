@@ -9,24 +9,25 @@
             </div>
             <div class="modal-body">
                 <form id="newUniForm">
+                    {{csrf_field()}}
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Name</label>
-                            <input type="text" class="form-control form-control-lg" name="uniName" placeholder="University official name" required>
+                            <input type="text" class="form-control form-control-lg" name="name" placeholder="University official name" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>University public description</label>
-                        <textarea class="form-control" name="description" required></textarea>
+                        <textarea class="form-control" name="description" id="uniDescription" required></textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-lg-3 col-md-6 col-sm-12">
                             <label for="uniCountry">Country</label>
-                            <select class="custom-select" id="uniCountry" required>
-                                <option selected>N/A</option>
-                                <option value="1">Portugal</option>
-                                <option value="2">Spain</option>
-                                <option value="3">France</option>
+                            <select class="custom-select" name="country_id" required>
+                                <option selected>Select a country</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-12"></div>

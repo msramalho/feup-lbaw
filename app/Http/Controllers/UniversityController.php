@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Country;
 use App\University;
+use Illuminate\Http\Request;
+
 class UniversityController extends Controller
 {
+
+    public function validatation(Request $request){
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:5000',
+            'country_id' => 'required|numeric',
+        ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,9 +33,12 @@ class UniversityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->validatation($request);
+        $university = new University($request->all());
+        $university->save();
+        return json_encode("success");
     }
 
     /**
