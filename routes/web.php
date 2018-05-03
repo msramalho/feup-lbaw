@@ -35,13 +35,6 @@ Route::get('api/university/{id}/faculties', 'FacultyController@list')->middlewar
 // Votes
 Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');
 
-// API
-// Route::put('api/cards', 'CardController@create');
-// Route::delete('api/cards/{card_id}', 'CardController@delete');
-// Route::put('api/cards/{card_id}/', 'ItemController@create');
-// Route::post('api/item/{id}', 'ItemController@update');
-// Route::delete('api/item/{id}', 'ItemController@delete');
-
 // Authentication
 Route::get('login', function () {return redirect('/?action=login');})->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -64,3 +57,25 @@ Route::get('user/edit', 'UserController@edit')->middleware('auth');
 Route::get('user/{username}', 'UserController@show');
 Route::post('user/edit', 'UserController@editProfile');
 Route::post('user/photo', 'UserController@uploadImage');
+
+// Admin
+Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
+Route::view("admin", "pages.admin.index")->middleware("admin");
+
+Route::get("admin/universities", "UniversityController@manage")->middleware("admin");
+Route::post("university", "UniversityController@create")->middleware("admin");
+Route::get("university/{id}/edit", "UniversityController@edit")->middleware("admin");
+Route::post("university/{id}/edit", "UniversityController@update")->middleware("admin");
+Route::delete("university/{id}", "UniversityController@destroy")->middleware("admin");
+
+Route::get("admin/faculties/{id}", "FacultyController@manage")->middleware("admin");
+Route::post("faculty", "FacultyController@create")->middleware("admin");
+Route::get("faculty/{id}/edit", "FacultyController@edit")->middleware("admin");
+Route::post("faculty/{id}/edit", "FacultyController@update")->middleware("admin");
+Route::delete("faculty/{id}", "FacultyController@destroy")->middleware("admin");
+
+Route::get("admin/cities", "CityController@manage")->middleware("admin");
+Route::post("city", "CityController@create")->middleware("admin");
+Route::get("city/{id}/edit", "CityController@edit")->middleware("admin");
+Route::post("city/{id}/edit", "CityController@update")->middleware("admin");
+Route::delete("city/{id}", "CityController@destroy")->middleware("admin");

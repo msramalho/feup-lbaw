@@ -127,4 +127,9 @@ class UserController extends Controller
 
         return $image;
     }
+
+    public static function getAllUsers($page = 0){
+        // TODO: imeplement paging ?
+        return json_encode(User::all());
+    }
 }

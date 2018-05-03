@@ -20,3 +20,7 @@ function copyToClipboard(text){
 		});
 	};
 })(window.alert);
+
+$(document).ajaxError(function( event, jqxhr, settings, thrownError ) {
+	alert(thrownError);
+});
