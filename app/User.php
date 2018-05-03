@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-
 class User extends Authenticatable
 {
     use Notifiable;
@@ -19,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'birthdate', 'name', 'description', 'username'
+        'name', 'email', 'password', 'birthdate', 'name', 'description', 'username',
     ];
 
     /**
@@ -28,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'register_date', 'last_login', 'type'
+        'password', 'remember_token', 'register_date', 'last_login', 'type',
     ];
 
     /**
@@ -38,5 +37,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Post');
     }
-    
+
+    /**
+     * Return true if the current user is an admin
+     */
+    public function isAdmin(){
+        return $this->type === "admin";
+    }
+
 }
