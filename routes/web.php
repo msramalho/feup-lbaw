@@ -58,7 +58,7 @@ Route::post('user/edit', 'UserController@editProfile');
 Route::post('user/photo', 'UserController@uploadImage');
 
 // Admin
-Route::view("/admin", "pages.admin.index")->middleware("admin");
-Route::get("/admin/universities", "UniversityController@manage")->middleware("admin");
-
 Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
+Route::view("admin", "pages.admin.index")->middleware("admin");
+Route::get("admin/universities", "UniversityController@manage")->middleware("admin");
+Route::post("university", "UniversityController@create")->middleware("admin");
