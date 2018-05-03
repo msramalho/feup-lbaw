@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label>University public description</label>
-                        <textarea class="form-control" name="description" id="editUniiDescription" required>{!! $university->description !!}</textarea>
+                        <textarea class="form-control" name="description" id="editUniDescription" required>{!! $university->description !!}</textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">

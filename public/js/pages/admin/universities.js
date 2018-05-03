@@ -45,7 +45,7 @@ function editUni(id){
 		url: `/university/${id}/edit`,
 		success: function (data) {
 			$('#edit_modal_container').html(data);
-			startFroala($('#editUniiDescription'));
+			startFroala($('#editUniDescription'));
 			$("#uniModalEdit").modal("show");
 			$("#editUniForm").submit(function(e) {
 				e.preventDefault();
