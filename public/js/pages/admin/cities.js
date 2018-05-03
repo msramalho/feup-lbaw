@@ -31,7 +31,7 @@ let tr_template = `
 	<td>{{country}}</td>
 	<td>
 		<a class="m-2 ajax-link" onclick="editCity({{id}})" title="Edit city details"><i class="far fa-edit"></i></a>
-		<a class="m-2 ajax-link" onclick="if(confirm('delete?')){ deleteCity('{{id}}'); }" title="Delete city registry"><i class="far fa-trash-alt"></i></a>
+		<a class="m-2 ajax-link" onclick="if(confirm('delete?')){ deleteCity('{{id}}'); }" title="Delete city"><i class="far fa-trash-alt"></i></a>
 	</td>
 </tr>`;
 

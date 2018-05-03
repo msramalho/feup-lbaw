@@ -38,7 +38,7 @@
 						<td>
 							<a class="m-2 ajax-link" onclick="editCity({{$city->id}})" title="Edit city details"><i class="far fa-edit"></i></a>
 							<a class="m-2 ajax-link"
-                            onclick="if(confirm('delete?')){ deleteCity('{{$city->id}}'); }" title="Delete city registry"><i class="far fa-trash-alt"></i></a>
+                            onclick="if(confirm('delete?')){ deleteCity('{{$city->id}}'); }" title="Delete city"><i class="far fa-trash-alt"></i></a>
 						</td>
 					</tr>
 				@endforeach
