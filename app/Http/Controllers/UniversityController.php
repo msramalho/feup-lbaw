@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use App\Country;
 use App\University;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Exception;
 
 class UniversityController extends Controller
 {
 
-    public function validatation(Request $request){
-        $this->validate($request, [
+    public function validatator(Request $request)
+    {
+        return Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:5000',
             'country_id' => 'required|numeric',
         ]);
     }
-
 
     /**
      * Display a listing of the resource.
@@ -25,7 +27,7 @@ class UniversityController extends Controller
      */
     public function manage()
     {
-        return view("pages.admin.universities")->with("universities", University::all()->sortBy("name"))->with("countries", Country::all()->sortBy("name"));
+        return view("pages.admin.universities")->with("universities", University::all()->sortBy("name", SORT_NATURAL))->with("countries", Country::all()->sortBy("name", SORT_NATURAL));
     }
 
     /**
@@ -35,10 +37,14 @@ class UniversityController extends Controller
      */
     public function create(Request $request)
     {
-        $this->validatation($request);
+        $validator = $this->validatator($request);
+        if ($validator->fails()) {
+            // throw $validator->errors();
+            throw new Exception(implode("\n", $validator->messages()->all()));
+        }
         $university = new University($request->all());
         $university->save();
-        return json_encode("success");
+        return json_encode(array("success"));
     }
 
     /**

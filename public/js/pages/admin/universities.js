@@ -22,12 +22,11 @@ $(function() {
 			url: "/university",
 			data: form.serializeArray(),
 			success: function (data) {
-				console.log(data);
-				return;
-				location.reload();
-			},
-			error: function (data) {
-				alert('Error: ', data);
+				if(data.success){
+					location.reload();
+				}else{
+					alert(data.error);
+				}
 			}
 		});
 	});
