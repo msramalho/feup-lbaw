@@ -48,7 +48,7 @@ let tr_template = `
 	<td>
 		<a class="m-2" href="university/{{id}}" title="View university's pulic page"><i class="fas fa-eye"></i></a>
 		<a class="m-2" href="#" onclick="editUni({{id}})" title="Edit university details"><i class="far fa-edit"></i></a>
-		<a class="m-2" href="#" onclick="if(confirm('delete?')){ window.location.replace('university/{{id}}/delete') }" title="Delete university registry"><i class="far fa-trash-alt"></i></a>
+		<a class="m-2" href="#" onclick="if(confirm('delete?')){ deleteUni('{{$university->id}}'); }" title="Delete university registry"><i class="far fa-trash-alt"></i></a>
 	</td>
 </tr>`;
 
@@ -77,6 +77,20 @@ function updateUni(form_data, id){
 			if(data.success){
 				$('#uniModalEdit').modal('hide');
 				$(`tr[data-id='${id}']`).replaceWith(Mustache.render(tr_template, data.university));
+			}else{
+				alert(data.error);
+			}
+		}
+	});
+}
+
+function deleteUni(id){
+	$.ajax({
+		type: "DELETE",
+		url: `/university/${id}`,
+		success: function (data) {
+			if(data.success){
+				$(`tr[data-id='${id}']`).remove();
 			}else{
 				alert(data.error);
 			}

@@ -40,7 +40,8 @@
 						<td>
 							<a class="m-2" href="{{url("university/$university->id")}}" title="View university's pulic page"><i class="fas fa-eye"></i></a>
 							<a class="m-2" href="#" onclick="editUni({{$university->id}})" title="Edit university details"><i class="far fa-edit"></i></a>
-							<a class="m-2" href="#" onclick="if(confirm('delete?')){ window.location.replace('{{url("university/$university->id/delete")}}') }" title="Delete university registry"><i class="far fa-trash-alt"></i></a>
+							<a class="m-2" href="#" 
+                            onclick="if(confirm('delete?')){ deleteUni('{{$university->id}}'); }" title="Delete university registry"><i class="far fa-trash-alt"></i></a>
 						</td>
 					</tr>
 				@endforeach

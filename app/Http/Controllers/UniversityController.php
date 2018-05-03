@@ -107,6 +107,9 @@ class UniversityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(University::where('id', $id)->delete()){
+            return response()->json(["success" => true]);
+        }
+        return response()->json(["error" => "unable to delete university"]);
     }
 }
