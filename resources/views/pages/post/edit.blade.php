@@ -135,7 +135,7 @@
 
 @section("scripts")
 @parent {{-- append to the end multiple times in case of multiple scripts --}}
-<script type="text/javascript" src="{{ asset('js/external/codemirror.min.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('js/external/froala_editor.pkgd.min.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('js/pages/post.js') }}" ></script>
+<script src="{{ asset('js/external/codemirror.min.js') }}" ></script>
+<script src="{{ asset('js/external/froala_editor.pkgd.min.js') }}" ></script>
+<script src="{{ asset('js/pages/post.js') }}" ></script>
 @endsection

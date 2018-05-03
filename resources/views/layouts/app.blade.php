@@ -22,15 +22,17 @@
     @include('partials.navbar')
     @yield('content')
     @include('partials.footer')
-</body>
 
 <!-- JavaScript -->
-<script type="text/javascript" src="{{ asset('js/external/jquery-3.3.1.min.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('js/external/bootstrap.min.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('js/external/swal.min.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('js/app.js') }}" ></script>
-<script type="text/javascript" defer>
+<script src="{{ asset('js/external/jquery-3.3.1.min.js') }}" ></script>
+<script src="{{ asset('js/external/bootstrap.min.js') }}" ></script>
+<script src="{{ asset('js/external/swal.min.js') }}" ></script>
+<script src="{{ asset('js/app.js') }}" ></script>
+<script>
     $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 </script>
 @yield('scripts')
+
+</body>
+
 </html>

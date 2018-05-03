@@ -31,6 +31,6 @@
 @if (! Auth::check())
 	@section("scripts")
 	@parent {{-- add to the end multiple times --}}
-	<script type="text/javascript" src="{{ asset('js/pages/partials/register.js') }}" ></script>
+	<script src="{{ asset('js/pages/partials/register.js') }}" ></script>
 	@endsection
 @endif
