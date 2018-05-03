@@ -228,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Post' => App\Http\Controllers\PostController::class,
+        'User' => App\Http\Controllers\UserController::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
     ],
