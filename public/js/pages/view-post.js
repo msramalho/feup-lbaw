@@ -7,12 +7,12 @@ function showErrorDiv() {
 }
 
 function getCommentCount() {
-    return parseInt($('#commentCount').attr('cc'));
+    return parseInt($('#commentCount').attr('data-cc'));
 }
 
 function updateCommentCount(cc) {
 
-    $('#commentCount').attr('cc', cc);
+    $('#commentCount').attr('data-cc', cc);
     let t;
     if (cc == 0) {
         t = 'No comments.';

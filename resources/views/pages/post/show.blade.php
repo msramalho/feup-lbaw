@@ -66,7 +66,7 @@
 				<hr>
 				<div class="article-comments">
 				@php ($cmCount = count($post->comments()->get()))
-				<h2 id="commentCount" cc="{{ $cmCount }}">
+				<h2 id="commentCount" data-cc="{{ $cmCount }}">
 					@if($cmCount>1)
 						{{ $cmCount }} comments:
 					@elseif($cmCount==1)
