@@ -21,7 +21,7 @@
                         <textarea class="form-control" name="description" id="uniDescription" required></textarea>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label for="uniCountry">Country</label>
                             <select class="custom-select" name="country_id" required>
                                 <option selected>Select a country</option>
@@ -30,7 +30,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6 col-md-12"></div>
+                        <div class="form-group col-lg-3 col-md-12"></div>
                         <div class="form-group col-lg-3 col-md-6 col-sm-12">
                             <label for="uniSubmit">Save it</label>
                             <input type="submit" class="btn btn-primary form-control" id="uniSubmit" value="Save" />
