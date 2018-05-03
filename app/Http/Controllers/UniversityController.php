@@ -43,30 +43,7 @@ class UniversityController extends Controller
         $this->validatate($request);
         $university = new University($request->all());
         $university->save();
-        $data = ["id" => $university->id, "name" => $university->name, "country" => $university->country->name, "faculties" => 0];
-        return response()->json(["success" => true, "university" => $data]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return response()->json(["success" => true, "university" => $university->get_modal_data()]);
     }
 
     /**
@@ -91,12 +68,9 @@ class UniversityController extends Controller
     public function update(Request $request, $id)
     {
         $this->validatate($request);
-        // $university = University::where("id", $id);
         $university = University::find($id);
         $university->update($request->all());
-        // $university->save();
-        $data = ["id" => $university->id, "name" => $university->name, "country" => $university->country->name, "faculties" => 0];
-        return response()->json(["success" => true, "university" => $data]);
+        return response()->json(["success" => true, "university" => $university->get_modal_data()]);
     }
 
     /**

@@ -18,11 +18,11 @@
                     </div>
                     <div class="form-group">
                         <label>University public description</label>
-                        <textarea class="form-control" name="description" id="uniDescription" required></textarea>
+                        <textarea class="form-control" name="description" id="uniDescription"></textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
-                            <label for="uniCountry">Country</label>
+                            <label>Country</label>
                             <select class="custom-select" name="country_id" required>
                                 <option selected>Select a country</option>
                                 @foreach ($countries as $country)
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group col-lg-3 col-md-12"></div>
                         <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                            <label for="uniSubmit">Save it</label>
+                            <label>Save it</label>
                             <input type="submit" class="btn btn-primary form-control" value="Save" />
                         </div>
                     </div>

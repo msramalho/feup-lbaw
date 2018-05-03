@@ -31,7 +31,7 @@ let tr_template = `
 	<th scope="row">{{id}}</th>
 	<td>{{name}}</td>
 	<td>{{country}}</td>
-	<td><a title="Manage this university's faculties" href="admin/faculties/{{id)}}">{{faculties}}</a></td>
+	<td><a title="Manage this university's faculties" href="admin/faculties/{{id}}">{{faculties}}</a></td>
 	<td>
 		<a class="m-2" href="university/{{id}}" title="View university's pulic page"><i class="fas fa-eye"></i></a>
 		<a class="m-2 ajax-link" onclick="editUni({{id}})" title="Edit university details"><i class="far fa-edit"></i></a>
@@ -61,7 +61,6 @@ function updateUni(form_data, id){
 		url: `/university/${id}/edit`,
 		data: form_data,
 		success: function (data) {
-			console.log(data);
 			if(data.success){
 				$('#uniModalEdit').modal('hide');
 				$(`tr[data-id='${id}']`).replaceWith(Mustache.render(tr_template, data.university));
