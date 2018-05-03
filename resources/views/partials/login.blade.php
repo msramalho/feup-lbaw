@@ -1,6 +1,6 @@
 <li class="nav-item">
 	<div class="dropdown">
-		<a class="nav-link dropdown-toggle" href="#" id="dropdown_register_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<a class="nav-link dropdown-toggle" href="#" id="dropdown_login_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Log In
 		</a>
 		@php $is_login = old('is_register') == 2 || Request::get("action")=="login" @endphp
