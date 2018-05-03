@@ -35,13 +35,6 @@ Route::get('api/university/{id}/faculties', 'FacultyController@list')->middlewar
 // Votes
 Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');
 
-// API
-// Route::put('api/cards', 'CardController@create');
-// Route::delete('api/cards/{card_id}', 'CardController@delete');
-// Route::put('api/cards/{card_id}/', 'ItemController@create');
-// Route::post('api/item/{id}', 'ItemController@update');
-// Route::delete('api/item/{id}', 'ItemController@delete');
-
 // Authentication
 Route::get('login', function () {return redirect('/?action=login');})->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -63,3 +56,7 @@ Route::get('user/edit', 'UserController@edit')->middleware('auth');
 Route::get('user/{username}', 'UserController@show');
 Route::post('user/edit', 'UserController@editProfile');
 Route::post('user/photo', 'UserController@uploadImage');
+
+// Admin
+Route::view("/admin", "pages.admin.index")->middleware("admin");
+Route::get("/admin/universities", "UniversityController@manage")->middleware("admin");
