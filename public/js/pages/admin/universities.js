@@ -1,19 +1,6 @@
 "use strict";
 $(function() {
-	//see https://www.froala.com/wysiwyg-editor/docs/options#toolbarButtons
-	let toolbarButtons = ['bold', 'italic', 'strikeThrough', 'underline', 'quote', 'fontSize', '|', 'formatOL',
-		'formatUL', 'insertHR', 'outdent', 'indent', 'insertTable', 'insertImage', 'spellChecker', 'html', 'emoticons',
-		'|', 'help', 'undo', 'redo'
-	];
-	$('#uniDescription').froalaEditor({
-		colorsText: "REMOVE",
-		toolbarButtons: toolbarButtons,
-		toolbarButtonsMD: toolbarButtons,
-		toolbarButtonsSM: toolbarButtons,
-		toolbarButtonsXS: toolbarButtons,
-		placeholderText: "Provide a description for this univeristy",
-		heightMin: 250
-	});
+	startFroala($('#uniDescription'));
 
 	$("#newUniForm").submit(function(e){
 		e.preventDefault();
@@ -58,6 +45,7 @@ function editUni(id){
 		url: `/university/${id}/edit`,
 		success: function (data) {
 			$('#edit_modal_container').html(data);
+			startFroala($('#editUniiDescription'));
 			$("#uniModalEdit").modal("show");
 			$("#editUniForm").submit(function(e) {
 				e.preventDefault();
@@ -95,5 +83,25 @@ function deleteUni(id){
 				alert(data.error);
 			}
 		}
+	});
+}
+
+
+//see https://www.froala.com/wysiwyg-editor/docs/options#toolbarButtons
+let toolbarButtons = ['bold', 'italic', 'strikeThrough', 'underline', 'quote', 'fontSize', '|', 'formatOL',
+	'formatUL', 'insertHR', 'outdent', 'indent', 'insertTable', 'insertImage', 'spellChecker', 'html', 'emoticons',
+	'|', 'help', 'undo', 'redo'
+];
+	
+function startFroala(element){
+
+	element.froalaEditor({
+		colorsText: "REMOVE",
+		toolbarButtons: toolbarButtons,
+		toolbarButtonsMD: toolbarButtons,
+		toolbarButtonsSM: toolbarButtons,
+		toolbarButtonsXS: toolbarButtons,
+		placeholderText: "Provide a description for this univeristy",
+		heightMin: 250
 	});
 }

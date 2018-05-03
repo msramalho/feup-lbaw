@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Vecto: Admin Dashboard')
+@section('title', 'Vecto: University Management')
 
 @section("styles")
 @parent {{-- append to the end multiple times in case of multiple styles --}}
