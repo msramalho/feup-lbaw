@@ -60,8 +60,15 @@ Route::post('user/photo', 'UserController@uploadImage');
 // Admin
 Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
 Route::view("admin", "pages.admin.index")->middleware("admin");
+
 Route::get("admin/universities", "UniversityController@manage")->middleware("admin");
 Route::post("university", "UniversityController@create")->middleware("admin");
 Route::get("university/{id}/edit", "UniversityController@edit")->middleware("admin");
 Route::post("university/{id}/edit", "UniversityController@update")->middleware("admin");
 Route::delete("university/{id}", "UniversityController@destroy")->middleware("admin");
+
+Route::get("admin/faculties/{id}", "FacultyController@manage")->middleware("admin");
+Route::post("faculty", "FacultyController@create")->middleware("admin");
+Route::get("faculty/{id}/edit", "FacultyController@edit")->middleware("admin");
+Route::post("faculty/{id}/edit", "FacultyController@update")->middleware("admin");
+Route::delete("faculty/{id}", "FacultyController@destroy")->middleware("admin");
