@@ -29,6 +29,11 @@ Route::get('post/{id}/edit', 'PostController@edit');
 Route::post('post/{id}/edit', 'PostController@update');
 Route::get('post/{id}/delete', 'PostController@delete');
 
+// Flag Post
+
+Route::view('flag/post/{id}', "pages.post.report_post")->middleware('auth');
+Route::post('flag/post/{id}', "FlagPostController@create")->middleware('auth');
+
 // Votes
 Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');
 
