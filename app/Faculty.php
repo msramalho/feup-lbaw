@@ -44,4 +44,8 @@ class Faculty extends Model
     public static function get_by_university($university_id){
         return Faculty::where("university_id", (int)$university_id)->orderBy("name")->get();
     }
+
+    public function get_modal_data(){
+        return  ["id" => $this->id, "name" => $this->name, "city" => $this->city->name];
+    }
 }
