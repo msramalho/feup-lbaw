@@ -19,3 +19,7 @@ function copyToClipboard(text){
 		return proxied.apply(this, arguments);
 	};
 })(window.alert);
+
+$(document).ajaxError(function( event, jqxhr, settings, thrownError ) {
+	alert(thrownError);
+});
