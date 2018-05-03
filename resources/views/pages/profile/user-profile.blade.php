@@ -99,27 +99,49 @@
         <div class="col-md-9">
             <div class="container">
                 <div class="jumbotron">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" id="view-options">
                         <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" checked> About Me
+                            <input type="radio" name="options" value="option1" checked > About Me </input>
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2"> Posts
+                            <input type="radio" name="options" value="option2"> Posts </input>
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option3"> Comments
+                            <input type="radio" name="options" value="option3"> Comments </input>
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option4"> Upvotes
+                            <input type="radio" name="options" value="option4"> Upvotes </input>
                         </label>
                     </div>
                     <br>
                     <br>
-                    <div id="feed-content" class="">{!! $user->description !!}</div>
+                    <section class="jqueryOptions option1">
+                        <div class="feed-content">{!! $user->description !!}</div>
+                    </section>
+
+                    <section class="jqueryOptions option2 d-none">
+                        <div class="feed-content">
+                            @each('pages.post.list_item', Post::getIndexList(), 'post')
+                        </div>
+                    </section>
+
+                    <section class="jqueryOptions option3 d-none">
+                        <div class="feed-content">
+                            @each('pages.post.list_item', Post::getIndexList(), 'post')
+                        </div>
+                    </section>
+
+                    <section class="jqueryOptions option4 d-none">
+                        <div class="feed-content">
+                            @each('pages.post.list_item', Post::getIndexList(), 'post')
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="{{ asset('js/pages/view-profile.js') }}" defer></script>
 
 @endsection
