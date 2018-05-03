@@ -2,10 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\QueryExceptionUtil;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\MessageBag;
-use App\QueryExceptionUtil;
 
 class Handler extends ExceptionHandler
 {
@@ -50,10 +50,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if(is_a($exception, "Illuminate\Database\QueryException")){
+        if ($request->isXmlHttpRequest()) {
+            return response()->json(['error' => $exception->getMessage()]);
+        }
+        if (is_a($exception, "Illuminate\Database\QueryException")) {
             $errors = new MessageBag();
             $errors->add('database_error', QueryExceptionUtil::getErrorFromException($exception));
-            return back()->withInput($request->all())->withErrors($errors); 
+            return back()->withInput($request->all())->withErrors($errors);
         }
         return parent::render($request, $exception);
     }
