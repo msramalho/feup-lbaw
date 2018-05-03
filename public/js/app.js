@@ -15,7 +15,8 @@ function copyToClipboard(text){
 
 (function(proxied) {
 	window.alert = function(text) {
-		text = "TODO in app.js...\n"+text;
-		return proxied.apply(this, arguments);
+		return swal(text, {
+			timer: 5000
+		});
 	};
 })(window.alert);
