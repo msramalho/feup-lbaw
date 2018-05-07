@@ -121,7 +121,7 @@
 
                     <section class="jqueryOptions option2 d-none">
                         <div class="feed-content">
-                            @each('pages.post.list_item', Post::getIndexList(), 'post')
+                            {{-- @each('pages.post.list_item', Post::view_posts($user->id), 'post') Uncomment for testing--}}
                         </div>
                     </section>
 
