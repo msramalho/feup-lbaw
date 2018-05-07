@@ -125,10 +125,8 @@ class PostController extends Controller
         return $post;
     }
 
-    public static function view_posts($id){
-        $user = User::find($id);
-        $posts = $user->posts()->get();
-    
+    public static function view_posts($author_id){
+        $post = Post::where('author_id',$author_id)->get();
         return $post;
     }
 }
