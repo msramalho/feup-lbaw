@@ -195,7 +195,8 @@ return [
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
-        'Auth' => Illuminate\Support\Facades\Auth::class,
+        // 'Auth' => Illuminate\Support\Facades\Auth::class,
+        'Auth' => App\Facades\CustomAuth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Post' => App\Http\Controllers\PostController::class,
+        'User' => App\Http\Controllers\UserController::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
     ],

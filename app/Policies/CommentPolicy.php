@@ -42,4 +42,15 @@ class CommentPolicy
     {
         return $user->id === $comment->author_id;
     }
+
+    /**
+     * Determine whether the user can edit comments.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function edit(User $user, Comment $comment)
+    {
+        return self::delete($user, $comment);
+    }
 }

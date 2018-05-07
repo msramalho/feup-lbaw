@@ -135,6 +135,11 @@ article>div.container>div.article-comments>div.article-comment {
     /*space for flag button*/
 }
 
+article>div.container>div.article-comments>div.article-comment.edit{
+    padding-bottom: 70px !important;
+    /*space for submit button*/
+}
+
 article>div.container>div.article-comments>div.article-comment>img {
     width: 50px;
     height: 50px;

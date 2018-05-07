@@ -22,7 +22,23 @@ class CommentController extends Controller
         $this->authorize('delete', $comment);
         $comment->delete();
         return json_encode("success");
-        //TODO: needs to be tested
+    }
+
+    /**
+     * Edit the specified resource in storage.
+     *
+     * @param  \App\Comment  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, $comment_id)
+    {
+        $comment = Comment::where('id',$comment_id)->first();
+        $this->authorize('edit', $comment);
+        $this->validate($request, [
+            'content' => 'required|string|max:5000']);
+        $comment->content = $request->content;
+        $comment->save();
+        return json_encode("success");
     }
 
     /**
