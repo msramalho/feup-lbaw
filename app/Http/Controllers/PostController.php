@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use App\University;
 use App\Faculty;
 use Illuminate\Http\Request;
@@ -121,6 +122,13 @@ class PostController extends Controller
     public static function getIndexList($page = 0){
         // TODO: imeplement paging
         $post = Post::all();
+        return $post;
+    }
+
+    public static function view_posts($id){
+        $user = User::find($id);
+        $posts = $user->posts()->get();
+    
         return $post;
     }
 }
