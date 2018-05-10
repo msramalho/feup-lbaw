@@ -140,7 +140,7 @@ class PostController extends Controller
             array_push($postArray, $post[0]);
         }
 
-        return $postArray;
+        return array_unique($postArray);
     }
 
     public static function view_posts_votes($author_id){
@@ -151,6 +151,6 @@ class PostController extends Controller
             array_push($postArray, $post[0]);
         }
 
-        return $postArray;
+        return array_unique($postArray);
     }
 }
