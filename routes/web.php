@@ -66,7 +66,7 @@ Route::get("admin/universities", "UniversityController@manage")->middleware("adm
 Route::post("api/university", "UniversityController@create")->middleware("admin");
 Route::get("university/{id}/edit", "UniversityController@edit")->middleware("admin");
 Route::post("api/university/{id}/edit", "UniversityController@update")->middleware("admin");
-Route::delete("university/{id}", "UniversityController@destroy")->middleware("admin");
+Route::delete("api/university/{id}", "UniversityController@destroy")->middleware("admin");
 
 Route::get("admin/faculties/{id}", "FacultyController@manage")->middleware("admin");
 Route::post("faculty", "FacultyController@create")->middleware("admin");

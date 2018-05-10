@@ -74,7 +74,7 @@ function updateUni(form_data, id){
 function deleteUni(id){
 	$.ajax({
 		type: "DELETE",
-		url: `/university/${id}`,
+		url: `/api/university/${id}`,
 		success: function (data) {
 			if(data.success){
 				$(`tr[data-id='${id}']`).remove();
