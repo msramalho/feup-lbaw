@@ -7,7 +7,7 @@ $(function() {
 		let form = $(this);
 		$.ajax({
 			type: "POST",
-			url: "/faculty",
+			url: "/api/faculty",
 			data: form.serializeArray(),
 			success: function (data) {
 				if(data.success){
@@ -58,7 +58,7 @@ function editFac(id){
 function updateFac(form_data, id){
 	$.ajax({
 		type: "POST",
-		url: `/faculty/${id}/edit`,
+		url: `/api/faculty/${id}/edit`,
 		data: form_data,
 		success: function (data) {
 			if(data.success){
@@ -74,7 +74,7 @@ function updateFac(form_data, id){
 function deleteFac(id){
 	$.ajax({
 		type: "DELETE",
-		url: `/faculty/${id}`,
+		url: `/api/faculty/${id}`,
 		success: function (data) {
 			if(data.success){
 				$(`tr[data-id='${id}']`).remove();
