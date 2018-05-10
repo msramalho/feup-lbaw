@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flag_post extends Model
 {
+    
     protected $fillable = ['reason', 'date', 'archived'];
     protected $primaryKey =['flagger_id','post_id'];
     public $incrementing = false;
@@ -27,7 +28,7 @@ class Flag_post extends Model
         return $this->belongsTo('App\User', 'flagger_id');
     }
 
-    public static function user_flagged($flagger_id, $post_id){
-        return Flag_Post::where("flagger_id",$flagger_id)->where("post_id", $post_id);
+    public static function get_post($post_id){
+        return Flag_Post::where("post_id", $post_id);
     }
 }

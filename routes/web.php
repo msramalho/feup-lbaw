@@ -31,7 +31,8 @@ Route::get('post/{id}/delete', 'PostController@delete');
 
 // Flag Post
 
-Route::view('flag/post/{id}', "pages.post.report_post")->middleware('auth');
+//Route::view('flag/post/{id}', "pages.post.report_post")->middleware('auth');
+Route::get('flag/post/{id}', 'FlagPostController@show');
 Route::post('flag/post/{id}', "FlagPostController@create")->middleware('auth');
 
 // Votes

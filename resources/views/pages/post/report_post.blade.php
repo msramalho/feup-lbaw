@@ -16,7 +16,7 @@
 	<div class="jumbotron">
 		<h1>Report post</h1>
 		<h4>We are sorry that something posted were offensive or inapropriate. Please tell us the reason why you are reporting it!</h4>
-        <form action="{{ url("flag/post/4") }}" method="POST">
+        <form action="{{ url("flag/post/$post_id") }}" method="POST">
 		 	{{ csrf_field() }}
 			@include("partials.errors")
 			<div class="form-group">
