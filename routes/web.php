@@ -60,6 +60,9 @@ Route::post('user/photo', 'UserController@uploadImage');
 
 // Admin
 Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
+Route::get("/api/admin/user/{uname}", "UserController@getUserDetails")->middleware("admin");
+Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middleware("admin");
+Route::view("/admin/users", "pages.admin.users")->middleware("admin");
 Route::view("admin", "pages.admin.index")->middleware("admin");
 
 Route::get("admin/universities", "UniversityController@manage")->middleware("admin");
