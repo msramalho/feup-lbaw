@@ -49,7 +49,7 @@ $("#saveChanges").click(function(e){
             if(data.success){
                 alert("Profile Successfully Updated!");
             }else{
-                alert(data.error);
+                alert("Failed to save data!\n" + data.error);
             }
         },
 
