@@ -7,7 +7,7 @@ $(function() {
 		let form = $(this);
 		$.ajax({
 			type: "POST",
-			url: "/faculty",
+			url: "/api/faculty",
 			data: form.serializeArray(),
 			success: function (data) {
 				if(data.success){
