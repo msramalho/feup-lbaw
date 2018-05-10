@@ -53,7 +53,7 @@ function editCity(id){
 function updateCity(form_data, id){
 	$.ajax({
 		type: "POST",
-		url: `/city/${id}/edit`,
+		url: `/api/city/${id}/edit`,
 		data: form_data,
 		success: function (data) {
 			if(data.success){

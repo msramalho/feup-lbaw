@@ -77,5 +77,5 @@ Route::delete("api/faculty/{id}", "FacultyController@destroy")->middleware("admi
 Route::get("admin/cities", "CityController@manage")->middleware("admin");
 Route::post("api/city", "CityController@create")->middleware("admin");
 Route::get("city/{id}/edit", "CityController@edit")->middleware("admin");
-Route::post("city/{id}/edit", "CityController@update")->middleware("admin");
+Route::post("api/city/{id}/edit", "CityController@update")->middleware("admin");
 Route::delete("city/{id}", "CityController@destroy")->middleware("admin");
