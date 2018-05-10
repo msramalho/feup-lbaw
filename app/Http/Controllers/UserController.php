@@ -67,7 +67,7 @@ class UserController extends Controller
         $user -> description = $request->description;
         $user -> save();
     
-        return response(json_encode("Success!"), 200);
+        return response()->json(["success" => true, "user" => $user]);
     }
 
     /** 
