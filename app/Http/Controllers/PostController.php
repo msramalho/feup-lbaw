@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\User;
 use App\Comment;
+use App\Vote;
 use App\University;
 use App\Faculty;
 use Illuminate\Http\Request;
@@ -136,6 +137,17 @@ class PostController extends Controller
         $postArray = [];
         foreach ($comments as $comment) {
             $post = Post::where('id',$comment->post_id)->get();
+            array_push($postArray, $post[0]);
+        }
+
+        return $postArray;
+    }
+
+    public static function view_posts_votes($author_id){
+        $votes = Vote::where('user_id', $author_id)->get();
+        $postArray = [];
+        foreach ($votes as $vote) {
+            $post = Post::where('id',$vote->post_id)->get();
             array_push($postArray, $post[0]);
         }
 
