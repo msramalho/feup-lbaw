@@ -30,7 +30,7 @@
                     <button type="button" class="btn btn-outline-dark btn-sm mt-1" disabled>Message</button>
                 </div>
                 <div class="profile-userbuttons mt-3">
-                    <a class="Sidebar_header" href="#">
+                    <a class="Sidebar_header" href="{{ url("flag/user/$user->id") }}">
                         <i class="fas fa-flag"></i>
                         <span>Flag User</span>
                     </a>
