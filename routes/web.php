@@ -72,7 +72,7 @@ Route::get("admin/faculties/{id}", "FacultyController@manage")->middleware("admi
 Route::post("api/faculty", "FacultyController@create")->middleware("admin");
 Route::get("faculty/{id}/edit", "FacultyController@edit")->middleware("admin");
 Route::post("api/faculty/{id}/edit", "FacultyController@update")->middleware("admin");
-Route::delete("faculty/{id}", "FacultyController@destroy")->middleware("admin");
+Route::delete("api/faculty/{id}", "FacultyController@destroy")->middleware("admin");
 
 Route::get("admin/cities", "CityController@manage")->middleware("admin");
 Route::post("city", "CityController@create")->middleware("admin");

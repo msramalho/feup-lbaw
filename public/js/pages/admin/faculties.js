@@ -74,7 +74,7 @@ function updateFac(form_data, id){
 function deleteFac(id){
 	$.ajax({
 		type: "DELETE",
-		url: `/faculty/${id}`,
+		url: `/api/faculty/${id}`,
 		success: function (data) {
 			if(data.success){
 				$(`tr[data-id='${id}']`).remove();
