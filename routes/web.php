@@ -65,7 +65,7 @@ Route::view("admin", "pages.admin.index")->middleware("admin");
 Route::get("admin/universities", "UniversityController@manage")->middleware("admin");
 Route::post("api/university", "UniversityController@create")->middleware("admin");
 Route::get("university/{id}/edit", "UniversityController@edit")->middleware("admin");
-Route::post("university/{id}/edit", "UniversityController@update")->middleware("admin");
+Route::post("api/university/{id}/edit", "UniversityController@update")->middleware("admin");
 Route::delete("university/{id}", "UniversityController@destroy")->middleware("admin");
 
 Route::get("admin/faculties/{id}", "FacultyController@manage")->middleware("admin");

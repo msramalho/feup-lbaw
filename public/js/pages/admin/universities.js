@@ -58,7 +58,7 @@ function editUni(id){
 function updateUni(form_data, id){
 	$.ajax({
 		type: "POST",
-		url: `/university/${id}/edit`,
+		url: `/api/university/${id}/edit`,
 		data: form_data,
 		success: function (data) {
 			if(data.success){
