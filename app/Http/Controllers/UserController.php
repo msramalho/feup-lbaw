@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Auth\Middleware\Authenticate;
 use Intervention\Image\ImageManagerStatic as Image;
+use Mews\Purifier\Facades\Purifier;
 
 use App\Http\Controllers\Controller;
 
@@ -46,8 +47,10 @@ class UserController extends Controller
      * Effectively Edit User Profile
      * 
     **/
-    public function editProfile(Request $request)
-    {        
+    public function editProfile(Request $request)   {     
+           
+        $request->merge(['description' => Purifier::clean($request->get('description'))]);
+
         $this->validate($request, [
             'name' => 'required|string|max:64',
             'username' => 'required|string|max:64',
