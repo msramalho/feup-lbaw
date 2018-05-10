@@ -58,7 +58,7 @@ function editFac(id){
 function updateFac(form_data, id){
 	$.ajax({
 		type: "POST",
-		url: `/faculty/${id}/edit`,
+		url: `/api/faculty/${id}/edit`,
 		data: form_data,
 		success: function (data) {
 			if(data.success){
