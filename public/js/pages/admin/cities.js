@@ -69,7 +69,7 @@ function updateCity(form_data, id){
 function deleteCity(id){
 	$.ajax({
 		type: "DELETE",
-		url: `/city/${id}`,
+		url: `/api/city/${id}`,
 		success: function (data) {
 			if(data.success){
 				$(`tr[data-id='${id}']`).remove();
