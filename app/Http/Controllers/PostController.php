@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Comment;
 use App\University;
 use App\Faculty;
 use Illuminate\Http\Request;
@@ -128,5 +129,16 @@ class PostController extends Controller
     public static function view_posts($author_id){
         $post = Post::where('author_id',$author_id)->get();
         return $post;
+    }
+
+    public static function view_posts_comments($author_id){
+        $comments = Comment::where('author_id', $author_id)->get();
+        $postArray = [];
+        foreach ($comments as $comment) {
+            $post = Post::where('id',$comment->post_id)->get();
+            array_push($postArray, $post[0]);
+        }
+
+        return $postArray;
     }
 }
