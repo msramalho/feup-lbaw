@@ -36,6 +36,14 @@ class Comment extends Model
     }
 
     /**
+     * the post ID
+     */
+    public function post_id()
+    {
+        return $this->belongsTo('App\Post', 'post_id');
+    }
+
+    /**
      * the current user is the author of this comment
      */
     public function isOwner()
