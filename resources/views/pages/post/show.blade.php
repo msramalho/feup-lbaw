@@ -54,6 +54,8 @@
 								<i class="fas fa-edit"></i>
 								<span>Edit</span>
 							</a>
+							@endif
+							@if($post->isOwner() || Auth::user()->isAdmin())
 							<a class="text-secondary" href="{{ url("post/$post->id/delete") }}">
 								<i class="fas fa-trash"></i>
 								<span>Delete</span>

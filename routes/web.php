@@ -60,22 +60,28 @@ Route::post('user/photo', 'UserController@uploadImage');
 
 // Admin
 Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
+Route::get("/api/admin/user/{uname}", "UserController@getUserDetails")->middleware("admin");
+Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middleware("admin");
+Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middleware("admin");
+Route::delete("/api/admin/user/{uid}/deletePosts", "UserController@deleteUsersPosts")->middleware("admin");
+Route::delete("/api/admin/user/{uid}/deleteComments", "UserController@deleteUsersComments")->middleware("admin");
+Route::view("/admin/users", "pages.admin.users")->middleware("admin");
 Route::view("admin", "pages.admin.index")->middleware("admin");
 
 Route::get("admin/universities", "UniversityController@manage")->middleware("admin");
-Route::post("university", "UniversityController@create")->middleware("admin");
+Route::post("api/university", "UniversityController@create")->middleware("admin");
 Route::get("university/{id}/edit", "UniversityController@edit")->middleware("admin");
-Route::post("university/{id}/edit", "UniversityController@update")->middleware("admin");
-Route::delete("university/{id}", "UniversityController@destroy")->middleware("admin");
+Route::post("api/university/{id}/edit", "UniversityController@update")->middleware("admin");
+Route::delete("api/university/{id}", "UniversityController@destroy")->middleware("admin");
 
 Route::get("admin/faculties/{id}", "FacultyController@manage")->middleware("admin");
-Route::post("faculty", "FacultyController@create")->middleware("admin");
+Route::post("api/faculty", "FacultyController@create")->middleware("admin");
 Route::get("faculty/{id}/edit", "FacultyController@edit")->middleware("admin");
-Route::post("faculty/{id}/edit", "FacultyController@update")->middleware("admin");
-Route::delete("faculty/{id}", "FacultyController@destroy")->middleware("admin");
+Route::post("api/faculty/{id}/edit", "FacultyController@update")->middleware("admin");
+Route::delete("api/faculty/{id}", "FacultyController@destroy")->middleware("admin");
 
 Route::get("admin/cities", "CityController@manage")->middleware("admin");
-Route::post("city", "CityController@create")->middleware("admin");
+Route::post("api/city", "CityController@create")->middleware("admin");
 Route::get("city/{id}/edit", "CityController@edit")->middleware("admin");
-Route::post("city/{id}/edit", "CityController@update")->middleware("admin");
-Route::delete("city/{id}", "CityController@destroy")->middleware("admin");
+Route::post("api/city/{id}/edit", "CityController@update")->middleware("admin");
+Route::delete("api/city/{id}", "CityController@destroy")->middleware("admin");
