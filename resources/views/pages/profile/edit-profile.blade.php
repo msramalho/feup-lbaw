@@ -82,7 +82,7 @@
             <hr>
             <textarea class="form-control" id="postContent">{{Auth::user()->description}}</textarea>
         </div>
-
+        
         <div class="form-row">
             <div class="form-group col-lg-3 col-md-4 col-sm-6">
 

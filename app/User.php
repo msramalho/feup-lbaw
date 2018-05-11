@@ -39,6 +39,14 @@ class User extends Authenticatable
     }
 
     /**
+     * The comments this user owns.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    /**
      * Return true if the current user is an admin
      */
     public function isAdmin(){
