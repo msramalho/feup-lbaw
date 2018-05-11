@@ -74,6 +74,11 @@ div.dropdown a#logInDropdown:hover {
     color: #949494 !important;
 }
 
+div.animated.fadeInLeft.bg-light.rounded-right.border-primary.border-left.text-grey.container>div.row>div.text-center.col-xs-12.col-lg-1.col-xl-1.col-sm-12.col-md-1>p.vote-count-index {
+    margin-top: 1rem;
+    font-size: 2.5rem;
+}
+
 /**
  * Style for view post page
  */
@@ -462,7 +467,7 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
         color: black;
         text-shadow: black 0 0 0;
     }
-    
+
     div.container.add-comment {
         display: none;
     }
