@@ -13,17 +13,17 @@
                     <input type="hidden" value="{{$faculty->university->id}}" name="university_id"/>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label>Name</label>
+                            <label>Name<span style="color : rgb(255,0,0);"> *</span></label>
                             <input type="text" class="form-control form-control-lg" name="name" placeholder="Faculty official name"  value="{{$faculty->name}}" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Faculty public description</label>
+                        <label>Faculty public description<span style="color : rgb(255,0,0);"> *</span></label>
                         <textarea class="form-control" name="description" id="editFacDescription" required>{!! $faculty->description !!}</textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
-                            <label>City</label>
+                            <label>City<span style="color : rgb(255,0,0);"> *</span></label>
                             <select class="custom-select" name="city_id" required>
                                 <option selected>Select a city</option>
                                 @foreach ($cities as $city)
