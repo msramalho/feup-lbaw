@@ -118,3 +118,61 @@ $(".list-group-item").click( function() {
     fetchUser($(this).text());
     $('#showAllUsersModal').modal('hide');
 });
+
+function deleteUsersPosts(){
+    let uid = getCurrentSelectedUserID();
+    if(uid==-1) return false;
+    
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        buttons: {
+            cancel: "Cancel",
+            delete: true,
+        }
+    }).then((result) => {
+        if (result == 'delete') {
+            $.ajax({
+                type: "DELETE",
+                url: '../api/admin/user/'+uid+'/deletePosts',
+            }).done(function(data) {
+                swal({
+                    title: 'Posts Deleted!',
+                    text: data.n + " post(s) were deleted.",
+                    icon: 'success',
+                    timer: 6000
+                })
+            });
+        }
+    })
+}
+
+function deleteUsersComments(){
+    let uid = getCurrentSelectedUserID();
+    if(uid==-1) return false;
+    
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        buttons: {
+            cancel: "Cancel",
+            delete: true,
+        }
+    }).then((result) => {
+        if (result == 'delete') {
+            $.ajax({
+                type: "DELETE",
+                url: '../api/admin/user/'+uid+'/deleteComments',
+            }).done(function(data) {
+                swal({
+                    title: 'Comments Deleted!',
+                    text: data.n + " comment(s) were deleted.",
+                    icon: 'success',
+                    timer: 6000
+                })
+            });
+        }
+    })
+}

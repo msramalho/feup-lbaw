@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Comment;
 use App\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -154,4 +155,15 @@ class UserController extends Controller
             return response()->json(["success" => true, "newType" => "active"]);
         }
     }
+
+    public function deleteUsersPosts($uid){
+        $deletedCount = Post::where('author_id',$uid)->delete();     
+        return response()->json(["success" => true, "n" => $deletedCount]);
+    }
+
+    public function deleteUsersComments($uid){
+        $deletedCount = Comment::where('author_id',$uid)->delete();     
+        return response()->json(["success" => true, "n" => $deletedCount]);
+    }
+
 }

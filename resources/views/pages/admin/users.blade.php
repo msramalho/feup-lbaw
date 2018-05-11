@@ -71,10 +71,10 @@
             </div>
         </div>
         <div class="sideButtons text-center col-12 col-lg-3">
-            <button type="button" disabled="" onclick="return blockUser()" id="blockUserBtn" class="mt-2 btn btn-danger">Block User</button><br>
-            <button type="button" disabled="" class="mt-2 btn btn-warning">Delete Posts</button><br>
-            <button type="button" disabled="" class="mt-2 btn btn-warning">Delete Comments</button><br>
-            <button type="button" disabled="" class="mt-2 btn btn-warning">Delete Avatar</button><br>
+            <button type="button" disabled="" onclick="return blockUser()" id="blockUserBtn" class="mt-2 btn btn-warning">Block User</button><br>
+            <button type="button" disabled="" onclick="return deleteUsersPosts()" class="mt-2 btn btn-danger">Delete Posts</button><br>
+            <button type="button" disabled="" onclick="return deleteUsersComments()" class="mt-2 btn btn-danger">Delete Comments</button><br>
+            <button type="button" disabled="" class="mt-2 btn btn-danger">Delete Avatar</button><br>
             <!--<button type="button" class="mt-2 btn btn-success">Enable Editing</button><br>
             <button type="button" class="mt-2 btn btn-success" title="Enable Editing to save changes." disabled="">Save Changes</button><br>-->
         </div>
