@@ -434,3 +434,50 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
 .ajax-link{
     cursor:pointer;
 }
+
+@media print {
+    .remove-print {
+        display: none;
+    }
+
+    button {
+        visibility: hidden;
+    }   
+
+    div.votes {
+        visibility: hidden;
+
+    }
+
+    .post-utilities {
+        display: none;
+    }
+
+    div.article-text {
+        font-size: 1.3rem;
+    }
+
+    article>div.container>div>div.top-left>h1 {
+        font-size: 2.5rem;
+        color: black;
+        text-shadow: black 0 0 0;
+    }
+    
+    div.container.add-comment {
+        display: none;
+    }
+
+    div.flag-comment.small.text-secondary {
+        display: none;
+    }
+
+    div#c12 {
+        padding-bottom: 0rem;
+    }
+
+    div.container>div.row.pb-3.bg-faded {
+        font-size: 1.3rem;
+        padding-left: 0;
+        padding-right: 5rem;
+    }
+}
