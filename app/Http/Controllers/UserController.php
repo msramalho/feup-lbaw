@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Comment;
 use App\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -128,8 +129,41 @@ class UserController extends Controller
         return $image;
     }
 
-    public static function getAllUsers($page = 0){
-        // TODO: imeplement paging ?
-        return json_encode(User::all());
+    public static function getAllUsers(){
+        return User::get(['id', 'username']);
     }
+
+    public static function getUserDetails($uname){
+
+        $user = User::where('username', $uname)->get();
+        return $user->toJson();
+    }
+
+    public function blockUser($uid){
+        $user = User::find($uid);
+        $utype = $user->type;
+        if($utype=='admin'){
+            return response()->json(["success" => false, "msg" => "The selected user is an Admin and cannot be blocked."]);
+        }
+        if($utype=='active'){
+            $user -> type = 'banned';
+            $user -> save();
+            return response()->json(["success" => true, "newType" => "banned"]);
+        }else{
+            $user -> type = 'active';
+            $user -> save();
+            return response()->json(["success" => true, "newType" => "active"]);
+        }
+    }
+
+    public function deleteUsersPosts($uid){
+        $deletedCount = Post::where('author_id',$uid)->delete();     
+        return response()->json(["success" => true, "n" => $deletedCount]);
+    }
+
+    public function deleteUsersComments($uid){
+        $deletedCount = Comment::where('author_id',$uid)->delete();     
+        return response()->json(["success" => true, "n" => $deletedCount]);
+    }
+
 }

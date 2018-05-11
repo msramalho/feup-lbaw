@@ -4,11 +4,13 @@
     <h3>{{ $cm->user->username }}</h3>
     <p>{{ $cm->content }}</p>
     <div class="flag-comment small text-secondary">
-        @if($cm->isOwner())
+        @if($cm->isOwner() || Auth::user()->isAdmin())
             <a class="text-secondary delete-comment ajax-link">
                 <i class="fas fa-trash"></i>
                 <span>Delete</span>
             </a>
+        @endif
+        @if($cm->isOwner())
             <a class="text-secondary edit-comment ajax-link">
                 <i class="fas fa-pencil-alt"></i>
                 <span>Edit</span>
