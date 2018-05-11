@@ -40,7 +40,7 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        return $user->id === $comment->author_id;
+        return ($user->id === $comment->author_id || $user->isAdmin());
     }
 
     /**
@@ -51,6 +51,6 @@ class CommentPolicy
      */
     public function edit(User $user, Comment $comment)
     {
-        return self::delete($user, $comment);
+        return $user->id === $comment->author_id;
     }
 }
