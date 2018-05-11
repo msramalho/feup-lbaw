@@ -1,7 +1,7 @@
 <div class="animated fadeInLeft bg-light rounded-right border-primary border-left text-grey container">
     <div class="row">
         <div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12 col-md-1">
-            <p>
+            <p class="vote-count-index">
                 {{$post->votes}}
             </p>
         </div>
