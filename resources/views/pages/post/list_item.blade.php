@@ -10,7 +10,7 @@
                 <h3>{{str_limit($post->title, 50)}}</h3>
                 
             </a>
-            <p class="short">{{str_limit($post->content, 300)}}</p>
+            <p id="short">{{str_limit($post->content, 300)}}</p>
             <div class="row">
                 <div class="text-center col-lg-2 col-3">
                     <i class="fas fa-user-circle"></i> <a href="{{ url('/user/'.$post->user->username) }}">{{$post->user->username}}</a>
