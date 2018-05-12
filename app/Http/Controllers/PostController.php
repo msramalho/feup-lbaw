@@ -157,4 +157,8 @@ class PostController extends Controller
     public static function getPostsCount(){
         return Post::count();
     }
+
+    public static function getCommonBeerPrice(){
+        return Post::select('beer_cost')->groupBy('beer_cost')->orderByRaw('COUNT(*) DESC')->limit(1)->first()->beer_cost;
+    }
 }
