@@ -297,7 +297,8 @@ div.container.faq div#accordion div.faqHeader {
 }
 
 .counter-text {
-    font-size: 3em;
+    margin-top: 0.7rem;
+    font-size: 3.2em;
     text-align: center;
     font-weight: bold;
 }
