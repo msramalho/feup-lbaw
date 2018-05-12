@@ -153,4 +153,8 @@ class PostController extends Controller
 
         return array_unique($postArray);
     }
+
+    public static function getPostsCount(){
+        return Post::count();
+    }
 }
