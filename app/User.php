@@ -45,4 +45,11 @@ class User extends Authenticatable
         return $this->type === "admin";
     }
 
+    /**
+     * Return true if the current user is banned
+     */
+    public function isBanned(){
+        return $this->type === "banned";
+    }
+
 }
