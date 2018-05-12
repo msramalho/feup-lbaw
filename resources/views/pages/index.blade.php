@@ -17,4 +17,7 @@
 			<a class="mt-1 float-right btn btn-sm btn-primary" href="#" role="button">Next Page &raquo;</a>
 		</div>
 	</div>
+
+	<script type="text/javascript" src="{{ asset('js/pages/html-elements.js') }}" defer></script>
+
 @endsection
