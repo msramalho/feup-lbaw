@@ -296,6 +296,12 @@ div.container.faq div#accordion div.faqHeader {
     line-height: 1em;
 }
 
+.counter-text {
+    font-size: 3em;
+    text-align: center;
+    font-weight: bold;
+}
+
 .row .col-md-3 .card.card-block.p-25 {
     background-color: inherit;
     border: 0;
