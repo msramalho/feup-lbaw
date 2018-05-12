@@ -12,17 +12,17 @@
                     {{csrf_field()}}
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label>Name</label>
+                            <label>Name<span style="color : rgb(255,0,0);"> *</span></label>
                             <input type="text" class="form-control form-control-lg" name="name" placeholder="University official name" value="{{$university->name}}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>University public description</label>
+                        <label>University public description<span style="color : rgb(255,0,0);"> *</span></label>
                         <textarea class="form-control" name="description" id="editUniDescription">{!! $university->description !!}</textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
-                            <label for="uniCountry">Country</label>
+                            <label for="uniCountry">Country<span style="color : rgb(255,0,0);"> *</span></label>
                             <select class="custom-select" name="country_id" required>
                                 <option selected>Select a country</option>
                                 @foreach ($countries as $country)

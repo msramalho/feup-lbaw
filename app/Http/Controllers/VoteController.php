@@ -51,4 +51,8 @@ class VoteController extends Controller
     {
         //
     }
+
+    public static function getVotesCount(){
+        return Vote::count();
+    }
 }

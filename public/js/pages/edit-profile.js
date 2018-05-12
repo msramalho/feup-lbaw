@@ -46,12 +46,15 @@ $("#saveChanges").click(function(e){
         dataType : 'json',
 
         success: function (data) {
-            alert("Successfully saved!")
-            console.log(data);
+            if(data.success){
+                alert("Profile Successfully Updated!");
+            }else{
+                alert("Failed to save data!\n" + data.error);
+            }
         },
 
         error: function (data) {
-            console.log('Error: ', data);
+            alert("Failed to save data!");
         }
     });
 });

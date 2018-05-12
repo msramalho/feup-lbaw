@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Auth\Middleware\Authenticate;
 use Intervention\Image\ImageManagerStatic as Image;
+use Mews\Purifier\Facades\Purifier;
 
 use App\Http\Controllers\Controller;
 
@@ -47,8 +48,10 @@ class UserController extends Controller
      * Effectively Edit User Profile
      * 
     **/
-    public function editProfile(Request $request)
-    {        
+    public function editProfile(Request $request)   {     
+           
+        $request->merge(['description' => Purifier::clean($request->get('description'))]);
+
         $this->validate($request, [
             'name' => 'required|string|max:64',
             'username' => 'required|string|max:64',
@@ -68,7 +71,7 @@ class UserController extends Controller
         $user -> description = $request->description;
         $user -> save();
     
-        return response(json_encode("Success!"), 200);
+        return response()->json(["success" => true, "user" => $user]);
     }
 
     /** 
@@ -131,6 +134,10 @@ class UserController extends Controller
 
     public static function getAllUsers(){
         return User::get(['id', 'username']);
+    }
+
+    public static function getUsersCount(){
+        return User::count();
     }
 
     public static function getUserDetails($uname){

@@ -8,7 +8,7 @@
                     <a class="dropdown-item" href="{{ url('/admin') }}"><i class="fas fa-lock"></i> Admin Dashboard</a>
                 @endif
                 <a class="dropdown-item" href="{{ url('user/' . Auth::user()->username) }}">
-                    <i class="fas fa-user"></i> {{Auth::user()->username}}</a>
+                    <i class="fas fa-user"></i> Your Profile</a>
                 <a class="dropdown-item" href="{{ url("user/edit") }}">
                     <i class="fas fa-cog"></i> Edit Profile</a>
                 <a class="dropdown-item" href="{{ url("logout") }}">

@@ -42,13 +42,13 @@
         <div class="form-group col-md-12" id="form-info">
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                    <label>Name</label>
+                    <label>Name<span style="color : rgb(255,0,0);"> *</span></label>
                     <input type="text" class="form-control" name="name" aria-describedby="NameHelp" placeholder="Enter name" value="{{Auth::user()->name}}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                    <label>Username</label>
+                    <label>Username<span style="color : rgb(255,0,0);"> *</span></label>
                 <input type="text" class="form-control" name="username" aria-describedby="userNameHelp" placeholder="Enter username" value="{{Auth::user()->username}}">
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                     <form method="post">
                         <!-- Date input -->
-                        <label class="control-label" for="date">Birthdate</label>
+                        <label class="control-label" for="date">Birthdate<span style="color : rgb(255,0,0);"> *</span></label>
                         <input class="form-control" type="date" name="birthdate" placeholder="DD/MM/YYYY" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
                     </form>
 
@@ -68,7 +68,7 @@
             </div>
             <div class="form-row">
                 <div class=" form-group col-lg-6 col-md-6 col-sm-122">
-                    <label>E-mail</label>
+                    <label>E-mail<span style="color : rgb(255,0,0);"> *</span></label>
                     <input type="email" class="form-control" name="email" aria-describedby="EmailHelp" value="{{Auth::user()->email}}">
 
                 </div>
@@ -82,7 +82,7 @@
             <hr>
             <textarea class="form-control" id="postContent">{{Auth::user()->description}}</textarea>
         </div>
-
+        
         <div class="form-row">
             <div class="form-group col-lg-3 col-md-4 col-sm-6">
 
