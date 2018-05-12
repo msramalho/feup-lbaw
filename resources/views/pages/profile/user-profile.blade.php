@@ -143,5 +143,6 @@
 </div>
 
 <script type="text/javascript" src="{{ asset('js/pages/view-profile.js') }}" defer></script>
+<script type="text/javascript" src="{{ asset('js/pages/html-elements.js') }}" defer></script>
 
 @endsection
