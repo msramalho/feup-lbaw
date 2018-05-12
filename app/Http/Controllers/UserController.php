@@ -136,6 +136,10 @@ class UserController extends Controller
         return User::get(['id', 'username']);
     }
 
+    public static function getUsersCount(){
+        return User::count();
+    }
+
     public static function getUserDetails($uname){
 
         $user = User::where('username', $uname)->get();
