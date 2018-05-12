@@ -440,6 +440,10 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
     cursor:pointer;
 }
 
+#my-awesome-dropzone {
+    border-radius: 2rem;
+}
+
 @media print {
     .remove-print {
         display: none;
