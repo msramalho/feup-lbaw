@@ -7,7 +7,7 @@
 <link href="{{ asset('css/froala_editor.pkgd.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/froala_style.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/codemirror.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
+<link href="{{ asset('css/dropzone.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -105,7 +105,7 @@
 @parent {{-- append to the end multiple times in case of multiple scripts --}}
 <script src="{{ asset('js/external/codemirror.min.js') }}" ></script>
 <script src="{{ asset('js/external/froala_editor.pkgd.min.js') }}" ></script>
-<script src="{{ asset('js/external/dropzone.js') }}" ></script>
+<script src="{{ asset('js/external/dropzone.min.js') }}" ></script>
 <script src="{{ asset('js/pages/edit-profile.js') }}" ></script>
 <script>
     Dropzone.options.myAwesomeDropzone = {
