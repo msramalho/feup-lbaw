@@ -11,7 +11,7 @@
 		</div>
 		<h3>Recent News:</h3>
 		<div id="feed-content">
-			@each('pages.post.list_item', Post::getIndexList(), 'post')
+			@each('pages.post.list-item', Post::getIndexList(), 'post')
 		</div>
 		<div class="pb-3">
 			<a class="mt-1 float-right btn btn-sm btn-primary" href="#" role="button">Next Page &raquo;</a>
