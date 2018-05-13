@@ -8,4 +8,9 @@ $(document).ready(function() {
             $(".jqueryOptions." + test).show();
         });
     });
+
+    $(".list-group-item").click( function() {
+        fetchUser($(this).text());
+        $('#showAllUsersModal').modal('hide');
+    });
 });
