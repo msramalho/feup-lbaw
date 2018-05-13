@@ -391,6 +391,16 @@ div.feed-content>div {
     font-weight: 500;
 }
 
+.following-sidebar>.Sidebar_header {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.following-sidebar>.Sidebar_header:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .FollowingListItem_image {
     float: left;
     overflow: hidden;
