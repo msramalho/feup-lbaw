@@ -6,6 +6,7 @@ use App\Post;
 use App\User;
 use App\Comment;
 use App\Vote;
+use App\Following;
 use App\University;
 use App\Faculty;
 use Illuminate\Http\Request;
@@ -125,6 +126,18 @@ class PostController extends Controller
         // TODO: imeplement paging
         $post = Post::all();
         return $post;
+    }
+
+    public static function getFollowersList($uid){
+        $follows = Following::where('followed_id',$uid)->get();
+        $postsArray = [];
+        foreach ($follows as $follow) {
+            $posts = Post::where('author_id',$follow->follower_id)->get();
+            foreach ($posts as $post) {
+                array_push($postsArray, $post);
+            }
+        }
+        return collect($postsArray)->sortBy('date')->reverse();
     }
 
     public static function view_posts($author_id){
