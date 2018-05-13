@@ -407,9 +407,10 @@ div.feed-content>div {
     font-weight: 500;
 }
 
-.FollowingListItem__followers {
+.FollowingListItem_usernameLink {
+    color: #5b9bd1;
+    font-weight: 600;
     font-size: 14px;
-    color: #373c3f;
 }
 
 .AboutListItem {
