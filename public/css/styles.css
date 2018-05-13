@@ -425,6 +425,14 @@ div.feed-content>div {
     font-size: 17px;
 }
 
+.modal-body>.FollowingListItem>.FollowingListItem_imageLink>.FollowingListItem_image {
+    float: left;
+    overflow: hidden;
+    width: 55px;
+    height: 55px;
+    margin-right: 7px;
+}
+
 .AboutListItem {
     margin-bottom: 0px;
     overflow: hidden;
