@@ -79,6 +79,10 @@ div.animated.fadeInLeft.bg-light.rounded-right.border-primary.border-left.text-g
     font-size: 2.5rem;
 }
 
+div.mt-lg-5.pl-lg-0.mb-4.mb-lg-0.text-center.col-xs-12.col-lg-2.col-xl-2.col-sm-12.votes>p#post-votes {
+    font-size: 2.5rem;
+}
+
 /**
  * Style for view post page
  */
