@@ -26,8 +26,11 @@
 				<div class="row">
 					<div class="mt-lg-5 pl-lg-0 mb-4 mb-lg-0 text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12 votes">
 						<p id="post-votes">
-							{{ $post->votes }}
-						</p>
+								{{$post->votes}}<br>
+								@if(!Auth::check())
+									<i class="fa fa-chevron-up" aria-hidden="true"></i>
+								@endif
+							</p>
 						@if(Auth::check())
 							<?php $voted = App\Vote::user_voted(Auth::user()->id, $post->id) ?>
 							<button type="button" data-toggle="button" class="btn btn-primary {{count($voted->get())>0?"voted":""}}" id = "btn_upvote" post_id="{{$post->id}}" title-0="vote for this post" title-1="remove vote">
