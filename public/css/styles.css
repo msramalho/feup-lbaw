@@ -401,6 +401,10 @@ div.feed-content>div {
 
 /* Profile Content */
 
+.FollowingListItem{
+    list-style: none;
+}
+
 .FollowingListItem_userLink {
     color: #373c3f;
     font-size: 14px;
