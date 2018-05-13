@@ -417,6 +417,10 @@ div.feed-content>div {
     font-size: 14px;
 }
 
+.modal-body>.FollowingListItem>.FollowingListItem_usernameLink {
+    font-size: 17px;
+}
+
 .AboutListItem {
     margin-bottom: 0px;
     overflow: hidden;
