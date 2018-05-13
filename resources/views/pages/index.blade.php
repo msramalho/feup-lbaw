@@ -9,10 +9,19 @@
 			<p class="lead">Share and learn about ERASMUS destinations, your future awaits!!</p>
 			<a href="{{ url('post') }}" class="btn btn-lg btn-primary">New Post</a>
 		</div>
-		<h3>Recent News:</h3>
-		<div id="feed-content">
-			@each('pages.post.list-item', Post::getIndexList(), 'post')
-		</div>
+		
+		@if(Auth::check())
+			<h3>Friends Recent Posts:</h3>
+			<div id="feed-content">
+				@each('pages.post.list-item', Post::getFollowersList(Auth::user()->id), 'post')
+			</div>
+		@else
+			<h3>Recent Posts:</h3>
+			<div id="feed-content">
+				@each('pages.post.list-item', Post::getIndexList(), 'post')
+			</div>
+		@endif
+
 		<div class="pb-3">
 			<a class="mt-1 float-right btn btn-sm btn-primary" href="#" role="button">Next Page &raquo;</a>
 		</div>
