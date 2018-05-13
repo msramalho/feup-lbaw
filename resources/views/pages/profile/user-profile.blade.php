@@ -45,51 +45,7 @@
                 </h2>
                 <div class="followingListExpander">
                     <ul class="AboutListItem list-unstyled">
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Eric Widget</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">1,348,929 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Eleanor Fant</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">501,905 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Jarvis Pepperspray</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">1,168,199 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Jackson Pot</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">23,727 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Gibson Montgomery</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">2 followers</span>
-                            </span>
-                        </li>
+                        @each('pages.profile.list_followers', User::getUserFollowers($user->id), 'user')
                     </ul>
                 </div>
             </div>
