@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Comment;
 use App\Upload;
+use App\Following;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -144,6 +145,16 @@ class UserController extends Controller
 
         $user = User::where('username', $uname)->get();
         return $user->toJson();
+    }
+
+    public static function getUserFollowers($uid){
+        $follows = Following::where('followed_id',$uid)->limit(5)->get();
+        $usersArray = [];
+        foreach ($follows as $follow) {
+            $user = User::where('id',$follow->follower_id)->get();
+            array_push($usersArray, $user[0]);
+        }
+        return $usersArray;
     }
 
     public function blockUser($uid){
