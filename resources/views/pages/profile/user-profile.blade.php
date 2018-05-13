@@ -40,12 +40,12 @@
             </div>
 
             <div class="following-sidebar mb-2">
-                <h2 class="Sidebar_header">
+                <h2 class="Sidebar_header" data-toggle="modal" data-target="#showAllUsersModal">
                     Following
                 </h2>
                 <div class="followingListExpander">
                     <ul class="AboutListItem list-unstyled">
-                        @each('pages.profile.list_followers', User::getUserFollowers($user->id), 'user')
+                        @each('pages.profile.list-followers', User::getUserFollowers($user->id), 'user')
                     </ul>
                 </div>
             </div>
@@ -97,6 +97,8 @@
         </div>
     </div>
 </div>
+
+@include("modals.list-followers")
 
 <script type="text/javascript" src="{{ asset('js/pages/view-profile.js') }}" defer></script>
 <script type="text/javascript" src="{{ asset('js/pages/html-elements.js') }}" defer></script>
