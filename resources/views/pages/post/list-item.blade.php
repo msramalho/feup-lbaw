@@ -1,12 +1,12 @@
 <div class="animated fadeInLeft bg-light rounded-right border-primary border-left text-grey container">
     <div class="row">
-        <div class="text-center col-xs-12 col-lg-1 col-xl-1 col-sm-12 col-md-1">
+        <div class="text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12 col-md-2">
             <p class="vote-count-index">
                 {{$post->votes}}<br>
                 <a href="{{ url('/post/'.$post->id) }}"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
             </p>
         </div>
-        <div class="col-lg-11 col-sm-12 col-xl-11 col-md-11">
+        <div class="col-lg-10 col-sm-12 col-xl-10 col-md-10">
             <a href="{{ url('/post/'.$post->id) }}">
                 <h3>{{str_limit($post->title, 50)}}</h3>
                 
