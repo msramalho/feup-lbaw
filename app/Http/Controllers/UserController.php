@@ -157,6 +157,16 @@ class UserController extends Controller
         return $usersArray;
     }
 
+    public static function getAllUserFollowers($uid){
+        $follows = Following::where('followed_id',$uid)->get();
+        $usersArray = [];
+        foreach ($follows as $follow) {
+            $user = User::where('id',$follow->follower_id)->get();
+            array_push($usersArray, $user[0]);
+        }
+        return $usersArray;
+    }
+
     public function blockUser($uid){
         $user = User::find($uid);
         $utype = $user->type;
