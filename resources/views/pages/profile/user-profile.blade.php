@@ -100,6 +100,6 @@
 
 @include("modals.list-followers")
 
-<script type="text/javascript" src="{{ asset('js/pages/view-profile.js') }}" defer></script>
+<script src="{{ asset('js/pages/view-profile.js') }}" defer></script>
 
 @endsection
