@@ -19,17 +19,21 @@
             <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#showAllUsersModal">Show all users</button>
         </div>
         <div class="mt-3 container">
-            <form onsubmit="return fetchUserFromSearch()">
+            <form>
                 <label for="user">Search User:</label>
-                <input type="text" id="userSearch" class="form-group form-control" placeholder="Username" value="">
+                <input autocomplete="off" type="text" id="userSearch" class="form-group form-control" placeholder="Username" value="">
                 <input style="display:none;" type="button" id="search_btn" value="SEARCH"/>
             </form>
+            <div id="user-search-result">
+                <!-- to be populated -->
+            </div>
         </div>
     </div>
     <br>
 </div>
 
 <div class="jumbotron">
+    <div id="blockedUser" class="p-3 mb-2 bg-danger text-white hidden">This user is blocked!</div>
     <div class="row m-3">
         <div class="col-12 col-lg-9">
             <div class="row">

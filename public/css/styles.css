@@ -532,3 +532,12 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
         padding-right: 5rem;
     }
 }
+
+.hidden{
+    display: none;
+}
+
+#user-search-result > span {
+    cursor: pointer;
+    display: inline-block;
+}

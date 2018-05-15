@@ -137,6 +137,10 @@ class UserController extends Controller
         return User::get(['id', 'username']);
     }
 
+    public static function getAllUsersLike($uname){
+        return response()->json(User::where('username', 'like', '%'.$uname.'%')->get(['username']));
+    }
+
     public static function getUsersCount(){
         return User::count();
     }

@@ -1,12 +1,38 @@
 "use strict";
 
+var ulen = -1;
 
-function fetchUserFromSearch(){
-    let uname = $("#userSearch").val();
-    fetchUser(uname);
-    return false;
+$("#userSearch").on('input',function(e){
+    let uname = $("#userSearch").val().trim();
+    if (ulen < uname.length && uname != ''){
+        populateUserSearchList(uname);
+    }
+    ulen = uname.length        
+    //fetchUser(uname);
+});
+
+function populateUserSearchList(uname){
+
+    let template = '<span onclick="return preFetchUser(this)" class="bg-primary text-white p-1 m-1"></span>';
+    $.ajax({
+        type: "GET",
+        url: "/api/admin/usersSearch/"+uname
+    }).done(function(data) {
+        $("#user-search-result").html(""); // empty
+        data.forEach(function(user) {
+            $("#user-search-result").append(template);
+            $("#user-search-result > *").last().text(user.username);
+        });
+
+        if(data.length == 1){
+            fetchUser(data[0].username);    
+        }
+    });
 }
 
+function preFetchUser(event){
+    fetchUser($(event).text());
+}
 
 function fetchUser(uname){
     $.ajax({
@@ -94,8 +120,10 @@ function updateBlockButton(nType){
 
     if(nType == 'banned'){
         $(btn).text('Unblock User');
+        $("#blockedUser").show();
     }else{
         $(btn).text('Block User');
+        $("#blockedUser").hide();
     }
 }
 
