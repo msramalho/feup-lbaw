@@ -14,6 +14,7 @@ $("#userSearch").on('input',function(e){
 function populateUserSearchList(uname){
 
     let template = '<span onclick="return preFetchUser(this)" class="bg-primary text-white p-1 m-1"></span>';
+    let noResults = '<span class="bg-danger text-white p-2 m-1">No results!</span>';
     $.ajax({
         type: "GET",
         url: "/api/admin/usersSearch/"+uname
@@ -26,6 +27,8 @@ function populateUserSearchList(uname){
 
         if(data.length == 1){
             fetchUser(data[0].username);    
+        }else if(data.length == 0){
+            $("#user-search-result").html(noResults);
         }
     });
 }

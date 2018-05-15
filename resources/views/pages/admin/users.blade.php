@@ -19,7 +19,7 @@
             <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#showAllUsersModal">Show all users</button>
         </div>
         <div class="mt-3 container">
-            <form>
+            <form onsubmit="return false">
                 <label for="user">Search User:</label>
                 <input autocomplete="off" type="text" id="userSearch" class="form-group form-control" placeholder="Username" value="">
                 <input style="display:none;" type="button" id="search_btn" value="SEARCH"/>
