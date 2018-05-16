@@ -317,11 +317,11 @@ div.container.faq div#accordion div.faqHeader {
  */
 
 .container.passwordForgotten {
-    width: 0 auto; 
+    width: auto; 
 }
 
 .panel.panel-default>.panel-body>.text-center {
-    width: 0 auto;
+    width: auto;
     padding-left: 20%;
     padding-right: 20%;
 }

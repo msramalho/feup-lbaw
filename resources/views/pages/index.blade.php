@@ -42,6 +42,6 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="{{ asset('js/pages/index.js') }}" defer></script>
+	<script src="{{ asset('js/pages/index.js') }}" defer></script>
 
 @endsection
