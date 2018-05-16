@@ -8,6 +8,9 @@ class Flag_comment extends Model
 {
     protected $fillable = ['reason', 'date', 'archived'];
 
+    protected $primaryKey =['flagger_id','comment_id'];
+
+    public $incrementing = false;
     public $timestamps = false;
 
     /**

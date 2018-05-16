@@ -327,7 +327,7 @@ CREATE TABLE flag_post (
     flagger_id integer NOT NULL,
     post_id integer NOT NULL,
     reason text NOT NULL,
-    date timestamp with time zone NOT NULL,
+    date timestamp with time zone DEFAULT now() NOT NULL,
     archived boolean DEFAULT false NOT NULL
 );
 

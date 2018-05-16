@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Flag_user extends Model
 {
     protected $fillable = ['reason', 'date', 'archived'];
+    protected $primaryKey =['flagger_id','user_id'];
 
+    public $incrementing = false;
     public $timestamps = false;
-
     /**
      * the user the flag is in
      */

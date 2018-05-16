@@ -32,6 +32,18 @@ Route::get('post/{id}/delete', 'PostController@delete');
 // Faculties api
 Route::get('api/university/{id}/faculties', 'FacultyController@list')->middleware('auth');
 
+// Flag Post
+Route::get('flag/post/{id}', 'FlagPostController@show');
+Route::post('flag/post/{id}', "FlagPostController@create")->middleware('auth');
+
+// Flag User
+Route::get('flag/user/{id}', 'FlagUserController@show');
+Route::post('flag/user/{id}', "FlagUserController@create")->middleware('auth');
+
+// Flag Comment
+Route::get('flag/comment/{id}', 'FlagCommentController@show');
+Route::post('flag/comment/{id}', "FlagCommentController@create")->middleware('auth');
+
 // Votes
 Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');
 

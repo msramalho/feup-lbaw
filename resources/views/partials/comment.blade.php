@@ -10,7 +10,7 @@
                 <span>Delete</span>
             </a>
         @else
-            <a class="text-secondary flag-comment ajax-link">
+            <a class="text-secondary flag-comment ajax-link" href="{{ url("flag/comment/$cm->id") }}">
                 <i class="fas fa-flag"></i>
                 <span>Flag</span>
             </a>
