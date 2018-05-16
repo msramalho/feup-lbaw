@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Vecto: Flag Profile')
+@section('title', 'Vecto: Flag Comment')
 
 
 @section("styles")
@@ -14,9 +14,9 @@
 
 <div class="container">
 	<div class="jumbotron">
-		<h1>Report profile</h1>
-		<h4>We are sorry this profile is offensive or inapropriate. Please tell us the reason why you are reporting it!</h4>
-        <form action="{{ url("flag/user/$user_id") }}" method="POST">
+		<h1>Report post</h1>
+		<h4>We are sorry that this comment was offensive or inapropriate. Please tell us the reason why you are reporting it!</h4>
+        <form action="{{ url("flag/comment/$comment_id") }}" method="POST">
 		 	{{ csrf_field() }}
 			@include("partials.errors")
 			<div class="form-group">

@@ -30,16 +30,16 @@ Route::post('post/{id}/edit', 'PostController@update');
 Route::get('post/{id}/delete', 'PostController@delete');
 
 // Flag Post
-
-//Route::view('flag/post/{id}', "pages.post.report_post")->middleware('auth');
 Route::get('flag/post/{id}', 'FlagPostController@show');
 Route::post('flag/post/{id}', "FlagPostController@create")->middleware('auth');
 
 // Flag User
-
-//Route::view('flag/post/{id}', "pages.post.report_post")->middleware('auth');
 Route::get('flag/user/{id}', 'FlagUserController@show');
 Route::post('flag/user/{id}', "FlagUserController@create")->middleware('auth');
+
+// Flag Comment
+Route::get('flag/comment/{id}', 'FlagCommentController@show');
+Route::post('flag/comment/{id}', "FlagCommentController@create")->middleware('auth');
 
 // Votes
 Route::post("post/{id}/vote", "VoteController@create")->middleware('auth');

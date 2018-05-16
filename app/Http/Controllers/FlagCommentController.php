@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Flag_user;
+use App\Flag_comment;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 
-class FlagUserController extends Controller
+class FlagCommentController extends Controller
 {
    
     public function validatation(Request $request){
@@ -24,16 +24,16 @@ class FlagUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($user_id, Request $request)
+    public function create($comment_id, Request $request)
     {
        
         $this->validatation($request);
-        $flag = new Flag_user($request->all());
+        $flag = new Flag_comment($request->all());
         $flag->flagger_id = Auth::user()->id;
-        $flag->flagged_id = $user_id;
+        $flag->comment_id = $comment_id;
         $flag->save();
-        $smt=DB::table('users')->where('id',$user_id)->value('username');
-        return Redirect::to("user/$smt");
+        $smt=DB::table('comments')->where('id',$comment_id)->value('post_id');
+        return Redirect::to("post/$smt");
     }
 
 
@@ -48,10 +48,10 @@ class FlagUserController extends Controller
       *  return "Hello";
     *}
     */
-    public function show($flagged_id)
+    public function show($comment_id)
     {
         //$post = Flag_post::post();
-        return view('pages.profile.report_user', ['user_id' => $flagged_id]);
+        return view('pages.post.report_comment', ['comment_id' => $comment_id]);
     }
 
 
