@@ -25,6 +25,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
+        if($user->isBanned()) return false;
         return Auth::check();
     }
 
@@ -37,6 +38,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
+        if($user->isBanned()) return false;
         return $user->id === $post->user_id;
     }
 
@@ -49,6 +51,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
+        if($user->isBanned()) return false;
         return $user->id === $post->user_id;
     }
 }

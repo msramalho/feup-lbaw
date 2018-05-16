@@ -19,15 +19,18 @@
 					</div>
 				</div>
 				<div>
-					<img src="https://i.imgur.com/KfROBYv.jpg" alt>
+					<img src="https://i.imgur.com/KfROBYv.jpg" alt class="remove-print">
 					<div class="top-left"><h1>{{ $post->title }}</h1></div>
 				</div>
 				@include("partials.errors")
 				<div class="row">
-					<div class="mt-lg-5 pl-lg-0 mb-4 mb-lg-0 text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12">
+					<div class="mt-lg-5 pl-lg-0 mb-4 mb-lg-0 text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12 votes">
 						<p id="post-votes">
-							{{ $post->votes }}
-						</p>
+								{{$post->votes}}<br>
+								@if(!Auth::check())
+									<i class="fa fa-chevron-up" aria-hidden="true"></i>
+								@endif
+							</p>
 						@if(Auth::check())
 							<?php $voted = App\Vote::user_voted(Auth::user()->id, $post->id) ?>
 							<button type="button" data-toggle="button" class="btn btn-primary {{count($voted->get())>0?"voted":""}}" id = "btn_upvote" post_id="{{$post->id}}" title-0="vote for this post" title-1="remove vote">
@@ -37,7 +40,7 @@
 					</div>
 					<div class="article-text text-justify col-lg-10 col-sm-12 col-xl-10">
 						{!! $post->content !!}
-						<hr>
+						<hr class="remove-print">
 						<div class="post-utilities small text-secondary">
 							@if(Auth::check())
 							<a class="text-secondary" href="{{ url("flag/post/$post->id") }}">
@@ -54,6 +57,8 @@
 								<i class="fas fa-edit"></i>
 								<span>Edit</span>
 							</a>
+							@endif
+							@if($post->isOwner() || (Auth::check() && Auth::user()->isAdmin()))
 							<a class="text-secondary" href="{{ url("post/$post->id/delete") }}">
 								<i class="fas fa-trash"></i>
 								<span>Delete</span>
@@ -66,7 +71,7 @@
 				<hr>
 				<div class="article-comments">
 				@php ($cmCount = count($post->comments()->get()))
-				<h2 id="commentCount" cc="{{ $cmCount }}">
+				<h2 id="commentCount" data-cc="{{ $cmCount }}">
 					@if($cmCount>1)
 						{{ $cmCount }} comments:
 					@elseif($cmCount==1)
@@ -78,7 +83,7 @@
 					@each('partials.comment', $post->comments()->get(), 'cm')
 					
 					@if(Auth::check())
-					<br>
+					<br class="remove-print">
 					<hr>
 					<div class="container add-comment">
 						<h3>Add a comment!</h3>
@@ -105,5 +110,5 @@
 
 @section("scripts")
 @parent {{-- append to the end multiple times in case of multiple scripts --}}
-<script type="text/javascript" src="{{ asset('js/pages/view-post.js') }}" ></script>
+<script src="{{ asset('js/pages/view-post.js') }}" ></script>
 @endsection

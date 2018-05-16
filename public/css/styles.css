@@ -74,6 +74,15 @@ div.dropdown a#logInDropdown:hover {
     color: #949494 !important;
 }
 
+p.vote-count-index {
+    margin-top: 1rem;
+    font-size: 2.5rem;
+}
+
+p#post-votes {
+    font-size: 2.5rem;
+}
+
 /**
  * Style for view post page
  */
@@ -133,6 +142,11 @@ article>div.container>div.article-comments>div.article-comment {
     margin-bottom: 5px;
     padding-bottom: 25px !important;
     /*space for flag button*/
+}
+
+article>div.container>div.article-comments>div.article-comment.edit{
+    padding-bottom: 70px !important;
+    /*space for submit button*/
 }
 
 article>div.container>div.article-comments>div.article-comment>img {
@@ -286,6 +300,13 @@ div.container.faq div#accordion div.faqHeader {
     line-height: 1em;
 }
 
+.counter-text {
+    margin-top: 0.7rem;
+    font-size: 3.2em;
+    text-align: center;
+    font-weight: bold;
+}
+
 .row .col-md-3 .card.card-block.p-25 {
     background-color: inherit;
     border: 0;
@@ -296,11 +317,11 @@ div.container.faq div#accordion div.faqHeader {
  */
 
 .container.passwordForgotten {
-    width: 0 auto; 
+    width: auto; 
 }
 
 .panel.panel-default>.panel-body>.text-center {
-    width: 0 auto;
+    width: auto;
     padding-left: 20%;
     padding-right: 20%;
 }
@@ -309,7 +330,7 @@ div.container.faq div#accordion div.faqHeader {
   * Post
  */
 
-div#feed-content>div {
+div.feed-content>div {
     margin-bottom: 10px;
     padding: 10px;
 }
@@ -374,6 +395,16 @@ div#feed-content>div {
     font-weight: 500;
 }
 
+.following-sidebar>.Sidebar_header {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.following-sidebar>.Sidebar_header:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .FollowingListItem_image {
     float: left;
     overflow: hidden;
@@ -384,15 +415,36 @@ div#feed-content>div {
 
 /* Profile Content */
 
+.FollowingListItem{
+    list-style: none;
+}
+
 .FollowingListItem_userLink {
     color: #373c3f;
     font-size: 14px;
     font-weight: 500;
 }
 
-.FollowingListItem__followers {
+.FollowingListItem_usernameLink {
+    color: #5b9bd1;
+    font-weight: 600;
     font-size: 14px;
-    color: #373c3f;
+}
+
+.modal-body>.FollowingListItem>.FollowingListItem_usernameLink {
+    font-size: 17px;
+}
+
+.modal-body>.FollowingListItem>.FollowingListItem_userLink {
+    font-size: 17px;
+}
+
+.modal-body>.FollowingListItem>.FollowingListItem_imageLink>.FollowingListItem_image {
+    float: left;
+    overflow: hidden;
+    width: 55px;
+    height: 55px;
+    margin-right: 7px;
 }
 
 .AboutListItem {
@@ -428,4 +480,64 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
 
 .ajax-link{
     cursor:pointer;
+}
+
+#my-awesome-dropzone {
+    border-radius: 2rem;
+}
+
+@media print {
+    .remove-print {
+        display: none;
+    }
+
+    button {
+        visibility: hidden;
+    }   
+
+    div.votes {
+        visibility: hidden;
+
+    }
+
+    .post-utilities {
+        display: none;
+    }
+
+    div.article-text {
+        font-size: 1.3rem;
+    }
+
+    article>div.container>div>div.top-left>h1 {
+        font-size: 2.5rem;
+        color: black;
+        text-shadow: black 0 0 0;
+    }
+
+    div.container.add-comment {
+        display: none;
+    }
+
+    div.flag-comment.small.text-secondary {
+        display: none;
+    }
+
+    div#c12 {
+        padding-bottom: 0rem;
+    }
+
+    div.container>div.row.pb-3.bg-faded {
+        font-size: 1.3rem;
+        padding-left: 0;
+        padding-right: 5rem;
+    }
+}
+
+.hidden{
+    display: none;
+}
+
+#user-search-result > span {
+    cursor: pointer;
+    display: inline-block;
 }

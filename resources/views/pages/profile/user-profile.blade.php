@@ -40,56 +40,12 @@
             </div>
 
             <div class="following-sidebar mb-2">
-                <h2 class="Sidebar_header">
+                <h2 class="Sidebar_header" data-toggle="modal" data-target="#showAllUsersModal">
                     Following
                 </h2>
                 <div class="followingListExpander">
                     <ul class="AboutListItem list-unstyled">
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Eric Widget</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">1,348,929 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Eleanor Fant</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">501,905 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Jarvis Pepperspray</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">1,168,199 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Jackson Pot</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">23,727 followers</span>
-                            </span>
-                        </li>
-                        <li class="FollowingListItem pl-10 mb-3">
-                            <a class="FollowingListItem_imageLink" href=#>
-                                <img class="FollowingListItem_image rounded float-left" src="{{URL::asset('images/profile.png')}}" alt="UserName">
-                            </a>
-                            <a class="FollowingListItem_userLink d-block" href=#>Gibson Montgomery</a>
-                            <span class="FollowingListItem__nsfwFollowers d-block">
-                                <span class="FollowingListItem__followers">2 followers</span>
-                            </span>
-                        </li>
+                        @each('pages.profile.list-followers', User::getUserFollowers($user->id), 'user')
                     </ul>
                 </div>
             </div>
@@ -99,27 +55,51 @@
         <div class="col-md-9">
             <div class="container">
                 <div class="jumbotron">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" id="view-options">
                         <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" checked> About Me
+                            <input type="radio" name="options" value="option1" checked > About Me </input>
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2"> Posts
+                            <input type="radio" name="options" value="option2"> Posts </input>
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option3"> Comments
+                            <input type="radio" name="options" value="option3"> Comments </input>
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option4"> Upvotes
+                            <input type="radio" name="options" value="option4"> Upvotes </input>
                         </label>
                     </div>
                     <br>
                     <br>
-                    <div id="feed-content" class="">{!! $user->description !!}</div>
+                    <section class="jqueryOptions option1">
+                        <div class="feed-content">{!! $user->description !!}</div>
+                    </section>
+
+                    <section class="jqueryOptions option2 d-none">
+                        <div class="feed-content">
+                            @each('pages.post.list-item', Post::view_posts($user->id), 'post')
+                        </div>
+                    </section>
+
+                    <section class="jqueryOptions option3 d-none">
+                        <div class="feed-content">
+                            @each('pages.post.list-item', Post::view_posts_comments($user->id), 'post')
+                        </div>
+                    </section>
+
+                    <section class="jqueryOptions option4 d-none">
+                        <div class="feed-content">
+                            @each('pages.post.list-item', Post::view_posts_votes($user->id), 'post')
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@include("modals.list-followers")
+
+<script src="{{ asset('js/pages/view-profile.js') }}" defer></script>
 
 @endsection

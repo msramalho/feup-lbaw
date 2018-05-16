@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Lisbon',
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -195,7 +196,8 @@ return [
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
-        'Auth' => Illuminate\Support\Facades\Auth::class,
+        // 'Auth' => Illuminate\Support\Facades\Auth::class,
+        'Auth' => App\Facades\CustomAuth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
@@ -227,8 +229,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Post' => App\Http\Controllers\PostController::class,
+        'User' => App\Http\Controllers\UserController::class,
+        'Vote' => App\Http\Controllers\VoteController::class,
         'Image' => Intervention\Image\Facades\Image::class,
-
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
     ],
 
 ];

@@ -586,6 +586,12 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 
 INSERT INTO city VALUES (1, 'Porto', 1);
 INSERT INTO city VALUES (2, 'Sheffield', 2);
+INSERT INTO city VALUES (3, 'Simenqian', 2);
+INSERT INTO city VALUES (4, 'Kungsbacka', 6);
+INSERT INTO city VALUES (5, 'Jati', 1);
+INSERT INTO city VALUES (6, 'Bacnar', 8);
+INSERT INTO city VALUES (7, 'Maria', 9);
+INSERT INTO city VALUES (8, 'Aroa', 9);
 INSERT INTO city VALUES (9, 'Xikou', 4);
 INSERT INTO city VALUES (10, 'Siquanpu', 2);
 INSERT INTO city VALUES (11, 'Svetogorsk', 7);
@@ -595,19 +601,13 @@ INSERT INTO city VALUES (14, 'Krajan Tambakrejo', 7);
 INSERT INTO city VALUES (15, 'San Lucas', 7);
 INSERT INTO city VALUES (16, 'Corinto', 3);
 INSERT INTO city VALUES (17, 'Wenquan', 3);
-INSERT INTO city VALUES (3, 'Simenqian', 2);
-INSERT INTO city VALUES (4, 'Kungsbacka', 6);
-INSERT INTO city VALUES (5, 'Jati', 1);
-INSERT INTO city VALUES (6, 'Bacnar', 8);
-INSERT INTO city VALUES (7, 'Maria', 9);
-INSERT INTO city VALUES (8, 'Aroa', 9);
 
 
 --
 -- Name: city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
 --
 
-SELECT pg_catalog.setval('city_id_seq', 62, true);
+SELECT pg_catalog.setval('city_id_seq', 18, true);
 
 
 --
@@ -900,7 +900,7 @@ INSERT INTO country VALUES (249, 'Zimbabwe', 'zw');
 -- Name: country_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
 --
 
-SELECT pg_catalog.setval('country_id_seq', 2, true);
+SELECT pg_catalog.setval('country_id_seq', 250, true);
 
 
 --
@@ -909,6 +909,8 @@ SELECT pg_catalog.setval('country_id_seq', 2, true);
 
 INSERT INTO faculty VALUES (1, 'Faculdade de Engenharia', '', 1, 1);
 INSERT INTO faculty VALUES (2, 'Faculty of Engineering', '', 2, 2);
+INSERT INTO faculty VALUES (3, 'Centre Universitaire de Technologie', 'Dried Peach', 9, 1);
+INSERT INTO faculty VALUES (4, 'IJEP', '', 1, 1);
 INSERT INTO faculty VALUES (5, 'University of Nicosia', 'Rosemary - Primerba, Paste', 9, 7);
 INSERT INTO faculty VALUES (6, 'Southern Nazarene University', 'Pastry - Banana Tea Loaf', 12, 10);
 INSERT INTO faculty VALUES (7, 'Universidad de Málaga', 'Flower - Commercial Bronze', 11, 8);
@@ -928,14 +930,13 @@ INSERT INTO faculty VALUES (20, 'Fontbonne College', 'Veal - Round, Eye Of', 2, 
 INSERT INTO faculty VALUES (21, 'Rochester Institute of Technology', 'Figs', 10, 14);
 INSERT INTO faculty VALUES (22, 'Universidad Nacional de Asunción', 'Peach - Fresh', 4, 14);
 INSERT INTO faculty VALUES (23, 'Carthage College', 'Beef - Tenderloin Tails', 6, 10);
-INSERT INTO faculty VALUES (3, 'Centre Universitaire de Technologie', 'Dried Peach', 9, 1);
 
 
 --
 -- Name: faculty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
 --
 
-SELECT pg_catalog.setval('faculty_id_seq', 24, true);
+SELECT pg_catalog.setval('faculty_id_seq', 23, true);
 
 
 --
@@ -1074,23 +1075,23 @@ SELECT pg_catalog.setval('post_id_seq', 16, true);
 -- Data for Name: university; Type: TABLE DATA; Schema: public; Owner: lbaw1721
 --
 
-INSERT INTO university VALUES (1, 'Universidade do Porto', '', 1);
-INSERT INTO university VALUES (2, 'University of Sheffield', '', 2);
-INSERT INTO university VALUES (3, 'Madelena', 'mandresser0@hostgator.com', 8);
-INSERT INTO university VALUES (4, 'Baxie', 'birlam1@upenn.edu', 10);
-INSERT INTO university VALUES (5, 'Modestia', 'mroglieri2@newsvine.com', 9);
-INSERT INTO university VALUES (6, 'Lucille', 'lclink3@linkedin.com', 2);
-INSERT INTO university VALUES (7, 'Lindsey', 'lstaneland4@apple.com', 1);
-INSERT INTO university VALUES (8, 'Ahmad', 'acoate5@upenn.edu', 1);
-INSERT INTO university VALUES (9, 'Emery', 'eharsnep6@cargocollective.com', 5);
-INSERT INTO university VALUES (10, 'Bastian', 'bcleevely7@theguardian.com', 6);
-INSERT INTO university VALUES (11, 'Pepe', 'pedmeades8@auda.org.au', 5);
-INSERT INTO university VALUES (12, 'Chico', 'crickett9@bbb.org', 2);
-INSERT INTO university VALUES (13, 'Dorothy', 'dkocha@uiuc.edu', 10);
-INSERT INTO university VALUES (14, 'Steffane', 'smenaulb@domainmarket.com', 8);
-INSERT INTO university VALUES (15, 'Magdalene', 'mmurriganc@edublogs.org', 8);
-INSERT INTO university VALUES (16, 'Leila', 'lmottersheadd@timesonline.co.uk', 2);
-INSERT INTO university VALUES (17, 'Dollie', 'dbindone@answers.com', 5);
+INSERT INTO university VALUES (1, 'Universidade do Porto', 'University of Porto', 1);
+INSERT INTO university VALUES (2, 'University of Sheffield', 'University of Sheffield', 2);
+INSERT INTO university VALUES (3, 'Madelena', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 8);
+INSERT INTO university VALUES (4, 'Baxie', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 10);
+INSERT INTO university VALUES (5, 'Modestia', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 9);
+INSERT INTO university VALUES (6, 'Lucille', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 2);
+INSERT INTO university VALUES (7, 'Lindsey', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 1);
+INSERT INTO university VALUES (8, 'Ahmad', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 1);
+INSERT INTO university VALUES (9, 'Emery', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 5);
+INSERT INTO university VALUES (10, 'Bastian', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 6);
+INSERT INTO university VALUES (11, 'Pepe', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 5);
+INSERT INTO university VALUES (12, 'Chico', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 2);
+INSERT INTO university VALUES (13, 'Dorothy', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 10);
+INSERT INTO university VALUES (14, 'Steffane', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 8);
+INSERT INTO university VALUES (15, 'Magdalene', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 8);
+INSERT INTO university VALUES (16, 'Leila', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 2);
+INSERT INTO university VALUES (17, 'Dollie', 'In tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 5);
 
 
 --
@@ -1104,17 +1105,20 @@ SELECT pg_catalog.setval('university_id_seq', 17, true);
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: lbaw1721
 --
 
+INSERT INTO "user" VALUES (1, 'pbirkl@disqus.com', 'pbirkl', '2018-03-22', '1G3TZheGQZx2hRv42jC4VSpC6uNGBWzem5', 'Penelope Birk', '2018-03-22 11:16:36.111183+00', 'Postprocedural subglottic stenosis', NULL, 'active');
 INSERT INTO "user" VALUES (2, 'vecto@dannyps.net', 'Dannyps', '2018-03-22', 'mypassword', 'Daniel Silva', '2018-03-22 11:16:07.159934+00', '', NULL, 'active');
+INSERT INTO "user" VALUES (3, 'ajuettj@abc.net.au', 'ajuettj', '2018-03-22', '1Ks2xfaDhWStPr2kKb4rYseipYHaovVpwh', 'Artus Juett', '2018-03-22 11:16:36.111183+00', 'Labor and delivery complicated by other cord entanglement, with compression, fetus 2', NULL, 'active');
 INSERT INTO "user" VALUES (4, 'jlopes@fe.up.pt', 'jcl', '2018-03-22', '$2y$10$e.cV4dOdlHNKfCzs68m0B.XULEeUk5yuR8CCdzL2ZqAAuz1cY0hpq', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (5, 'bb@bb.com', 'putin', '2018-03-22', '$2y$10$Do.RgVkvfuGnWzszpCL4Gulsl8dQvNukGZDWoiCtuByDRijkvLugG', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (6, 'cc@cc.com', 'trump', '2018-03-22', '$2y$10$rBhdJkkS13eL7XoQVGL4W.TBRM/QGD0b5FrQe9A1jZLQWu2adhb3m', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
+INSERT INTO "user" VALUES (7, 'dd@dd.co', 'acosta', '2018-03-22', '$2y$10$xfCI/0uI/xYY1tk9/2DWX.FzcUayIZeucuQ.kIqVyBrReVEGfVGYi', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (8, 'ee@ee.com', 'marcelo', '2018-03-22', '$2y$10$NXbx/ZftuJf/KwntPQfEU.F7doPfX5iKxf7/dbcnL2ATtg.R37tsa', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (9, 'arestivo@fe.up.pt', 'arestivo', '2018-03-22', '$2y$10$ZB8q7BZ7WwzAXLYV6qbk4ue3yvbdadSJlS/WFbouLZZDEborWUmPS', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (10, 'obama@white.house.com', 'obama', '2018-03-22', '$2y$10$saMOolU1lbqFsqlJZ.jTxOHkoEpRtZTC7iuKMU2N.pvBPaSdzVz1e', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (11, 'aramos@fe.up.pt', 'aramos', '2018-03-22', '$2y$10$jbZ8RFkjbcy784dqBrEwiOG7FNl6Lg/Uv9NNYr79wf4NpSISpDZf.', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (12, 'msramalho@fe.up.pt', 'msramalho', '2018-03-22', '$2y$10$TpcoZ9/xAMruOcsrefDJ4OPT9/wHW7TnrNlER6N0Nk5R8qxVRxq16', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
-INSERT INTO "user" VALUES (7, 'dd@dd.co', 'acosta', '2018-03-22', '$2y$10$xfCI/0uI/xYY1tk9/2DWX.FzcUayIZeucuQ.kIqVyBrReVEGfVGYi', '', '2018-03-22 16:33:10.67649+00', '', '2018-03-27 11:00:00+01', 'active');
 INSERT INTO "user" VALUES (13, 'aavrahm0@vistaprint.com', 'aavrahm0', '2018-03-22', '1KWYxNbXoZ4wxeKTVviejTyoyYZSPEYVjh', 'Annabella Avrahm', '2018-03-22 11:16:36.111183+00', 'Decreased fetal movements, unspecified trimester, fetus 3', NULL, 'active');
+INSERT INTO "user" VALUES (14, 'afindenk@phoca.cz', 'afindenk', '2018-03-22', '1Ks9a7QeQmn572Nr2mvKfEf4ubzxM4xBuh', 'Addie Finden', '2018-03-22 11:16:36.111183+00', 'Activities involving ice and snow', NULL, 'active');
 INSERT INTO "user" VALUES (15, 'bgiorgioni1@about.me', 'bgiorgioni1', '2018-03-22', '1FhDGAyHvEyoEDD8DvXSArpV4Doud3J5Qj', 'Broddie Giorgioni', '2018-03-22 11:16:36.111183+00', 'Motorcycle passenger injured in collision with pedestrian or animal in nontraffic accident', NULL, 'active');
 INSERT INTO "user" VALUES (16, 'apanks2@jigsy.com', 'apanks2', '2018-03-22', '1NisuEkTYnQH6pvm6YE5RbxpfbF7JJ82x7', 'Anton Panks', '2018-03-22 11:16:36.111183+00', 'Unspecified balloon accident injuring occupant', NULL, 'banned');
 INSERT INTO "user" VALUES (17, 'dmatyatin3@google.com.br', 'dmatyatin3', '2018-03-22', '1K2NT9iZ7LnDDei5Dbm7XT9Z3L6bHqVPFj', 'Dian Matyatin', '2018-03-22 11:16:36.111183+00', 'Displaced unspecified condyle fracture of lower end of right femur, subsequent encounter for closed fracture with routine healing', NULL, 'active');
@@ -1141,9 +1145,6 @@ INSERT INTO "user" VALUES (40, 'mcapelleq@tripadvisor.com', 'mcapelleq', '2018-0
 INSERT INTO "user" VALUES (41, 'kdavissonr@networksolutions.com', 'kdavissonr', '2018-03-22', '1FqxiBLaAEgmSzU2Enm8ET26NsAbjbyySf', 'Katerina Davisson', '2018-03-22 11:16:36.111183+00', 'Burn of unspecified degree of right scapular region, sequela', NULL, 'active');
 INSERT INTO "user" VALUES (42, 'hmansers@cpanel.net', 'hmansers', '2018-03-22', '1MJt5cbRegPeZ8LFPVvraaZ39VxstmbRRN', 'Hedi Manser', '2018-03-22 11:16:36.111183+00', 'Pneumonia due to staphylococcus, unspecified', NULL, 'banned');
 INSERT INTO "user" VALUES (43, 'mcominottit@example.com', 'mcominottit', '2018-03-22', '1wibWX46UH7AFxSPDuBUXmr83bdiJFv85', 'Marmaduke Cominotti', '2018-03-22 11:16:36.111183+00', 'Minor laceration of vertebral artery', NULL, 'active');
-INSERT INTO "user" VALUES (3, 'ajuettj@abc.net.au', 'ajuettj', '2018-03-22', '1Ks2xfaDhWStPr2kKb4rYseipYHaovVpwh', 'Artus Juett', '2018-03-22 11:16:36.111183+00', 'Labor and delivery complicated by other cord entanglement, with compression, fetus 2', NULL, 'active');
-INSERT INTO "user" VALUES (14, 'afindenk@phoca.cz', 'afindenk', '2018-03-22', '1Ks9a7QeQmn572Nr2mvKfEf4ubzxM4xBuh', 'Addie Finden', '2018-03-22 11:16:36.111183+00', 'Activities involving ice and snow', NULL, 'active');
-INSERT INTO "user" VALUES (1, 'pbirkl@disqus.com', 'pbirkl', '2018-03-22', '1G3TZheGQZx2hRv42jC4VSpC6uNGBWzem5', 'Penelope Birk', '2018-03-22 11:16:36.111183+00', 'Postprocedural subglottic stenosis', NULL, 'active');
 
 
 --

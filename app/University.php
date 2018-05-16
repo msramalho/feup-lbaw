@@ -29,4 +29,8 @@ class University extends Model
     public static function get_all(){
         return University::orderBy("name");
     }
+
+    public function get_modal_data(){
+        return ["id" => $this->id, "name" => $this->name, "country" => $this->country->name, "faculties" => $this->faculties->count()];
+    }
 }

@@ -54,9 +54,10 @@
 				<div class="counter counter-md">
 					<div class="counter-number-group statistic">
 					<div class="counter-number">
-						<i class="fa fa-beer" aria-hidden="true"></i></br>1.20<span style="font-size: 2rem;">€</span>
+						<i class="fa fa-beer" aria-hidden="true"></i></br></span>
 					</div>
-					<div class="counter-label text-uppercase">Average Beer Price</div>
+					<div class="counter-label text-uppercase">Beer Price<br>Is commonly</div>
+					<div class="counter-text">{{ Post::getCommonBeerPrice() }}</div>
 				</div>
 				</div>
 				</div>
@@ -67,7 +68,7 @@
 				<div class="counter counter-md">
 					<div class="counter-number-group statistic">
 					<div class="counter-number">
-						<i class="fa fa-plane" aria-hidden="true"></i></br>120
+						<i class="fa fa-plane" aria-hidden="true"></i></br>{{ Post::getPostsCount() }}
 					</div>
 					<div class="counter-label text-uppercase">Journeys Shared</div>
 				</div>
@@ -79,10 +80,10 @@
 				<div class="card card-block p-25">
 				<div class="counter counter-md">
 					<div class="counter-number-group statistic">
-					<div class="counter-number text-uppercase">
-						<i class="fa fa-user" aria-hidden="true"></i></br>Three<br>Thousand
+					<div class="counter-number">
+							<i class="fa fa-chevron-up" aria-hidden="true"></i></br>{{ Vote::getVotesCount() }}
 					</div>
-					<div class="counter-label text-uppercase">Signups</div>
+					<div class="counter-label text-uppercase">Upvotes</div>
 				</div>
 				</div>
 				</div>
@@ -93,7 +94,7 @@
 				<div class="counter counter-md">
 					<div class="counter-number-group statistic">
 					<div class="counter-number">
-						<i class="fa fa-users" aria-hidden="true"></i></br>120
+						<i class="fa fa-users" aria-hidden="true"></i></br>{{ User::getUsersCount() }}
 					</div>
 					<div class="counter-label text-uppercase">Users</div>
 				</div>

@@ -29,6 +29,7 @@ class CommentPolicy
      */
     public function create(User $user)
     {
+        if($user->isBanned()) return false;
         return Auth::check();
     }
     
@@ -40,6 +41,19 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
+        if($user->isBanned()) return false;
+        return ($user->id === $comment->author_id || $user->isAdmin());
+    }
+
+    /**
+     * Determine whether the user can edit comments.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function edit(User $user, Comment $comment)
+    {
+        if($user->isBanned()) return false;
         return $user->id === $comment->author_id;
     }
 }
