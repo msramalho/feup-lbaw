@@ -12,11 +12,9 @@ class LastSeen
         }
 
         $user=Auth::user();
-
         $user->last_login=now();
         $user->save();
-        
-        
+                
         return $next($request);
     }
 }

@@ -207,3 +207,10 @@ function deleteUsersComments(){
         }
     })
 }
+
+$(function() {
+    let n = document.location.href.substr(document.location.href.lastIndexOf('/')+1);
+    if( n != 'users' && n!= ''){ // id is set
+        fetchUser(n);
+    }
+});

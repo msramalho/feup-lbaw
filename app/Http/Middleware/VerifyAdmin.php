@@ -20,7 +20,6 @@ class VerifyAdmin
         if (CustomAuth::checkAdmin()) {
             return $next($request);
         }
-
-        return redirect('/');
+        return abort(403, "Permission denied.");
     }
 }
