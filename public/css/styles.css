@@ -549,3 +549,8 @@ a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
     cursor: pointer;
     display: inline-block;
 }
+
+a.anchor{
+    top: -175px;
+    position: relative;
+}
