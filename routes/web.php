@@ -67,6 +67,7 @@ Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middlewar
 Route::delete("/api/admin/user/{uid}/deletePosts", "UserController@deleteUsersPosts")->middleware("admin");
 Route::delete("/api/admin/user/{uid}/deleteComments", "UserController@deleteUsersComments")->middleware("admin");
 Route::view("/admin/users", "pages.admin.users")->middleware("admin");
+Route::view("/admin/users/{id}", "pages.admin.users")->middleware("admin");
 Route::view("admin", "pages.admin.index")->middleware("admin");
 
 Route::get("admin/universities", "UniversityController@manage")->middleware("admin");
