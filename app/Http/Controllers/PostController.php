@@ -35,11 +35,15 @@ class PostController extends Controller
         ], ["from_faculty_id.*"=>"The origin faculty must be set", "to_faculty_id.*" => "the destination faculty must be set"]);
     }
 
-    public function new(){
-        $faculties_from = array();
+    private function faculties_from(){
         if (old("university_from")!==null) {
-            $faculties_from = Faculty::get_by_university(old("university_from"));
+            return  Faculty::get_by_university(old("university_from"));
         }
+        return array();
+    }
+
+    public function new(){
+        $faculties_from = $this->faculties_from();
 
         $faculties_to = array();
         if (old("university_to")!==null) {
