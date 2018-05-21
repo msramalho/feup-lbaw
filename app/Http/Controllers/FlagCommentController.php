@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Flag_comment;
+use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,11 @@ class FlagCommentController extends Controller
         return Redirect::to("post/$smt");
     }
 
+    public function manage(){
+        //return view("pages.admin.flag_post")->with("flags", Flag_post::all()->sortBy("date", SORT_NATURAL));
+        return view("pages.admin.flag_comment")->with("flags", Flag_comment::where("archived",false)->orderBy("date", SORT_NATURAL)->get())->with("users", User::all()->sortBy("id", SORT_NATURAL));
+    }
+
 
      /**
      * Show the form for creating a new resource.
@@ -52,6 +58,22 @@ class FlagCommentController extends Controller
     {
         //$post = Flag_post::post();
         return view('pages.post.report_comment', ['comment_id' => $comment_id]);
+    }
+
+    public function delete($flagger_id,$comment_id){
+        if(Flag_comment::where('flagger_id',$flagger_id)->where('comment_id',$comment_id)->delete()){
+            return response()->json(["success" => true]);
+        }
+        return response()->json(["error"=>"unable to delete flag"]);
+
+    }
+
+    public function archive($flagger_id,$comment_id){
+        if(Flag_comment::where('flagger_id',$flagger_id)->where('comment_id',$comment_id)->update(['archived'=>true])){
+            return response()->json(["success" => true]);
+        }
+        return response()->json(["error"=>"unable to archive flag"]);
+
     }
 
 

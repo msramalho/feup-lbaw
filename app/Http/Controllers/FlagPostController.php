@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Flag_post;
+use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,16 @@ class FlagPostController extends Controller
 
 
      /**
+     * Display a listing of the resource
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function manage(){
+        //return view("pages.admin.flag_post")->with("flags", Flag_post::all()->sortBy("date", SORT_NATURAL));
+        return view("pages.admin.flag_post")->with("flags", Flag_post::where("archived",false)->orderBy("date", SORT_NATURAL)->get())->with("users", User::all()->sortBy("id", SORT_NATURAL));
+    }
+
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -46,10 +57,25 @@ class FlagPostController extends Controller
       *  return "Hello";
     *}
     */
-    public function show($post_id)
-    {
+    public function show($post_id){
         //$post = Flag_post::post();
         return view('pages.post.report_post', ['post_id' => $post_id]);
+    }
+
+    public function delete($flagger_id,$post_id){
+        if(Flag_post::where('flagger_id',$flagger_id)->where('post_id',$post_id)->delete()){
+            return response()->json(["success" => true]);
+        }
+        return response()->json(["error"=>"unable to delete flag"]);
+
+    }
+
+    public function archive($flagger_id,$post_id){
+        if(Flag_post::where('flagger_id',$flagger_id)->where('post_id',$post_id)->update(['archived'=>'True'])){
+            return response()->json(["success" => true]);
+        }
+        return response()->json(["error"=>"unable to archive flag"]);
+
     }
 
 

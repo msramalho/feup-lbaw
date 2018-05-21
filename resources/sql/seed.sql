@@ -956,9 +956,9 @@ INSERT INTO flag_comment VALUES (9, 7, 'Quisque id justo sit amet sapien digniss
 
 INSERT INTO flag_post VALUES (11, 4, 'Universal clear-thinking process improvement', '2018-03-22 11:16:36.111183+00', false);
 INSERT INTO flag_post VALUES (6, 11, 'Optional bandwidth-monitored flexibility', '2018-03-22 11:16:36.111183+00', true);
-INSERT INTO flag_post VALUES (8, 12, 'Automated foreground customer loyalty', '2018-03-22 11:16:36.111183+00', true);
-INSERT INTO flag_post VALUES (27, 4, 'Triple-buffered clear-thinking hub', '2018-03-22 11:16:36.111183+00', false);
-INSERT INTO flag_post VALUES (17, 7, 'Fundamental full-range superstructure', '2018-03-22 11:16:36.111183+00', true);
+INSERT INTO flag_post VALUES (9, 12, 'Automated foreground customer loyalty', '2018-03-22 11:16:36.111183+00', true);
+INSERT INTO flag_post VALUES (10, 4, 'Triple-buffered clear-thinking hub', '2018-03-22 11:16:36.111183+00', false);
+INSERT INTO flag_post VALUES (12, 7, 'Fundamental full-range superstructure', '2018-03-22 11:16:36.111183+00', true);
 
 
 --
