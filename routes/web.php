@@ -24,7 +24,7 @@ Route::view('statistics', 'pages.static.statistics');
 // Post
 Route::get('post', 'PostController@new')->middleware('auth');
 Route::post('post', 'PostController@create');
-Route::get('post/search', 'PostController@search2');
+Route::get('post/search', 'PostController@search');
 Route::get('post/{id}', 'PostController@show');
 Route::get('post/{id}/edit', 'PostController@edit');
 Route::post('post/{id}/edit', 'PostController@update');
