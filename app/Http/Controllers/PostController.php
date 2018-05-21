@@ -179,16 +179,14 @@ class PostController extends Controller
     }
 
     public static function search(){
-        $posts = Post::where("id", ">=", 1)->paginate(3);
-        // $html = View::make('pages.post.list', array('posts' => $posts->appends(Input::except('page'))));
-        // return Response::json(array('success' => 'true', 'posts' => "$html"));
+        $posts = Post::where("id", ">=", 1)->paginate(5);
         // @each('pages.post.list-item', Post::getIndexList(), 'post')
         // $users = DB::table('users')
         //              ->select(DB::raw('count(*) as user_count, status'))
         //              ->where('status', '<>', 1)
         //              ->groupBy('status')
         //              ->get();
-        return view("pages.post.search")->with("posts", $posts->appends(Input::except('page')))->with("universities", University::get_all()->get()); ; 
+        return view("pages.post.search")->with("posts", $posts->appends(Input::except('page')))->with("universities", University::get_all()->get()); 
     }
 
 }

@@ -69,7 +69,6 @@
 				</fieldset></form>
 			</div>
 
-			<h3>Recent Posts:</h3>
 			<div class="infinite-scroll" id="feed-content">
 				@each('pages.post.list-item', $posts, 'post')
 				{{$posts->links()}}
