@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -178,14 +179,22 @@ class PostController extends Controller
         return Post::select('beer_cost')->groupBy('beer_cost')->orderByRaw('COUNT(*) DESC')->limit(1)->first()->beer_cost;
     }
 
-    public static function search(){
-        $posts = Post::where("id", ">=", 1)->paginate(5);
-        // @each('pages.post.list-item', Post::getIndexList(), 'post')
-        // $users = DB::table('users')
-        //              ->select(DB::raw('count(*) as user_count, status'))
-        //              ->where('status', '<>', 1)
-        //              ->groupBy('status')
-        //              ->get();
+    /**
+     * Handles search of the following terms:
+     * search           -> for FTS
+     * date             -> search in the last {date} days
+     * university_from  -> origin university
+     * from_faculty_id  -> origin faculty
+     * university_to    -> destination university
+     * to_faculty_id    -> destination faculty
+     * school_year      -> the school year of the mobility
+     */
+    public static function search(Request $request){
+        $posts = Post::
+                    whereRaw("(search_title || search_content) @@ plainto_tsquery('english', ?)", [$request->search])
+                    ->orderByRaw("ts_rank(setweight(search_title, 'A') || setweight(search_content, 'B'), plainto_tsquery('english', ?))", [$request->search])
+                    ->paginate(5);
+
         return view("pages.post.search")->with("posts", $posts->appends(Input::except('page')))->with("universities", University::get_all()->get()); 
     }
 
