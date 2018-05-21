@@ -9,7 +9,6 @@ $(function() {
 		nextSelector: '.pagination li.active + li a',
 		contentSelector: 'div.infinite-scroll',
 		callback: function() {
-			console.log("done");
 			$('ul.pagination').remove();
 		}
 	});
