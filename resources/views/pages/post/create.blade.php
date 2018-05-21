@@ -70,12 +70,7 @@
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>School Year <span class="text-danger">*</span></label>
-					<select class="custom-select" name="school_year" required>
-						<option selected>During</option>
-						@for ($i = 15; $i < substr(date("Y"), 2); $i++)
-							<option value="{{$i}}" {{ $i == old("school_year")?"selected":""}}>{{$i}}/{{$i+1}}</option>
-						@endfor
-					</select>
+					@include("partials.select_school_year")
 				</div>
 			</div>
 			<div class="form-row">
