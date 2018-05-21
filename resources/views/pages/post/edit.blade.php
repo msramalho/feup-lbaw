@@ -138,4 +138,5 @@
 <script src="{{ asset('js/external/codemirror.min.js') }}" ></script>
 <script src="{{ asset('js/external/froala_editor.pkgd.min.js') }}" ></script>
 <script src="{{ asset('js/pages/post.js') }}" ></script>
+<script src="{{ asset('js/pages/partials/uni_fac_select.js') }}" ></script>
 @endsection
