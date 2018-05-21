@@ -51,7 +51,7 @@
 			</div>
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin University<span style="color : rgb(255,0,0);"> *</span></label>
+					<label>Destination University<span style="color : rgb(255,0,0);"> *</span></label>
 					<select class="custom-select" id="university_to" name="university_to" targets="faculty_to" required>
 						<option selected>To University</option>
 						@foreach ($universities as $university)
@@ -60,7 +60,7 @@
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin Faculty<span style="color : rgb(255,0,0);"> *</span></label>
+					<label>Destination Faculty<span style="color : rgb(255,0,0);"> *</span></label>
 					<select class="custom-select" id="faculty_to" name="to_faculty_id">
 						<option>To Faculty</option>
 						@foreach ($faculties_to as $fac)
