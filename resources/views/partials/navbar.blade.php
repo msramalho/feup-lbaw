@@ -9,7 +9,7 @@
 			<ul class="navbar-nav mr-auto"></ul>
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<form class="form-inline mr-4" id="form_search" action="{{url("post/search")}}" method="post">
+					<form class="form-inline mr-4" id="form_search" action="{{url("post/search")}}" method="GET">
 						{{csrf_field()}}
 						<input class="form-control mr-sm-2" type="search" placeholder="Search">
 						<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>

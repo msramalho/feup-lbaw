@@ -24,11 +24,11 @@ Route::view('statistics', 'pages.static.statistics');
 // Post
 Route::get('post', 'PostController@new')->middleware('auth');
 Route::post('post', 'PostController@create');
+Route::get('post/search', 'PostController@search2');
 Route::get('post/{id}', 'PostController@show');
 Route::get('post/{id}/edit', 'PostController@edit');
 Route::post('post/{id}/edit', 'PostController@update');
 Route::get('post/{id}/delete', 'PostController@delete');
-Route::post('post/search', 'PostController@search');
 
 // Faculties api
 Route::get('api/university/{id}/faculties', 'FacultyController@list')->middleware('auth');
