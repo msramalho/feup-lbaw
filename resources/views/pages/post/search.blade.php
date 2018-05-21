@@ -9,9 +9,9 @@
 			<div class="jumbotron">
 				<h1 class="d-inline">Search panel</h1>
 				<br>
-				<form id="search_form"><fieldset>
+				<form id="search_form" method="GET" action = "{{url("post/search")}}"><fieldset>
 					<label for="search">Smart string search</label>
-					<input type="text" id="search" name="search" placeholder="literal search string..." class="form-group form-control">
+					<input type="text" id="search" name="search" value="{{old("search")}}"placeholder="literal search string..." class="form-group form-control">
 					<div class="form-group">
 						<div class="form-row">
 							<div class="form-group col-lg-6 col-sm-12">
@@ -44,6 +44,9 @@
 								<label>Origin Faculty</label>
 								<select class="custom-select" id="faculty_from" name="from_faculty_id">
 									<option selected>From Faculty</option>
+									@foreach ($faculties_from as $fac)
+										<option value="{{$fac->id}}" {{ $fac->id == old("from_faculty_id")?"selected":""}}>{{$fac->name}}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
@@ -61,6 +64,9 @@
 								<label>Destination Faculty</label>
 								<select class="custom-select" id="faculty_to" name="to_faculty_id">
 									<option>To Faculty</option>
+									@foreach ($faculties_to as $fac)
+										<option value="{{$fac->id}}" {{ $fac->id == old("to_faculty_id")?"selected":""}}>{{$fac->name}}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
