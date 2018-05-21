@@ -20,7 +20,7 @@
 							</div>
 							<div class="form-group col-lg-6 col-sm-12">
 								<label for="date">Posted in the last</label>
-								<select class="form-control" id="date">
+								<select class="form-control" id="date" name="date">
 									<option value="-1" selected>All Time</option>
 									<option value="7">7 days</option>
 									<option value="31">1 month</option>
