@@ -42,13 +42,16 @@ class PostController extends Controller
         return array();
     }
 
+    private function faculties_to(){
+        if (old("university_to")!==null) {
+            return Faculty::get_by_university(old("university_to"));
+        }
+        return array();
+    }
+
     public function new(){
         $faculties_from = $this->faculties_from();
-
-        $faculties_to = array();
-        if (old("university_to")!==null) {
-            $faculties_to = Faculty::get_by_university(old("university_to"));
-        }
+        $faculties_to = $this->faculties_to();
         return view('pages.post.create')->with("universities", University::get_all()->get())->with("faculties_from", $faculties_from)->with("faculties_to", $faculties_to);
     }
 
