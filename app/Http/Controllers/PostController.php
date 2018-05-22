@@ -193,13 +193,13 @@ class PostController extends Controller
      * school_year      -> the school year of the mobility
      */
     public static function search(Request $request){
+        $request->flash();
         $faculties_from = PostController::faculties_from();
         $faculties_to = PostController::faculties_to();
         $posts = Post::
                     whereRaw("(search_title || search_content) @@ plainto_tsquery('english', ?)", [$request->search])
                     ->orderByRaw("ts_rank(setweight(search_title, 'A') || setweight(search_content, 'B'), plainto_tsquery('english', ?))", [$request->search])
                     ->paginate(5);
-                    $request->flash();
         return view("pages.post.search")
                 ->with("posts", $posts->appends(Input::except('page')))
                 ->with("universities", University::get_all()->get())
