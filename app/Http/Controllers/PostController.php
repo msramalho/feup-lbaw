@@ -36,16 +36,12 @@ class PostController extends Controller
     }
 
     private static function faculties_from(){
-        if (old("university_from")!==null) {
-            return  Faculty::get_by_university(old("university_from"));
-        }
+        if (old("university_from") !== null) return Faculty::get_by_university(old("university_from"));
         return array();
     }
 
     private static function faculties_to(){
-        if (old("university_to")!==null) {
-            return Faculty::get_by_university(old("university_to"));
-        }
+        if (old("university_to") !== null) return Faculty::get_by_university(old("university_to"));
         return array();
     }
 
