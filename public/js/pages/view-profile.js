@@ -22,3 +22,18 @@ $(document).ready(function() {
         });
     });
 });
+
+function followUser(username){
+    $.ajax({
+        type: 'POST',
+        url: `user/${username}/follow`,
+
+        success: function (data) {
+            if(data.success){
+                alert("Profile Successfully Updated!");
+            }else{
+                alert("Failed to save data!\n" + data.error);
+            }
+        }
+    });
+}
