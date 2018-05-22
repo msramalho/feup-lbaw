@@ -26,14 +26,20 @@
 			</section>
 
 			<section class="jqueryOptions option2 d-none">
-				<div id="feed-content">
-					@each('pages.post.list-item', Post::getIndexList(), 'post')
+				<div class="infinite-scroll" id="feed-content">
+					@php $posts1 = Post::getIndexList() @endphp
+					@each('pages.post.list-item', $posts1, 'post')
+					{{$posts1->links()}}
 				</div>
 			</section>
 		@else
 			<h3>Recent Posts:</h3>
 			<div id="feed-content">
-				@each('pages.post.list-item', Post::getIndexList(), 'post')
+				<div class="infinite-scroll" id="feed-content">
+					@php $posts2 = Post::getIndexList() @endphp
+					@each('pages.post.list-item', $posts2, 'post')
+					{{$posts2->links()}}
+				</div>
 			</div>
 		@endif
 
@@ -42,6 +48,10 @@
 		</div>
 	</div>
 
-	<script src="{{ asset('js/pages/index.js') }}" defer></script>
-
+@endsection
+@section("scripts")
+@parent {{-- append to the end multiple times in case of multiple scripts --}}
+<script src="{{ asset('js/external/jquery.jscroll.min.js') }}" ></script>
+<script src="{{ asset('js/pages/index.js') }}"></script>
+<script src="{{ asset('js/pages/infinite-scroll.js') }}" ></script>
 @endsection
