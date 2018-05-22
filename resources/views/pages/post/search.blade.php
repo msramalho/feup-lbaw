@@ -21,12 +21,10 @@
 							<div class="form-group col-lg-6 col-sm-12">
 								<label for="date">Posted in the last</label>
 								<select class="form-control" id="date" name="date">
-									<option value="-1" selected>All Time</option>
-									<option value="7">7 days</option>
-									<option value="31">1 month</option>
-									<option value="186">6 months</option>
-									<option value="365">1 year</option>
-									<option value="1460">4 years</option>
+									@php $times = array("1000000" => "All time", "7"=> "7 days", "31"=> "1 month", "186"=> "6 months", "365"=> "1 year", "4"=> "4 years"); @endphp
+									@foreach ($times as $days=>$title)
+										<option value="{{$days}}" {{$days == old("date")?"selected":""}}>{{$title}}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
