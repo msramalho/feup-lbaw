@@ -9,7 +9,7 @@ $("#university_from, #university_to").change(function(e){
 		type: "GET",
 		url: "/api/university/"+select.val()+"/faculties",
 	}).done(function(data) {
-		console.log(data);
+		if(data.error){ alert(data.error); return 0}
 		data = JSON.parse(data);
 		let target_html = "";
 		data.forEach(faculty => {
