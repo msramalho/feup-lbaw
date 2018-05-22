@@ -9,6 +9,7 @@ use App\Vote;
 use App\Following;
 use App\University;
 use App\Faculty;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\MessageBag;
@@ -196,10 +197,41 @@ class PostController extends Controller
         $request->flash();
         $faculties_from = PostController::faculties_from();
         $faculties_to = PostController::faculties_to();
-        $posts = Post::
-                    whereRaw("(search_title || search_content) @@ plainto_tsquery('english', ?)", [$request->search])
-                    ->orderByRaw("ts_rank(setweight(search_title, 'A') || setweight(search_content, 'B'), plainto_tsquery('english', ?))", [$request->search])
-                    ->paginate(5);
+        $query = Post::query();
+        
+        // full text search
+        if(strlen($request->search)){
+            $query = $query->whereRaw("(search_title || search_content) @@ plainto_tsquery('english', ?)", [$request->search])
+            ->orderByRaw("ts_rank(setweight(search_title, 'A') || setweight(search_content, 'B'), plainto_tsquery('english', ?))", [$request->search]);
+        }
+
+        //create in the last n days
+        if(is_numeric($request->date)){
+            $query = $query->where("created_at", ">=", Carbon::today()->subDays($request->date));
+        }
+
+        //from university
+        if(intval($request->university_from) > 0 && !intval($request->from_faculty_id) > 0) {
+            $query = $query->whereHas('faculty_from', function ($q) use($request){
+                $q->where('university_id', $request->university_from);
+            });
+        }
+        if(intval($request->from_faculty_id) > 0) $query = $query->where("from_faculty_id", $request->from_faculty_id);
+        
+        //to university
+        if(intval($request->university_to) > 0 && !intval($request->to_faculty_id) > 0) {
+            $query = $query->whereHas('faculty_to', function ($q) use($request){
+                $q->where('university_id', $request->university_to);
+            });
+        }
+        if(intval($request->to_faculty_id) > 0) $query = $query->where("to_faculty_id", $request->to_faculty_id);
+
+        // school_year
+        if(intval($request->school_year) > 0) $query = $query->where("school_year", 2000+$request->school_year);
+
+        $posts = $query->paginate(5);
+
+
         return view("pages.post.search")
                 ->with("posts", $posts->appends(Input::except('page')))
                 ->with("universities", University::get_all()->get())
