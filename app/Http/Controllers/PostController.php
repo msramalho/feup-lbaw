@@ -132,9 +132,7 @@ class PostController extends Controller
     }
 
     public static function getIndexList($page = 0){
-        // TODO: imeplement paging
-        $post = Post::all();
-        return $post;
+        return Post::paginate(5);
     }
 
     public static function getFollowersList($uid){
