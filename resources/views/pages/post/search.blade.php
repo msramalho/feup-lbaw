@@ -34,7 +34,7 @@
 							<div class="form-group col-lg-6 col-sm-12">
 								<label>Origin University</label>
 								<select class="custom-select" id="university_from" name="university_from" targets="faculty_from" required>
-									<option selected>From University</option>
+									<option value ="-1" selected>From University</option>
 									@foreach ($universities as $university)
 										<option value="{{$university->id}}" {{ $university->id == old("university_from")?"selected":""}}>{{$university->name}}</option>
 									@endforeach
@@ -43,7 +43,7 @@
 							<div class="form-group col-lg-6 col-sm-12">
 								<label>Origin Faculty</label>
 								<select class="custom-select" id="faculty_from" name="from_faculty_id">
-									<option selected>From Faculty</option>
+									<option value ="-1" selected>From Faculty</option>
 									@foreach ($faculties_from as $fac)
 										<option value="{{$fac->id}}" {{ $fac->id == old("from_faculty_id")?"selected":""}}>{{$fac->name}}</option>
 									@endforeach
@@ -54,7 +54,7 @@
 							<div class="form-group col-lg-6 col-sm-12">
 								<label>Destination University</label>
 								<select class="custom-select" id="university_to" name="university_to" targets="faculty_to" required>
-									<option selected>To University</option>
+									<option value ="-1" selected>To University</option>
 									@foreach ($universities as $university)
 										<option value="{{$university->id}}" {{ $university->id == old("university_to")?"selected":""}}>{{$university->name}}</option>
 									@endforeach
@@ -63,7 +63,7 @@
 							<div class="form-group col-lg-6 col-sm-12">
 								<label>Destination Faculty</label>
 								<select class="custom-select" id="faculty_to" name="to_faculty_id">
-									<option>To Faculty</option>
+									<option value ="-1" >To Faculty</option>
 									@foreach ($faculties_to as $fac)
 										<option value="{{$fac->id}}" {{ $fac->id == old("to_faculty_id")?"selected":""}}>{{$fac->name}}</option>
 									@endforeach
