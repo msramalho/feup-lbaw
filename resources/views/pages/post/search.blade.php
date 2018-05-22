@@ -83,6 +83,6 @@
 @section("scripts")
 @parent {{-- append to the end multiple times in case of multiple scripts --}}
 <script src="{{ asset('js/external/jquery.jscroll.min.js') }}" ></script>
-<script src="{{ asset('js/pages/search.js') }}" ></script>
+<script src="{{ asset('js/pages/infinite-scroll.js') }}" ></script>
 <script src="{{ asset('js/pages/partials/uni_fac_select.js') }}" ></script>
 @endsection
