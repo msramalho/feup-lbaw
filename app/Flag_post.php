@@ -28,7 +28,9 @@ class Flag_post extends Model
         return $this->belongsTo('App\User', 'flagger_id');
     }
 
-    public static function get_post($post_id){
-        return Flag_Post::where("post_id", $post_id);
+    public static function getFlag($user_id,$post_id)
+    {
+        $flag=Flag_post::where("flagger_id",$user_id)->where("post_id",$post_id)->first();
+        return $flag;
     }
 }

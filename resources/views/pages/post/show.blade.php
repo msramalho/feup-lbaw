@@ -43,6 +43,11 @@
 						<hr class="remove-print">
 						<div class="post-utilities small text-secondary">
 							@if(Auth::check())
+							<?php $flag = App\Flag_post::getFlag(Auth::user()->id, $post->id) ?>
+							<a class="text-secondary" href="{{ url("flag/post/$post->id") }}">
+								<i class="fas fa-flag"></i>
+								<span>Flag</span>
+							</a>
 							<a class="text-secondary" href="{{ url("flag/post/$post->id") }}">
 								<i class="fas fa-flag"></i>
 								<span>Flag</span>

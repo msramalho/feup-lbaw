@@ -70,6 +70,7 @@ Route::get('user/edit', 'UserController@edit')->middleware('auth');
 Route::get('user/{username}', 'UserController@show');
 Route::post('user/edit', 'UserController@editProfile');
 Route::post('user/photo', 'UserController@uploadImage');
+Route::post('user/{username}/follow', 'UserController@followUser')->middleware('auth');
 
 // Admin
 Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
@@ -100,3 +101,15 @@ Route::post("api/city", "CityController@create")->middleware("admin");
 Route::get("city/{id}/edit", "CityController@edit")->middleware("admin");
 Route::post("api/city/{id}/edit", "CityController@update")->middleware("admin");
 Route::delete("api/city/{id}", "CityController@destroy")->middleware("admin");
+
+Route::get("admin/flagPosts", "FlagPostController@manage")->middleware("admin");
+Route::post("/api/flagPosts/archive/{flagger_id}/{post_id}", "FlagPostController@archive")->middleware("admin");
+Route::delete("/api/flagPosts/delete/{flagger_id}/{post_id}", "FlagPostController@delete")->middleware("admin");
+
+Route::get("admin/flagUsers", "FlagUserController@manage")->middleware("admin");
+Route::post("/api/flagUsers/archive/{flagger_id}/{flagged_id}", "FlagUserController@archive")->middleware("admin");
+Route::delete("/api/flagUsers/delete/{flagger_id}/{flagged_id}", "FlagUserController@delete")->middleware("admin");
+
+Route::get("admin/flagComments", "FlagCommentController@manage")->middleware("admin");
+Route::post("/api/flagComments/archive/{flagger_id}/{comment_id}", "FlagCommentController@archive")->middleware("admin");
+Route::delete("/api/flagComments/delete/{flagger_id}/{comment_id}", "FlagCommentController@delete")->middleware("admin");

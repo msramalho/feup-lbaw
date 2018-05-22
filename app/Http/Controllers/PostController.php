@@ -10,6 +10,7 @@ use App\Following;
 use App\University;
 use App\Faculty;
 use Carbon\Carbon;
+use App\Flag_post;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\MessageBag;
@@ -163,6 +164,8 @@ class PostController extends Controller
 
         return array_unique($postArray);
     }
+
+   
 
     public static function view_posts_votes($author_id){
         $votes = Vote::where('user_id', $author_id)->get();
