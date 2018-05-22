@@ -31,7 +31,7 @@ Route::post('post/{id}/edit', 'PostController@update');
 Route::get('post/{id}/delete', 'PostController@delete');
 
 // Faculties api
-Route::get('api/university/{id}/faculties', 'FacultyController@list')->middleware('auth');
+Route::get('api/university/{id}/faculties', 'FacultyController@list');
 
 // Flag Post
 Route::get('flag/post/{id}', 'FlagPostController@show');
