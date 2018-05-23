@@ -75,7 +75,7 @@
 				</div>
 				<hr>
 				<div class="article-comments">
-				@php ($cmCount = count($post->comments()->get()))
+				@php ($cmCount = count($comments()->get()))
 				<h2 id="commentCount" data-cc="{{ $cmCount }}">
 					@if($cmCount>1)
 						{{ $cmCount }} comments:
@@ -85,7 +85,7 @@
 						No comments yet.
 					@endif
 					</h2>
-					@each('partials.comment', $post->comments()->get(), 'cm')
+					@each('partials.comment', $comments()->get(), 'cm')
 					
 					@if(Auth::check())
 					<br class="remove-print">
