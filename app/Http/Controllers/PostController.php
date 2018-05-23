@@ -77,7 +77,14 @@ class PostController extends Controller
     public function show($post_id)
     {
         $post = Post::where('id',$post_id)->first();
-        return view('pages.post.show', ['post' => $post]);
+        //load the post as well as the comments
+        DB::transaction(function(){
+            $post = Post::where('id',$post_id)->first();
+
+            $comments = $post->comments();
+
+            return view('pages.post.show', ['post' => $post, "comments" => $comments]);
+        });
     }
 
     /**
