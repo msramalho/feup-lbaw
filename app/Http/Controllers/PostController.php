@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Post;
 use App\User;
 use App\Comment;
@@ -78,13 +79,12 @@ class PostController extends Controller
     {
         $post = Post::where('id',$post_id)->first();
         //load the post as well as the comments
-        DB::transaction(function(){
+        return DB::transaction(function() use($post_id){
             $post = Post::where('id',$post_id)->first();
-
             $comments = $post->comments();
-
             return view('pages.post.show', ['post' => $post, "comments" => $comments]);
         });
+        App::abort(500, 'We had a database transaction error');
     }
 
     /**
