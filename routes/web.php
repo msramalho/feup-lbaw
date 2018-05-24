@@ -70,7 +70,7 @@ Route::get('user/edit', 'UserController@edit')->middleware('auth');
 Route::get('user/{username}', 'UserController@show');
 Route::post('user/edit', 'UserController@editProfile');
 Route::post('user/photo', 'UserController@uploadImage');
-Route::post('user/{username}/follow', 'UserController@followUser')->middleware('auth');
+Route::post('user/{id}/follow', 'UserController@followUser')->middleware('auth');
 
 // Admin
 Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
