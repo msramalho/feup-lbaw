@@ -26,7 +26,7 @@
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons text-center">
-                    <button id="follow" type="button" class="btn btn-dark btn-sm mt-1 ajax-link" data-toggle="tooltip" data-placement="bottom" title="Following this user will show all the posts they make on your feed page." onclick="followUser('{{$user->username}}')">Follow</button>
+                    <button id="follow" type="button" class="btn btn-dark btn-sm mt-1 ajax-link" data-toggle="tooltip" data-placement="bottom" title="Following this user will show all the posts they make on your feed page." onclick="followUser('{{$user->id}}')">Follow</button>
                     <button type="button" class="btn btn-outline-dark btn-sm mt-1" disabled>Message</button>
                 </div>
                 <div class="profile-userbuttons mt-3">
