@@ -31,6 +31,10 @@ function followUser(id){
         success: function (data) {
             console.log(data);
             if(data.success){
+                if ($("#follow").html() === "Follow")
+                    $("#follow").html("Unfollow");
+                else
+                    $("#follow").html("Follow");
                 alert("Profile Successfully Updated!");
             }else{
                 alert("Failed to save data!\n" + data.error);
