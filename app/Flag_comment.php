@@ -28,4 +28,10 @@ class Flag_comment extends Model
     {
         return $this->belongsTo('App\User', 'flagger_id');
     }
+
+    public static function getFlag($user_id,$comment_id)
+    {
+        $flag=Flag_comment::where("flagger_id",$user_id)->where("comment_id",$comment_id)->first();
+        return $flag;
+    }
 }

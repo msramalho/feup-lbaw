@@ -16,7 +16,7 @@
 
 <div class="container">
 	<div class="jumbotron">
-		<h1>Report post</h1>
+		<h1>Report comment</h1>
 		<h4>We are sorry that this comment was offensive or inapropriate. Please tell us the reason why you are reporting it!</h4>
         <form action="{{ url("flag/comment/$comment_id") }}" method="POST">
 		 	{{ csrf_field() }}

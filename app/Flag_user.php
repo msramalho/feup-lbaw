@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Flag_user extends Model
 {
     protected $fillable = ['reason', 'date', 'archived'];
-    protected $primaryKey =['flagger_id','user_id'];
+    protected $primaryKey =['flagger_id','flagged_id'];
 
     public $incrementing = false;
     public $timestamps = false;
@@ -25,5 +25,11 @@ class Flag_user extends Model
     public function flagger()
     {
         return $this->belongsTo('App\User', 'flagger_id');
+    }
+
+    public static function getFlag($user_id,$flagged_id)
+    {
+        $flag=Flag_user::where("flagger_id",$user_id)->where("flagged_id",$flagged_id)->first();
+        return $flag;
     }
 }

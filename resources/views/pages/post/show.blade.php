@@ -45,14 +45,13 @@
 						<div class="post-utilities small text-secondary">
 							@if(Auth::check())
 							<?php $flag = App\Flag_post::getFlag(Auth::user()->id, $post->id) ?>
-							<a class="text-secondary" href="{{ url("flag/post/$post->id") }}">
+							
+							<a class="text-secondary" id="Flag" style="cursor:pointer;" onclick="handleFlagPost('{{$flag}}','{{$post->id}}');">
 								<i class="fas fa-flag"></i>
-								<span>Flag</span>
+								<span id="FlagSpan">{{is_null($flag) ? 'Flag' : 'Remove Flag'}}</span>
 							</a>
-							<a class="text-secondary" href="{{ url("flag/post/$post->id") }}">
-								<i class="fas fa-flag"></i>
-								<span>Flag</span>
-							</a>
+
+							
 							@endif
 							<a class="text-secondary" onclick="copyToClipboard('{{ url("post/$post->id") }}')" href="#">
 								<i class="fas fa-share-alt"></i>
@@ -117,4 +116,6 @@
 @section("scripts")
 @parent {{-- append to the end multiple times in case of multiple scripts --}}
 <script src="{{ asset('js/pages/view-post.js') }}" ></script>
+<script src="{{ asset('js/pages/admin/flags.js') }}" ></script>
+
 @endsection

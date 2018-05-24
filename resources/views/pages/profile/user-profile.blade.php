@@ -29,10 +29,11 @@
                     <button id="follow" type="button" class="btn btn-dark btn-sm mt-1 ajax-link" data-toggle="tooltip" data-placement="bottom" title="Following this user will show all the posts they make on your feed page." onclick="followUser('{{$user->id}}')">{{ User::isFollower($user->id) ? "Follow" : "Unfollow" }}</button>
                 </div>
                 <div class="profile-userbuttons mt-3">
-                    <a class="Sidebar_header" href="{{ url("flag/user/$user->id") }}">
-                        <i class="fas fa-flag"></i>
-                        <span>Flag User</span>
-                    </a>
+                <?php $flag = App\Flag_user::getFlag(Auth::user()->id, $user->id) ?>
+                    <a class="Sidebar_header" id="Flag" style="cursor:pointer;" onclick="handleFlagUser('{{$flag}}','{{$user->id}}');">
+						<i class="fas fa-flag"></i>
+						<span id="FlagSpanUsr">{{is_null($flag) ? 'Flag' : 'Remove Flag'}}</span>
+					</a>
                 </div>
 
                 <!-- END SIDEBAR BUTTONS -->
@@ -100,5 +101,6 @@
 @include("modals.list-followers")
 
 <script src="{{ asset('js/pages/view-profile.js') }}" defer></script>
+<script src="{{ asset('js/pages/admin/flags.js') }}" ></script>
 
 @endsection

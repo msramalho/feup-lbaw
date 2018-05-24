@@ -105,7 +105,7 @@ Route::delete("api/city/{id}", "CityController@destroy")->middleware("admin");
 
 Route::get("admin/flagPosts", "FlagPostController@manage")->middleware("admin");
 Route::post("/api/flagPosts/archive/{flagger_id}/{post_id}", "FlagPostController@archive")->middleware("admin");
-Route::delete("/api/flagPosts/delete/{flagger_id}/{post_id}", "FlagPostController@delete")->middleware("admin");
+Route::delete("/api/flagPosts/delete/{flagger_id}/{post_id}", "FlagPostController@delete")->middleware("auth");
 
 Route::get("admin/flagUsers", "FlagUserController@manage")->middleware("admin");
 Route::post("/api/flagUsers/archive/{flagger_id}/{flagged_id}", "FlagUserController@archive")->middleware("admin");

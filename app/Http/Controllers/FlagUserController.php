@@ -62,8 +62,8 @@ class FlagUserController extends Controller
         return view('pages.profile.report_user', ['user_id' => $flagged_id]);
     }
 
-    public function delete($flagger_id,$post_id){
-        if(Flag_user::where('flagger_id',$flagger_id)->where('post_id',$post_id)->delete()){
+    public function delete($flagger_id,$flagged_id){
+        if(Flag_user::where('flagger_id',$flagger_id)->where('flagged_id',$flagged_id)->delete()){
             return response()->json(["success" => true]);
         }
         return response()->json(["error"=>"unable to delete flag"]);

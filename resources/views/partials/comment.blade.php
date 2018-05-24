@@ -16,10 +16,13 @@
                 <span>Edit</span>
             </a>            
         @else
-            <a class="text-secondary flag-comment ajax-link" href="{{ url("flag/comment/$cm->id") }}">
-                <i class="fas fa-flag"></i>
-                <span>Flag</span>
-            </a>
+            
+            <?php $flag = App\Flag_comment::getFlag(Auth::user()->id, $cm->id) ?>
+							
+			<a class="text-secondary flag-comment ajax-link" id="Flag" style="cursor:pointer;" onclick="handleFlagComment('{{$flag}}','{{$cm->id}}');">
+				<i class="fas fa-flag"></i>
+					<span id="FlagSpanCm">{{is_null($flag) ? 'Flag' : 'Remove Flag'}}</span>
+			</a>
         @endif
     </div>
 </div>
