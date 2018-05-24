@@ -42,10 +42,6 @@
 				</div>
 			</div>
 		@endif
-
-		<div class="pb-3">
-			<a class="mt-1 float-right btn btn-sm btn-primary" href="#" role="button">Next Page &raquo;</a>
-		</div>
 	</div>
 
 @endsection

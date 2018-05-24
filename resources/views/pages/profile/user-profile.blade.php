@@ -26,7 +26,7 @@
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons text-center">
-                    <button id="follow" type="button" class="btn btn-dark btn-sm mt-1 ajax-link" data-toggle="tooltip" data-placement="bottom" title="Following this user will show all the posts they make on your feed page." onclick="followUser('{{$user->id}}')">{{User::isFollower($user->id) ? "Follow" : "Unfollow"}}</button>
+                    <button id="follow" type="button" class="btn btn-dark btn-sm mt-1 ajax-link" data-toggle="tooltip" data-placement="bottom" title="Following this user will show all the posts they make on your feed page." onclick="followUser('{{$user->id}}')">{{ User::isFollower($user->id) ? "Follow" : "Unfollow" }}</button>
                 </div>
                 <div class="profile-userbuttons mt-3">
                     <a class="Sidebar_header" href="{{ url("flag/user/$user->id") }}">
