@@ -214,4 +214,10 @@ class UserController extends Controller
 
         return response()->json(["success" => true]);
     }
+
+    public static function isFollower($uid){
+        if (Following::where('followed_id', Auth::user()->id)->where('follower_id', $uid)->first() == null)
+            return true;
+        return false;
+    }
 }
