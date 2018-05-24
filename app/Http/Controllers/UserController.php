@@ -216,6 +216,8 @@ class UserController extends Controller
     }
 
     public static function isFollower($uid){
+        if (!Auth::check())
+            return true;
         if (Following::where('followed_id', Auth::user()->id)->where('follower_id', $uid)->first() == null)
             return true;
         return false;
