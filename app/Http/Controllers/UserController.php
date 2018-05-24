@@ -198,4 +198,20 @@ class UserController extends Controller
         return response()->json(["success" => true, "n" => $deletedCount]);
     }
 
+    public function followUser(Request $request){
+
+        $is_follower = Following::where('followed_id', Auth::user()->id)->
+                                    where('follower_id', $request->id);
+
+        if ($is_follower->first() == null){
+            $following = new Following();
+            $following->followed_id = Auth::user()->id;
+            $following->follower_id = $request->id;
+            $following->save();
+        } else {
+            $is_follower->delete();
+        }
+
+        return response()->json(["success" => true]);
+    }
 }
