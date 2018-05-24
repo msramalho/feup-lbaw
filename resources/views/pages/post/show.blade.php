@@ -19,8 +19,7 @@
 					</div>
 				</div>
 				<div>
-					<img src="https://i.imgur.com/KfROBYv.jpg" alt class="remove-print">
-					<div class="top-left"><h1>{{ $post->title }}</h1></div>
+					<div class=""><h1>{{ $post->title }}</h1></div>
 				</div>
 				@include("partials.errors")
 				<div class="row">
