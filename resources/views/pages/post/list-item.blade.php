@@ -2,9 +2,10 @@
     <div class="row">
         <div class="text-center col-xs-12 col-lg-2 col-xl-2 col-sm-12 col-md-2">
             <p class="vote-count-index">
-                {{$post->votes}}<br>
+                {{$post->votes}}<br>                
+                <i class="fa fa-chevron-up vote-count-index" aria-hidden="true"></i>
             </p>
-            upvotes
+            
         </div>
         <div class="col-lg-10 col-sm-12 col-xl-10 col-md-10">
             <a href="{{ url('/post/'.$post->id) }}">
