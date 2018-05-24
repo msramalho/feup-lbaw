@@ -12,15 +12,14 @@
 						<i class="fas fa-user-circle"></i> <a href="/user/{{ $post->user->username}}">{{ $post->user->username}}</a>
 					</div>
 					<div class="text-center col-sm col-lg-8">
-						<i class="fas fa-map-marker-alt"></i>  <a href="{{ url("search?faculty=" .$post->faculty_to->id) }}">{{ $post->faculty_to->name}}</a>
+                    	<i class="fas fa-map-marker-alt"></i> <a href="{{ url('/post/search?university_to='.$post->faculty_to->university->id.'&faculty_to='.$post->faculty_to->id) }}">{{$post->faculty_to->name}}</a>
 					</div>
 					<div class="text-center col-sm col-lg-2">
-						<i class="fas fa-calendar-alt"></i> <a href="{{ url("search?year=" .$post->school_year) }}">{{ $post->school_year}}/{{ $post->school_year + 1}}</a>
+                    	<i class="fas fa-calendar-alt"></i> <a href="/post/search?school_year={{substr($post->school_year,-2)}}">{{$post->school_year}}/{{$post->school_year+1}}</a> 
 					</div>
 				</div>
 				<div>
-					<img src="https://i.imgur.com/KfROBYv.jpg" alt class="remove-print">
-					<div class="top-left"><h1>{{ $post->title }}</h1></div>
+					<div class=""><h1>{{ $post->title }}</h1></div>
 				</div>
 				@include("partials.errors")
 				<div class="row">
@@ -75,7 +74,7 @@
 				</div>
 				<hr>
 				<div class="article-comments">
-				@php ($cmCount = count($post->comments()->get()))
+				@php ($cmCount = count($comments->get()))
 				<h2 id="commentCount" data-cc="{{ $cmCount }}">
 					@if($cmCount>1)
 						{{ $cmCount }} comments:
@@ -85,7 +84,7 @@
 						No comments yet.
 					@endif
 					</h2>
-					@each('partials.comment', $post->comments()->get(), 'cm')
+					@each('partials.comment', $comments->get(), 'cm')
 					
 					@if(Auth::check())
 					<br class="remove-print">

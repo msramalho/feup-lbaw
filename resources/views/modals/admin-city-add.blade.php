@@ -12,13 +12,13 @@
                     {{csrf_field()}}
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label>Name<span style="color : rgb(255,0,0);"> *</span></label>
+                            <label>Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control form-control-lg" name="name" placeholder="City official name" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
-                            <label>Country<span style="color : rgb(255,0,0);"> *</span></label>
+                            <label>Country <span class="text-danger">*</span></label>
                             <select class="custom-select" name="country_id" required>
                                 <option selected>Select a country</option>
                                 @foreach ($countries as $country)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Post;
 use App\User;
 use App\Comment;
@@ -9,12 +10,17 @@ use App\Vote;
 use App\Following;
 use App\University;
 use App\Faculty;
+use Carbon\Carbon;
 use App\Flag_post;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -32,16 +38,19 @@ class PostController extends Controller
         ], ["from_faculty_id.*"=>"The origin faculty must be set", "to_faculty_id.*" => "the destination faculty must be set"]);
     }
 
-    public function new(){
-        $faculties_from = array();
-        if (old("university_from")!==null) {
-            $faculties_from = Faculty::get_by_university(old("university_from"));
-        }
+    private static function faculties_from(){
+        if (old("university_from") !== null) return Faculty::get_by_university(old("university_from"));
+        return array();
+    }
 
-        $faculties_to = array();
-        if (old("university_to")!==null) {
-            $faculties_to = Faculty::get_by_university(old("university_to"));
-        }
+    private static function faculties_to(){
+        if (old("university_to") !== null) return Faculty::get_by_university(old("university_to"));
+        return array();
+    }
+
+    public function new(){
+        $faculties_from = PostController::faculties_from();
+        $faculties_to = PostController::faculties_to();
         return view('pages.post.create')->with("universities", University::get_all()->get())->with("faculties_from", $faculties_from)->with("faculties_to", $faculties_to);
     }
 
@@ -66,10 +75,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($post_id)
-    {
+    public function show($post_id) {
         $post = Post::where('id',$post_id)->first();
-        return view('pages.post.show', ['post' => $post]);
+        //load the post as well as the comments
+        return DB::transaction(function() use($post_id) {
+            $post = Post::where('id',$post_id)->first();
+            $comments = $post->comments();
+            return view('pages.post.show', ['post' => $post, "comments" => $comments]);
+        });
+        App::abort(500, 'We had a database transaction error');
     }
 
     /**
@@ -124,9 +138,7 @@ class PostController extends Controller
     }
 
     public static function getIndexList($page = 0){
-        // TODO: imeplement paging
-        $post = Post::all();
-        return $post;
+        return Post::paginate(5);
     }
 
     public static function getFollowersList($uid){
@@ -177,4 +189,61 @@ class PostController extends Controller
     public static function getCommonBeerPrice(){
         return Post::select('beer_cost')->groupBy('beer_cost')->orderByRaw('COUNT(*) DESC')->limit(1)->first()->beer_cost;
     }
+
+    /**
+     * Handles search of the following terms:
+     * search           -> for FTS
+     * date             -> search in the last {date} days
+     * university_from  -> origin university
+     * from_faculty_id  -> origin faculty
+     * university_to    -> destination university
+     * to_faculty_id    -> destination faculty
+     * school_year      -> the school year of the mobility
+     */
+    public static function search(Request $request){
+        $request->flash();
+        $faculties_from = PostController::faculties_from();
+        $faculties_to = PostController::faculties_to();
+        $query = Post::query();
+        
+        // full text search
+        if(strlen($request->search)){
+            $query = $query->whereRaw("(search_title || search_content) @@ plainto_tsquery('english', ?)", [$request->search])
+            ->orderByRaw("ts_rank(setweight(search_title, 'A') || setweight(search_content, 'B'), plainto_tsquery('english', ?))", [$request->search]);
+        }
+
+        //create in the last n days
+        if(is_numeric($request->date)){
+            $query = $query->where("created_at", ">=", Carbon::today()->subDays($request->date));
+        }
+
+        //from university
+        if(intval($request->university_from) > 0 && !intval($request->from_faculty_id) > 0) {
+            $query = $query->whereHas('faculty_from', function ($q) use($request){
+                $q->where('university_id', $request->university_from);
+            });
+        }
+        if(intval($request->from_faculty_id) > 0) $query = $query->where("from_faculty_id", $request->from_faculty_id);
+        
+        //to university
+        if(intval($request->university_to) > 0 && !intval($request->to_faculty_id) > 0) {
+            $query = $query->whereHas('faculty_to', function ($q) use($request){
+                $q->where('university_id', $request->university_to);
+            });
+        }
+        if(intval($request->to_faculty_id) > 0) $query = $query->where("to_faculty_id", $request->to_faculty_id);
+
+        // school_year
+        if(intval($request->school_year) > 0) $query = $query->where("school_year", 2000+$request->school_year);
+
+        $posts = $query->paginate(5);
+
+
+        return view("pages.post.search")
+                ->with("posts", $posts->appends(Input::except('page')))
+                ->with("universities", University::get_all()->get())
+                ->with("faculties_from", $faculties_from)
+                ->with("faculties_to", $faculties_to);
+    }
+
 }

@@ -18,7 +18,7 @@ class Post extends Model
         'votes' => 0
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * the author of this post
