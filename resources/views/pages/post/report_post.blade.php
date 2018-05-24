@@ -1,3 +1,5 @@
+{{Log::info("serving report post page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: Flag Post')

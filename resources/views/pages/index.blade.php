@@ -1,3 +1,5 @@
+{{Log::info("serving index page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: Index')
@@ -9,7 +11,6 @@
 			<p class="lead">Share and learn about ERASMUS destinations, your future awaits!!</p>
 			<a href="{{ url('post') }}" class="btn btn-lg btn-primary">New Post</a>
 		</div>
-		
 		@if(Auth::check())
 			<div class="btn-group btn-group-toggle pb-3" data-toggle="buttons" id="view-index-options">
 				<label class="btn btn-secondary active">

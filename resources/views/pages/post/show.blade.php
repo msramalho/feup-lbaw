@@ -1,3 +1,5 @@
+{{Log::info("serving post show page")}}
+
 @extends('layouts.app')
 
 @section('title', "Vecto: " . $post->title)

@@ -1,3 +1,5 @@
+{{Log::info("serving users admin page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: User Management')

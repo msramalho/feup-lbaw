@@ -1,3 +1,5 @@
+{{Log::info("serving create post page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: New Post')

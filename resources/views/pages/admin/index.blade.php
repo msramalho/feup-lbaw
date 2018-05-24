@@ -1,3 +1,5 @@
+{{Log::info("serving admin index page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: Admin Dashboard')

@@ -1,3 +1,5 @@
+{{Log::info("serving faculties admin page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: Faculty Management')
