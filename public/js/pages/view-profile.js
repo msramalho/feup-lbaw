@@ -23,12 +23,13 @@ $(document).ready(function() {
     });
 });
 
-function followUser(username){
+function followUser(id){
     $.ajax({
         type: 'POST',
-        url: `user/${username}/follow`,
+        url: `/user/${id}/follow`,
 
         success: function (data) {
+            console.log(data);
             if(data.success){
                 alert("Profile Successfully Updated!");
             }else{
