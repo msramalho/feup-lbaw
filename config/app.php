@@ -165,11 +165,12 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        
 
         /*
          * Package Service Providers...
          */
-
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -212,7 +213,7 @@ return [
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
-        'Log' => App\Facades\BetterLog::class,
+        'Log' => App\Facades\Log::class,
         //'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
@@ -234,6 +235,7 @@ return [
         'Vote' => App\Http\Controllers\VoteController::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        
     ],
 
 ];

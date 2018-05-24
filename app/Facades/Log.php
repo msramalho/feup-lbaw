@@ -1,10 +1,8 @@
 <?php
 namespace App\Facades;
-
-use Illuminate\Support\Facades\Log;
 use App\Facades\CustomAuth;
 
-class betterLog extends Log
+class Log extends \Illuminate\Support\Facades\Log
 {
 
     public static function getUserStr(){

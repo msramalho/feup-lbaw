@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Config;
+use App\Facades\Log;
 use Illuminate\Auth\Middleware\Authenticate;
 use Intervention\Image\ImageManagerStatic as Image;
 use Mews\Purifier\Facades\Purifier;
@@ -134,6 +135,7 @@ class UserController extends Controller
     }
 
     public static function getAllUsers(){
+        Log::notice("retrieved list of users");
         return User::get(['id', 'username']);
     }
 
