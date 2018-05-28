@@ -6,6 +6,8 @@ use App\QueryExceptionUtil;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\MessageBag;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -50,9 +52,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if (is_a($exception, "Illuminate\Database\QueryException")) {
+            $dbLog = new Logger("database_log");
+            $dbLog->pushHandler(new StreamHandler(storage_path('logs/database.log')), Logger::INFO);
+            $dbLog->error('dbLog', ["db:exception"=>$exception->getMessage()]);
+        }
+
         if ($request->isXmlHttpRequest()) {
             return response()->json(['error' => $exception->getMessage()]);
         }
+
         if (is_a($exception, "Illuminate\Database\QueryException")) {
             $errors = new MessageBag();
             $errors->add('database_error', QueryExceptionUtil::getErrorFromException($exception));
