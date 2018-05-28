@@ -26,7 +26,6 @@ function ee($errors, $name){//display a span with custom error $name
 		<h4>Tell others about your ERASMUS experience</h4>
 		<form action="{{ url('post') }}" method="POST">
 		 	{{ csrf_field() }}
-			@include("partials.errors")
 			<div class="form-row">
 				<div class="form-group col-md-12">
 					<label>Title <span class="text-danger">*</span></label>
