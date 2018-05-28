@@ -31,13 +31,16 @@ function ee($errors, $name){//display a span with custom error $name
 				<div class="form-group col-md-12">
 					<label>Title <span class="text-danger">*</span></label>
 					<input type="text" class="form-control form-control-lg" name="title" placeholder="Title of your post" value="{{ old("title") }}" required autofocus>
+					@php ee($errors, "title") @endphp
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="postContent">Your post <span class="text-danger">*</span></label>
 				@php $post_template = "<h4>My stay at [University], in the [Country] was [Adjective]</h4><p><strong>TLDR:</strong> [describe your experience in a short sentence]</p><strong>My experience:</strong> [describe your experience in full detail, consider adding images and more stuff]</p>"; @endphp
 				<textarea class="form-control" id="postContent" name="content" required>{{ old("content") ?? $post_template }}</textarea>
+				@php ee($errors, "content") @endphp
 			</div>
+			@php ee($errors, "from_faculty_id") @endphp
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>Origin University <span class="text-danger">*</span></label>
@@ -58,6 +61,8 @@ function ee($errors, $name){//display a span with custom error $name
 					</select>
 				</div>
 			</div>
+			@php ee($errors, "to_faculty_id") @endphp
+			@php ee($errors, "school_year") @endphp
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>Destination University <span class="text-danger">*</span></label>
@@ -82,6 +87,10 @@ function ee($errors, $name){//display a span with custom error $name
 					@include("partials.select_school_year")
 				</div>
 			</div>
+			@php ee($errors, "beer_cost") @endphp
+			@php ee($errors, "life_cost") @endphp
+			@php ee($errors, "native_friendliness") @endphp
+			@php ee($errors, "work_load") @endphp
 			<div class="form-row">
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
 					<label><i class="far fa-money-bill-alt"></i> Life Cost</label>
