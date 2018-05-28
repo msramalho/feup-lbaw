@@ -10,6 +10,14 @@
 <link href="{{ asset('css/codemirror.min.css') }}" rel="stylesheet">
 @endsection
 
+@php
+function ee($errors, $name){//display a span with custom error $name
+	if($errors != null && $errors->has($name))
+		echo "<div class=\"alert alert-danger\">" . htmlentities($errors->first($name)). " </div>";	
+}
+
+@endphp
+
 @section('content')
 
 <div class="container">
