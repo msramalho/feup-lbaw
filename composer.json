@@ -11,7 +11,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "mews/purifier": "^2.1",
-        "oyejorge/less.php": "~1.7.0.9"
+        "oyejorge/less.php": "~1.7.0.9",
+        "rap2hpoutre/laravel-log-viewer": "^0.14.3"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

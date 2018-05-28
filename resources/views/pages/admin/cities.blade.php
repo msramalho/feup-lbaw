@@ -1,3 +1,5 @@
+{{Log::info("serving cities admin page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: City Management')

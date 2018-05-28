@@ -1,3 +1,5 @@
+{{Log::info("serving post search page")}}
+
 @php $hide_search = true @endphp
 
 @extends('layouts.app')

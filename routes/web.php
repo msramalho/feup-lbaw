@@ -114,3 +114,5 @@ Route::delete("/api/flagUsers/delete/{flagger_id}/{flagged_id}", "FlagUserContro
 Route::get("admin/flagComments", "FlagCommentController@manage")->middleware("admin");
 Route::post("/api/flagComments/archive/{flagger_id}/{comment_id}", "FlagCommentController@archive")->middleware("admin");
 Route::delete("/api/flagComments/delete/{flagger_id}/{comment_id}", "FlagCommentController@delete")->middleware("admin");
+
+Route::get('/admin/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware("admin");

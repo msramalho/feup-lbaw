@@ -1,3 +1,5 @@
+{{Log::info("serving flag_post admin page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: Posts Flags Management')

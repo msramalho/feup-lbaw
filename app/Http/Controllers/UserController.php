@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Config;
+use App\Facades\Log;
 use Illuminate\Auth\Middleware\Authenticate;
 use Intervention\Image\ImageManagerStatic as Image;
 use Mews\Purifier\Facades\Purifier;
@@ -134,20 +135,23 @@ class UserController extends Controller
     }
 
     public static function getAllUsers(){
+        Log::debug("retrieved list of users");
         return User::get(['id', 'username']);
     }
 
     public static function getAllUsersLike($uname){
+        Log::debug("retrieved list of users like '$uname'");
         return response()->json(User::where('username', 'like', '%'.$uname.'%')->limit(15)->get(['username']));
     }
 
     public static function getUsersCount(){
+        Log::info("retrieved user count");
         return User::count();
     }
 
     public static function getUserDetails($uname){
-
         $user = User::where('username', $uname)->get();
+        Log::notice("retrieved info about ".$user[0]->userId.": ".$user[0]->username);
         return $user->toJson();
     }
 
@@ -175,15 +179,18 @@ class UserController extends Controller
         $user = User::find($uid);
         $utype = $user->type;
         if($utype=='admin'){
+            Log::error("user $user->username could not be blocked as they are an admin.");
             return response()->json(["success" => false, "msg" => "The selected user is an Admin and cannot be blocked."]);
         }
         if($utype=='active'){
             $user -> type = 'banned';
             $user -> save();
+            Log::notice("user $user->username has been banned.");
             return response()->json(["success" => true, "newType" => "banned"]);
         }else{
             $user -> type = 'active';
             $user -> save();
+            Log::notice("user $user->username has been unbanned.");
             return response()->json(["success" => true, "newType" => "active"]);
         }
     }

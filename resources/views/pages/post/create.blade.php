@@ -1,3 +1,5 @@
+{{Log::info("serving create post page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: New Post')
@@ -23,6 +25,7 @@ function ee($errors, $name){//display a span with custom error $name
 <div class="container">
 	<div class="jumbotron">
 		<h1>New post <i class="far fa-question-circle float-right" data-toggle="tooltip" data-placement="bottom" title="This page is used for users to add new posts describing their ERASMUS experience, please fill the form properly and help the community grow!!"></i></h1>
+		@php ee($errors, "database_error") @endphp
 		<h4>Tell others about your ERASMUS experience</h4>
 		<form action="{{ url('post') }}" method="POST">
 		 	{{ csrf_field() }}

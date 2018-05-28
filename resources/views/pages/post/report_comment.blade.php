@@ -1,3 +1,5 @@
+{{Log::info("serving report comment page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: Flag Comment')

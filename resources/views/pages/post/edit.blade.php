@@ -1,3 +1,5 @@
+{{Log::info("serving edit post page")}}
+
 @extends('layouts.app')
 
 @section('title', 'Vecto: Edit Post')
