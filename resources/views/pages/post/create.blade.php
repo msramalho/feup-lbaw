@@ -27,7 +27,8 @@
 			</div>
 			<div class="form-group">
 				<label for="postContent">Your post <span class="text-danger">*</span></label>
-				<textarea class="form-control" id="postContent" name="content" required>{{ old("content") }}</textarea>
+				@php $post_template = "<h4>My stay at [University], in the [Country] was [Adjective]</h4><p><strong>TLDR:</strong> [describe your experience in a short sentence]</p><strong>My experience:</strong> [describe your experience in full detail, consider adding images and more stuff]</p>"; @endphp
+				<textarea class="form-control" id="postContent" name="content" required>{{ old("content") ?? $post_template }}</textarea>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
