@@ -198,6 +198,21 @@ class UserController extends Controller
         return response()->json(["success" => true, "n" => $deletedCount]);
     }
 
+    public function deleteUsersAvatar($uid){
+        $uid = (int) $uid; // sanitize input
+        $directory = public_path().'/images/users/';
+        $filename = $uid.".png";
+        if(file_exists($directory .$filename))
+        {
+            unlink($directory .$filename);
+            unlink($directory . "icons/" . $filename);
+            return response()->json(["success" => true]);
+        }else{
+            return response()->json(["success" => false]);
+        }        
+        
+    }
+
     public function followUser(Request $request){
 
         $is_follower = Following::where('followed_id', Auth::user()->id)->

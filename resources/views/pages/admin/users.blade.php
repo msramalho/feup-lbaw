@@ -117,7 +117,7 @@ if(app('request')->input('username')!=NULL){
             <button type="button" disabled="" onclick="return blockUser()" id="blockUserBtn" class="mt-2 btn btn-warning">Block User</button><br>
             <button type="button" disabled="" onclick="return deleteUsersPosts()" class="mt-2 btn btn-danger">Delete Posts</button><br>
             <button type="button" disabled="" onclick="return deleteUsersComments()" class="mt-2 btn btn-danger">Delete Comments</button><br>
-            <button type="button" disabled="" class="mt-2 btn btn-danger">Delete Avatar</button><br>
+            <button type="button" disabled="" onclick="return deleteUsersAvatar()" class="mt-2 btn btn-danger">Delete Avatar</button><br>
         </div>
     </div>
 </div>

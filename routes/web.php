@@ -80,6 +80,7 @@ Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middlewar
 Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middleware("admin");
 Route::delete("/api/admin/user/{uid}/deletePosts", "UserController@deleteUsersPosts")->middleware("admin");
 Route::delete("/api/admin/user/{uid}/deleteComments", "UserController@deleteUsersComments")->middleware("admin");
+Route::delete("/api/admin/user/{uid}/deleteAvatar", "UserController@deleteUsersAvatar")->middleware("admin");
 Route::view("/admin/users", "pages.admin.users")->middleware("admin");
 Route::view("/admin/users/{id}", "pages.admin.users")->middleware("admin");
 Route::view("admin", "pages.admin.index")->middleware("admin");

@@ -1,6 +1,7 @@
 "use strict";
 
 var ulen = -1;
+var urlPrefix = "";
 
 $("#userSearch").on('input',function(e){
     let uname = $("#userSearch").val().trim();
@@ -166,7 +167,7 @@ function deleteUsersPosts(){
         if (result == 'delete') {
             $.ajax({
                 type: "DELETE",
-                url: '../api/admin/user/'+uid+'/deletePosts',
+                url: urlPrefix+'/api/admin/user/'+uid+'/deletePosts',
             }).done(function(data) {
                 swal({
                     title: 'Posts Deleted!',
@@ -195,7 +196,7 @@ function deleteUsersComments(){
         if (result == 'delete') {
             $.ajax({
                 type: "DELETE",
-                url: '../api/admin/user/'+uid+'/deleteComments',
+                url: urlPrefix+'/api/admin/user/'+uid+'/deleteComments',
             }).done(function(data) {
                 swal({
                     title: 'Comments Deleted!',
@@ -208,9 +209,51 @@ function deleteUsersComments(){
     })
 }
 
+function deleteUsersAvatar(){
+    let uid = getCurrentSelectedUserID();
+    if(uid==-1) return false;
+    
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        buttons: {
+            cancel: "Cancel",
+            delete: true,
+        }
+    }).then((result) => {
+        if (result == 'delete') {
+            $.ajax({
+                type: "DELETE",
+                url: urlPrefix+'/api/admin/user/'+uid+'/deleteAvatar',
+            }).done(function(data) {
+                if(data.success){
+                    swal({
+                        title: 'Avatar Deleted!',
+                        text: " ",
+                        icon: 'success',
+                        timer: 6000
+                    });
+                }else{
+                    swal({
+                        title: 'Could not delete the avatar!',
+                        text: "There were no files to delete!",
+                        icon: 'error',
+                        timer: 6000
+                    });
+                }
+            });
+        }
+    })
+}
+
 $(function() {
     let n = document.location.href.substr(document.location.href.lastIndexOf('/')+1);
     if( n != 'users' && n!= ''){ // id is set
+        urlPrefix="../..";
         fetchUser(n);
+    }
+    else{
+        urlPrefix="..";
     }
 });
