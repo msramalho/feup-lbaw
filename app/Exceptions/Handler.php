@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler
         }
 
         if ($request->isXmlHttpRequest()) {
-            return response()->json(['error' => $exception->getMessage()]);
+            return response()->json(['error' => QueryExceptionUtil::getErrorFromException($exception)]);
         }
 
         if (is_a($exception, "Illuminate\Database\QueryException")) {
