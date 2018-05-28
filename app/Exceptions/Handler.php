@@ -67,6 +67,7 @@ class Handler extends ExceptionHandler
             $errors->add('database_error', QueryExceptionUtil::getErrorFromException($exception));
             return back()->withInput($request->all())->withErrors($errors);
         }
+        
         return parent::render($request, $exception);
     }
 }
