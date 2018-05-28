@@ -70,7 +70,7 @@ Route::get('user/edit', 'UserController@edit')->middleware('auth');
 Route::get('user/{username}', 'UserController@show');
 Route::post('user/edit', 'UserController@editProfile');
 Route::post('user/photo', 'UserController@uploadImage');
-Route::post('user/{username}/follow', 'UserController@followUser')->middleware('auth');
+Route::post('user/{id}/follow', 'UserController@followUser')->middleware('auth');
 
 // Admin
 Route::get("/api/admin/users", "UserController@getAllUsers")->middleware("admin");
@@ -80,6 +80,7 @@ Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middlewar
 Route::put("/api/admin/user/{uid}/block", "UserController@blockUser")->middleware("admin");
 Route::delete("/api/admin/user/{uid}/deletePosts", "UserController@deleteUsersPosts")->middleware("admin");
 Route::delete("/api/admin/user/{uid}/deleteComments", "UserController@deleteUsersComments")->middleware("admin");
+Route::delete("/api/admin/user/{uid}/deleteAvatar", "UserController@deleteUsersAvatar")->middleware("admin");
 Route::view("/admin/users", "pages.admin.users")->middleware("admin");
 Route::view("/admin/users/{id}", "pages.admin.users")->middleware("admin");
 Route::view("admin", "pages.admin.index")->middleware("admin");

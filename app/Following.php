@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Following extends Model
 {
     protected $fillable = ['date'];
-
+    protected $primaryKey =['follower_id', 'followed_id'];
+    public $incrementing = false;
     public $timestamps = false;
 
     /**

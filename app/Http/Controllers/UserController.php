@@ -205,4 +205,43 @@ class UserController extends Controller
         return response()->json(["success" => true, "n" => $deletedCount]);
     }
 
+    public function deleteUsersAvatar($uid){
+        $uid = (int) $uid; // sanitize input
+        $directory = public_path().'/images/users/';
+        $filename = $uid.".png";
+        if(file_exists($directory .$filename))
+        {
+            unlink($directory .$filename);
+            unlink($directory . "icons/" . $filename);
+            return response()->json(["success" => true]);
+        }else{
+            return response()->json(["success" => false]);
+        }        
+        
+    }
+
+    public function followUser(Request $request){
+
+        $is_follower = Following::where('followed_id', Auth::user()->id)->
+                                    where('follower_id', $request->id);
+
+        if ($is_follower->first() == null){
+            $following = new Following();
+            $following->followed_id = Auth::user()->id;
+            $following->follower_id = $request->id;
+            $following->save();
+        } else {
+            $is_follower->delete();
+        }
+
+        return response()->json(["success" => true]);
+    }
+
+    public static function isFollower($uid){
+        if (!Auth::check())
+            return true;
+        if (Following::where('followed_id', Auth::user()->id)->where('follower_id', $uid)->first() == null)
+            return true;
+        return false;
+    }
 }

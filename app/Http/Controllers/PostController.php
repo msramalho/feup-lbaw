@@ -30,12 +30,12 @@ class PostController extends Controller
             'to_faculty_id' => 'required|numeric',
             'title' => 'required|string|max:255',
             'content' => 'required|string|max:5000',
-            'school_year' => 'required|numeric',
+            'school_year' => 'required|numeric|min:1',
             'beer_cost' => 'required|string',
             'life_cost' => 'required|string',
             'native_friendliness' => 'required|string',
             'work_load' => 'required|string',
-        ], ["from_faculty_id.*"=>"The origin faculty must be set", "to_faculty_id.*" => "the destination faculty must be set"]);
+        ], ["from_faculty_id.*"=>"The origin faculty must be set", "to_faculty_id.*" => "the destination faculty must be set", "school_year.*" => "please choose a valid school year for the mobility"]);
     }
 
     private static function faculties_from(){
