@@ -60,9 +60,7 @@ class UserController extends Controller
             'username' => ['required','string','regex:/^[^@]*$/'],
             'email' => 'required|string|email|max:255',
             'birthdate' => 'required|date|before:today',
-            'description' => 'max:5000',
-            'password' => 'string|min:6',
-            'password_confirmation' => 'same:password'
+            'description' => 'max:5000'
         ]);
 
         Auth::check();
@@ -74,7 +72,15 @@ class UserController extends Controller
         $user -> email = strtolower($request->email);
         $user -> birthdate = $request->birthdate;
         $user -> description = $request->description;
-        $user -> password = bcrypt($request->password);
+
+        if ($request->password != ""){
+            $this->validate($request, [
+                'password' => 'string|min:6',
+                'password_confirmation' => 'same:password'
+            ]);
+            $user -> password = bcrypt($request->password);
+        }
+        
         $user -> save();
     
         return response()->json(["success" => true, "user" => $user]);
