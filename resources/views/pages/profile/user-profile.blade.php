@@ -2,6 +2,12 @@
 
 @section('title', 'Vecto: View profile')
 
+@section("opengraph")
+<meta property="og:type" content="profile" />
+<meta property="og:profile:first_name" content="{{$user->name}}" />
+<meta property="og:profile:username" content="{{$user->username}}" />
+@endsection
+
 @section('content')
 
 <div class="container">
