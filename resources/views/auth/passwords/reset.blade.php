@@ -19,12 +19,13 @@
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <div class="input-group">
+                                    <label for="email" style="display:none">Email</label>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
                                     <input name="email" placeholder="email address" class="form-control" type="email" value="{{ old('email') }}" required>
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="form-grouformp{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="control-label">Password</label>
                                 <div class="input-group">
                                     <input id="password" type="password" class="form-control" name="password" required>

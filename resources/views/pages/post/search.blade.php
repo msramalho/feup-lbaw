@@ -32,7 +32,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-lg-6 col-sm-12">
-								<label>Origin University</label>
+								<label for="university_from">Origin University</label>
 								<select class="custom-select" id="university_from" name="university_from" targets="faculty_from" required>
 									<option value ="-1" selected>From University</option>
 									@foreach ($universities as $university)
@@ -41,7 +41,7 @@
 								</select>
 							</div>
 							<div class="form-group col-lg-6 col-sm-12">
-								<label>Origin Faculty</label>
+								<label for="faculty_from">Origin Faculty</label>
 								<select class="custom-select" id="faculty_from" name="from_faculty_id">
 									<option value ="-1" selected>From Faculty</option>
 									@foreach ($faculties_from as $fac)
@@ -52,7 +52,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-lg-6 col-sm-12">
-								<label>Destination University</label>
+								<label for="university_to">Destination University</label>
 								<select class="custom-select" id="university_to" name="university_to" targets="faculty_to" required>
 									<option value ="-1" selected>To University</option>
 									@foreach ($universities as $university)
@@ -61,7 +61,7 @@
 								</select>
 							</div>
 							<div class="form-group col-lg-6 col-sm-12">
-								<label>Destination Faculty</label>
+								<label for="faculty_to">Destination Faculty</label>
 								<select class="custom-select" id="faculty_to" name="to_faculty_id">
 									<option value ="-1" >To Faculty</option>
 									@foreach ($faculties_to as $fac)

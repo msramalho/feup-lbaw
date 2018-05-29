@@ -2,6 +2,7 @@
 
 @section('content')
 <form method="POST" action="{{ route('login') }}">
+    <fieldset>
     {{ csrf_field() }}
 
     <label for="email">E-mail</label>
@@ -28,5 +29,6 @@
         Login
     </button>
     <a class="button button-outline" href="{{ route('register') }}">Register</a>
+    </fieldset>
 </form>
 @endsection

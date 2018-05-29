@@ -31,10 +31,10 @@ function ee($errors, $name){//display a span with custom error $name
 		 	{{ csrf_field() }}
 			<div class="form-row">
 				<div class="form-group col-md-12">
-					<label>Title <span class="text-danger">*</span></label>
+					<label for='title'>Title <span class="text-danger">*</span></label>
 					<i class="far fa-question-circle float-right" data-toggle="tooltip" data-placement="bottom" title="Insert the title of your post in this form input"></i>
 					@php ee($errors, "title") @endphp
-					<input type="text" class="form-control form-control-lg" name="title" placeholder="Title of your post" value="{{ old("title") }}" required autofocus>
+					<input id="title" type="text" class="form-control form-control-lg" name="title" placeholder="Title of your post" value="{{ old("title") }}" required autofocus>
 				</div>
 			</div>
 			<div class="form-group">
@@ -47,7 +47,7 @@ function ee($errors, $name){//display a span with custom error $name
 			@php ee($errors, "from_faculty_id") @endphp
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin University <span class="text-danger">*</span></label>
+					<label for="university-from">Origin University <span class="text-danger">*</span></label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the university that you departed from on this dropdown, after that the right dropdown will load the faculties of that university"></i>
 					<select class="custom-select" id="university_from" name="university_from" targets="faculty_from" required>
 						<option selected>From University</option>
@@ -57,7 +57,7 @@ function ee($errors, $name){//display a span with custom error $name
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin Faculty <span class="text-danger">*</span></label>
+					<label for="faculty_from">Origin Faculty <span class="text-danger">*</span></label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the faculty you departed from in this dropdown, if this dropdown is emtpy, make sure you selected the university on the left"></i>
 					<select class="custom-select" id="faculty_from" name="from_faculty_id">
 						<option selected>From Faculty</option>
@@ -71,7 +71,7 @@ function ee($errors, $name){//display a span with custom error $name
 			@php ee($errors, "school_year") @endphp
 			<div class="form-row">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Destination University <span class="text-danger">*</span></label>
+					<label for="university_to">Destination University <span class="text-danger">*</span></label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the university that you went to from on this dropdown, after that the right dropdown will load the faculties of that university"></i>
 					<select class="custom-select" id="university_to" name="university_to" targets="faculty_to" required>
 						<option selected>To University</option>
@@ -81,7 +81,7 @@ function ee($errors, $name){//display a span with custom error $name
 					</select>
 				</div>
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Destination Faculty <span class="text-danger">*</span></label>
+					<label for="faculty_to">Destination Faculty <span class="text-danger">*</span></label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the faculty you went to in this dropdown, if this dropdown is emtpy, make sure you selected the university on the left"></i>
 					<select class="custom-select" id="faculty_to" name="to_faculty_id">
 						<option>To Faculty</option>
@@ -102,9 +102,9 @@ function ee($errors, $name){//display a span with custom error $name
 			@php ee($errors, "work_load") @endphp
 			<div class="form-row">
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label><i class="far fa-money-bill-alt"></i> Life Cost</label>
+					<label for="life"><i class="far fa-money-bill-alt"></i> Life Cost</label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the qualitative value of the life cost for this mobility"></i>
-					<select class="custom-select" name="life_cost" required>
+					<select id="life" class="custom-select" name="life_cost" required>
 						<?php $life_costs = array("1"=>"Very accessible","2"=>"Accessible","3"=>"Medium","4"=>"High","5"=>"Too High!"); ?>
 						@foreach ($life_costs as $k=>$v)
 							<option value="{{$k}}" {{ $k == old("life_cost")?"selected":""}}>{{$v}}</option>
@@ -112,9 +112,9 @@ function ee($errors, $name){//display a span with custom error $name
 					</select>
 				</div>
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label><i class="fas fa-beer"></i> Beer Cost</label>
+					<label for="beer"><i class="fas fa-beer"></i> Beer Cost</label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the qualitative value of the beer cost for this mobility"></i>
-					<select class="custom-select" name="beer_cost">
+					<select id="beer" class="custom-select" name="beer_cost">
 						<?php $beer_costs = array("1"=>"Free","2"=>"Almost Free","3"=>"Cheap","4"=>"Accessible","5"=>"High", "6"=>"Over 9000!"); ?>
 						@foreach ($beer_costs as $k=>$v)
 							<option value="{{$k}}" {{ $k == old("beer_cost")?"selected":""}}>{{$v}}</option>
@@ -122,9 +122,9 @@ function ee($errors, $name){//display a span with custom error $name
 					</select>
 				</div>
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label><i class="fas fa-users"></i> Native's Friendliness</label>
+					<label for="natives"><i class="fas fa-users"></i> Native's Friendliness</label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the qualitative value of the natives' friendliness in the city of this mobility"></i>
-					<select class="custom-select" name="native_friendliness" required>
+					<select id="natives" class="custom-select" name="native_friendliness" required>
 						<?php $native_friendlinesses = array("1"=>"Hostile","2"=>"Unfriendly","3"=>"Neutral","4"=>"Friendly","5"=>"Best people on earth"); ?>
 						@foreach ($native_friendlinesses as $k=>$v)
 							<option value="{{$k}}" {{ $k == old("native_friendliness")?"selected":""}}>{{$v}}</option>
@@ -132,9 +132,9 @@ function ee($errors, $name){//display a span with custom error $name
 					</select>
 				</div>
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
-					<label><i class="fas fa-briefcase"></i> Workload</label>
+					<label for="work"><i class="fas fa-briefcase"></i> Workload</label>
 					<i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Choose the qualitative value of the workload you had at the destination faculty compared to what you are used to having"></i>
-					<select class="custom-select" name="work_load" required>
+					<select id="work" class="custom-select" name="work_load" required>
 						<?php $work_loads = array("1"=>"Super easy","2"=>"Easy","3"=>"Accessible","4"=>"Tough","5"=>"GAAAAAAH!"); ?>
 						@foreach ($work_loads as $k=>$v)
 							<option value="{{$k}}" {{ $k == old("work_load")?"selected":""}}>{{$v}}</option>

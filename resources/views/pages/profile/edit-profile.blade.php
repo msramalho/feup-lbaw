@@ -42,15 +42,15 @@
         <div class="form-group col-md-12" id="form-info">
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                    <label>Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="name" aria-describedby="NameHelp" placeholder="Enter name" value="{{Auth::user()->name}}">
+                    <label for="name">Name <span class="text-danger">*</span></label>
+                    <input id="name" type="text" class="form-control" name="name" aria-describedby="NameHelp" placeholder="Enter name" value="{{Auth::user()->name}}">
                 </div>
             </div>
             
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                    <label>Username <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="username" aria-describedby="userNameHelp" placeholder="Enter username" value="{{Auth::user()->username}}">
+                    <label for="username">Username <span class="text-danger">*</span></label>
+                <input id="username" type="text" class="form-control" name="username" aria-describedby="userNameHelp" placeholder="Enter username" value="{{Auth::user()->username}}">
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                     <form method="post">
                         <!-- Date input -->
                         <label class="control-label" for="date">Birthdate <span class="text-danger">*</span></label>
-                        <input class="form-control" type="date" name="birthdate" placeholder="DD/MM/YYYY" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
+                        <input id="date" class="form-control" type="date" name="birthdate" placeholder="DD/MM/YYYY" value="{{(Auth::user()->birthdate != null) ? Auth::user()->birthdate : "DD/MM/YYYY"}}" type="text" />
                     </form>
 
 
@@ -71,8 +71,8 @@
 
             <div class="form-row">
                 <div class=" form-group col-lg-6 col-md-6 col-sm-122">
-                    <label>E-mail <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="email" aria-describedby="EmailHelp" value="{{Auth::user()->email}}">
+                    <label for="email">E-mail <span class="text-danger">*</span></label>
+                    <input id="email" type="email" class="form-control" name="email" aria-describedby="EmailHelp" value="{{Auth::user()->email}}">
 
                 </div>
             </div>

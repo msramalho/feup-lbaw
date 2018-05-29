@@ -24,8 +24,9 @@
                         
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="input-group">
+                                <label for="email" style="display:none;">Email</label>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                <input name="email" placeholder="email address" class="form-control" type="email" value="{{ old('email') }}" required>
+                                <input id="email" name="email" placeholder="email address" class="form-control" type="email" value="{{ old('email') }}" required>
                             </div>
                         </div>
                         <div class="form-group">

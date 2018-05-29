@@ -20,13 +20,13 @@
 		 	{{ csrf_field() }}
 			@include("partials.errors")
 			<div class="form-group">
-				<label for="postReason">Your reason</label>
-				<textarea class="form-control" id="postReason" name="reason" required>{{ old("reason") }}</textarea>
+				<label for="reportReason">Your reason</label>
+				<textarea class="form-control" id="reportReason" name="reason" required>{{ old("reason") }}</textarea>
 			</div>
             <div class="form-row">
 				<div class="form-group col-lg-9 col-md-8 col-sm-6"></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-6">
-					<label for="postSubmit">Submit your report!</label>
+					<label for="reportSubmit">Submit your report!</label>
 					<input type="submit" class="btn btn-primary form-control" id="reportSubmit" value="Submit" />
 				</div>
 			</div>
