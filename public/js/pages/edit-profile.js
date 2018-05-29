@@ -41,14 +41,28 @@ $("#saveChanges").click(function(e){
 
         success: function (data) {
             if(data.success){
-                alert("Profile Successfully Updated!");
+                swal({
+                    title: "Profile Successfully Updated!",
+                    icon: "success",
+                    button: "Noice!",
+                });
             }else{
-                alert("Failed to save data!\n" + data.error);
+                swal({
+                    title: "Failed to save data!",
+                    text: data.error,
+                    icon: "error",
+                    button: "Whoops!",
+                });
             }
         },
 
         error: function (data) {
-            alert("Failed to save data!");
+            swal({
+                title: "Failed to save data!",
+                text: data.error,
+                icon: "error",
+                button: "Whoops!",
+            });
         }
     });
 });

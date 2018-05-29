@@ -12,7 +12,12 @@ $(function() {
 					$('#cityModal').modal('hide');
 					new_tr(data.city);
 				}else{
-					alert(data.error);
+					swal({
+						title: "Failed to save data!",
+						text: data.error,
+						icon: "error",
+						button: "Whoops!",
+					});
 				}
 			}
 		});

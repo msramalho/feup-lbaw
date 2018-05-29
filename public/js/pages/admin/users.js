@@ -115,7 +115,11 @@ function blockUser(){ // aplies to currently selected user.
            updateBlockButton(data.newType);
        }
     }).fail(function(){
-        alert("Update failed. Try again later!");
+        swal({
+            title: "Update failed. Try again later!",
+            icon: "error",
+            button: "Whoops!",
+        });
     });
 }
 
