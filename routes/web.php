@@ -109,10 +109,10 @@ Route::delete("/api/flagPosts/delete/{flagger_id}/{post_id}", "FlagPostControlle
 
 Route::get("admin/flagUsers", "FlagUserController@manage")->middleware("admin");
 Route::post("/api/flagUsers/archive/{flagger_id}/{flagged_id}", "FlagUserController@archive")->middleware("admin");
-Route::delete("/api/flagUsers/delete/{flagger_id}/{flagged_id}", "FlagUserController@delete")->middleware("admin");
+Route::delete("/api/flagUsers/delete/{flagger_id}/{flagged_id}", "FlagUserController@delete")->middleware("auth");
 
 Route::get("admin/flagComments", "FlagCommentController@manage")->middleware("admin");
 Route::post("/api/flagComments/archive/{flagger_id}/{comment_id}", "FlagCommentController@archive")->middleware("admin");
-Route::delete("/api/flagComments/delete/{flagger_id}/{comment_id}", "FlagCommentController@delete")->middleware("admin");
+Route::delete("/api/flagComments/delete/{flagger_id}/{comment_id}", "FlagCommentController@delete")->middleware("auth");
 
 Route::get('/admin/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware("admin");
