@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label>Faculty public description <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="description" id="facDescription" required></textarea>
+                        <textarea class="form-control" name="description" id="facDescription"></textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
