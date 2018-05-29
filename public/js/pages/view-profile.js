@@ -31,13 +31,29 @@ function followUser(id){
         success: function (data) {
             console.log(data);
             if(data.success){
-                if ($("#follow").html() === "Follow")
+                if ($("#follow").html() === "Follow"){
                     $("#follow").html("Unfollow");
-                else
+                    swal({
+                        title: "User Followed!",
+                        icon: "success",
+                        button: "Yey!",
+                    });
+                }
+                else {
                     $("#follow").html("Follow");
-                alert("Profile Successfully Updated!");
+                    swal({
+                        title: "User Unfollowed!",
+                        icon: "success",
+                        button: ":(",
+                    });
+                }
             }else{
-                alert("Failed to save data!\n" + data.error);
+                swal({
+                    title: "Failed to save data!",
+                    text: data.error,
+                    icon: "error",
+                    button: "Whoops!",
+                });
             }
         }
     });

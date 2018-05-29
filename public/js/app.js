@@ -10,7 +10,12 @@ function copyToClipboard(text){
 	/* Copy the text inside the text field */
 	document.execCommand("Copy");
 	
-	alert("text coppied successfully");
+	swal({
+		title: "Text coppied successfully!",
+		text: data.error,
+		icon: "success",
+		button: "Whoops!",
+	});
 
 	document.body.removeChild(textArea);
 }

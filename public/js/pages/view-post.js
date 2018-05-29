@@ -153,9 +153,17 @@ function submitCommentEdit(root, cID, nText){
             closeEditPane(root);
             updateComment(root, nText);
         } else {
-            alert("Update failed. Try again later!");
+            swal({
+                title: "Update failed. Try again later!",
+                icon: "error",
+                button: "Whoops!",
+            });
         }
     }).fail(function(){
-        alert("Update failed. Try again later!");
+        swal({
+            title: "Update failed. Try again later!",
+            icon: "error",
+            button: "Whoops!",
+        });
     });
 }
