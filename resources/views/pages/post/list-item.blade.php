@@ -18,7 +18,7 @@
                     <i class="fas fa-user-circle"></i> <a href="{{ url('/user/'.$post->user->username) }}">{{$post->user->username}}</a>
                 </div>
                 <div class="text-center col-lg-4 col-md-4 col-sm-5 col-5">
-                    <i class="fas fa-map-marker-alt"></i> <a href="{{ url('/post/search?university_to='.$post->faculty_to->university->id.'&faculty_to='.$post->faculty_to->id) }}">{{$post->faculty_to->name}}</a>
+                    <i class="fas fa-map-marker-alt"></i> <a href="{{ url('/post/search?university_to='.$post->faculty_to->university->id.'&faculty_to='.$post->faculty_to->id) }}">{{$post->faculty_to->name}}<p>{{$post->faculty_to->university->name}}</a>
                 </div>
                 <div class="text-center col-lg-2 col-4 d-none d-md-block">
                     <i class="fas fa-calendar-alt"></i> <a href="/post/search?school_year={{substr($post->school_year,-2)}}">{{$post->school_year}}/{{$post->school_year+1}}</a> 
