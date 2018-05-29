@@ -6,6 +6,7 @@ use App\User;
 use App\Comment;
 use App\Upload;
 use App\Following;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
