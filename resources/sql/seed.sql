@@ -649,7 +649,7 @@ SELECT pg_catalog.setval('comment_id_seq', 34, true);
 
 INSERT INTO country VALUES (1, 'Portugal', 'pt');
 INSERT INTO country VALUES (2, 'United Kingdom', 'gb');
-INSERT INTO country VALUES (3, 'Afghanistan', 'af');
+INSERT INTO country VALUES (3, 'United States of America', 'us');
 INSERT INTO country VALUES (4, 'Aland Islands', 'ax');
 INSERT INTO country VALUES (5, 'Albania', 'al');
 INSERT INTO country VALUES (6, 'Algeria', 'dz');
@@ -881,7 +881,7 @@ INSERT INTO country VALUES (232, 'Tuvalu', 'tv');
 INSERT INTO country VALUES (233, 'Uganda', 'ug');
 INSERT INTO country VALUES (234, 'Ukraine', 'ua');
 INSERT INTO country VALUES (235, 'United Arab Emirates', 'ae');
-INSERT INTO country VALUES (237, 'United States of America', 'us');
+INSERT INTO country VALUES (236, 'Afghanistan', 'af');
 INSERT INTO country VALUES (238, 'US Minor Outlying Islands', 'um');
 INSERT INTO country VALUES (239, 'Uruguay', 'uy');
 INSERT INTO country VALUES (240, 'Uzbekistan', 'uz');
