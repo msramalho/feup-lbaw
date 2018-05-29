@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'username' => ['required','string','regex:/^[^@]*$/', 'unique:users'],
             'password' => 'required|string|min:6', 
-            'birthdate' => 'required|date|before:today',
+            'birthdate' => 'date|before:today',
             'description' => 'string|max:5000',
         ], ["username.regex" => "username cannot have a @ char"]);
     }
