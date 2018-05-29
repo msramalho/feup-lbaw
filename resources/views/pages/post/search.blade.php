@@ -23,7 +23,7 @@
 							<div class="form-group col-lg-6 col-sm-12">
 								<label for="date">Posted in the last</label>
 								<select class="form-control" id="date" name="date">
-									@php $times = array("1000" => "All time", "7"=> "7 days", "31"=> "1 month", "186"=> "6 months", "365"=> "1 year", "4"=> "4 years"); @endphp
+									@php $times = array("1000" => "All time", "7"=> "7 days", "31"=> "1 month", "186"=> "6 months", "365"=> "1 year", "1460"=> "4 years"); @endphp
 									@foreach ($times as $days=>$title)
 										<option value="{{$days}}" {{$days == old("date")?"selected":""}}>{{$title}}</option>
 									@endforeach
