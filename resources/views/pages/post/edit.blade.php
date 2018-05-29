@@ -37,7 +37,12 @@
 				<input type="hidden" name="to_faculty_id" value="{{$post->to_faculty_id}}">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>School Year</label>
-					@include("partials.select_school_year")
+					<select class="custom-select" name="school_year" required>
+					<option value="-1" selected>During</option>
+					@for ($i = 10; $i < substr(date("Y"), 2); $i++)
+						<option value="{{$i}}" {{ $i == $post->school_year?"selected":""}}>{{$i}}/{{$i+1}}</option>
+					@endfor
+</select>
 				</div>
 			</div>
 			<div class="form-row">
