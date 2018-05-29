@@ -1,6 +1,6 @@
 <a class="anchor" id="c{{ $cm->id }}"></a>
 <div id="c{{ $cm->id }}" class="p-3 bg-light article-comment">
-    <img src="{{ asset('/images/profile.png') }}" alt="Profile Picture">
+    <img src="{{File::exists("images/users/icons/".$cm->user->id.".png") ? URL::asset("images/users/icons/".$cm->user->id.".png") : URL::asset("images/profile.png")}}" alt="Profile Picture">
     <h3>{{ $cm->user->username }}</h3>
     <p>{{ $cm->content }}</p>
     <div class="flag-comment small text-secondary">
@@ -22,8 +22,8 @@
 			<a class="text-secondary flag-comment ajax-link" id="Flag" style="cursor:pointer;" onclick="handleFlagComment('{{$flag}}','{{$cm->id}}');">
 				<i class="fas fa-flag"></i>
 					<span id="FlagSpanCm">{{is_null($flag) ? 'Flag' : 'Remove Flag'}}</span>
-			</a>
-        @endif
+            </a>
+            @endif
         @endif
     </div>
 </div>
