@@ -12,7 +12,7 @@ function copyToClipboard(text){
 	
 	swal({
 		title: "Text coppied successfully!",
-		text: data.error,
+		text: text,
 		icon: "success",
 		button: "Whoops!",
 	});
