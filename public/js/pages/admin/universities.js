@@ -13,6 +13,7 @@ $(function() {
 				if(data.success){
 					$('#uniModal').modal('hide');
 					new_tr(data.university);
+					$('#newUniForm')[0].reset();
 				}else{
 					alert(data.error);
 				}

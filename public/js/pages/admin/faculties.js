@@ -13,6 +13,7 @@ $(function() {
 				if(data.success){
 					$('#facModal').modal('hide');
 					new_tr(data.faculty);
+					$('#newFacForm')[0].reset();
 				}else{
 					alert(data.error);
 				}
