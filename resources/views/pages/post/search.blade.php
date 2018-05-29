@@ -75,7 +75,7 @@
 				</fieldset></form>
 			</div>
 
-			<div class="infinite-scroll" id="feed-content">
+			<div class="infinite-scroll">
 				@each('pages.post.list-item', $posts, 'post')
 				{{$posts->links()}}
 			</div>

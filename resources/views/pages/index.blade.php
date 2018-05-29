@@ -21,13 +21,13 @@
 				</label>
 			</div>
 			<section class="jqueryOptions option1">
-				<div id="feed-content">
+				<div>
 					@each('pages.post.list-item', Post::getFollowersList(Auth::user()->id), 'post')
 				</div>
 			</section>
 
 			<section class="jqueryOptions option2 d-none">
-				<div class="infinite-scroll" id="feed-content">
+				<div class="infinite-scroll">
 					@php $posts1 = Post::getIndexList() @endphp
 					@each('pages.post.list-item', $posts1, 'post')
 					{{$posts1->links()}}
@@ -35,8 +35,8 @@
 			</section>
 		@else
 			<h3>Recent Posts:</h3>
-			<div id="feed-content">
-				<div class="infinite-scroll" id="feed-content">
+			<div>
+				<div class="infinite-scroll">
 					@php $posts2 = Post::getIndexList() @endphp
 					@each('pages.post.list-item', $posts2, 'post')
 					{{$posts2->links()}}
