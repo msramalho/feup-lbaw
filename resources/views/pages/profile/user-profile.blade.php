@@ -53,7 +53,12 @@
                 </h2>
                 <div class="followingListExpander">
                     <ul class="AboutListItem list-unstyled">
-                        @each('pages.profile.list-followers', User::getUserFollowers($user->id), 'user')
+                        @php $followers = User::getUserFollowers($user->id) @endphp
+                        @each('pages.profile.list-followers', $followers, 'user')
+                        @if(count($followers) == 0)
+                            <p>
+                            <span>Looks like this user hasn't followed anyone <i class="far fa-frown"></i></span>
+					    @endif
                     </ul>
                 </div>
             </div>
@@ -85,19 +90,34 @@
 
                     <section class="jqueryOptions option2 d-none">
                         <div class="feed-content">
-                            @each('pages.post.list-item', Post::view_posts($user->id), 'post')
+                            @php $posts = Post::view_posts($user->id) @endphp
+                            @each('pages.post.list-item', $posts, 'post')
+                            @if(count($posts) == 0)
+                                <p>
+                                <span>Looks like this user doesn't have any post <i class="far fa-frown"></i></span>
+                            @endif
                         </div>
                     </section>
 
                     <section class="jqueryOptions option3 d-none">
                         <div class="feed-content">
-                            @each('pages.post.list-item', Post::view_posts_comments($user->id), 'post')
+                            @php $comments = Post::view_posts_comments($user->id) @endphp
+                            @each('pages.post.list-item', $comments, 'post')
+                            @if(count($comments) == 0)
+                                <p>
+                                <span>Looks like this user hasn't commented yet <i class="far fa-frown"></i></span>
+                            @endif
                         </div>
                     </section>
 
                     <section class="jqueryOptions option4 d-none">
                         <div class="feed-content">
-                            @each('pages.post.list-item', Post::view_posts_votes($user->id), 'post')
+                            @php $votes = Post::view_posts_votes($user->id) @endphp
+                            @each('pages.post.list-item', $votes, 'post')
+                            @if(count($votes) == 0)
+                                <p>
+                                <h4>Looks like this user hasn't upvoted any post <i class="far fa-frown"></i></h4>
+                            @endif
                         </div>
                     </section>
                 </div>
