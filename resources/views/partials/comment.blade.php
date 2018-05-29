@@ -1,5 +1,5 @@
 <a class="anchor" id="c{{ $cm->id }}"></a>
-<div id="c{{ $cm->id }}" class="p-3 bg-light article-comment">
+<div data-cid="c{{ $cm->id }}" class="p-3 bg-light article-comment">
     <img src="{{File::exists("images/users/icons/".$cm->user->id.".png") ? URL::asset("images/users/icons/".$cm->user->id.".png") : URL::asset("images/profile.png")}}" alt="Profile Picture">
     <h3>{{ $cm->user->username }}</h3>
     <p>{{ $cm->content }}</p>

@@ -57,14 +57,14 @@ $('form#newComment').submit(function() {
 });
 
 function removeCommentDiv(cID){
-    $("div#c"+cID).remove();
+    $("div[data-cid='c"+cID+"']").remove();
 }
 
 function bindCommentButtons(){
     $('.delete-comment').unbind();
     $('.edit-comment').unbind();
     $('.delete-comment').click(function() {
-        let cID = parseInt($(this).parent().parent().attr('id').substr(1));
+        let cID = parseInt($(this).parent().parent().attr('data-cid').substr(1));
     
         $.ajax({
             type: "DELETE",
@@ -85,7 +85,7 @@ function bindCommentButtons(){
     $('.edit-comment').click(function() {
         let root = $(this).parent().parent();
         let editButton = $(this);
-        let cID = parseInt(root.attr('id').substr(1));
+        let cID = parseInt(root.attr('data-cid').substr(1));
 
         let text = root.children('p').text();
 
