@@ -20,9 +20,9 @@
 
             <div class="col-md-6 col-sm-12">
                 <div class="float-right">
-                    <a href="flagUsers" type="button" class="btn btn-primary btn-lg" >User Flags</a>   
-                    <a href="flagPosts"type="button" class="btn btn-secondary btn-lg">Post Flags</a>   
-                    <a href="flagComments"type="button" class="btn btn-primary btn-lg">Comment Flags</a>   
+                    <a href="flagUsers" type="button" class="btn btn-lg btn-primary" >User Flags</a>   
+                    <a href="flagPosts"type="button" class="btn btn-lg btn-primary">Post Flags</a>   
+                    <a href="flagComments"type="button" class="btn btn-lg btn-primary">Comment Flags</a>   
                 </div>
             </div>
             
