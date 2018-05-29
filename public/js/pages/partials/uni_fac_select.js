@@ -1,6 +1,6 @@
 "use strict";
 
-let default_faculty = "<option selected>From Faculty</option>";
+let default_faculty = "<option selected>Faculty</option>";
 $("#university_from, #university_to").change(function(e){
 	let select = $(this);
 	let target = $("#" + select.attr("targets"));
