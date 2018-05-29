@@ -11,9 +11,11 @@
 				@if (!isset($hide_search))
 					<li class="nav-item">
 						<form class="form-inline mr-4" id="form_search" action="{{url("post/search")}}" method="GET">
+							<fieldset>
 							{{csrf_field()}}
 							<input class="form-control mr-sm-2" type="search" name="search" value="{{ Request::get('search') }}" placeholder="Search">
 							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+							</fieldset>
 						</form>
 					</li>
 				@endif

@@ -28,6 +28,7 @@ function ee($errors, $name){//display a span with custom error $name
 		@php ee($errors, "database_error") @endphp
 		<h4>Tell others about your ERASMUS experience</h4>
 		<form action="{{ url('post') }}" method="POST">
+			<fieldset>
 		 	{{ csrf_field() }}
 			<div class="form-row">
 				<div class="form-group col-md-12">
@@ -96,6 +97,8 @@ function ee($errors, $name){//display a span with custom error $name
 					@include("partials.select_school_year")
 				</div>
 			</div>
+			</fieldset>
+			<fieldset>
 			@php ee($errors, "beer_cost") @endphp
 			@php ee($errors, "life_cost") @endphp
 			@php ee($errors, "native_friendliness") @endphp
@@ -149,6 +152,7 @@ function ee($errors, $name){//display a span with custom error $name
 					<input type="submit" class="btn btn-primary form-control" id="postSubmit" value="Submit" />
 				</div>
 			</div>
+			</fieldset>
 		</form>
 	</div>
 </div>

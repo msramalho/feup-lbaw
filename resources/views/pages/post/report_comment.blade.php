@@ -19,6 +19,7 @@
 		<h1>Report comment</h1>
 		<h4>We are sorry that this comment was offensive or inapropriate. Please tell us the reason why you are reporting it!</h4>
         <form action="{{ url("flag/comment/$comment_id") }}" method="POST">
+		<fieldset>
 		 	{{ csrf_field() }}
 			@include("partials.errors")
 			<div class="form-group">
@@ -32,6 +33,7 @@
 					<input type="submit" class="btn btn-primary form-control" id="reportSubmit" value="Submit" />
 				</div>
 			</div>
+			</fieldset>
 		</form>
     </div>
 </div>

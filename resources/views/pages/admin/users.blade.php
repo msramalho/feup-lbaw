@@ -63,9 +63,11 @@ if(app('request')->input('username')!=NULL){
         </div>
         <div class="mt-3 container">
             <form method="GET" action="{{url()->current()}}" onsubmit="return false">
+                <fieldset>
                 <label for="user">Search User:</label>
                 <input name="username" autocomplete="off" type="text" id="userSearch" class="form-group form-control" placeholder="Username" value="">
                 <input style="display:none;" type="button" id="search_btn" value="SEARCH"/>
+                </fieldset>
             </form>
             <div id="user-search-result">
                 <!-- to be populated -->

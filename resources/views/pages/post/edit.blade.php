@@ -19,6 +19,7 @@
 		<h1>Edit post</h1>
 
 		<form action="{{ url("post/$post->id/edit") }}" method="POST">
+		<fieldset>
 		 	{{ csrf_field() }}
 			@include("partials.errors")
 			<div class="form-row">
@@ -45,6 +46,8 @@
 </select>
 				</div>
 			</div>
+			</fieldset>
+			<fieldset>
 			<div class="form-row">
 				<div class="form-group col-lg-3 col-md-6 col-sm-12">
 					<label for="life"><i class="far fa-money-bill-alt"></i> Life Cost</label>
@@ -90,6 +93,7 @@
 					<input type="submit" class="btn btn-primary form-control" id="postSubmit" value="Submit" />
 				</div>
 			</div>
+			</fieldset>
 		</form>
 	</div>
 </div>

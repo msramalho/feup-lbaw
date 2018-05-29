@@ -6,6 +6,7 @@
 		@php $is_register = old('is_register') == 1 || Request::get("action")=="register"@endphp
 		<div id="dropdown_register" class="dropdown-menu dropdown-menu-right {{ $is_register?"show":""}}" >
 			<form class="px-4 py-3" action="{{ url('register') }}" method="POST">
+			<fieldset>
 				<input type="hidden" name="is_register" value="1">
 				{{ csrf_field() }}
 				@includeWhen($is_register, "partials.errors")
@@ -22,6 +23,7 @@
 					<input type="password" class="form-control" id="register_password" name="password" placeholder="password" required>
 				</div>
 				<input type="submit" class="btn btn-dark" value="Sign Up">
+				</fieldset>
 			</form>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="{{ url('faq') }}">Do you have questions? See our FAQ</a>

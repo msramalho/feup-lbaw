@@ -17,6 +17,7 @@
 		<h1>Report profile</h1>
 		<h4>We are sorry this profile is offensive or inapropriate. Please tell us the reason why you are reporting it!</h4>
         <form action="{{ url("flag/user/$user_id") }}" method="POST">
+		<fieldset>
 		 	{{ csrf_field() }}
 			@include("partials.errors")
 			<div class="form-group">
@@ -30,6 +31,7 @@
 					<input type="submit" class="btn btn-primary form-control" id="reportSubmit" value="Submit" />
 				</div>
 			</div>
+			</fieldset>
 		</form>
     </div>
 </div>

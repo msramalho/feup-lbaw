@@ -6,6 +6,7 @@
 		@php $is_login = old('is_register') == 2 || Request::get("action")=="login" @endphp
 		<div id="dropdown_login" class="dropdown-menu dropdown-menu-right {{ $is_login ? "show" : ""}}">
 			<form class="px-4 py-3" action="{{ url('login') }}" method="POST">
+			<fieldset>
 				{{ csrf_field() }}
 				<input type="hidden" name="is_register" value="2">
 				@includeWhen($is_login, "partials.errors")
@@ -16,6 +17,7 @@
 					<input type="password" class="form-control" id="login_password" name="password" placeholder="password" required>
 				</div>
 				<button type="submit" class="btn btn-dark">Log In</button>
+				</fieldset>
 			</form>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="{{ url('password/reset') }}">Forgot password? No problem</a>

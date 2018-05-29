@@ -108,9 +108,11 @@
 							Please, remember our posting rules: be civilized and respect others!
 						</div>
 						<form id="newComment" method="POST" action="/api/post/{{ $post->id }}/comment">
+						<fieldset>
 							<textarea name="content" class="form-control" id="postContent" required></textarea>
 							{{ csrf_field() }}
 							<input type="submit" class="btn btn-primary float-right mt-2" id="postSubmit" value="Submit"/>
+						</fieldset>
 						</form>
 					</div>
 					@endif
