@@ -49,11 +49,11 @@ class RegisterController extends Controller
     {
         //'name', 'email', 'password', 'birthdate', 'name', 'register_date', 'description', 'last_login', 'type',
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:64',
             'email' => 'required|string|email|max:255|unique:users',
             'username' => ['required','string','regex:/^[^@]*$/', 'unique:users'],
             'password' => 'required|string|min:6', 
-            'birthdate' => 'date|before:today',
+            'birthdate' => 'required|date|before:today',
             'description' => 'string|max:5000',
         ], ["username.regex" => "username cannot have a @ char"]);
     }
