@@ -34,13 +34,15 @@
                 <div class="profile-userbuttons text-center">
                     <button id="follow" type="button" class="btn btn-dark btn-sm mt-1 ajax-link" data-toggle="tooltip" data-placement="bottom" title="Following this user will show all the posts they make on your feed page." onclick="followUser('{{$user->id}}')">{{ User::isFollower($user->id) ? "Follow" : "Unfollow" }}</button>
                 </div>
+                @if(Auth::check())
                 <div class="profile-userbuttons mt-3">
-                <?php $flag = App\Flag_user::getFlag(Auth::user()->id, $user->id) ?>
+                    <?php $flag = App\Flag_user::getFlag(Auth::user()->id, $user->id) ?>
                     <a class="Sidebar_header" id="Flag" style="cursor:pointer;" onclick="handleFlagUser('{{$flag}}','{{$user->id}}');">
 						<i class="fas fa-flag"></i>
 						<span id="FlagSpanUsr">{{is_null($flag) ? 'Flag' : 'Remove Flag'}}</span>
 					</a>
                 </div>
+                @endif
 
                 <!-- END SIDEBAR BUTTONS -->
             </div>
