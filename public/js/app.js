@@ -13,8 +13,7 @@ function copyToClipboard(text){
 	swal({
 		title: "Text coppied successfully!",
 		text: text,
-		icon: "success",
-		button: "Whoops!",
+		icon: "success"
 	});
 
 	document.body.removeChild(textArea);
