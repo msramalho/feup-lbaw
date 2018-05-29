@@ -56,10 +56,12 @@ class UserController extends Controller
 
         $this->validate($request, [
             'name' => 'required|string|max:64',
-            'username' => 'required|string|max:64',
-            'email' => 'required|email',
-            'birthdate' => 'required|date',
-            'description' => 'max:5000'
+            'username' => ['required','string','regex:/^[^@]*$/'],
+            'email' => 'required|string|email|max:255',
+            'birthdate' => 'required|date|before:today',
+            'description' => 'max:5000',
+            'password' => 'string|min:6',
+            'password_confirmation' => 'same:password'
         ]);
 
         Auth::check();
