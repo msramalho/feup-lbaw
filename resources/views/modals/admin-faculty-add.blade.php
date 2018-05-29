@@ -18,13 +18,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-<<<<<<< Updated upstream
-                        <label>Faculty public description <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="description" id="facDescription"></textarea>
-=======
                         <label for="facDescription">Faculty public description <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="description" id="facDescription" required></textarea>
->>>>>>> Stashed changes
+                        <textarea class="form-control" name="description" id="facDescription"></textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
