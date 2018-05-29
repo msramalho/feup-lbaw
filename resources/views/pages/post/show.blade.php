@@ -2,6 +2,15 @@
 
 @extends('layouts.app')
 
+@section("opengraph")
+<meta property="og:title" content="{{$post->title}}" />
+<meta property="og:type" content="article" />
+<meta property="og:article:published_time" content="{{$post->created_at}}" />
+<meta property="og:article:modified_time" content="{{$post->updated_at}}" />
+<meta property="og:article:author" content="{{$post->user->username}}" />
+<meta property="og:article:section" content="{{$post->faculty_to->name}}" />
+@endsection
+
 @section('title', "Vecto: " . $post->title)
 
 @section('content')
