@@ -586,8 +586,8 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 
 INSERT INTO city VALUES (1, 'Porto', 1);
 INSERT INTO city VALUES (2, 'Sheffield', 2);
-INSERT INTO city VALUES (3, 'Simenqian', 2);
-INSERT INTO city VALUES (4, 'Kungsbacka', 6);
+INSERT INTO city VALUES (3, 'Lisbon', 1);
+INSERT INTO city VALUES (4, 'Cambridge', 3);
 INSERT INTO city VALUES (5, 'Jati', 1);
 INSERT INTO city VALUES (6, 'Bacnar', 8);
 INSERT INTO city VALUES (7, 'Maria', 9);
