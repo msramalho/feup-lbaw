@@ -46,12 +46,14 @@
                     <input type="text" class="form-control" name="name" aria-describedby="NameHelp" placeholder="Enter name" value="{{Auth::user()->name}}">
                 </div>
             </div>
+            
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                     <label>Username <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="username" aria-describedby="userNameHelp" placeholder="Enter username" value="{{Auth::user()->username}}">
                 </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                     <form method="post">
@@ -66,13 +68,27 @@
 
                 </div>
             </div>
+
             <div class="form-row">
                 <div class=" form-group col-lg-6 col-md-6 col-sm-122">
                     <label>E-mail <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" name="email" aria-describedby="EmailHelp" value="{{Auth::user()->email}}">
 
                 </div>
+            </div>
 
+            <div class="form-row">
+                <div class=" form-group col-lg-6 col-md-6 col-sm-122">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">  
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class=" form-group col-lg-6 col-md-6 col-sm-122">
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-enter Password">
+                </div>
             </div>
         </div>
 
