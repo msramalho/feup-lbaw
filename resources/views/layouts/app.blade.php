@@ -8,6 +8,11 @@
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:site_name" content="Vecto" />
+    <meta property="og:description" content="Vecto, from the latin word vectō, i.e. travel, was created with life journeys in mind." />
+    <meta property="og:locale" content="{{ app()->getLocale() }}" />
+    <meta property="og:url" content="{{url()->current()}}" />
+    @yield('opengraph')
 
     <title>@yield("title")</title>
 
