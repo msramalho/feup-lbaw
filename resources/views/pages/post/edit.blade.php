@@ -32,7 +32,6 @@
 				<textarea class="form-control" id="postContent" name="content" required>{{ old("content")??$post->content }}</textarea>
 			</div>
 			<div class="form-row">
-<<<<<<< Updated upstream
 				
 				<input type="hidden" name="from_faculty_id" value="{{$post->from_faculty_id}}">
 				<input type="hidden" name="to_faculty_id" value="{{$post->to_faculty_id}}">
@@ -44,58 +43,6 @@
 						<option value="{{$i}}" {{ $i == $post->school_year?"selected":""}}>{{$i}}/{{$i+1}}</option>
 					@endfor
 </select>
-=======
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="university_from">Origin University</label>
-					<select class="custom-select" id="university_from" required>
-						<option selected>From University</option>
-						<option value="1">Universidade do Porto</option>
-						<option value="2">Universidade de Lisboa</option>
-						<option value="3">Three</option>
-					</select>
-				</div>
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="faculty_from">Origin Faculty</label>
-					<select class="custom-select" id="faculty_from" name="from_faculty_id">
-						<option selected>From Faculty</option>
-						<option value="1">FEUP</option>
-						<option value="2">FPCEUP</option>
-						<option value="3">FADEUP</option>
-						<option value="4">FLUP</option>
-						<option value="5">FCUP</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="university_to">Origin University</label>
-					<select class="custom-select" id="university_to" required>
-						<option selected>To University</option>
-						<option value="1">Universidade do Porto</option>
-						<option value="2">Universidade de Lisboa</option>
-						<option value="3">Three</option>
-					</select>
-				</div>
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="faculty_to">Origin Faculty</label>
-					<select class="custom-select" id="faculty_to" name="to_faculty_id">
-						<option selected>To Faculty</option>
-						<option value="1">FEUP</option>
-						<option value="2">FPCEUP</option>
-						<option value="3">FADEUP</option>
-						<option value="4">FLUP</option>
-						<option value="5">FCUP</option>
-					</select>
-				</div>
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label for="school">School Year</label>
-					<select id="school" class="custom-select" name="school_year" required>
-						<option selected>During</option>
-						@for ($i = 15; $i < substr(date("Y"), 2); $i++)
-							<option value="{{$i}}" {{ $i == (old("school_year")??$post->school_year)?"selected":""}}>{{$i}}/{{$i+1}}</option>
-						@endfor
-					</select>
->>>>>>> Stashed changes
 				</div>
 			</div>
 			<div class="form-row">
