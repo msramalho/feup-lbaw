@@ -3,6 +3,7 @@
 @section('content')
 <form method="POST" action="{{ route('register') }}">
     {{ csrf_field() }}
+    <fieldset>
 
     <label for="name">Name</label>
     <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
@@ -35,5 +36,6 @@
       Register
     </button>
     <a class="button button-outline" href="{{ route('login') }}">Login</a>
+    </fieldset>
 </form>
 @endsection

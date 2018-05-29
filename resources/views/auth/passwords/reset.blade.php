@@ -14,7 +14,7 @@
                         <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
                             @include("partials.errors")
                             {{ csrf_field() }}
-
+                            <fieldset>
                             <input type="hidden" name="token" value="{{ $token }}">
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -44,6 +44,7 @@
                                     Reset Password
                                 </button>
                             </div>
+                            </fieldset>
                         </form>
                     </div>
                 </div>

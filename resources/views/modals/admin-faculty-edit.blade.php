@@ -9,6 +9,7 @@
             </div>
             <div class="modal-body">
                 <form id="editFacForm">
+                    <fieldset>
                     {{csrf_field()}}
                     <input type="hidden" value="{{$faculty->university->id}}" name="university_id"/>
                     <div class="form-row">
@@ -37,6 +38,7 @@
                             <input id="save" type="submit" class="btn btn-primary form-control" value="Save" />
                         </div>
                     </div>
+                    </fieldset>
                 </form>
             </div>
             <div class="modal-footer"></div>

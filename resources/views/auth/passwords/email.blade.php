@@ -21,7 +21,7 @@
                     <form method="post" action="{{ route('password.email') }}">
                         @include("partials.errors")
                         {{ csrf_field() }}
-                        
+                        <fieldset>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="input-group">
                                 <label for="email" style="display:none;">Email</label>
@@ -32,6 +32,7 @@
                         <div class="form-group">
                             <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
                         </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>

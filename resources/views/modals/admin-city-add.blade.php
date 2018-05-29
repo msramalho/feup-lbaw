@@ -9,6 +9,7 @@
             </div>
             <div class="modal-body">
                 <form id="newCityForm">
+                <fieldset>
                     {{csrf_field()}}
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -32,6 +33,7 @@
                             <input id="save" type="submit" class="btn btn-primary form-control" value="Save" />
                         </div>
                     </div>
+                    </fieldset>
                 </form>
             </div>
             <div class="modal-footer"></div>
