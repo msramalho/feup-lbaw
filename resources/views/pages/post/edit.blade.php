@@ -37,10 +37,7 @@
 				<input type="hidden" name="to_faculty_id" value="{{$post->to_faculty_id}}">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>School Year</label>
-					<select class="custom-select" name="school_year" required>
-						<option selected>During</option>
-						@include("partials.select_school_year")
-					</select>
+					@include("partials.select_school_year")
 				</div>
 			</div>
 			<div class="form-row">
