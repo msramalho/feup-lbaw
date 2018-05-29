@@ -123,7 +123,11 @@
             var div_id = $(this.element).attr("id");
 
             this.on("addedfile", function(file) { 
-                alert("Added file."); 
+                swal({
+                        title: "Added file!",
+                        icon: "success",
+                        button: "Yey!",
+                    });
             });
 
             this.on('maxfilesreached',function(file){
