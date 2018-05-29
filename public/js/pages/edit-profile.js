@@ -28,6 +28,8 @@ $("#saveChanges").click(function(e){
         'username' : form_info.get(1).value,
         'birthdate' : form_info.get(2).value,
         'email' : form_info.get(3).value,
+        'password' : form_info.get(4).value,
+        'password_confirmation' : form_info.get(5).value,
         'description' : description.get(0).value
     }
     console.log(my_data);
