@@ -22,7 +22,12 @@
 			</div>
 			<section class="jqueryOptions option1">
 				<div>
-					@each('pages.post.list-item', Post::getFollowersList(Auth::user()->id), 'post')
+					@php $folposts = Post::getFollowersList(Auth::user()->id) @endphp
+					@each('pages.post.list-item', $folposts, 'post')
+					@if(count($folposts) == 0)
+						<p>
+						<h3>Looks like your friends havent's been active <i class="far fa-frown"></i></h3>
+					@endif
 				</div>
 			</section>
 
