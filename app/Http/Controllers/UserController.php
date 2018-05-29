@@ -69,10 +69,11 @@ class UserController extends Controller
         $user = Auth::user();
 
         $user -> name = $request->name;
-        $user -> username = $request->username;
-        $user -> email = $request->email;
+        $user -> username = strtolower($request->username);
+        $user -> email = strtolower($request->email);
         $user -> birthdate = $request->birthdate;
         $user -> description = $request->description;
+        $user -> password = bcrypt($request->password);
         $user -> save();
     
         return response()->json(["success" => true, "user" => $user]);
