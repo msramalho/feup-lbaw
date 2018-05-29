@@ -1174,33 +1174,13 @@ INSERT INTO "user" VALUES (17, 'dmatyatin3@google.com.br', 'dmatyatin3', '2018-0
 INSERT INTO "user" VALUES (18, 'mbullin4@liveinternet.ru', 'mbullin4', '2018-03-22', '1MwQBTE5yZffoNCHfEnkADzrpzqJuVSjzk', 'Malvina Bullin', '2018-03-22 11:16:36.111183+00', 'Malignant carcinoid tumor of the transverse colon', NULL, 'active');
 INSERT INTO "user" VALUES (19, 'kbalderston5@smugmug.com', 'kbalderston5', '2018-03-22', '1HaS94fMSDSnY4KCzXVC92iE912sQvLgUv', 'Klement Balderston', '2018-03-22 11:16:36.111183+00', 'Occupant of animal-drawn vehicle injured in collision with other animal-drawn vehicle', NULL, 'active');
 INSERT INTO "user" VALUES (20, 'swinsom6@gmpg.org', 'swinsom6', '2018-03-22', '1GZXQTaXSdM3v99vA6Bx4SpcKAXgVs8bxx', 'Simmonds Winsom', '2018-03-22 11:16:36.111183+00', 'Other hang-glider accident injuring occupant', NULL, 'active');
-INSERT INTO "user" VALUES (21, 'abirckmann7@nyu.edu', 'abirckmann7', '2018-03-22', '1PGUCjB4rMH29H8MJGP5MJTembgVpk9tJT', 'Ashlie Birckmann', '2018-03-22 11:16:36.111183+00', 'Candidiasis of skin and nail', NULL, 'active');
-INSERT INTO "user" VALUES (22, 'lleverton8@sogou.com', 'lleverton8', '2018-03-22', '153JtWhmnVTp6DVcfQ5g7v9AHVDe7KMufi', 'Lucho Leverton', '2018-03-22 11:16:36.111183+00', 'Disproportion of reconstructed breast', NULL, 'active');
-INSERT INTO "user" VALUES (23, 'imc9@privacy.gov.au', 'imc9', '2018-03-22', '1GezVUHiKoJRwnPhn4kyd1ehZG4thSMUjD', 'Isaiah Mc Queen', '2018-03-22 11:16:36.111183+00', 'Other injury of heart with hemopericardium, subsequent encounter', NULL, 'active');
-INSERT INTO "user" VALUES (24, 'spetrova@networkadvertising.org', 'spetrova', '2018-03-22', '1ewrTL9Fy7ZQnT1XhpzUsR2EjYVXbRxup', 'Simon Petrov', '2018-03-22 11:16:36.111183+00', 'Displaced fracture of neck of right radius, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with routine healing', NULL, 'active');
-INSERT INTO "user" VALUES (25, 'fskamellb@upenn.edu', 'fskamellb', '2018-03-22', '1AKxqEHzJ63F3KUaE5TQSLjnv8EJrPPCKZ', 'Fernandina Skamell', '2018-03-22 11:16:36.111183+00', 'Hemopericardium as current complication following acute myocardial infarction', NULL, 'active');
-INSERT INTO "user" VALUES (26, 'ibrayshayc@naver.com', 'ibrayshayc', '2018-03-22', '1Lw9okg3FzuhSd5sm9BppD6dKyBfPGBZjv', 'Itch Brayshay', '2018-03-22 11:16:36.111183+00', 'Laceration of superficial palmar arch of right hand, initial encounter', NULL, 'active');
-INSERT INTO "user" VALUES (27, 'omauchlined@independent.co.uk', 'omauchlined', '2018-03-22', '134VFRP2Vz7D1ZjYDDJHZRD53pBNcFyc1U', 'Oona Mauchline', '2018-03-22 11:16:36.111183+00', 'Toxic effect of contact with other venomous fish, accidental (unintentional), initial encounter', NULL, 'active');
-INSERT INTO "user" VALUES (28, 'hkendelle@surveymonkey.com', 'hkendelle', '2018-03-22', '16wQ8A8uQES4YyG2VSfHETmXD6fDrLhiX5', 'Hersh Kendell', '2018-03-22 11:16:36.111183+00', 'Burn of first degree of shoulder and upper limb, except wrist and hand, unspecified site, subsequent encounter', NULL, 'admin');
-INSERT INTO "user" VALUES (29, 'jthiemef@marriott.com', 'jthiemef', '2018-03-22', '1Hkc9K3GMbv1fCWeUzCzjPmYk6js4A8MTY', 'Junette Thieme', '2018-03-22 11:16:36.111183+00', 'Personal history of malignant neoplasm of thyroid', NULL, 'active');
-INSERT INTO "user" VALUES (30, 'gscareg@usda.gov', 'gscareg', '2018-03-22', '1LrpE7gTSL7UastHaTuvhN2hePFDDXWaVa', 'Garrek Scare', '2018-03-22 11:16:36.111183+00', 'Acute eczematoid otitis externa, right ear', NULL, 'banned');
-INSERT INTO "user" VALUES (31, 'sivashechkinh@sourceforge.net', 'sivashechkinh', '2018-03-22', '1EbVnA79QzKCk73n8FBjVVbVQp7ofGvuiD', 'Stephenie Ivashechkin', '2018-03-22 11:16:36.111183+00', 'Injury of radial nerve at upper arm level, left arm, subsequent encounter', NULL, 'active');
-INSERT INTO "user" VALUES (32, 'eseversi@nhs.uk', 'eseversi', '2018-03-22', '1CKST64UrNq9ZLbYzMJXEctcjT3mGmRMEn', 'Estel Severs', '2018-03-22 11:16:36.111183+00', 'Encounter for initial prescription of vaginal ring hormonal contraceptive', NULL, 'active');
-INSERT INTO "user" VALUES (36, 'sfarmarm@miitbeian.gov.cn', 'sfarmarm', '2018-03-22', '1BqNSxNmoTxje6gNJT1qgEyyaBs3DpMahC', 'Seward Farmar', '2018-03-22 11:16:36.111183+00', 'Aneurysmal bone cyst', NULL, 'active');
-INSERT INTO "user" VALUES (37, 'bsaizn@biblegateway.com', 'bsaizn', '2018-03-22', '12DYK9shjrKmsj9PHtmLiLoJQG5b4McDv7', 'Bili Saiz', '2018-03-22 11:16:36.111183+00', 'Pathological fracture in neoplastic disease, right foot, subsequent encounter for fracture with routine healing', NULL, 'active');
-INSERT INTO "user" VALUES (38, 'agowrieo@mediafire.com', 'agowrieo', '2018-03-22', '12VKGyy4QSEo68Z7Akmr6E5wNXJRTox9wU', 'Abby Gowrie', '2018-03-22 11:16:36.111183+00', 'Displaced Maisonneuve''s fracture of unspecified leg, subsequent encounter for closed fracture with routine healing', NULL, 'active');
-INSERT INTO "user" VALUES (39, 'jkendredp@rambler.ru', 'jkendredp', '2018-03-22', '12HFxevVcxRCdEF8sVRgpYU52Dvcttt2NR', 'Janith Kendred', '2018-03-22 11:16:36.111183+00', 'Adverse effect of saline and osmotic laxatives', NULL, 'active');
-INSERT INTO "user" VALUES (40, 'mcapelleq@tripadvisor.com', 'mcapelleq', '2018-03-22', '16kPRPFE6CB5CFXRTDTcgcJuDWPzrwB7W6', 'Mord Capelle', '2018-03-22 11:16:36.111183+00', 'Nondisplaced transverse fracture of shaft of right fibula, subsequent encounter for open fracture type I or II with nonunion', NULL, 'banned');
-INSERT INTO "user" VALUES (41, 'kdavissonr@networksolutions.com', 'kdavissonr', '2018-03-22', '1FqxiBLaAEgmSzU2Enm8ET26NsAbjbyySf', 'Katerina Davisson', '2018-03-22 11:16:36.111183+00', 'Burn of unspecified degree of right scapular region, sequela', NULL, 'active');
-INSERT INTO "user" VALUES (42, 'hmansers@cpanel.net', 'hmansers', '2018-03-22', '1MJt5cbRegPeZ8LFPVvraaZ39VxstmbRRN', 'Hedi Manser', '2018-03-22 11:16:36.111183+00', 'Pneumonia due to staphylococcus, unspecified', NULL, 'banned');
-INSERT INTO "user" VALUES (43, 'mcominottit@example.com', 'mcominottit', '2018-03-22', '1wibWX46UH7AFxSPDuBUXmr83bdiJFv85', 'Marmaduke Cominotti', '2018-03-22 11:16:36.111183+00', 'Minor laceration of vertebral artery', NULL, 'active');
 
 
 --
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
 --
 
-SELECT pg_catalog.setval('user_id_seq', 43, true);
+SELECT pg_catalog.setval('user_id_seq', 20, true);
 
 
 --
