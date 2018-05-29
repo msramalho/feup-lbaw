@@ -32,7 +32,6 @@ $("#saveChanges").click(function(e){
         'password_confirmation' : form_info.get(5).value,
         'description' : description.get(0).value
     }
-    console.log(my_data);
     var type = 'POST';
 
     $.ajax({
