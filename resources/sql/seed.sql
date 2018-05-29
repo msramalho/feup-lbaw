@@ -907,36 +907,85 @@ SELECT pg_catalog.setval('country_id_seq', 250, true);
 -- Data for Name: faculty; Type: TABLE DATA; Schema: public; Owner: lbaw1721
 --
 
-INSERT INTO faculty VALUES (1, 'Faculdade de Engenharia', '', 1, 1);
-INSERT INTO faculty VALUES (2, 'Faculty of Engineering', '', 2, 2);
-INSERT INTO faculty VALUES (3, 'Centre Universitaire de Technologie', 'Dried Peach', 9, 1);
-INSERT INTO faculty VALUES (4, 'IJEP', '', 1, 1);
-INSERT INTO faculty VALUES (5, 'University of Nicosia', 'Rosemary - Primerba, Paste', 9, 7);
-INSERT INTO faculty VALUES (6, 'Southern Nazarene University', 'Pastry - Banana Tea Loaf', 12, 10);
-INSERT INTO faculty VALUES (7, 'Universidad de Málaga', 'Flower - Commercial Bronze', 11, 8);
+INSERT INTO faculty VALUES (1, 'Faculty of Engineering', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (2, 'Faculty of Engineering', 'University of Schefield', 2, 2);
+INSERT INTO faculty VALUES (3, 'Faculty of Arts and Humanities', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (4, 'School of Engineering', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (5, 'Faculty of Architecture', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (6, 'Southern Nazarene Faculty', 'Pastry - Banana Tea Loaf', 12, 10);
+INSERT INTO faculty VALUES (7, 'Faculdad de Málaga', 'Flower - Commercial Bronze', 11, 8);
 INSERT INTO faculty VALUES (8, 'Albion College', 'Bacardi Mojito', 14, 2);
-INSERT INTO faculty VALUES (9, 'University of Virginia, College at Wise', 'V8 - Tropical Blend', 2, 14);
-INSERT INTO faculty VALUES (10, 'Universidad Autónoma del Noreste', 'Extract - Rum', 7, 6);
-INSERT INTO faculty VALUES (11, 'University of Kuopio', 'Flour - Chickpea', 2, 3);
+INSERT INTO faculty VALUES (9, 'Faculty of Virginia, College at Wise', 'V8 - Tropical Blend', 2, 14);
+INSERT INTO faculty VALUES (10, 'Faculty Autónoma del Noreste', 'Extract - Rum', 7, 6);
+INSERT INTO faculty VALUES (11, 'Faculty of Kuopio', 'Flour - Chickpea', 2, 3);
 INSERT INTO faculty VALUES (12, 'Newschool of Architecture and Design', 'Cinnamon - Stick', 3, 11);
 INSERT INTO faculty VALUES (13, 'Saint Ferdinand College', 'Quail - Eggs, Fresh', 10, 11);
 INSERT INTO faculty VALUES (14, 'Effat College', 'Extract - Almond', 13, 7);
 INSERT INTO faculty VALUES (15, 'Skidmore College', 'Sauce - Bernaise, Mix', 15, 6);
-INSERT INTO faculty VALUES (16, 'University of Zenica', 'Apple - Custard', 5, 3);
+INSERT INTO faculty VALUES (16, 'Faculty of Zenica', 'Apple - Custard', 5, 3);
 INSERT INTO faculty VALUES (17, 'Hogeschool West-Vlaanderen (TU)', 'Marzipan 50/50', 5, 1);
-INSERT INTO faculty VALUES (18, 'Notre Dame de Namur University', 'Wine - Red, Marechal Foch', 2, 5);
+INSERT INTO faculty VALUES (18, 'Notre Dame de Namur Faculty', 'Wine - Red, Marechal Foch', 2, 5);
 INSERT INTO faculty VALUES (19, 'Effat College', 'Chambord Royal', 2, 3);
 INSERT INTO faculty VALUES (20, 'Fontbonne College', 'Veal - Round, Eye Of', 2, 2);
 INSERT INTO faculty VALUES (21, 'Rochester Institute of Technology', 'Figs', 10, 14);
-INSERT INTO faculty VALUES (22, 'Universidad Nacional de Asunción', 'Peach - Fresh', 4, 14);
+INSERT INTO faculty VALUES (22, 'Faculdad Nacional de Asunción', 'Peach - Fresh', 4, 14);
 INSERT INTO faculty VALUES (23, 'Carthage College', 'Beef - Tenderloin Tails', 6, 10);
-
+INSERT INTO faculty VALUES (24, 'School of Engineering', 'MIT', 3, 3);
+INSERT INTO faculty VALUES (25, 'School of Architecture and Planning', 'MIT', 3, 3);
+INSERT INTO faculty VALUES (26, 'School of Science', 'MIT', 3, 3);
+INSERT INTO faculty VALUES (27, 'School of Humanities, Arts, and Social Sciences', 'MIT', 3, 3);
+INSERT INTO faculty VALUES (28, 'School of Management', 'MIT', 3, 3);
+INSERT INTO faculty VALUES (29, 'Faculty of Sciences', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (30, 'Faculty of Pharmacy', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (31, 'Abel Salazar Institute of Biomedical Sciences', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (32, 'Faculty of Law', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (33, 'Faculty of Dental Medicine', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (34, 'Faculty of Psychology and Education Science', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (35, 'Faculty of Economics', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (36, 'Faculty of Sports', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (37, 'Faculty of Medicine', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (38, 'Faculty of Nutrition and Food Science', 'University of Porto', 1, 1);
+INSERT INTO faculty VALUES (39, 'Faculty of Architecture and History of Art', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (40, 'Faculty of Asian and Middle Eastern Studies', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (41, 'Faculty of Classics', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (42, 'Faculty of Divinity', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (43, 'Faculty of English', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (44, 'Faculty of Modern and Medieval Languages', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (45, 'Faculty of Music', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (46, 'Faculty of Philosophy', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (47, 'Faculty of Law', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (48, 'Faculty of History', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (49, 'Faculty of Education', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (50, 'Faculty of Economics', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (51, 'Faculty of Human, Social and Political Science (HSPS)', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (52, 'Faculty of Biology', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (53, 'Faculty of Engineering', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (54, 'Faculty of Business & Management', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (55, 'Faculty of Computer Science & Technology', 'Cambridge University', 4, 6);
+INSERT INTO faculty VALUES (56, 'Faculty of Science and Technology', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (57, 'Faculty of Social and Human Sciences', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (58, 'School of Business and Economics', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (59, 'Medical School', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (60, 'Faculty of Law', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (61, 'Information Management School', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (62, 'António Xavier Institute of Chemical and Biological Technology', 'NOVA', 5, 4);
+INSERT INTO faculty VALUES (63, 'Institute of Tropical Hygiene and Medicine', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (64, 'National School of Public Health', 'NOVA', 3, 4);
+INSERT INTO faculty VALUES (65, 'School of Engineering', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (66, 'Porto School of Engineering', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (67, 'Porto Accounting and Business School', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (68, 'School of Education', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (69, 'School of Music and Performing Arts', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (70, 'School of Management and Technology', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (71, 'School of Health', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (72, 'School of Media Arts and Design', 'P.PORTO', 1, 1);
+INSERT INTO faculty VALUES (73, 'School of Hospitality and Tourism', 'P.PORTO', 1, 1);
 
 --
 -- Name: faculty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lbaw1721
 --
 
-SELECT pg_catalog.setval('faculty_id_seq', 23, true);
+SELECT pg_catalog.setval('faculty_id_seq', 73, true);
 
 
 --
