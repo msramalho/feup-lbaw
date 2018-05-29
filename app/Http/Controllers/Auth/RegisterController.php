@@ -68,6 +68,8 @@ class RegisterController extends Controller
     {
         $data["password"] = bcrypt($data['password']);
         $data["type"] = "active";
+        $data["username"] = strtolower($data["username"]);
+        $data["email"] = strtolower($data["email"]);
         return User::create($data);
     }
 
