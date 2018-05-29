@@ -8,7 +8,7 @@
 	<div class="jumbotron">
 		<h1>Contacts Page of Vecto</h1>
 		<p class="lead">Consider vivisiting our
-			<a href="faq.html">FAQ</a> before submitting a direct contact request</p>
+			<a href="{{url("faq")}}">FAQ</a> before submitting a direct contact request</p>
 		<p>To get in touch with the
 			<i>Vecto</i> team you can</p>
 		<dl>
