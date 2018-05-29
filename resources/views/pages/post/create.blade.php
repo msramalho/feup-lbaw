@@ -33,8 +33,8 @@ function ee($errors, $name){//display a span with custom error $name
 				<div class="form-group col-md-12">
 					<label>Title <span class="text-danger">*</span></label>
 					<i class="far fa-question-circle float-right" data-toggle="tooltip" data-placement="bottom" title="Insert the title of your post in this form input"></i>
-					<input type="text" class="form-control form-control-lg" name="title" placeholder="Title of your post" value="{{ old("title") }}" required autofocus>
 					@php ee($errors, "title") @endphp
+					<input type="text" class="form-control form-control-lg" name="title" placeholder="Title of your post" value="{{ old("title") }}" required autofocus>
 				</div>
 			</div>
 			<div class="form-group">
