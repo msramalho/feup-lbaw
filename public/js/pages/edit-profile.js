@@ -19,12 +19,6 @@ $(function () {
 $("#saveChanges").click(function(e){
     var myurl = "/user/edit";
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
     e.preventDefault();
     var form_info = $("#form-info input");
     var description = $(".form-group textarea#postContent");

@@ -1,3 +1,5 @@
+$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+
 function copyToClipboard(text){
 	var textArea = document.createElement("textarea");
 	textArea.value = text;

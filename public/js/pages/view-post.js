@@ -143,13 +143,6 @@ function updateComment(root, nText){
 }
 
 function submitCommentEdit(root, cID, nText){
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
     $.ajax({
         type: "PUT",
         url: '../api/post/comment/'+cID,
