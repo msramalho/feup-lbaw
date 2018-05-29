@@ -32,48 +32,9 @@
 				<textarea class="form-control" id="postContent" name="content" required>{{ old("content")??$post->content }}</textarea>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin University</label>
-					<select class="custom-select" id="university_from" required>
-						<option selected>From University</option>
-						<option value="1">Universidade do Porto</option>
-						<option value="2">Universidade de Lisboa</option>
-						<option value="3">Three</option>
-					</select>
-				</div>
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin Faculty</label>
-					<select class="custom-select" id="faculty_from" name="from_faculty_id">
-						<option selected>From Faculty</option>
-						<option value="1">FEUP</option>
-						<option value="2">FPCEUP</option>
-						<option value="3">FADEUP</option>
-						<option value="4">FLUP</option>
-						<option value="5">FCUP</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin University</label>
-					<select class="custom-select" id="university_to" required>
-						<option selected>To University</option>
-						<option value="1">Universidade do Porto</option>
-						<option value="2">Universidade de Lisboa</option>
-						<option value="3">Three</option>
-					</select>
-				</div>
-				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-					<label>Origin Faculty</label>
-					<select class="custom-select" id="faculty_to" name="to_faculty_id">
-						<option selected>To Faculty</option>
-						<option value="1">FEUP</option>
-						<option value="2">FPCEUP</option>
-						<option value="3">FADEUP</option>
-						<option value="4">FLUP</option>
-						<option value="5">FCUP</option>
-					</select>
-				</div>
+				
+				<input type="hidden" name="from_faculty_id" value="{{$post->from_faculty_id}}">
+				<input type="hidden" name="to_faculty_id" value="{{$post->to_faculty_id}}">
 				<div class="form-group col-lg-4 col-md-6 col-sm-12">
 					<label>School Year</label>
 					<select class="custom-select" name="school_year" required>
