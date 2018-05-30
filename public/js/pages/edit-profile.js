@@ -42,6 +42,7 @@ $("#saveChanges").click(function(e){
 
         success: function (data) {
             if(data.success){
+                $(".nav-link.dropdown-toggle#user_dropdown")[0].innerText = my_data['username'];
                 swal({
                     title: "Profile Successfully Updated!",
                     icon: "success",
