@@ -78,7 +78,7 @@ function bindCommentButtons(){
                 
             }
         }).fail(function(){
-            showDeleteErrorDiv(); // TODO
+            showDeleteErrorDiv();
         });
     });
 
