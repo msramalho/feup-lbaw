@@ -42,11 +42,10 @@ $("#saveChanges").click(function(e){
 
         success: function (data) {
             if(data.success){
+                let l = $("#nav_username"); //navbar username link
+                l.attr("href", `/user/${my_data["username"]}`);
                 var link = $(".dropdown-item")[0].href;
-                var newlink = link.replace($(".nav-link.dropdown-toggle#user_dropdown")[0].innerText, my_data['username']);
-                console.log($(".nav-link.dropdown-toggle#user_dropdown")[0].innerText, my_data['username']);
                 var currUsername = $(".nav-link.dropdown-toggle#user_dropdown")[0].innerText;
-                console.log(link,newlink);
                 $(".nav-link.dropdown-toggle#user_dropdown")[0].innerText = my_data['username'];
                 swal({
                     title: "Profile Successfully Updated!",
