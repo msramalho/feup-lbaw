@@ -1170,7 +1170,7 @@ INSERT INTO "user" VALUES (4, 'jlopes@fe.up.pt', 'jcl', '2018-03-22', '$2y$10$e.
 <p><img src="http://portoportugalguide.com/images/750/ribeira-porto.jpg" alt="ribeira-porto.jpg" class="fr-fic fr-dii"></p>
 
 <p>S&atilde;o Francisco Church is known for its lavish baroque interior with ornate gilded carvings. The palatial 19th-century Pal&aacute;cio de Bolsa, formerly a stock market, was built to impress potential European investors.</p>
-', '2018-03-27 11:00:00+01', 'active');
+', '2018-03-27 11:00:00+01', 'admin');
 INSERT INTO "user" VALUES (5, 'bb@bb.com', 'putin', '2018-03-22', '$2y$10$Do.RgVkvfuGnWzszpCL4Gulsl8dQvNukGZDWoiCtuByDRijkvLugG', 'Vladimir Putin', '2018-03-22 16:33:10.67649+00', '<p><strong><span style="font-size:48px;">Porto</span></strong>
 	<br>
 	<br>Porto is a coastal city in northwest Portugal known for its stately bridges and port wine production. In the medieval Ribeira (riverside) district, narrow cobbled streets wind past merchants&rsquo; houses and cafes.&nbsp;</p>
