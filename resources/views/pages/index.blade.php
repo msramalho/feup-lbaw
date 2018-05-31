@@ -26,7 +26,7 @@
 					@each('pages.post.list-item', $folposts, 'post')
 					@if(count($folposts) == 0)
 						<p>
-						<h3>Looks like your friends havent's been active <i class="far fa-frown"></i></h3>
+						<h3>Looks like your friends haven't been active <i class="far fa-frown"></i></h3>
 					@endif
 				</div>
 			</section>
