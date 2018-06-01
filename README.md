@@ -2,6 +2,8 @@
 
 Univeristy Subject - Logic Programming (Programação em Lógica)
 
+Monstrous project done with Laravel and some of its features
+
 [Faculty of Engeneering of University of Porto](https://sigarra.up.pt/feup/en/WEB_PAGE.INICIAL)
 
 2017/2018
