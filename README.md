@@ -8,14 +8,20 @@ Monstrous project done with Laravel and some of its features
 
 2017/2018
 
-## Members
- * [Afonso Ramos](https://github.com/afonsojramos)
- * [Daniel Silva](https://github.com/Dannyps)
- * [Miguel Ramalho](https://github.com/msramalho)
- * [Vítor Minhoto](https://github.com/VMinhoto)
+With the colaboration of [Afonso Ramos](https://github.com/afonsojramos), [Daniel Silva](https://github.com/Dannyps) and [Vítor Minhoto](https://github.com/VMinhoto)
 
+## Interesting features
+ - Laravel
+ - Mustache
+ - Docker
+ - WYSIWYG
+ - Postgres
+ - Kanban Boards
+ 
 # Links
-
 [JCL LBAW doku](https://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/index)
 
 [lbaw prod](http://lbaw1721.lbaw-prod.fe.up.pt/)
+
+# Vecto Print
+<p align="center"><img src="https://i.imgur.com/AB1bVyc.png"/></p>
