@@ -1,6 +1,6 @@
 # FEUP - LBAW
 
-Univeristy Subject - Logic Programming (Programação em Lógica)
+Univeristy Subject - Databases and Web Applications Laboratory (Laboratório de Bases de dados e Aplicações Web)
 
 Monstrous project done with Laravel and some of its features
 
