@@ -1,6 +1,6 @@
 # FEUP - LBAW
 
-Univeristy Subject - Logic Programming (Programação em Lógica)
+Univeristy Subject - Databases and Web Applications Laboratory (Laboratório de Bases de dados e Aplicações Web)
 
 Monstrous project done with Laravel and some of its features
 
@@ -8,7 +8,7 @@ Monstrous project done with Laravel and some of its features
 
 2017/2018
 
-With the colaboration of [Afonso Ramos](https://github.com/afonsojramos), [Daniel Silva](https://github.com/Dannyps) and [Vítor Minhoto](https://github.com/VMinhoto)
+Made by [Afonso Ramos](https://github.com/afonsojramos), [Daniel Silva](https://github.com/Dannyps), [Miguel Sozinho](https://github.com/msramalho) and [Vítor Minhoto](https://github.com/VMinhoto)
 
 ## Interesting features
  - Laravel
