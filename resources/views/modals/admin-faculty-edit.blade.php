@@ -27,7 +27,7 @@
                             <label for="city">City <span class="text-danger">*</span></label>
                             <select id="city" class="custom-select" name="city_id" required>
                                 <option selected>Select a city</option>
-                                @foreach ($cities as $city)
+                                @foreach ($faculty->university->country->cities as $city)
                                     <option value="{{$city->id}}" {{$faculty->city_id == $city->id?"selected":""}}>{{$city->name}}</option>
                                 @endforeach
                             </select>
